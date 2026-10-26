@@ -1,18 +1,7 @@
 /* ============================================================
-   MON TRAJET EN ALLEMAND — données de contenu
-   Structure multi-niveaux : LEVELS[] contient un tableau de niveaux,
-   chacun avec ses propres MODULES (même forme que le système
-   à un seul niveau).
-
-   NIVEAU 1 (terminé) : 600 phrases, 3 modules x 200 phrases x 20
-   leçons de 10, 15 points de grammaire.
-
-   NIVEAU 2 (terminé) : même structure, vocabulaire un peu plus
-   riche et phrases un peu plus complexes que le niveau 1.
-
-   NIVEAU 3 (terminé) : niveau de langue plus avancé (B1-B2) :
-   subordonnées complexes, passif, discours indirect, Konjunktiv
-   I/II, tournures idiomatiques.
+   MON TRAJET EN PORTUGAIS (BRÉSIL) — données de contenu
+   3 niveaux × 3 modules × 20 leçons × 10 phrases = 1800 phrases,
+   45 points de grammaire. Champ cible : "pt" (TTS pt-BR).
    ============================================================ */
 
 const ICONS = {
@@ -23,2395 +12,8368 @@ const ICONS = {
   lock:'<svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>'
 };
 
-/* ============================================================
-   NIVEAU 1
-   ============================================================ */
-
 const level1Module1Lessons = [
-  { title:"Arrivée à Berlin", phrases:[
-    {fr:"Bienvenue en Allemagne !", de:"Willkommen in Deutschland!"},
-    {fr:"J'ai réservé une voiture de location.", de:"Ich habe ein Mietauto reserviert."},
-    {fr:"Voici mon passeport.", de:"Hier ist mein Reisepass."},
-    {fr:"Combien de jours restez-vous ?", de:"Wie viele Tage bleiben Sie?"},
-    {fr:"Je reste deux semaines.", de:"Ich bleibe zwei Wochen."},
-    {fr:"Où est-ce que je récupère les clés de la voiture ?", de:"Wo bekomme ich die Autoschlüssel?"},
-    {fr:"Avez-vous quelque chose à déclarer ?", de:"Haben Sie etwas zu verzollen?"},
-    {fr:"Non, absolument rien.", de:"Nein, überhaupt nichts."},
-    {fr:"Bon séjour en Allemagne !", de:"Einen schönen Aufenthalt in Deutschland!"},
-    {fr:"Merci beaucoup, à bientôt.", de:"Vielen Dank, bis bald."}
-  ]},
-  { title:"Un café près de la porte de Brandebourg", phrases:[
-    {fr:"Une table pour deux, s'il vous plaît.", de:"Einen Tisch für zwei, bitte."},
-    {fr:"Qu'est-ce que vous nous recommandez ?", de:"Was empfehlen Sie uns?"},
-    {fr:"Je prendrai un café et un croissant.", de:"Ich nehme einen Kaffee und ein Croissant."},
-    {fr:"Et pour moi, un thé noir.", de:"Und für mich einen schwarzen Tee."},
-    {fr:"Avez-vous du lait d'avoine ?", de:"Haben Sie Hafermilch?"},
-    {fr:"L'addition, s'il vous plaît.", de:"Die Rechnung, bitte."},
-    {fr:"C'est vraiment délicieux ici.", de:"Es ist wirklich lecker hier."},
-    {fr:"La porte de Brandebourg est juste en face.", de:"Das Brandenburger Tor ist genau gegenüber."},
-    {fr:"On partage un morceau de gâteau ?", de:"Teilen wir ein Stück Kuchen?"},
-    {fr:"Le service était très sympathique.", de:"Der Service war sehr freundlich."}
-  ], tip:{
-    title:"« Der, die, das » : les articles définis au nominatif",
-    example:"Le service était très sympathique. — <b>Der</b> Service war sehr freundlich.",
-    body:"Contrairement au français, l'allemand a trois genres grammaticaux : masculin (der), féminin (die) et neutre (das). Il faut apprendre le genre de chaque nom par cœur, car il conditionne tous les accords : der Kaffee (le café), die Rechnung (l'addition), das Croissant (le croissant)."
-  }},
-  { title:"Le Reichstag et sa coupole", phrases:[
-    {fr:"Le Reichstag est juste devant nous.", de:"Der Reichstag liegt genau vor uns."},
-    {fr:"C'est encore plus impressionnant qu'en photo.", de:"Es ist noch beeindruckender als auf Fotos."},
-    {fr:"Fais attention, il y a beaucoup de monde.", de:"Pass auf, es gibt viele Leute."},
-    {fr:"Il fait vraiment froid aujourd'hui.", de:"Es ist heute wirklich kalt."},
-    {fr:"N'oublie pas ta veste.", de:"Vergiss deine Jacke nicht."},
-    {fr:"On peut monter dans la coupole ?", de:"Können wir auf die Kuppel steigen?"},
-    {fr:"La file d'attente est assez longue.", de:"Die Warteschlange ist ziemlich lang."},
-    {fr:"Regarde cette vue incroyable sur la ville !", de:"Schau dir diese unglaubliche Aussicht auf die Stadt an!"},
-    {fr:"Le Parlement allemand siège ici.", de:"Hier tagt das deutsche Parlament."},
-    {fr:"C'est un vrai moment d'histoire.", de:"Das ist ein echter historischer Moment."}
-  ]},
-  { title:"Une nuit à l'hôtel", phrases:[
-    {fr:"Nous avons une réservation au nom de Nizard.", de:"Wir haben eine Reservierung auf den Namen Nizard."},
-    {fr:"Voici votre clé, chambre au troisième étage.", de:"Hier ist Ihr Schlüssel, Zimmer im dritten Stock."},
-    {fr:"Le petit-déjeuner est servi à partir de sept heures.", de:"Das Frühstück wird ab sieben Uhr serviert."},
-    {fr:"Y a-t-il du wifi dans la chambre ?", de:"Gibt es WLAN im Zimmer?"},
-    {fr:"Oui, le mot de passe est sur la table.", de:"Ja, das Passwort steht auf dem Tisch."},
-    {fr:"À quelle heure devons-nous libérer la chambre ?", de:"Bis wann müssen wir das Zimmer räumen?"},
-    {fr:"Avant midi, s'il vous plaît.", de:"Vor zwölf Uhr, bitte."},
-    {fr:"Pourriez-vous nous réveiller à six heures ?", de:"Könnten Sie uns um sechs Uhr wecken?"},
-    {fr:"Bien sûr, aucun problème.", de:"Natürlich, kein Problem."},
-    {fr:"Merci, bonne nuit à vous aussi.", de:"Danke, Ihnen auch eine gute Nacht."}
-  ]},
-  { title:"Direction la Forêt-Noire", phrases:[
-    {fr:"On prend l'autoroute vers le sud ?", de:"Nehmen wir die Autobahn Richtung Süden?"},
-    {fr:"Il faut d'abord faire le plein.", de:"Wir müssen zuerst tanken."},
-    {fr:"Les sapins de la Forêt-Noire sont magnifiques.", de:"Die Tannen des Schwarzwalds sind wunderschön."},
-    {fr:"Regarde tous ces villages avec leurs toits pentus.", de:"Schau dir all diese Dörfer mit ihren steilen Dächern an."},
-    {fr:"On s'arrête dans cette petite auberge ?", de:"Halten wir an diesem kleinen Gasthaus an?"},
-    {fr:"Le trajet dure environ trois heures.", de:"Die Fahrt dauert etwa drei Stunden."},
-    {fr:"Y a-t-il une aire de repos bientôt ?", de:"Gibt es bald einen Rastplatz?"},
-    {fr:"J'ai une faim de loup.", de:"Ich habe einen Bärenhunger."},
-    {fr:"Nous avons de la chance, il fait beau.", de:"Wir haben Glück, das Wetter ist schön."},
-    {fr:"Ce road trip restera inoubliable.", de:"Dieser Roadtrip wird unvergesslich bleiben."}
-  ], tip:{
-    title:"« Haben » au présent",
-    example:"J'ai une faim de loup. — Ich <b>habe</b> einen Bärenhunger.",
-    body:"« Haben » (avoir) est un verbe irrégulier essentiel : ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie haben. On le retrouve dans énormément d'expressions figées, comme Hunger haben (avoir faim) ou Glück haben (avoir de la chance), là où le français utilise souvent « être »."
-  }},
-  { title:"Une pause sur l'Autobahn", phrases:[
-    {fr:"Cette aire de repos est bondée.", de:"Dieser Rastplatz ist überfüllt."},
-    {fr:"On se gare près de la station-service.", de:"Wir parken in der Nähe der Tankstelle."},
-    {fr:"Je vais remplir le réservoir.", de:"Ich fülle den Tank."},
-    {fr:"L'essence est plus chère qu'en France.", de:"Das Benzin ist teurer als in Frankreich."},
-    {fr:"Il n'y a pas de limitation de vitesse ici.", de:"Hier gibt es kein Tempolimit."},
-    {fr:"Certaines portions sont quand même limitées.", de:"Manche Abschnitte sind trotzdem begrenzt."},
-    {fr:"Je préfère rouler à une vitesse raisonnable.", de:"Ich fahre lieber mit vernünftiger Geschwindigkeit."},
-    {fr:"Les voitures allemandes sont très rapides.", de:"Deutsche Autos sind sehr schnell."},
-    {fr:"On achète un café à emporter ?", de:"Kaufen wir einen Kaffee zum Mitnehmen?"},
-    {fr:"Bonne idée, ça va nous réveiller.", de:"Gute Idee, das wird uns wach machen."}
-  ]},
-  { title:"Un déjeuner en Bavière", phrases:[
-    {fr:"Une table en terrasse, si possible.", de:"Einen Tisch auf der Terrasse, wenn möglich."},
-    {fr:"Je voudrais un Schnitzel avec des pommes de terre.", de:"Ich möchte ein Schnitzel mit Kartoffeln."},
-    {fr:"Et pour moi, des Spätzle au fromage.", de:"Und für mich Käsespätzle."},
-    {fr:"Vous avez de la bière blanche bavaroise ?", de:"Haben Sie bayerisches Weißbier?"},
-    {fr:"Bien sûr, blonde ou brune ?", de:"Natürlich, helles oder dunkles?"},
-    {fr:"Je prendrai la blonde, merci.", de:"Ich nehme das helle, danke."},
-    {fr:"Ce bretzel est encore tiède.", de:"Diese Brezel ist noch warm."},
-    {fr:"L'ambiance de la Biergarten est vraiment chaleureuse.", de:"Die Atmosphäre im Biergarten ist wirklich herzlich."},
-    {fr:"Les Bavarois aiment manger en plein air.", de:"Die Bayern essen gern im Freien."},
-    {fr:"C'était un excellent déjeuner.", de:"Das war ein ausgezeichnetes Mittagessen."}
-  ]},
-  { title:"Louer un appartement à Berlin", phrases:[
-    {fr:"Je cherche un appartement meublé.", de:"Ich suche eine möblierte Wohnung."},
-    {fr:"Combien de pièces a cet appartement ?", de:"Wie viele Zimmer hat diese Wohnung?"},
-    {fr:"Deux chambres et un salon lumineux.", de:"Zwei Schlafzimmer und ein helles Wohnzimmer."},
-    {fr:"Je voudrais visiter l'appartement demain.", de:"Ich möchte die Wohnung morgen besichtigen."},
-    {fr:"Le loyer comprend-il les charges ?", de:"Ist die Miete inklusive Nebenkosten?"},
-    {fr:"Non, les charges sont en plus.", de:"Nein, die Nebenkosten kommen dazu."},
-    {fr:"Faut-il signer un contrat tout de suite ?", de:"Muss man sofort einen Vertrag unterschreiben?"},
-    {fr:"Je dois d'abord réfléchir un peu.", de:"Ich muss erst ein bisschen nachdenken."},
-    {fr:"Prenez votre temps, ce n'est pas urgent.", de:"Nehmen Sie sich Zeit, es ist nicht dringend."},
-    {fr:"Je vous rappelle cette semaine.", de:"Ich rufe Sie diese Woche zurück."}
-  ], tip:{
-    title:"L'accusatif : le complément d'objet direct",
-    example:"Je cherche un appartement meublé. — Ich suche <b>eine</b> möblierte Wohnung.",
-    body:"Le complément d'objet direct se met à l'accusatif. Pour les articles indéfinis, seul le masculin change : ein → einen (ich sehe einen Mann), tandis que le féminin (eine) et le neutre (ein) restent identiques au nominatif. Même logique pour les articles définis : der → den, die → die, das → das."
-  }},
-  { title:"S'installer dans le nouvel appartement", phrases:[
-    {fr:"Les cartons sont arrivés ce matin.", de:"Die Kartons sind heute Morgen angekommen."},
-    {fr:"Où est-ce qu'on met le canapé ?", de:"Wohin stellen wir das Sofa?"},
-    {fr:"Contre ce mur, je pense.", de:"An diese Wand, denke ich."},
-    {fr:"Il manque encore des étagères.", de:"Es fehlen noch Regale."},
-    {fr:"On va les acheter ce week-end.", de:"Wir kaufen sie dieses Wochenende."},
-    {fr:"La cuisine est plus petite que je pensais.", de:"Die Küche ist kleiner, als ich dachte."},
-    {fr:"Mais la vue sur la cour est agréable.", de:"Aber die Aussicht auf den Hof ist angenehm."},
-    {fr:"Il faut encore brancher internet.", de:"Wir müssen noch das Internet anschließen."},
-    {fr:"Le technicien vient jeudi matin.", de:"Der Techniker kommt Donnerstagmorgen."},
-    {fr:"On commence vraiment à se sentir chez nous.", de:"Wir fühlen uns langsam wirklich zu Hause."}
-  ]},
-  { title:"Les courses au supermarché", phrases:[
-    {fr:"Où se trouve le rayon des produits laitiers ?", de:"Wo ist die Milchprodukte-Abteilung?"},
-    {fr:"C'est au fond, à droite.", de:"Das ist hinten, rechts."},
-    {fr:"Je cherche du pain de seigle.", de:"Ich suche Roggenbrot."},
-    {fr:"Vous avez une carte de fidélité ?", de:"Haben Sie eine Kundenkarte?"},
-    {fr:"Pas encore, mais j'aimerais en avoir une.", de:"Noch nicht, aber ich hätte gern eine."},
-    {fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?"},
-    {fr:"Par carte, s'il vous plaît.", de:"Mit Karte, bitte."},
-    {fr:"Avez-vous besoin d'un sac ?", de:"Brauchen Sie eine Tüte?"},
-    {fr:"Oui, un petit sac, merci.", de:"Ja, eine kleine Tüte, danke."},
-    {fr:"Bonne journée à vous aussi.", de:"Ihnen auch einen schönen Tag."}
-  ]},
-  { title:"Les courses au marché", phrases:[
-    {fr:"Je voudrais un kilo de pommes.", de:"Ich möchte ein Kilo Äpfel."},
-    {fr:"Ces pommes sont-elles bien sucrées ?", de:"Sind diese Äpfel schön süß?"},
-    {fr:"Ce fromage de montagne a l'air excellent.", de:"Dieser Bergkäse sieht hervorragend aus."},
-    {fr:"Combien coûte ce morceau ?", de:"Wie viel kostet dieses Stück?"},
-    {fr:"C'est un peu cher, mais ça vaut la peine.", de:"Es ist etwas teuer, aber es lohnt sich."},
-    {fr:"Vous avez des herbes fraîches ?", de:"Haben Sie frische Kräuter?"},
-    {fr:"Bien sûr, juste à côté là-bas.", de:"Natürlich, gleich dort drüben."},
-    {fr:"Je prends aussi un pot de miel.", de:"Ich nehme auch ein Glas Honig."},
-    {fr:"Ça fera combien en tout ?", de:"Was macht das insgesamt?"},
-    {fr:"Voici votre monnaie, bonne journée.", de:"Hier ist Ihr Wechselgeld, einen schönen Tag."}
-  ]},
-  { title:"La météo du jour", phrases:[
-    {fr:"Quel temps fait-il aujourd'hui ?", de:"Wie ist das Wetter heute?"},
-    {fr:"Le ciel est complètement couvert.", de:"Der Himmel ist ganz bedeckt."},
-    {fr:"Il paraît qu'il va neiger ce soir.", de:"Es heißt, dass es heute Abend schneien wird."},
-    {fr:"J'espère que les routes resteront dégagées.", de:"Ich hoffe, die Straßen bleiben frei."},
-    {fr:"Prends un bonnet, au cas où.", de:"Nimm eine Mütze, nur zur Sicherheit."},
-    {fr:"En hiver, il fait très froid à Berlin.", de:"Im Winter ist es in Berlin sehr kalt."},
-    {fr:"Heureusement, les intérieurs sont bien chauffés.", de:"Zum Glück sind die Innenräume gut geheizt."},
-    {fr:"Quelle est la température en ce moment ?", de:"Wie viel Grad sind es gerade?"},
-    {fr:"Environ deux degrés, je crois.", de:"Etwa zwei Grad, glaube ich."},
-    {fr:"Alors couvre-toi bien.", de:"Dann zieh dich warm an."}
-  ]},
-  { title:"Les transports en commun à Berlin", phrases:[
-    {fr:"Comment on va au centre-ville ?", de:"Wie kommen wir ins Stadtzentrum?"},
-    {fr:"Il y a un tram qui part d'ici.", de:"Hier fährt eine Straßenbahn ab."},
-    {fr:"Le ticket coûte combien ?", de:"Wie viel kostet die Fahrkarte?"},
-    {fr:"Trois euros, valable deux heures.", de:"Drei Euro, gültig zwei Stunden."},
-    {fr:"On peut aussi prendre le S-Bahn.", de:"Wir können auch die S-Bahn nehmen."},
-    {fr:"La station la plus proche est à deux pas.", de:"Die nächste Station ist ganz in der Nähe."},
-    {fr:"Attention, les quais sont parfois glissants.", de:"Vorsicht, die Bahnsteige sind manchmal rutschig."},
-    {fr:"Je préfère le vélo quand il fait beau.", de:"Ich fahre lieber Fahrrad, wenn das Wetter schön ist."},
-    {fr:"Berlin a de très bonnes pistes cyclables.", de:"Berlin hat sehr gute Fahrradwege."},
-    {fr:"C'est vrai, tout est bien organisé.", de:"Das ist wahr, alles ist gut organisiert."}
-  ]},
-  { title:"Demander son chemin", phrases:[
-    {fr:"Excusez-moi, je suis un peu perdu.", de:"Entschuldigung, ich habe mich ein bisschen verlaufen."},
-    {fr:"Vous cherchez quelque chose en particulier ?", de:"Suchen Sie etwas Bestimmtes?"},
-    {fr:"Je cherche la cathédrale de Berlin.", de:"Ich suche den Berliner Dom."},
-    {fr:"Vous devez d'abord traverser le pont.", de:"Sie müssen zuerst die Brücke überqueren."},
-    {fr:"Puis tourner à gauche après le musée.", de:"Dann nach dem Museum links abbiegen."},
-    {fr:"C'est loin d'ici à pied ?", de:"Ist das weit von hier zu Fuß?"},
-    {fr:"Non, à peine dix minutes.", de:"Nein, kaum zehn Minuten."},
-    {fr:"Merci infiniment pour votre aide.", de:"Vielen herzlichen Dank für Ihre Hilfe."},
-    {fr:"Je vous en prie, bonne visite.", de:"Gern geschehen, viel Spaß beim Besuch."},
-    {fr:"Le bus arrive dans cinq minutes.", de:"Der Bus kommt in fünf Minuten an."}
-  ], tip:{
-    title:"Les verbes à particule séparable",
-    example:"Le bus arrive dans cinq minutes. — Der Bus kommt in fünf Minuten <b>an</b>.",
-    body:"Beaucoup de verbes allemands sont formés d'un verbe de base et d'une particule qui, à l'infinitif, se colle devant : ankommen (arriver), aufstehen (se lever), einkaufen (faire les courses). Mais dans une phrase simple au présent, cette particule se détache et part à la toute fin de la phrase : ankommen → Der Bus kommt an."
-  }},
-  { title:"La routine du matin", phrases:[
-    {fr:"Je me réveille vers six heures et demie.", de:"Ich wache gegen halb sieben auf."},
-    {fr:"Je prends d'abord une douche rapide.", de:"Zuerst dusche ich schnell."},
-    {fr:"Ensuite, je prépare le petit-déjeuner.", de:"Danach bereite ich das Frühstück vor."},
-    {fr:"Je mange toujours du pain complet.", de:"Ich esse immer Vollkornbrot."},
-    {fr:"Je m'habille en moins de dix minutes.", de:"Ich ziehe mich in weniger als zehn Minuten an."},
-    {fr:"Je vérifie mes messages avant de partir.", de:"Ich checke meine Nachrichten, bevor ich losgehe."},
-    {fr:"Je quitte la maison à huit heures.", de:"Ich verlasse das Haus um acht Uhr."},
-    {fr:"Le trajet jusqu'au bureau prend vingt-cinq minutes.", de:"Der Weg ins Büro dauert fünfundzwanzig Minuten."},
-    {fr:"J'arrive presque toujours à l'heure.", de:"Ich komme fast immer pünktlich an."},
-    {fr:"Une routine simple, mais qui fonctionne bien.", de:"Eine einfache Routine, die aber gut funktioniert."}
-  ]},
-  { title:"Les tâches ménagères", phrases:[
-    {fr:"Aujourd'hui, c'est moi qui fais le ménage.", de:"Heute putze ich."},
-    {fr:"Je passe d'abord l'aspirateur dans le salon.", de:"Zuerst sauge ich im Wohnzimmer."},
-    {fr:"Ensuite, je nettoie la cuisine.", de:"Danach reinige ich die Küche."},
-    {fr:"Tu peux faire la vaisselle, s'il te plaît ?", de:"Kannst du bitte das Geschirr spülen?"},
-    {fr:"Avec plaisir, je m'en occupe tout de suite.", de:"Gern, ich mache das sofort."},
-    {fr:"Il faut aussi sortir les poubelles.", de:"Wir müssen auch den Müll rausbringen."},
-    {fr:"Le tri des déchets est très strict en Allemagne.", de:"Die Mülltrennung ist in Deutschland sehr streng."},
-    {fr:"Oui, il y a plusieurs bacs différents.", de:"Ja, es gibt mehrere verschiedene Tonnen."},
-    {fr:"Je n'arrive jamais à m'y retrouver complètement.", de:"Ich blicke dabei nie ganz durch."},
-    {fr:"Ça viendra avec le temps, ne t'inquiète pas.", de:"Das kommt mit der Zeit, keine Sorge."}
-  ]},
-  { title:"Les vêtements et les couleurs", phrases:[
-    {fr:"Je n'ai rien à me mettre pour ce soir.", de:"Ich habe nichts anzuziehen für heute Abend."},
-    {fr:"Et si tu mettais cette robe bleue ?", de:"Wie wäre es mit diesem blauen Kleid?"},
-    {fr:"Elle est un peu trop habillée, non ?", de:"Es ist etwas zu elegant, oder?"},
-    {fr:"Pas du tout, elle est parfaite.", de:"Überhaupt nicht, es ist perfekt."},
-    {fr:"Je préfère porter des couleurs sombres l'hiver.", de:"Im Winter trage ich lieber dunkle Farben."},
-    {fr:"Ce manteau vert te va très bien.", de:"Dieser grüne Mantel steht dir sehr gut."},
-    {fr:"Il me faudrait aussi une nouvelle écharpe.", de:"Ich bräuchte auch einen neuen Schal."},
-    {fr:"On peut passer dans ce magasin.", de:"Wir können in diesem Laden vorbeigehen."},
-    {fr:"Ces gants en laine sont vraiment chauds.", de:"Diese Wollhandschuhe sind wirklich warm."},
-    {fr:"Parfait, je les prends tous les deux.", de:"Perfekt, ich nehme beide."}
-  ]},
-  { title:"Dire l'heure et les nombres", phrases:[
-    {fr:"Quelle heure est-il, s'il te plaît ?", de:"Wie viel Uhr ist es, bitte?"},
-    {fr:"Il est exactement midi.", de:"Es ist genau zwölf Uhr."},
-    {fr:"Le train part à quatorze heures quinze.", de:"Der Zug fährt um vierzehn Uhr fünfzehn."},
-    {fr:"On se retrouve à dix-huit heures trente.", de:"Wir treffen uns um achtzehn Uhr dreißig."},
-    {fr:"Combien font quarante et vingt-cinq ?", de:"Wie viel sind vierzig und fünfundzwanzig?"},
-    {fr:"Soixante-cinq, je crois.", de:"Fünfundsechzig, glaube ich."},
-    {fr:"Le musée ouvre à neuf heures précises.", de:"Das Museum öffnet um genau neun Uhr."},
-    {fr:"Et il ferme à dix-sept heures.", de:"Und es schließt um siebzehn Uhr."},
-    {fr:"Nous avons largement le temps alors.", de:"Dann haben wir reichlich Zeit."},
-    {fr:"Parfait, on peut flâner un peu avant.", de:"Perfekt, wir können vorher noch ein bisschen bummeln."}
-  ], tip:{
-    title:"L'heure officielle en allemand",
-    example:"Le train part à quatorze heures quinze. — Der Zug fährt um <b>vierzehn Uhr fünfzehn</b>.",
-    body:"Dans les horaires officiels (gares, administrations), l'allemand utilise le système de 0 à 24 heures, exactement comme le français : vierzehn Uhr fünfzehn (14h15). À l'oral informel, on dit plutôt « Viertel nach zwei » (et quart après deux heures), sur un cycle de 12 heures, un peu comme en français familier."
-  }},
-  { title:"Un appel téléphonique", phrases:[
-    {fr:"Allô, c'est bien le cabinet du docteur Weber ?", de:"Hallo, ist das die Praxis von Doktor Weber?"},
-    {fr:"Oui, en quoi puis-je vous aider ?", de:"Ja, wie kann ich Ihnen helfen?"},
-    {fr:"Je voudrais prendre un rendez-vous.", de:"Ich möchte einen Termin vereinbaren."},
-    {fr:"Vendredi matin, ça vous convient ?", de:"Passt Freitagmorgen für Sie?"},
-    {fr:"Oui, parfaitement, merci beaucoup.", de:"Ja, perfekt, vielen Dank."},
-    {fr:"Pouvez-vous me rappeler si besoin ?", de:"Können Sie mich zurückrufen, falls nötig?"},
-    {fr:"Bien sûr, quel est votre numéro ?", de:"Natürlich, wie ist Ihre Nummer?"},
-    {fr:"Je vous l'envoie par message.", de:"Ich schicke sie Ihnen per Nachricht."},
-    {fr:"Très bien, à vendredi alors.", de:"Sehr gut, dann bis Freitag."},
-    {fr:"Merci, bonne fin de journée.", de:"Danke, einen schönen Tagesausklang noch."}
-  ]},
-  { title:"Fin du module : un bilan", phrases:[
-    {fr:"Ce premier module touche à sa fin.", de:"Dieses erste Modul geht zu Ende."},
-    {fr:"On a appris énormément de choses utiles.", de:"Wir haben sehr viele nützliche Dinge gelernt."},
-    {fr:"Le quotidien en Allemagne n'a plus de secrets pour nous.", de:"Der Alltag in Deutschland hat keine Geheimnisse mehr für uns."},
-    {fr:"Il reste encore beaucoup à découvrir.", de:"Es gibt noch viel zu entdecken."},
-    {fr:"Le prochain module parlera de voyages.", de:"Das nächste Modul handelt von Reisen."},
-    {fr:"J'ai hâte de continuer à apprendre.", de:"Ich freue mich darauf, weiterzulernen."},
-    {fr:"La pratique régulière porte vraiment ses fruits.", de:"Regelmäßiges Üben zahlt sich wirklich aus."},
-    {fr:"Bravo pour cette première étape.", de:"Glückwunsch zu diesem ersten Schritt."},
-    {fr:"Prenons une petite pause bien méritée.", de:"Machen wir eine kleine, wohlverdiente Pause."},
-    {fr:"À très vite pour la suite.", de:"Bis bald für die Fortsetzung."}
-  ]}
+ {
+  "title": "Arrivée à Rio de Janeiro",
+  "phrases": [
+   {
+    "fr": "Bienvenue au Brésil !",
+    "pt": "Bem-vindo ao Brasil!"
+   },
+   {
+    "fr": "Nous venons d'atterrir à l'aéroport du Galeão.",
+    "pt": "A gente acabou de pousar no aeroporto do Galeão."
+   },
+   {
+    "fr": "Votre passeport, s'il vous plaît.",
+    "pt": "Seu passaporte, por favor."
+   },
+   {
+    "fr": "C'est votre première visite au Brésil ?",
+    "pt": "É a sua primeira vez no Brasil?"
+   },
+   {
+    "fr": "Oui, je viens pour un mois.",
+    "pt": "Sim, eu vim para ficar um mês."
+   },
+   {
+    "fr": "Où est-ce que je prends un taxi ?",
+    "pt": "Onde eu pego um táxi?"
+   },
+   {
+    "fr": "La sortie est tout droit, à gauche.",
+    "pt": "A saída é em frente, à esquerda."
+   },
+   {
+    "fr": "Il fait déjà très chaud ici.",
+    "pt": "Já está muito calor aqui."
+   },
+   {
+    "fr": "Je vais à Copacabana, s'il vous plaît.",
+    "pt": "Eu vou para Copacabana, por favor."
+   },
+   {
+    "fr": "Merci, et bonne journée !",
+    "pt": "Obrigado, e tenha um bom dia!"
+   }
+  ]
+ },
+ {
+  "title": "Un jus de fruits à Copacabana",
+  "phrases": [
+   {
+    "fr": "Bonjour, une table près de la plage ?",
+    "pt": "Bom dia, uma mesa perto da praia?"
+   },
+   {
+    "fr": "Qu'est-ce que vous avez comme jus ?",
+    "pt": "Que sucos vocês têm?"
+   },
+   {
+    "fr": "Je voudrais un jus d'orange.",
+    "pt": "Eu queria um suco de laranja."
+   },
+   {
+    "fr": "Et pour moi, une eau de coco.",
+    "pt": "E para mim, uma água de coco."
+   },
+   {
+    "fr": "Le menu est en portugais seulement ?",
+    "pt": "O cardápio é só em português?"
+   },
+   {
+    "fr": "Une petite pause bien méritée.",
+    "pt": "Uma pausa merecida."
+   },
+   {
+    "fr": "La vue sur la mer est superbe.",
+    "pt": "A vista do mar é linda."
+   },
+   {
+    "fr": "C'est combien, le jus ?",
+    "pt": "Quanto é o suco?"
+   },
+   {
+    "fr": "Je prends aussi un pão de queijo.",
+    "pt": "Eu também quero um pão de queijo."
+   },
+   {
+    "fr": "Le serveur est très gentil.",
+    "pt": "O garçom é muito simpático."
+   }
+  ],
+  "tip": {
+   "title": "« O, a, um, uma » : les articles",
+   "example": "Le serveur est très gentil. — <b>O</b> garçom é muito simpático.",
+   "body": "Le portugais a deux genres, comme le français : « o » (le) et « a » (la) sont les articles définis, « um » (un) et « uma » (une) les articles indéfinis. Au pluriel : os, as, uns, umas. Attention, le genre ne correspond pas toujours au français : o leite (le lait), mais a viagem (le voyage)."
+  }
+ },
+ {
+  "title": "Le Pain de Sucre en téléphérique",
+  "phrases": [
+   {
+    "fr": "Voici le Pain de Sucre !",
+    "pt": "Olha o Pão de Açúcar!"
+   },
+   {
+    "fr": "On prend le téléphérique ?",
+    "pt": "A gente pega o bondinho?"
+   },
+   {
+    "fr": "Deux billets, s'il vous plaît.",
+    "pt": "Dois ingressos, por favor."
+   },
+   {
+    "fr": "Il y a beaucoup de monde aujourd'hui.",
+    "pt": "Tem muita gente hoje."
+   },
+   {
+    "fr": "La vue d'en haut est magnifique.",
+    "pt": "A vista lá de cima é maravilhosa."
+   },
+   {
+    "fr": "On voit toute la baie.",
+    "pt": "Dá para ver a baía inteira."
+   },
+   {
+    "fr": "Prends une photo de moi, s'il te plaît.",
+    "pt": "Tira uma foto minha, por favor."
+   },
+   {
+    "fr": "N'oublie pas ta crème solaire.",
+    "pt": "Não esquece o protetor solar."
+   },
+   {
+    "fr": "J'ai un peu le vertige.",
+    "pt": "Eu tenho um pouco de medo de altura."
+   },
+   {
+    "fr": "On redescend au coucher du soleil ?",
+    "pt": "A gente desce no pôr do sol?"
+   }
+  ]
+ },
+ {
+  "title": "Une nuit à l'hôtel d'Ipanema",
+  "phrases": [
+   {
+    "fr": "J'ai une réservation au nom de Nizard.",
+    "pt": "Eu tenho uma reserva no nome de Nizard."
+   },
+   {
+    "fr": "Pour combien de nuits ?",
+    "pt": "Para quantas noites?"
+   },
+   {
+    "fr": "Pour trois nuits.",
+    "pt": "Para três noites."
+   },
+   {
+    "fr": "Votre chambre est au cinquième étage.",
+    "pt": "O seu quarto fica no quinto andar."
+   },
+   {
+    "fr": "Le petit-déjeuner est inclus ?",
+    "pt": "O café da manhã está incluído?"
+   },
+   {
+    "fr": "Oui, de six heures à dix heures.",
+    "pt": "Sim, das seis às dez horas."
+   },
+   {
+    "fr": "Quel est le mot de passe du wifi ?",
+    "pt": "Qual é a senha do wi-fi?"
+   },
+   {
+    "fr": "La climatisation ne marche pas.",
+    "pt": "O ar-condicionado não está funcionando."
+   },
+   {
+    "fr": "Je vous envoie quelqu'un tout de suite.",
+    "pt": "Vou mandar alguém agora mesmo."
+   },
+   {
+    "fr": "Bonne nuit et bon séjour.",
+    "pt": "Boa noite e boa estadia."
+   }
+  ]
+ },
+ {
+  "title": "Monter au Christ Rédempteur",
+  "phrases": [
+   {
+    "fr": "Le Christ Rédempteur est tout en haut.",
+    "pt": "O Cristo Redentor fica lá no alto."
+   },
+   {
+    "fr": "On monte en petit train ?",
+    "pt": "A gente sobe de trenzinho?"
+   },
+   {
+    "fr": "Le train part toutes les demi-heures.",
+    "pt": "O trem sai a cada meia hora."
+   },
+   {
+    "fr": "La statue est immense.",
+    "pt": "A estátua é enorme."
+   },
+   {
+    "fr": "Aujourd'hui, le ciel est dégagé.",
+    "pt": "Hoje o céu está limpo."
+   },
+   {
+    "fr": "Nous sommes très fatigués.",
+    "pt": "A gente está muito cansado."
+   },
+   {
+    "fr": "Ce point de vue est incroyable.",
+    "pt": "Este mirante é incrível."
+   },
+   {
+    "fr": "Je suis français, et toi ?",
+    "pt": "Eu sou francês, e você?"
+   },
+   {
+    "fr": "Le guide est très sympathique.",
+    "pt": "O guia é muito simpático."
+   },
+   {
+    "fr": "On est contents d'être ici.",
+    "pt": "A gente está feliz de estar aqui."
+   }
+  ],
+  "tip": {
+   "title": "« Ser » ou « estar » ?",
+   "example": "Nous sommes très fatigués. — A gente <b>está</b> muito cansado.",
+   "body": "Le verbe être se dit de deux façons. « Ser » exprime ce qui est permanent ou définit quelqu'un : eu sou francês (je suis français), a estátua é enorme. « Estar » exprime un état passager : estou cansado (je suis fatigué), o céu está limpo (le ciel est dégagé aujourd'hui)."
+  }
+ },
+ {
+  "title": "Une balade dans Santa Teresa",
+  "phrases": [
+   {
+    "fr": "Santa Teresa est un quartier charmant.",
+    "pt": "Santa Teresa é um bairro charmoso."
+   },
+   {
+    "fr": "Les rues montent beaucoup.",
+    "pt": "As ruas são muito íngremes."
+   },
+   {
+    "fr": "Regarde ce vieux tramway jaune !",
+    "pt": "Olha esse bondinho amarelo antigo!"
+   },
+   {
+    "fr": "Il y a plein d'ateliers d'artistes.",
+    "pt": "Tem vários ateliês de artistas."
+   },
+   {
+    "fr": "J'adore les maisons colorées.",
+    "pt": "Eu adoro as casas coloridas."
+   },
+   {
+    "fr": "On s'arrête boire quelque chose ?",
+    "pt": "A gente para para beber alguma coisa?"
+   },
+   {
+    "fr": "Ce café a une jolie terrasse.",
+    "pt": "Esse café tem um terraço bonito."
+   },
+   {
+    "fr": "Je suis un peu perdu.",
+    "pt": "Eu estou um pouco perdido."
+   },
+   {
+    "fr": "Tu as une carte du quartier ?",
+    "pt": "Você tem um mapa do bairro?"
+   },
+   {
+    "fr": "Quelle belle après-midi !",
+    "pt": "Que tarde linda!"
+   }
+  ]
+ },
+ {
+  "title": "Un déjeuner brésilien",
+  "phrases": [
+   {
+    "fr": "On mange dans ce restaurant au kilo ?",
+    "pt": "A gente come nesse restaurante por quilo?"
+   },
+   {
+    "fr": "Ici, on paie au poids de l'assiette.",
+    "pt": "Aqui a gente paga pelo peso do prato."
+   },
+   {
+    "fr": "Je prends du riz et des haricots noirs.",
+    "pt": "Eu vou pegar arroz e feijão preto."
+   },
+   {
+    "fr": "Tu veux de la farofa ?",
+    "pt": "Você quer farofa?"
+   },
+   {
+    "fr": "Le poulet a l'air délicieux.",
+    "pt": "O frango parece delicioso."
+   },
+   {
+    "fr": "Je ne mange pas de viande.",
+    "pt": "Eu não como carne."
+   },
+   {
+    "fr": "Il y a beaucoup de salades.",
+    "pt": "Tem muitas saladas."
+   },
+   {
+    "fr": "Une limonade, s'il vous plaît.",
+    "pt": "Uma limonada, por favor."
+   },
+   {
+    "fr": "C'est vraiment bon et pas cher.",
+    "pt": "É muito bom e barato."
+   },
+   {
+    "fr": "On paie à la caisse en sortant.",
+    "pt": "A gente paga no caixa na saída."
+   }
+  ]
+ },
+ {
+  "title": "Louer un appartement à Rio",
+  "phrases": [
+   {
+    "fr": "Je cherche un appartement à louer.",
+    "pt": "Eu estou procurando um apartamento para alugar."
+   },
+   {
+    "fr": "Il est dans le quartier de Botafogo.",
+    "pt": "Ele fica no bairro de Botafogo."
+   },
+   {
+    "fr": "Combien de chambres il y a ?",
+    "pt": "Quantos quartos tem?"
+   },
+   {
+    "fr": "Deux chambres et une petite cuisine.",
+    "pt": "Dois quartos e uma cozinha pequena."
+   },
+   {
+    "fr": "L'appartement est près du métro ?",
+    "pt": "O apartamento fica perto do metrô?"
+   },
+   {
+    "fr": "La station est au bout de la rue.",
+    "pt": "A estação fica no fim da rua."
+   },
+   {
+    "fr": "Le loyer est de deux mille reais.",
+    "pt": "O aluguel é de dois mil reais."
+   },
+   {
+    "fr": "Les charges sont comprises ?",
+    "pt": "O condomínio está incluído?"
+   },
+   {
+    "fr": "Il y a un gardien dans l'immeuble.",
+    "pt": "Tem porteiro no prédio."
+   },
+   {
+    "fr": "Je peux le visiter demain ?",
+    "pt": "Eu posso visitar amanhã?"
+   }
+  ],
+  "tip": {
+   "title": "Les contractions « no, na, do, da »",
+   "example": "L'appartement est près du métro ? — O apartamento fica perto <b>do</b> metrô?",
+   "body": "Les prépositions « em » (dans, à) et « de » (de) se collent à l'article, comme « du » en français. Em + o = no, em + a = na : no bairro (dans le quartier), na rua (dans la rue). De + o = do, de + a = da : perto do metrô (près du métro), o fim da rua (le bout de la rue)."
+  }
+ },
+ {
+  "title": "S'installer dans le nouvel appartement",
+  "phrases": [
+   {
+    "fr": "Les cartons sont dans le salon.",
+    "pt": "As caixas estão na sala."
+   },
+   {
+    "fr": "On met le canapé où ?",
+    "pt": "Onde a gente coloca o sofá?"
+   },
+   {
+    "fr": "Près de la fenêtre, c'est mieux.",
+    "pt": "Perto da janela é melhor."
+   },
+   {
+    "fr": "Le réfrigérateur ne marche pas encore.",
+    "pt": "A geladeira ainda não está funcionando."
+   },
+   {
+    "fr": "Il faut acheter des rideaux.",
+    "pt": "Precisa comprar cortinas."
+   },
+   {
+    "fr": "Le ventilateur est indispensable ici.",
+    "pt": "O ventilador é essencial aqui."
+   },
+   {
+    "fr": "Où sont les draps ?",
+    "pt": "Onde estão os lençóis?"
+   },
+   {
+    "fr": "Dans le grand carton bleu.",
+    "pt": "Na caixa grande azul."
+   },
+   {
+    "fr": "La salle de bains est très propre.",
+    "pt": "O banheiro está muito limpo."
+   },
+   {
+    "fr": "Je me sens déjà chez moi.",
+    "pt": "Eu já me sinto em casa."
+   }
+  ]
+ },
+ {
+  "title": "Les courses au supermarché",
+  "phrases": [
+   {
+    "fr": "Il nous faut du lait et du café.",
+    "pt": "A gente precisa de leite e café."
+   },
+   {
+    "fr": "Où est le rayon des boissons ?",
+    "pt": "Onde fica a seção de bebidas?"
+   },
+   {
+    "fr": "C'est au fond, à droite.",
+    "pt": "Fica no fundo, à direita."
+   },
+   {
+    "fr": "Je cherche du pain de mie.",
+    "pt": "Eu estou procurando pão de forma."
+   },
+   {
+    "fr": "Ce paquet de riz est en promotion.",
+    "pt": "Esse pacote de arroz está em promoção."
+   },
+   {
+    "fr": "Prends aussi du savon.",
+    "pt": "Pega também sabonete."
+   },
+   {
+    "fr": "Tu as un sac ?",
+    "pt": "Você tem uma sacola?"
+   },
+   {
+    "fr": "Vous payez par carte ou en espèces ?",
+    "pt": "Vai pagar no cartão ou em dinheiro?"
+   },
+   {
+    "fr": "Par carte, s'il vous plaît.",
+    "pt": "No cartão, por favor."
+   },
+   {
+    "fr": "Vous voulez votre ticket de caisse ?",
+    "pt": "Quer a nota fiscal?"
+   }
+  ]
+ },
+ {
+  "title": "Un matin à la feira",
+  "phrases": [
+   {
+    "fr": "La feira a lieu tous les mercredis.",
+    "pt": "A feira é toda quarta-feira."
+   },
+   {
+    "fr": "Je voudrais un kilo de mangues.",
+    "pt": "Eu queria um quilo de manga."
+   },
+   {
+    "fr": "Ces papayes sont bien mûres ?",
+    "pt": "Esses mamões estão bem maduros?"
+   },
+   {
+    "fr": "Goûtez, c'est très sucré.",
+    "pt": "Prova, é muito doce."
+   },
+   {
+    "fr": "Combien coûtent les ananas ?",
+    "pt": "Quanto custa o abacaxi?"
+   },
+   {
+    "fr": "Cinq reais pièce.",
+    "pt": "Cinco reais cada um."
+   },
+   {
+    "fr": "J'en prends deux, alors.",
+    "pt": "Então eu levo dois."
+   },
+   {
+    "fr": "Il y a aussi un stand de pastéis.",
+    "pt": "Também tem uma barraca de pastel."
+   },
+   {
+    "fr": "Un pastel au fromage, s'il vous plaît.",
+    "pt": "Um pastel de queijo, por favor."
+   },
+   {
+    "fr": "Et un jus de canne à sucre bien frais.",
+    "pt": "E um caldo de cana bem gelado."
+   }
+  ]
+ },
+ {
+  "title": "La météo du jour",
+  "phrases": [
+   {
+    "fr": "Quel temps fait-il aujourd'hui ?",
+    "pt": "Como está o tempo hoje?"
+   },
+   {
+    "fr": "Il fait trente-cinq degrés.",
+    "pt": "Está fazendo trinta e cinco graus."
+   },
+   {
+    "fr": "Le soleil tape très fort.",
+    "pt": "O sol está muito forte."
+   },
+   {
+    "fr": "Il va pleuvoir cet après-midi.",
+    "pt": "Vai chover hoje à tarde."
+   },
+   {
+    "fr": "Les orages d'été sont courts.",
+    "pt": "As chuvas de verão são rápidas."
+   },
+   {
+    "fr": "Prends un parapluie, au cas où.",
+    "pt": "Leva um guarda-chuva, por via das dúvidas."
+   },
+   {
+    "fr": "C'est très humide aujourd'hui.",
+    "pt": "Está muito úmido hoje."
+   },
+   {
+    "fr": "En hiver, il fait plus doux.",
+    "pt": "No inverno, o tempo fica mais ameno."
+   },
+   {
+    "fr": "Demain, il va faire beau.",
+    "pt": "Amanhã vai fazer sol."
+   },
+   {
+    "fr": "Parfait pour aller à la plage !",
+    "pt": "Perfeito para ir à praia!"
+   }
+  ]
+ },
+ {
+  "title": "Prendre le bus et le métro",
+  "phrases": [
+   {
+    "fr": "Comment on va au centre-ville ?",
+    "pt": "Como a gente vai para o centro?"
+   },
+   {
+    "fr": "Tu peux prendre le métro.",
+    "pt": "Você pode pegar o metrô."
+   },
+   {
+    "fr": "Ce bus va à Ipanema ?",
+    "pt": "Esse ônibus vai para Ipanema?"
+   },
+   {
+    "fr": "Non, il faut prendre le suivant.",
+    "pt": "Não, precisa pegar o próximo."
+   },
+   {
+    "fr": "Le ticket coûte combien ?",
+    "pt": "Quanto custa a passagem?"
+   },
+   {
+    "fr": "Je descends au prochain arrêt.",
+    "pt": "Eu desço no próximo ponto."
+   },
+   {
+    "fr": "Il faut faire signe au chauffeur.",
+    "pt": "Precisa dar sinal para o motorista."
+   },
+   {
+    "fr": "Le métro est climatisé.",
+    "pt": "O metrô tem ar-condicionado."
+   },
+   {
+    "fr": "Je recharge ma carte de transport.",
+    "pt": "Eu vou recarregar meu cartão de transporte."
+   },
+   {
+    "fr": "Le trajet dure vingt minutes.",
+    "pt": "A viagem leva vinte minutos."
+   }
+  ]
+ },
+ {
+  "title": "Demander son chemin",
+  "phrases": [
+   {
+    "fr": "Excusez-moi, vous pouvez m'aider ?",
+    "pt": "Com licença, você pode me ajudar?"
+   },
+   {
+    "fr": "Je cherche la plage de Leblon.",
+    "pt": "Eu estou procurando a praia do Leblon."
+   },
+   {
+    "fr": "Vous êtes à pied ?",
+    "pt": "Você está a pé?"
+   },
+   {
+    "fr": "Oui, je marche.",
+    "pt": "Sim, estou andando."
+   },
+   {
+    "fr": "Continuez tout droit sur cette avenue.",
+    "pt": "Segue reto nessa avenida."
+   },
+   {
+    "fr": "Ensuite, tournez à gauche.",
+    "pt": "Depois, vira à esquerda."
+   },
+   {
+    "fr": "C'est loin d'ici ?",
+    "pt": "É longe daqui?"
+   },
+   {
+    "fr": "Non, c'est à dix minutes.",
+    "pt": "Não, fica a dez minutos."
+   },
+   {
+    "fr": "Vous parlez très bien portugais !",
+    "pt": "Você fala português muito bem!"
+   },
+   {
+    "fr": "Merci beaucoup pour votre aide.",
+    "pt": "Muito obrigado pela ajuda."
+   }
+  ],
+  "tip": {
+   "title": "« Você » : le tu et le vous brésiliens",
+   "example": "Excusez-moi, vous pouvez m'aider ? — Com licença, <b>você</b> pode me ajudar?",
+   "body": "Au Brésil, « você » sert à la fois de « tu » et de « vous » de politesse courant, et se conjugue comme « il » ou « elle » : você fala (tu parles, vous parlez). Avec une personne âgée ou dans un cadre très formel, on dit plutôt « o senhor » ou « a senhora ». Le pluriel est « vocês » (vous, à plusieurs)."
+  }
+ },
+ {
+  "title": "La routine du matin",
+  "phrases": [
+   {
+    "fr": "Je me lève à six heures.",
+    "pt": "Eu acordo às seis horas."
+   },
+   {
+    "fr": "Je prends une douche froide.",
+    "pt": "Eu tomo um banho frio."
+   },
+   {
+    "fr": "Ensuite, je prépare le café.",
+    "pt": "Depois, eu passo o café."
+   },
+   {
+    "fr": "Je mange des fruits au petit-déjeuner.",
+    "pt": "Eu como frutas no café da manhã."
+   },
+   {
+    "fr": "J'adore le pain beurré au petit matin.",
+    "pt": "Eu adoro pão com manteiga de manhã cedo."
+   },
+   {
+    "fr": "Je vais courir sur la plage.",
+    "pt": "Eu vou correr na praia."
+   },
+   {
+    "fr": "À huit heures, je pars au travail.",
+    "pt": "Às oito horas, eu saio para o trabalho."
+   },
+   {
+    "fr": "Je ne veux pas être en retard.",
+    "pt": "Eu não quero chegar atrasado."
+   },
+   {
+    "fr": "J'écoute de la musique dans le bus.",
+    "pt": "Eu escuto música no ônibus."
+   },
+   {
+    "fr": "Le matin, c'est mon moment préféré.",
+    "pt": "De manhã é o meu momento favorito."
+   }
+  ]
+ },
+ {
+  "title": "Les tâches ménagères",
+  "phrases": [
+   {
+    "fr": "Aujourd'hui, je fais le ménage.",
+    "pt": "Hoje eu vou fazer faxina."
+   },
+   {
+    "fr": "Tu peux passer le balai ?",
+    "pt": "Você pode varrer o chão?"
+   },
+   {
+    "fr": "Je fais la vaisselle après le dîner.",
+    "pt": "Eu lavo a louça depois do jantar."
+   },
+   {
+    "fr": "Le linge sèche vite au soleil.",
+    "pt": "A roupa seca rápido no sol."
+   },
+   {
+    "fr": "Il faut sortir la poubelle.",
+    "pt": "Precisa levar o lixo para fora."
+   },
+   {
+    "fr": "Je range ma chambre.",
+    "pt": "Eu arrumo o meu quarto."
+   },
+   {
+    "fr": "Qui fait les courses cette semaine ?",
+    "pt": "Quem faz as compras essa semana?"
+   },
+   {
+    "fr": "Moi, je m'occupe de la cuisine.",
+    "pt": "Eu cuido da cozinha."
+   },
+   {
+    "fr": "La maison est enfin propre.",
+    "pt": "A casa está limpa, finalmente."
+   },
+   {
+    "fr": "On mérite une pause, non ?",
+    "pt": "A gente merece uma pausa, né?"
+   }
+  ]
+ },
+ {
+  "title": "Les vêtements et les couleurs",
+  "phrases": [
+   {
+    "fr": "Il fait trop chaud pour un jean.",
+    "pt": "Está quente demais para usar calça jeans."
+   },
+   {
+    "fr": "Je mets un short et des tongs.",
+    "pt": "Eu vou de bermuda e chinelo."
+   },
+   {
+    "fr": "Tu aimes cette chemise verte ?",
+    "pt": "Você gosta dessa camisa verde?"
+   },
+   {
+    "fr": "Je préfère la jaune.",
+    "pt": "Eu prefiro a amarela."
+   },
+   {
+    "fr": "Cette robe est très jolie.",
+    "pt": "Esse vestido é muito bonito."
+   },
+   {
+    "fr": "Vous l'avez en taille moyenne ?",
+    "pt": "Vocês têm no tamanho médio?"
+   },
+   {
+    "fr": "Je peux l'essayer ?",
+    "pt": "Posso experimentar?"
+   },
+   {
+    "fr": "La cabine est au fond.",
+    "pt": "O provador fica no fundo."
+   },
+   {
+    "fr": "C'est un peu trop grand.",
+    "pt": "Está um pouco grande demais."
+   },
+   {
+    "fr": "Je vais prendre ce maillot de bain bleu.",
+    "pt": "Eu vou levar esse biquíni azul."
+   }
+  ]
+ },
+ {
+  "title": "Dire l'heure et les nombres",
+  "phrases": [
+   {
+    "fr": "Quelle heure est-il ?",
+    "pt": "Que horas são?"
+   },
+   {
+    "fr": "Il est midi pile.",
+    "pt": "É meio-dia em ponto."
+   },
+   {
+    "fr": "Il est trois heures et demie.",
+    "pt": "São três e meia."
+   },
+   {
+    "fr": "Le magasin ouvre à neuf heures.",
+    "pt": "A loja abre às nove horas."
+   },
+   {
+    "fr": "Il y a douze personnes dans la file.",
+    "pt": "Tem doze pessoas na fila."
+   },
+   {
+    "fr": "J'ai vingt-huit ans.",
+    "pt": "Eu tenho vinte e oito anos."
+   },
+   {
+    "fr": "Mon numéro, c'est le neuf, huit, sept.",
+    "pt": "Meu número é nove, oito, sete."
+   },
+   {
+    "fr": "Tu as l'heure, s'il te plaît ?",
+    "pt": "Você tem horas, por favor?"
+   },
+   {
+    "fr": "Nous avons rendez-vous à quatre heures.",
+    "pt": "A gente tem um encontro às quatro horas."
+   },
+   {
+    "fr": "Il reste cinq minutes.",
+    "pt": "Faltam cinco minutos."
+   }
+  ],
+  "tip": {
+   "title": "« Ter » et « tem » (= il y a)",
+   "example": "Il y a douze personnes dans la file. — <b>Tem</b> doze pessoas na fila.",
+   "body": "« Ter » veut dire avoir : eu tenho, você tem, a gente tem, vocês têm. Au Brésil, on l'utilise aussi à l'oral pour dire « il y a » : tem muita gente (il y a beaucoup de monde), tem um ônibus às dez (il y a un bus à dix heures). Et pour l'âge, comme en français : eu tenho trinta anos (j'ai trente ans)."
+  }
+ },
+ {
+  "title": "Un appel téléphonique",
+  "phrases": [
+   {
+    "fr": "Allô, c'est bien le cabinet du dentiste ?",
+    "pt": "Alô, é do consultório do dentista?"
+   },
+   {
+    "fr": "Oui, je peux vous aider ?",
+    "pt": "Sim, posso ajudar?"
+   },
+   {
+    "fr": "Je voudrais prendre un rendez-vous.",
+    "pt": "Eu queria marcar uma consulta."
+   },
+   {
+    "fr": "Quel jour vous convient ?",
+    "pt": "Qual dia é melhor para você?"
+   },
+   {
+    "fr": "Jeudi matin, si possible.",
+    "pt": "Quinta de manhã, se possível."
+   },
+   {
+    "fr": "Nous avons de la place à dix heures.",
+    "pt": "Tem horário às dez horas."
+   },
+   {
+    "fr": "C'est parfait pour moi.",
+    "pt": "Para mim está perfeito."
+   },
+   {
+    "fr": "Vous pouvez répéter votre nom ?",
+    "pt": "Pode repetir o seu nome?"
+   },
+   {
+    "fr": "Je vous envoie une confirmation par message.",
+    "pt": "Vou te mandar uma confirmação por mensagem."
+   },
+   {
+    "fr": "Merci, à jeudi !",
+    "pt": "Obrigado, até quinta!"
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan",
+  "phrases": [
+   {
+    "fr": "Ce premier module est terminé.",
+    "pt": "Este primeiro módulo terminou."
+   },
+   {
+    "fr": "Nous avons appris beaucoup de choses.",
+    "pt": "A gente aprendeu muita coisa."
+   },
+   {
+    "fr": "La vie à Rio devient plus simple.",
+    "pt": "A vida no Rio está ficando mais fácil."
+   },
+   {
+    "fr": "Je sais commander un jus.",
+    "pt": "Eu sei pedir um suco."
+   },
+   {
+    "fr": "Je peux prendre le bus tout seul.",
+    "pt": "Eu consigo pegar ônibus sozinho."
+   },
+   {
+    "fr": "Mon portugais progresse chaque jour.",
+    "pt": "O meu português melhora a cada dia."
+   },
+   {
+    "fr": "C'est important de pratiquer souvent.",
+    "pt": "É importante praticar sempre."
+   },
+   {
+    "fr": "Les Brésiliens sont très patients avec moi.",
+    "pt": "Os brasileiros são muito pacientes comigo."
+   },
+   {
+    "fr": "Je suis fier de mes progrès.",
+    "pt": "Eu estou orgulhoso do meu progresso."
+   },
+   {
+    "fr": "Rendez-vous au prochain module !",
+    "pt": "Até o próximo módulo!"
+   }
+  ]
+ }
 ];
 
 const level1Module2Lessons = [
-  { title:"À l'aéroport de Francfort", phrases:[
-    {fr:"Où se trouve le comptoir d'enregistrement ?", de:"Wo ist der Check-in-Schalter?"},
-    {fr:"Juste là-bas, au bout du hall.", de:"Gleich dort, am Ende der Halle."},
-    {fr:"Avez-vous des bagages à enregistrer ?", de:"Haben Sie Gepäck zum Einchecken?"},
-    {fr:"Oui, une seule valise.", de:"Ja, nur einen Koffer."},
-    {fr:"Voici votre carte d'embarquement.", de:"Hier ist Ihre Bordkarte."},
-    {fr:"À quelle porte dois-je me présenter ?", de:"An welchem Gate muss ich sein?"},
-    {fr:"Porte B douze, embarquement à midi.", de:"Gate B zwölf, Boarding um zwölf Uhr."},
-    {fr:"Merci, où sont les contrôles de sécurité ?", de:"Danke, wo ist die Sicherheitskontrolle?"},
-    {fr:"Juste après les escalators.", de:"Gleich nach den Rolltreppen."},
-    {fr:"Bon vol et bon voyage.", de:"Guten Flug und gute Reise."}
-  ]},
-  { title:"Prendre le train avec la Deutsche Bahn", phrases:[
-    {fr:"Je voudrais un billet pour Munich.", de:"Ich möchte eine Fahrkarte nach München."},
-    {fr:"Aller simple ou aller-retour ?", de:"Einfache Fahrt oder hin und zurück?"},
-    {fr:"Aller-retour, pour ce week-end.", de:"Hin und zurück, für dieses Wochenende."},
-    {fr:"Le train part de quel quai ?", de:"Von welchem Gleis fährt der Zug ab?"},
-    {fr:"Du quai sept, dans dix minutes.", de:"Von Gleis sieben, in zehn Minuten."},
-    {fr:"Faut-il réserver une place assise ?", de:"Muss man einen Sitzplatz reservieren?"},
-    {fr:"Ce n'est pas obligatoire, mais conseillé.", de:"Es ist nicht Pflicht, aber empfehlenswert."},
-    {fr:"Les trains allemands sont-ils souvent ponctuels ?", de:"Sind deutsche Züge oft pünktlich?"},
-    {fr:"Pas toujours, malheureusement.", de:"Nicht immer, leider."},
-    {fr:"On verra bien une fois à bord.", de:"Wir werden sehen, sobald wir an Bord sind."}
-  ], tip:{
-    title:"Le pluriel irrégulier des noms allemands",
-    example:"Les trains allemands sont-ils souvent ponctuels ? — Sind deutsche <b>Züge</b> oft pünktlich?",
-    body:"Il n'existe pas de règle unique pour former le pluriel en allemand : der Zug devient die Züge (avec Umlaut), das Kind devient die Kinder, der Tisch devient die Tische. Il faut apprendre le pluriel de chaque nom en même temps que son genre, par cœur."
-  }},
-  { title:"Visiter la cathédrale de Cologne", phrases:[
-    {fr:"La cathédrale de Cologne est juste devant la gare.", de:"Der Kölner Dom liegt direkt vor dem Bahnhof."},
-    {fr:"Ses tours sont absolument gigantesques.", de:"Seine Türme sind absolut riesig."},
-    {fr:"On peut monter tout en haut ?", de:"Können wir ganz nach oben steigen?"},
-    {fr:"Oui, mais il y a beaucoup de marches.", de:"Ja, aber es gibt viele Stufen."},
-    {fr:"La construction a duré plusieurs siècles.", de:"Der Bau dauerte mehrere Jahrhunderte."},
-    {fr:"Les vitraux sont d'une beauté incroyable.", de:"Die Fenster sind unglaublich schön."},
-    {fr:"Il y a toujours une foule de visiteurs.", de:"Es gibt immer eine Menge Besucher."},
-    {fr:"On devrait venir tôt le matin.", de:"Wir sollten früh morgens kommen."},
-    {fr:"La vue depuis le sommet est spectaculaire.", de:"Die Aussicht vom Gipfel ist spektakulär."},
-    {fr:"Cologne est aussi connue pour son carnaval.", de:"Köln ist auch für seinen Karneval bekannt."}
-  ]},
-  { title:"Une croisière sur le Rhin", phrases:[
-    {fr:"Le bateau part du quai numéro trois.", de:"Das Schiff fährt von Kai Nummer drei ab."},
-    {fr:"Les châteaux le long du Rhin sont magnifiques.", de:"Die Burgen entlang des Rheins sind wunderschön."},
-    {fr:"Celui-là ressemble vraiment à un château de conte de fées.", de:"Jene sieht wirklich aus wie ein Märchenschloss."},
-    {fr:"Combien dure cette croisière ?", de:"Wie lange dauert diese Flussfahrt?"},
-    {fr:"Environ deux heures, avec un commentaire audio.", de:"Etwa zwei Stunden, mit einem Audiokommentar."},
-    {fr:"Les vignobles sur les collines sont impressionnants.", de:"Die Weinberge auf den Hügeln sind beeindruckend."},
-    {fr:"On produit du bon vin ici ?", de:"Wird hier guter Wein hergestellt?"},
-    {fr:"Oui, le Riesling de la région est réputé.", de:"Ja, der Riesling aus der Region ist bekannt."},
-    {fr:"On pourrait en goûter un verre ce soir.", de:"Wir könnten heute Abend ein Glas probieren."},
-    {fr:"Excellente idée après cette belle journée.", de:"Ausgezeichnete Idee nach diesem schönen Tag."}
-  ]},
-  { title:"Réserver une chambre d'hôtel", phrases:[
-    {fr:"Je dois réserver une chambre pour demain soir.", de:"Ich muss ein Zimmer für morgen Abend reservieren."},
-    {fr:"Vous pouvez choisir une chambre avec vue sur le fleuve.", de:"Sie können ein Zimmer mit Flussblick wählen."},
-    {fr:"Pouvez-vous m'envoyer une confirmation ?", de:"Können Sie mir eine Bestätigung schicken?"},
-    {fr:"Bien sûr, par e-mail dans quelques minutes.", de:"Natürlich, per E-Mail in ein paar Minuten."},
-    {fr:"Je dois annuler ma réservation précédente.", de:"Ich muss meine vorherige Reservierung stornieren."},
-    {fr:"Aucun souci, c'est gratuit jusqu'à demain.", de:"Kein Problem, das ist bis morgen kostenlos."},
-    {fr:"On doit arriver avant vingt heures ?", de:"Müssen wir vor zwanzig Uhr ankommen?"},
-    {fr:"Non, la réception est ouverte toute la nuit.", de:"Nein, die Rezeption ist die ganze Nacht geöffnet."},
-    {fr:"Pouvez-vous garder nos bagages en attendant ?", de:"Können Sie unser Gepäck in der Zwischenzeit aufbewahren?"},
-    {fr:"Bien sûr, avec grand plaisir.", de:"Selbstverständlich, sehr gern."}
-  ], tip:{
-    title:"Les modaux « können » et « müssen »",
-    example:"Je dois réserver une chambre pour demain soir. — Ich <b>muss</b> ein Zimmer für morgen Abend reservieren.",
-    body:"« Können » (pouvoir) et « müssen » (devoir) sont des verbes modaux : ils s'accordent eux-mêmes (ich kann, du kannst, er kann / ich muss, du musst, er muss) et renvoient le verbe principal à l'infinitif, tout à la fin de la phrase : Ich muss ein Zimmer reservieren."
-  }},
-  { title:"Un bagage égaré", phrases:[
-    {fr:"Ma valise n'est pas arrivée sur le tapis.", de:"Mein Koffer ist nicht auf dem Band angekommen."},
-    {fr:"Pouvez-vous vérifier dans le système ?", de:"Können Sie das im System überprüfen?"},
-    {fr:"Quelle était la couleur de votre valise ?", de:"Welche Farbe hatte Ihr Koffer?"},
-    {fr:"Noire, avec une étiquette rouge.", de:"Schwarz, mit einem roten Anhänger."},
-    {fr:"Elle est peut-être restée à Francfort.", de:"Er ist vielleicht in Frankfurt geblieben."},
-    {fr:"Elle vous sera livrée dès demain.", de:"Er wird Ihnen schon morgen geliefert."},
-    {fr:"Voici un formulaire à remplir.", de:"Hier ist ein Formular zum Ausfüllen."},
-    {fr:"Avez-vous un numéro où vous contacter ?", de:"Haben Sie eine Nummer, unter der wir Sie erreichen können?"},
-    {fr:"Oui, voici mon numéro de portable.", de:"Ja, hier ist meine Handynummer."},
-    {fr:"Merci pour votre patience, désolé pour le désagrément.", de:"Danke für Ihre Geduld, es tut uns leid für die Unannehmlichkeit."}
-  ]},
-  { title:"Changer de l'argent", phrases:[
-    {fr:"Où puis-je changer des euros en espèces ?", de:"Wo kann ich Euro in Bargeld wechseln?"},
-    {fr:"Il y a un bureau de change à la gare.", de:"Am Bahnhof gibt es eine Wechselstube."},
-    {fr:"Quel est le taux de change aujourd'hui ?", de:"Wie ist der Wechselkurs heute?"},
-    {fr:"Y a-t-il une commission à payer ?", de:"Muss man eine Gebühr zahlen?"},
-    {fr:"Seulement deux pour cent, c'est raisonnable.", de:"Nur zwei Prozent, das ist vertretbar."},
-    {fr:"Je préfère retirer de l'argent au distributeur.", de:"Ich hebe das Geld lieber am Automaten ab."},
-    {fr:"Il y en a un juste à côté de la banque.", de:"Es gibt einen direkt neben der Bank."},
-    {fr:"Est-ce que ma carte fonctionne ici ?", de:"Funktioniert meine Karte hier?"},
-    {fr:"Normalement oui, sans frais supplémentaires.", de:"Normalerweise ja, ohne zusätzliche Gebühren."},
-    {fr:"Parfait, c'est beaucoup plus simple ainsi.", de:"Perfekt, so ist es viel einfacher."}
-  ]},
-  { title:"À l'office du tourisme", phrases:[
-    {fr:"Pouvez-vous me conseiller une visite guidée ?", de:"Können Sie mir eine Führung empfehlen?"},
-    {fr:"Il y en a une qui part dans une heure.", de:"Es gibt eine, die in einer Stunde losgeht."},
-    {fr:"Elle se déroule dans la vieille ville.", de:"Sie findet in der Altstadt statt."},
-    {fr:"Faut-il réserver à l'avance ?", de:"Muss man vorher reservieren?"},
-    {fr:"Vous pouvez vous inscrire directement sur place.", de:"Sie können sich direkt vor Ort anmelden."},
-    {fr:"Avez-vous un plan de la ville ?", de:"Haben Sie einen Stadtplan?"},
-    {fr:"Bien sûr, voici une carte gratuite.", de:"Natürlich, hier ist eine kostenlose Karte."},
-    {fr:"Le musée se trouve sur cette grande place.", de:"Das Museum liegt auf diesem großen Platz."},
-    {fr:"Et le château est juste au-dessus de la ville.", de:"Und das Schloss liegt direkt über der Stadt."},
-    {fr:"Merci beaucoup pour toutes ces informations.", de:"Vielen Dank für all diese Informationen."}
-  ], tip:{
-    title:"Les prépositions de lieu simples : in, auf, nach",
-    example:"Le musée se trouve sur cette grande place. — Das Museum liegt <b>auf</b> diesem großen Platz.",
-    body:"« In » sert pour un lieu fermé ou une ville/un pays (in der Stadt, in Deutschland), « auf » pour une surface ouverte comme une place ou une île (auf dem Platz, auf der Insel), et « nach » pour indiquer une direction vers un lieu (nach München fahren). Le choix de la préposition change souvent aussi le cas du nom qui suit."
-  }},
-  { title:"Une urgence à la pharmacie", phrases:[
-    {fr:"Je ne me sens pas très bien depuis ce matin.", de:"Mir geht es seit heute Morgen nicht gut."},
-    {fr:"Qu'est-ce qui vous arrive exactement ?", de:"Was genau fehlt Ihnen?"},
-    {fr:"J'ai mal à la tête et un peu de fièvre.", de:"Ich habe Kopfschmerzen und etwas Fieber."},
-    {fr:"Je vous conseille ce médicament sans ordonnance.", de:"Ich empfehle Ihnen dieses Medikament ohne Rezept."},
-    {fr:"Combien de fois par jour dois-je le prendre ?", de:"Wie oft am Tag muss ich es einnehmen?"},
-    {fr:"Trois fois par jour, après les repas.", de:"Dreimal am Tag, nach den Mahlzeiten."},
-    {fr:"Avez-vous aussi des pastilles pour la gorge ?", de:"Haben Sie auch Halstabletten?"},
-    {fr:"Oui, juste ici sur cette étagère.", de:"Ja, genau hier auf diesem Regal."},
-    {fr:"Merci, combien je vous dois en tout ?", de:"Danke, wie viel schulde ich Ihnen insgesamt?"},
-    {fr:"Reposez-vous bien, ça va vite passer.", de:"Ruhen Sie sich gut aus, das geht schnell vorbei."}
-  ]},
-  { title:"Visiter le port de Hambourg", phrases:[
-    {fr:"Le port de Hambourg est le plus grand d'Allemagne.", de:"Der Hamburger Hafen ist der größte Deutschlands."},
-    {fr:"On peut faire un tour en bateau.", de:"Wir können eine Bootstour machen."},
-    {fr:"Regarde tous ces conteneurs empilés.", de:"Schau dir all diese gestapelten Container an."},
-    {fr:"L'Elbphilharmonie se trouve juste là-bas.", de:"Die Elbphilharmonie liegt genau dort."},
-    {fr:"C'est une salle de concert magnifique.", de:"Das ist ein wunderschöner Konzertsaal."},
-    {fr:"On monte sur la plateforme panoramique ?", de:"Steigen wir auf die Panoramaplattform?"},
-    {fr:"L'entrée est gratuite, je crois.", de:"Der Eintritt ist kostenlos, glaube ich."},
-    {fr:"La vue sur le fleuve est à couper le souffle.", de:"Die Aussicht auf den Fluss ist atemberaubend."},
-    {fr:"Hambourg a vraiment un charme particulier.", de:"Hamburg hat wirklich einen besonderen Charme."},
-    {fr:"On devrait absolument revenir un jour.", de:"Wir sollten unbedingt eines Tages wiederkommen."}
-  ]},
-  { title:"Un marché de Noël à Dresde", phrases:[
-    {fr:"Le marché de Noël de Dresde est l'un des plus anciens.", de:"Der Dresdner Weihnachtsmarkt ist einer der ältesten."},
-    {fr:"L'odeur du vin chaud se sent de loin.", de:"Der Duft von Glühwein ist schon von Weitem zu riechen."},
-    {fr:"On prend deux gobelets de vin chaud ?", de:"Nehmen wir zwei Becher Glühwein?"},
-    {fr:"Regarde ces décorations en bois fait main.", de:"Schau dir diese handgemachten Holzdekorationen an."},
-    {fr:"Ce pain d'épices sent vraiment bon.", de:"Dieser Lebkuchen duftet wirklich gut."},
-    {fr:"Les lumières rendent l'ambiance vraiment magique.", de:"Die Lichter machen die Atmosphäre wirklich magisch."},
-    {fr:"On pourrait acheter quelques cadeaux ici.", de:"Wir könnten hier ein paar Geschenke kaufen."},
-    {fr:"Cette échoppe vend de jolis ornements de sapin.", de:"Dieser Stand verkauft hübschen Baumschmuck."},
-    {fr:"Il fait vraiment froid, mais ça vaut le coup.", de:"Es ist wirklich kalt, aber es lohnt sich."},
-    {fr:"Je n'oublierai jamais cette soirée.", de:"Diesen Abend werde ich nie vergessen."}
-  ]},
-  { title:"Un problème avec la voiture de location", phrases:[
-    {fr:"La voiture fait un bruit étrange depuis ce matin.", de:"Das Auto macht seit heute Morgen ein seltsames Geräusch."},
-    {fr:"Pouvez-vous nous envoyer un technicien ?", de:"Können Sie uns einen Techniker schicken?"},
-    {fr:"Où exactement vous trouvez-vous ?", de:"Wo genau befinden Sie sich?"},
-    {fr:"Sur l'autoroute, près de la sortie douze.", de:"Auf der Autobahn, in der Nähe der Ausfahrt zwölf."},
-    {fr:"Quelqu'un arrive dans trente minutes environ.", de:"Jemand kommt in etwa dreißig Minuten."},
-    {fr:"En attendant, mettez vos warnings.", de:"Schalten Sie in der Zwischenzeit die Warnblinker ein."},
-    {fr:"Pouvons-nous avoir un véhicule de remplacement ?", de:"Können wir ein Ersatzfahrzeug bekommen?"},
-    {fr:"Bien sûr, sans frais supplémentaires.", de:"Natürlich, ohne zusätzliche Kosten."},
-    {fr:"Merci pour votre réactivité.", de:"Danke für Ihre schnelle Reaktion."},
-    {fr:"Je suis vraiment désolé pour ce désagrément.", de:"Das tut mir wirklich leid für diese Unannehmlichkeit."}
-  ]},
-  { title:"Un retard de train", phrases:[
-    {fr:"Le train a vingt minutes de retard.", de:"Der Zug hat zwanzig Minuten Verspätung."},
-    {fr:"Savez-vous pourquoi exactement ?", de:"Wissen Sie, warum genau?"},
-    {fr:"Il paraît qu'il y a un problème technique.", de:"Es heißt, es gebe ein technisches Problem."},
-    {fr:"Je risque de rater ma correspondance.", de:"Ich werde wahrscheinlich meinen Anschluss verpassen."},
-    {fr:"Adressez-vous au guichet pour un nouveau billet.", de:"Wenden Sie sich für eine neue Fahrkarte an den Schalter."},
-    {fr:"Y a-t-il un autre train plus tard ?", de:"Gibt es später einen anderen Zug?"},
-    {fr:"Oui, dans environ une heure.", de:"Ja, in etwa einer Stunde."},
-    {fr:"C'est franchement agaçant, mais bon.", de:"Das ist ehrlich gesagt nervig, aber gut."},
-    {fr:"Au moins on a le temps de prendre un café.", de:"Wenigstens haben wir Zeit für einen Kaffee."},
-    {fr:"C'est vrai, il faut voir le bon côté des choses.", de:"Stimmt, man muss die positive Seite sehen."}
-  ]},
-  { title:"Faire connaissance dans le train", phrases:[
-    {fr:"Cette place n'est pas prise, j'espère ?", de:"Dieser Platz ist nicht besetzt, hoffe ich?"},
-    {fr:"Non, elle est complètement libre.", de:"Nein, er ist völlig frei."},
-    {fr:"Vous allez jusqu'où exactement ?", de:"Bis wohin fahren Sie genau?"},
-    {fr:"Jusqu'à Munich, pour le travail.", de:"Bis München, geschäftlich."},
-    {fr:"Moi, je n'ai aucun plan précis encore.", de:"Ich habe noch keinen genauen Plan."},
-    {fr:"Ce n'est pas un problème, l'improvisation a du charme.", de:"Das ist kein Problem, Improvisation hat Charme."},
-    {fr:"Je n'ai jamais visité la Bavière.", de:"Ich war noch nie in Bayern."},
-    {fr:"Vous allez adorer, c'est magnifique.", de:"Sie werden es lieben, es ist wunderschön."},
-    {fr:"Avez-vous des recommandations à me donner ?", de:"Haben Sie Empfehlungen für mich?"},
-    {fr:"Avec plaisir, laissez-moi vous expliquer.", de:"Gern, lassen Sie mich Ihnen das erklären."}
-  ], tip:{
-    title:"« Kein » et « nicht » : les deux négations",
-    example:"Ce n'est pas un problème, l'improvisation a du charme. — Das ist <b>kein</b> Problem, Improvisation hat Charme.",
-    body:"« Kein » nie un nom précédé d'un article indéfini ou sans article (kein Problem, keine Zeit) et se décline comme « ein ». « Nicht » nie tout le reste : un verbe, un adjectif, ou un nom déjà précédé de « der/die/das » (Das ist nicht mein Mantel)."
-  }},
-  { title:"Acheter des billets de musée", phrases:[
-    {fr:"Deux billets adultes pour le musée, s'il vous plaît.", de:"Zwei Erwachsenentickets für das Museum, bitte."},
-    {fr:"Y a-t-il une réduction pour les étudiants ?", de:"Gibt es eine Ermäßigung für Studenten?"},
-    {fr:"Oui, avec une carte étudiante valide.", de:"Ja, mit einem gültigen Studentenausweis."},
-    {fr:"L'audioguide est-il inclus dans le prix ?", de:"Ist der Audioguide im Preis enthalten?"},
-    {fr:"Non, il coûte trois euros de plus.", de:"Nein, er kostet drei Euro extra."},
-    {fr:"Je le prends, en français si possible.", de:"Ich nehme ihn, wenn möglich auf Französisch."},
-    {fr:"Bien sûr, nous en avons dans plusieurs langues.", de:"Natürlich, wir haben ihn in mehreren Sprachen."},
-    {fr:"À quelle heure ferme le musée ce soir ?", de:"Um wie viel Uhr schließt das Museum heute Abend?"},
-    {fr:"À dix-huit heures, la dernière entrée est à dix-sept heures.", de:"Um achtzehn Uhr, der letzte Einlass ist um siebzehn Uhr."},
-    {fr:"Parfait, nous avons largement le temps.", de:"Perfekt, wir haben reichlich Zeit."}
-  ]},
-  { title:"Goûter les spécialités locales", phrases:[
-    {fr:"Qu'est-ce qu'on doit absolument goûter ici ?", de:"Was sollten wir hier unbedingt probieren?"},
-    {fr:"La saucisse de Nuremberg est délicieuse.", de:"Die Nürnberger Rostbratwurst ist köstlich."},
-    {fr:"Et cette choucroute a l'air savoureuse aussi.", de:"Und dieses Sauerkraut sieht auch lecker aus."},
-    {fr:"Vous aimez les plats plutôt riches ?", de:"Mögen Sie eher herzhafte Gerichte?"},
-    {fr:"Beaucoup, surtout en hiver.", de:"Sehr, besonders im Winter."},
-    {fr:"Ce strudel aux pommes a l'air irrésistible.", de:"Dieser Apfelstrudel sieht unwiderstehlich aus."},
-    {fr:"On le partage avec une boule de glace ?", de:"Teilen wir ihn mit einer Kugel Eis?"},
-    {fr:"Excellente idée, je prends une fourchette en plus.", de:"Ausgezeichnete Idee, ich hole noch eine Gabel."},
-    {fr:"Cette région a vraiment une cuisine généreuse.", de:"Diese Region hat wirklich eine großzügige Küche."},
-    {fr:"On repart toujours le ventre plein.", de:"Man geht immer mit vollem Bauch weiter."}
-  ]},
-  { title:"Se déplacer en Bavière", phrases:[
-    {fr:"Comment aller de Munich à Garmisch ?", de:"Wie kommt man von München nach Garmisch?"},
-    {fr:"Il y a un train régional direct.", de:"Es gibt einen direkten Regionalzug."},
-    {fr:"Le trajet dure environ une heure.", de:"Die Fahrt dauert etwa eine Stunde."},
-    {fr:"On traverse des paysages de montagne superbes.", de:"Man durchfährt wunderschöne Berglandschaften."},
-    {fr:"Faut-il un billet spécial pour la région ?", de:"Braucht man ein spezielles Ticket für die Region?"},
-    {fr:"Oui, le billet bavarois couvre toute la journée.", de:"Ja, das Bayern-Ticket gilt für den ganzen Tag."},
-    {fr:"Il est valable pour plusieurs personnes ensemble.", de:"Es gilt für mehrere Personen zusammen."},
-    {fr:"C'est vraiment économique pour un groupe.", de:"Das ist für eine Gruppe wirklich günstig."},
-    {fr:"On pourra aussi prendre le bus de montagne.", de:"Wir können auch den Bergbus nehmen."},
-    {fr:"Parfait, tout est bien pensé ici.", de:"Perfekt, hier ist alles gut durchdacht."}
-  ]},
-  { title:"Une randonnée dans les Alpes bavaroises", phrases:[
-    {fr:"Le sentier commence juste derrière l'auberge.", de:"Der Wanderweg beginnt direkt hinter dem Gasthaus."},
-    {fr:"Prends de bonnes chaussures de marche.", de:"Nimm gute Wanderschuhe."},
-    {fr:"Il y a un peu de dénivelé au début.", de:"Am Anfang gibt es etwas Höhenunterschied."},
-    {fr:"La vue sur le lac en valait la peine.", de:"Die Aussicht auf den See hat sich gelohnt."},
-    {fr:"On pourra pique-niquer en haut.", de:"Oben können wir picknicken."},
-    {fr:"J'ai apporté du pain, du fromage et des fruits.", de:"Ich habe Brot, Käse und Obst mitgebracht."},
-    {fr:"Il reste encore deux heures de marche.", de:"Es bleiben noch zwei Stunden Wanderung."},
-    {fr:"Prends aussi assez d'eau avec toi.", de:"Nimm auch genug Wasser mit."},
-    {fr:"Ce refuge de montagne sert aussi des repas chauds.", de:"Diese Berghütte serviert auch warme Mahlzeiten."},
-    {fr:"Cette randonnée restera un de nos meilleurs souvenirs.", de:"Diese Wanderung wird eine unserer schönsten Erinnerungen bleiben."}
-  ]},
-  { title:"Un vol annulé", phrases:[
-    {fr:"Notre vol vient d'être annulé.", de:"Unser Flug wurde gerade gestrichen."},
-    {fr:"On nous propose un vol de remplacement demain.", de:"Man bietet uns morgen einen Ersatzflug an."},
-    {fr:"Comment obtient-on un remboursement ?", de:"Wie bekommt man eine Rückerstattung?"},
-    {fr:"On doit remplir ce formulaire en ligne.", de:"Man muss dieses Formular online ausfüllen."},
-    {fr:"A-t-on droit à une nuit d'hôtel offerte ?", de:"Hat man Anspruch auf eine kostenlose Hotelnacht?"},
-    {fr:"Oui, c'est prévu dans ce genre de situation.", de:"Ja, das ist in solchen Fällen vorgesehen."},
-    {fr:"Où peut-on trouver la navette pour l'hôtel ?", de:"Wo findet man den Shuttle zum Hotel?"},
-    {fr:"Juste devant la sortie principale.", de:"Direkt vor dem Haupteingang."},
-    {fr:"Au moins, on ne perd pas une journée entière.", de:"Wenigstens verliert man keinen ganzen Tag."},
-    {fr:"Il faut rester patient dans ces moments-là.", de:"Man muss in solchen Momenten geduldig bleiben."}
-  ], tip:{
-    title:"Le pronom indéfini « man »",
-    example:"On doit remplir ce formulaire en ligne. — <b>Man</b> muss dieses Formular online ausfüllen.",
-    body:"« Man » correspond au « on » impersonnel du français : il désigne les gens en général et se conjugue toujours à la troisième personne du singulier (man muss, man kann, man sagt). Il ne faut jamais le confondre avec « Mann » (l'homme), qui s'écrit avec deux n."
-  }},
-  { title:"Fin du module : un bilan de voyage", phrases:[
-    {fr:"Ce module nous a menés à travers toute l'Allemagne.", de:"Dieses Modul hat uns durch ganz Deutschland geführt."},
-    {fr:"On a appris le vocabulaire des transports et des imprévus.", de:"Wir haben das Vokabular für Verkehrsmittel und Zwischenfälle gelernt."},
-    {fr:"Même les petits problèmes se gèrent bien en allemand maintenant.", de:"Sogar kleine Probleme lassen sich jetzt gut auf Deutsch lösen."},
-    {fr:"Le prochain module parlera de rencontres et de conversations.", de:"Das nächste Modul handelt von Begegnungen und Gesprächen."},
-    {fr:"On a hâte de pouvoir mieux échanger avec les gens.", de:"Wir freuen uns darauf, uns besser mit Leuten auszutauschen."},
-    {fr:"Ce voyage imaginaire nous a vraiment donné confiance.", de:"Diese imaginäre Reise hat uns wirklich Selbstvertrauen gegeben."},
-    {fr:"Chaque leçon nous rapproche d'un allemand plus naturel.", de:"Jede Lektion bringt uns einem natürlicheren Deutsch näher."},
-    {fr:"Félicitations pour cette belle progression.", de:"Glückwunsch zu diesem schönen Fortschritt."},
-    {fr:"Prenons un instant pour souffler avant de continuer.", de:"Lassen wir uns einen Moment Zeit, bevor wir weitermachen."},
-    {fr:"À très bientôt pour le module suivant.", de:"Bis bald für das nächste Modul."}
-  ]}
+ {
+  "title": "À l'aéroport de Guarulhos",
+  "phrases": [
+   {
+    "fr": "Où est le comptoir de la compagnie aérienne ?",
+    "pt": "Onde fica o balcão da companhia aérea?"
+   },
+   {
+    "fr": "Il est au fond du terminal deux.",
+    "pt": "Fica no fundo do terminal dois."
+   },
+   {
+    "fr": "Vous avez une valise à enregistrer ?",
+    "pt": "O senhor tem uma mala para despachar?"
+   },
+   {
+    "fr": "Oui, une seule grande valise.",
+    "pt": "Sim, só uma mala grande."
+   },
+   {
+    "fr": "Je préfère une place côté hublot.",
+    "pt": "Eu prefiro um lugar na janela."
+   },
+   {
+    "fr": "L'embarquement commence à quelle heure ?",
+    "pt": "O embarque começa a que horas?"
+   },
+   {
+    "fr": "Votre porte d'embarquement est la numéro douze.",
+    "pt": "O seu portão de embarque é o número doze."
+   },
+   {
+    "fr": "Je dois passer par le contrôle de sécurité.",
+    "pt": "Eu preciso passar pela segurança."
+   },
+   {
+    "fr": "Le vol pour Rio est à l'heure.",
+    "pt": "O voo para o Rio está no horário."
+   },
+   {
+    "fr": "Bon voyage et à bientôt !",
+    "pt": "Boa viagem e até logo!"
+   }
+  ]
+ },
+ {
+  "title": "Un billet de bus à la rodoviária",
+  "phrases": [
+   {
+    "fr": "Je voudrais un billet pour Paraty.",
+    "pt": "Eu queria uma passagem para Paraty."
+   },
+   {
+    "fr": "Aller simple ou aller-retour ?",
+    "pt": "Só ida ou ida e volta?"
+   },
+   {
+    "fr": "Aller-retour, s'il vous plaît.",
+    "pt": "Ida e volta, por favor."
+   },
+   {
+    "fr": "Le prochain bus part à dix heures.",
+    "pt": "O próximo ônibus sai às dez horas."
+   },
+   {
+    "fr": "J'aimerais une place près de la fenêtre.",
+    "pt": "Eu gostaria de um lugar perto da janela."
+   },
+   {
+    "fr": "Le voyage dure combien de temps ?",
+    "pt": "A viagem dura quanto tempo?"
+   },
+   {
+    "fr": "Environ six heures, avec un arrêt.",
+    "pt": "Mais ou menos seis horas, com uma parada."
+   },
+   {
+    "fr": "De quel quai part le bus ?",
+    "pt": "O ônibus sai de qual plataforma?"
+   },
+   {
+    "fr": "Je peux payer par carte ?",
+    "pt": "Posso pagar com cartão?"
+   },
+   {
+    "fr": "Voici votre billet, bon voyage.",
+    "pt": "Aqui está a sua passagem, boa viagem."
+   }
+  ],
+  "tip": {
+   "title": "« Eu queria » et « Eu gostaria » : demander poliment",
+   "example": "J'aimerais une place près de la fenêtre. — Eu <b>gostaria</b> de um lugar perto da janela.",
+   "body": "Pour demander quelque chose poliment, les Brésiliens disent très souvent « Eu queria… » (littéralement « je voulais »), qui sonne plus doux que « Eu quero » (je veux). « Eu gostaria de… » (j'aimerais) est encore un peu plus formel. Exemples : Eu queria um café. Eu gostaria de reservar uma mesa."
+  }
+ },
+ {
+  "title": "Une promenade sur l'Avenida Paulista",
+  "phrases": [
+   {
+    "fr": "L'Avenida Paulista est très animée le dimanche.",
+    "pt": "A Avenida Paulista fica muito animada no domingo."
+   },
+   {
+    "fr": "Le dimanche, elle est fermée aux voitures.",
+    "pt": "No domingo, ela fica fechada para os carros."
+   },
+   {
+    "fr": "Il y a des musiciens partout.",
+    "pt": "Tem músicos por todo lado."
+   },
+   {
+    "fr": "Le MASP est juste là, à droite.",
+    "pt": "O MASP fica bem ali, à direita."
+   },
+   {
+    "fr": "C'est le musée d'art le plus connu de la ville.",
+    "pt": "É o museu de arte mais famoso da cidade."
+   },
+   {
+    "fr": "Le bâtiment est rouge et suspendu.",
+    "pt": "O prédio é vermelho e suspenso."
+   },
+   {
+    "fr": "On entre voir les tableaux ?",
+    "pt": "A gente entra para ver os quadros?"
+   },
+   {
+    "fr": "L'entrée est gratuite le mardi.",
+    "pt": "A entrada é grátis na terça-feira."
+   },
+   {
+    "fr": "Le trottoir est noir de monde ce matin.",
+    "pt": "A calçada está lotada hoje de manhã."
+   },
+   {
+    "fr": "Faisons une pause sur ce banc.",
+    "pt": "Vamos fazer uma pausa neste banco."
+   }
+  ]
+ },
+ {
+  "title": "Au Mercado Municipal de São Paulo",
+  "phrases": [
+   {
+    "fr": "Le marché municipal ouvre tôt le matin.",
+    "pt": "O Mercado Municipal abre cedo de manhã."
+   },
+   {
+    "fr": "Regarde tous ces fruits colorés !",
+    "pt": "Olha todas essas frutas coloridas!"
+   },
+   {
+    "fr": "Je n'ai jamais vu ce fruit.",
+    "pt": "Eu nunca vi essa fruta."
+   },
+   {
+    "fr": "Vous voulez goûter une mangue ?",
+    "pt": "Você quer provar uma manga?"
+   },
+   {
+    "fr": "Elle est très sucrée.",
+    "pt": "Ela é muito doce."
+   },
+   {
+    "fr": "On doit essayer le sandwich à la mortadelle.",
+    "pt": "A gente tem que provar o sanduíche de mortadela."
+   },
+   {
+    "fr": "Il est énorme, on le partage ?",
+    "pt": "Ele é enorme, vamos dividir?"
+   },
+   {
+    "fr": "Je prends aussi un jus de fruits.",
+    "pt": "Eu também vou pegar um suco."
+   },
+   {
+    "fr": "Un jus d'orange sans sucre, s'il vous plaît.",
+    "pt": "Um suco de laranja sem açúcar, por favor."
+   },
+   {
+    "fr": "Ce marché est vraiment magnifique.",
+    "pt": "Esse mercado é muito lindo."
+   }
+  ]
+ },
+ {
+  "title": "Réserver une pousada à Paraty",
+  "phrases": [
+   {
+    "fr": "Je vais réserver une chambre pour ce soir.",
+    "pt": "Eu vou reservar um quarto para hoje à noite."
+   },
+   {
+    "fr": "Vous avez une chambre libre ?",
+    "pt": "Vocês têm um quarto livre?"
+   },
+   {
+    "fr": "Pour deux personnes et trois nuits.",
+    "pt": "Para duas pessoas e três noites."
+   },
+   {
+    "fr": "Le petit-déjeuner est compris ?",
+    "pt": "O café da manhã está incluído?"
+   },
+   {
+    "fr": "Oui, il est servi jusqu'à dix heures.",
+    "pt": "Sim, é servido até as dez horas."
+   },
+   {
+    "fr": "La pousada est dans le centre historique.",
+    "pt": "A pousada fica no centro histórico."
+   },
+   {
+    "fr": "Les rues sont en pavés anciens.",
+    "pt": "As ruas são de pedras antigas."
+   },
+   {
+    "fr": "Nous allons arriver vers midi.",
+    "pt": "Nós vamos chegar por volta do meio-dia."
+   },
+   {
+    "fr": "Il y a la climatisation dans la chambre ?",
+    "pt": "Tem ar-condicionado no quarto?"
+   },
+   {
+    "fr": "Pouvez-vous m'envoyer une confirmation ?",
+    "pt": "Pode me mandar uma confirmação?"
+   }
+  ],
+  "tip": {
+   "title": "« Vou + infinitif » : le futur proche",
+   "example": "Nous allons arriver vers midi. — Nós <b>vamos chegar</b> por volta do meio-dia.",
+   "body": "Comme en français avec « aller + infinitif », le portugais du Brésil exprime le futur avec le verbe « ir » au présent suivi d'un infinitif : eu vou, você vai, a gente vai, nós vamos, eles vão. À l'oral, c'est de loin la façon la plus courante de parler du futur. Exemples : Eu vou viajar amanhã. Ela vai comer na pousada."
+  }
+ },
+ {
+  "title": "Une valise perdue",
+  "phrases": [
+   {
+    "fr": "Ma valise n'est pas sortie sur le tapis.",
+    "pt": "A minha mala não saiu na esteira."
+   },
+   {
+    "fr": "Où est le guichet des bagages perdus ?",
+    "pt": "Onde fica o balcão de bagagem extraviada?"
+   },
+   {
+    "fr": "Elle est de quelle couleur ?",
+    "pt": "Ela é de que cor?"
+   },
+   {
+    "fr": "Elle est bleue avec une étiquette jaune.",
+    "pt": "Ela é azul com uma etiqueta amarela."
+   },
+   {
+    "fr": "Voici mon ticket de bagage.",
+    "pt": "Aqui está o meu comprovante de bagagem."
+   },
+   {
+    "fr": "Nous allons la chercher dans le système.",
+    "pt": "Nós vamos procurar no sistema."
+   },
+   {
+    "fr": "Elle est restée à São Paulo.",
+    "pt": "Ela ficou em São Paulo."
+   },
+   {
+    "fr": "Elle arrive demain matin.",
+    "pt": "Ela chega amanhã de manhã."
+   },
+   {
+    "fr": "Pouvez-vous la livrer à mon hôtel ?",
+    "pt": "Vocês podem entregar no meu hotel?"
+   },
+   {
+    "fr": "Notez mon numéro de téléphone, s'il vous plaît.",
+    "pt": "Anota o meu número de celular, por favor."
+   }
+  ]
+ },
+ {
+  "title": "Payer en reais",
+  "phrases": [
+   {
+    "fr": "Où est-ce que je peux retirer de l'argent ?",
+    "pt": "Onde eu posso sacar dinheiro?"
+   },
+   {
+    "fr": "Il y a un distributeur dans la galerie.",
+    "pt": "Tem um caixa eletrônico na galeria."
+   },
+   {
+    "fr": "La monnaie du Brésil, c'est le real.",
+    "pt": "A moeda do Brasil é o real."
+   },
+   {
+    "fr": "Vous acceptez les cartes étrangères ?",
+    "pt": "Vocês aceitam cartão estrangeiro?"
+   },
+   {
+    "fr": "Ici, beaucoup de gens paient avec le Pix.",
+    "pt": "Aqui, muita gente paga com Pix."
+   },
+   {
+    "fr": "Je n'ai que des gros billets.",
+    "pt": "Eu só tenho notas grandes."
+   },
+   {
+    "fr": "Vous avez de la monnaie ?",
+    "pt": "Você tem troco?"
+   },
+   {
+    "fr": "Gardez la monnaie.",
+    "pt": "Pode ficar com o troco."
+   },
+   {
+    "fr": "Il me faut un reçu, s'il vous plaît.",
+    "pt": "Eu preciso de um recibo, por favor."
+   },
+   {
+    "fr": "Merci, vous êtes très aimable.",
+    "pt": "Obrigado, o senhor é muito gentil."
+   }
+  ]
+ },
+ {
+  "title": "À l'office du tourisme de Paraty",
+  "phrases": [
+   {
+    "fr": "Bonjour, vous avez un plan de la ville ?",
+    "pt": "Bom dia, vocês têm um mapa da cidade?"
+   },
+   {
+    "fr": "Combien coûte la promenade en bateau ?",
+    "pt": "Quanto custa o passeio de barco?"
+   },
+   {
+    "fr": "Elle coûte quatre-vingts reais par personne.",
+    "pt": "Custa oitenta reais por pessoa."
+   },
+   {
+    "fr": "Le bateau s'arrête sur trois plages.",
+    "pt": "O barco para em três praias."
+   },
+   {
+    "fr": "Le départ est à onze heures, au port.",
+    "pt": "A saída é às onze horas, no cais."
+   },
+   {
+    "fr": "Le déjeuner n'est pas compris.",
+    "pt": "O almoço não está incluído."
+   },
+   {
+    "fr": "Il y a aussi une visite guidée du centre.",
+    "pt": "Também tem uma visita guiada pelo centro."
+   },
+   {
+    "fr": "Elle dure deux heures et demie.",
+    "pt": "Ela dura duas horas e meia."
+   },
+   {
+    "fr": "C'est gratuit pour les enfants.",
+    "pt": "É de graça para as crianças."
+   },
+   {
+    "fr": "Parfait, je prends deux billets.",
+    "pt": "Perfeito, eu vou levar dois ingressos."
+   }
+  ],
+  "tip": {
+   "title": "« Quanto custa ? » et les nombres",
+   "example": "Combien coûte la promenade en bateau ? — <b>Quanto custa</b> o passeio de barco?",
+   "body": "« Quanto custa ? » veut dire « combien ça coûte ? » ; au pluriel on dit « Quanto custam ? ». Les dizaines sont régulières : vinte (20), trinta (30), quarenta (40), cinquenta (50), sessenta (60), setenta (70), oitenta (80), noventa (90), et on relie avec « e » : vinte e cinco (25). Les prix se disent en reais : um real, dois reais, cem reais."
+  }
+ },
+ {
+  "title": "Une urgence à la pharmacie",
+  "phrases": [
+   {
+    "fr": "Je ne me sens pas bien depuis hier.",
+    "pt": "Eu não estou me sentindo bem desde ontem."
+   },
+   {
+    "fr": "Qu'est-ce que vous avez ?",
+    "pt": "O que o senhor está sentindo?"
+   },
+   {
+    "fr": "J'ai mal au ventre.",
+    "pt": "Eu estou com dor de barriga."
+   },
+   {
+    "fr": "J'ai pris trop de soleil à la plage.",
+    "pt": "Eu tomei sol demais na praia."
+   },
+   {
+    "fr": "Vous avez de la crème pour les coups de soleil ?",
+    "pt": "Vocês têm creme para queimadura de sol?"
+   },
+   {
+    "fr": "Il faut boire beaucoup d'eau.",
+    "pt": "Tem que beber muita água."
+   },
+   {
+    "fr": "Prenez un comprimé trois fois par jour.",
+    "pt": "Tome um comprimido três vezes por dia."
+   },
+   {
+    "fr": "Il y a un médecin près d'ici ?",
+    "pt": "Tem algum médico aqui perto?"
+   },
+   {
+    "fr": "La pharmacie est ouverte toute la nuit.",
+    "pt": "A farmácia fica aberta a noite toda."
+   },
+   {
+    "fr": "Merci, je me sens déjà mieux.",
+    "pt": "Obrigado, já estou me sentindo melhor."
+   }
+  ]
+ },
+ {
+  "title": "Le bateau pour Ilha Grande",
+  "phrases": [
+   {
+    "fr": "Le bateau pour Ilha Grande part d'Angra dos Reis.",
+    "pt": "O barco para a Ilha Grande sai de Angra dos Reis."
+   },
+   {
+    "fr": "La traversée dure une heure et demie.",
+    "pt": "A travessia dura uma hora e meia."
+   },
+   {
+    "fr": "Il n'y a pas de voitures sur l'île.",
+    "pt": "Não tem carro na ilha."
+   },
+   {
+    "fr": "On se déplace à pied ou en bateau.",
+    "pt": "A gente anda a pé ou de barco."
+   },
+   {
+    "fr": "Mets ton gilet de sauvetage.",
+    "pt": "Coloca o seu colete salva-vidas."
+   },
+   {
+    "fr": "La mer est un peu agitée aujourd'hui.",
+    "pt": "O mar está um pouco agitado hoje."
+   },
+   {
+    "fr": "Regarde, des dauphins à côté du bateau !",
+    "pt": "Olha, golfinhos do lado do barco!"
+   },
+   {
+    "fr": "L'eau est d'un vert incroyable.",
+    "pt": "A água é de um verde incrível."
+   },
+   {
+    "fr": "On arrive au village dans dix minutes.",
+    "pt": "A gente chega na vila em dez minutos."
+   },
+   {
+    "fr": "N'oublie pas ton sac à dos.",
+    "pt": "Não esquece a sua mochila."
+   }
+  ]
+ },
+ {
+  "title": "Une journée de plage à Ilha Grande",
+  "phrases": [
+   {
+    "fr": "Lopes Mendes est une des plus belles plages du Brésil.",
+    "pt": "Lopes Mendes é uma das praias mais bonitas do Brasil."
+   },
+   {
+    "fr": "Le sable est blanc et très fin.",
+    "pt": "A areia é branca e bem fininha."
+   },
+   {
+    "fr": "On loue un parasol pour la journée ?",
+    "pt": "Vamos alugar um guarda-sol para o dia?"
+   },
+   {
+    "fr": "N'oublie pas la crème solaire.",
+    "pt": "Não esquece o protetor solar."
+   },
+   {
+    "fr": "L'eau est un peu froide, mais agréable.",
+    "pt": "A água está um pouco fria, mas gostosa."
+   },
+   {
+    "fr": "Je vais nager un peu.",
+    "pt": "Eu vou nadar um pouco."
+   },
+   {
+    "fr": "Fais attention aux vagues.",
+    "pt": "Cuidado com as ondas."
+   },
+   {
+    "fr": "Un vendeur passe avec des noix de coco.",
+    "pt": "Um vendedor está passando com coco."
+   },
+   {
+    "fr": "Une eau de coco bien fraîche, s'il vous plaît.",
+    "pt": "Uma água de coco bem gelada, por favor."
+   },
+   {
+    "fr": "Je pourrais rester ici toute la journée.",
+    "pt": "Eu poderia ficar aqui o dia inteiro."
+   }
+  ]
+ },
+ {
+  "title": "Un problème avec la voiture de location",
+  "phrases": [
+   {
+    "fr": "La voiture fait un bruit bizarre.",
+    "pt": "O carro está fazendo um barulho estranho."
+   },
+   {
+    "fr": "Le voyant du moteur est allumé.",
+    "pt": "A luz do motor está acesa."
+   },
+   {
+    "fr": "Je crois qu'on a un pneu crevé.",
+    "pt": "Acho que a gente está com um pneu furado."
+   },
+   {
+    "fr": "Il y a une roue de secours dans le coffre ?",
+    "pt": "Tem estepe no porta-malas?"
+   },
+   {
+    "fr": "J'appelle l'agence de location.",
+    "pt": "Eu vou ligar para a locadora."
+   },
+   {
+    "fr": "Où êtes-vous exactement ?",
+    "pt": "Onde vocês estão exatamente?"
+   },
+   {
+    "fr": "Nous sommes sur la route de Paraty.",
+    "pt": "Nós estamos na estrada de Paraty."
+   },
+   {
+    "fr": "Un mécanicien arrive dans une heure.",
+    "pt": "Um mecânico chega em uma hora."
+   },
+   {
+    "fr": "On peut attendre dans ce petit café.",
+    "pt": "A gente pode esperar nesse barzinho."
+   },
+   {
+    "fr": "Heureusement, tout le monde va bien.",
+    "pt": "Ainda bem que está todo mundo bem."
+   }
+  ]
+ },
+ {
+  "title": "Un bus en retard",
+  "phrases": [
+   {
+    "fr": "Le bus a quarante minutes de retard.",
+    "pt": "O ônibus está quarenta minutos atrasado."
+   },
+   {
+    "fr": "Vous savez pourquoi ?",
+    "pt": "Você sabe por quê?"
+   },
+   {
+    "fr": "Il y a beaucoup d'embouteillages sur la route.",
+    "pt": "Tem muito trânsito na estrada."
+   },
+   {
+    "fr": "À cause de la pluie, tout est lent.",
+    "pt": "Por causa da chuva, tudo está devagar."
+   },
+   {
+    "fr": "On va rater notre correspondance.",
+    "pt": "A gente vai perder a conexão."
+   },
+   {
+    "fr": "Il y a un autre bus plus tard ?",
+    "pt": "Tem outro ônibus mais tarde?"
+   },
+   {
+    "fr": "Oui, le dernier part à minuit.",
+    "pt": "Tem, o último sai à meia-noite."
+   },
+   {
+    "fr": "Je vais prévenir la pousada.",
+    "pt": "Eu vou avisar a pousada."
+   },
+   {
+    "fr": "On achète quelque chose à manger en attendant ?",
+    "pt": "Vamos comprar alguma coisa para comer enquanto isso?"
+   },
+   {
+    "fr": "Enfin, le voilà qui arrive !",
+    "pt": "Finalmente, ele está chegando!"
+   }
+  ]
+ },
+ {
+  "title": "Faire connaissance dans le bus",
+  "phrases": [
+   {
+    "fr": "Excusez-moi, cette place est libre ?",
+    "pt": "Com licença, esse lugar está livre?"
+   },
+   {
+    "fr": "Oui, vous pouvez vous asseoir.",
+    "pt": "Sim, pode sentar."
+   },
+   {
+    "fr": "Vous allez à Florianópolis aussi ?",
+    "pt": "Você também vai para Florianópolis?"
+   },
+   {
+    "fr": "Non, je descends à Curitiba.",
+    "pt": "Não, eu desço em Curitiba."
+   },
+   {
+    "fr": "Je viens de Belo Horizonte.",
+    "pt": "Eu sou de Belo Horizonte."
+   },
+   {
+    "fr": "Et vous, vous êtes d'où ?",
+    "pt": "E você, é de onde?"
+   },
+   {
+    "fr": "Je suis français, je viens de Lyon.",
+    "pt": "Eu sou francês, sou de Lyon."
+   },
+   {
+    "fr": "J'habite à Rio depuis un mois.",
+    "pt": "Eu moro no Rio há um mês."
+   },
+   {
+    "fr": "Votre portugais est déjà très bon !",
+    "pt": "O seu português já está muito bom!"
+   },
+   {
+    "fr": "Merci, j'apprends un peu chaque jour.",
+    "pt": "Obrigado, eu aprendo um pouco todo dia."
+   }
+  ],
+  "tip": {
+   "title": "« Em », « para », « de » avec les villes",
+   "example": "J'habite à Rio depuis un mois. — Eu moro <b>no</b> Rio há um mês.",
+   "body": "Pour dire où l'on est, on utilise « em » (à, dans) : eu moro em Curitiba. Pour la destination, on utilise « para » : eu vou para Florianópolis. Pour l'origine, « de » : eu sou de Belo Horizonte. Certaines villes prennent un article et la préposition se contracte : no Rio, para o Rio, do Rio (em + o = no, de + o = do)."
+  }
+ },
+ {
+  "title": "Les chutes d'Iguaçu",
+  "phrases": [
+   {
+    "fr": "Les chutes d'Iguaçu sont à la frontière.",
+    "pt": "As Cataratas do Iguaçu ficam na fronteira."
+   },
+   {
+    "fr": "On prend le bus du parc à l'entrée.",
+    "pt": "A gente pega o ônibus do parque na entrada."
+   },
+   {
+    "fr": "Écoute le bruit de l'eau !",
+    "pt": "Escuta o barulho da água!"
+   },
+   {
+    "fr": "Il y a plus de deux cents cascades.",
+    "pt": "Tem mais de duzentas quedas-d'água."
+   },
+   {
+    "fr": "La plus grande s'appelle la Gorge du Diable.",
+    "pt": "A maior se chama Garganta do Diabo."
+   },
+   {
+    "fr": "On va être complètement mouillés.",
+    "pt": "A gente vai ficar todo molhado."
+   },
+   {
+    "fr": "Tu as pris un imperméable ?",
+    "pt": "Você trouxe uma capa de chuva?"
+   },
+   {
+    "fr": "Attention aux coatis, ils volent la nourriture.",
+    "pt": "Cuidado com os quatis, eles roubam comida."
+   },
+   {
+    "fr": "Regarde, il y a un arc-en-ciel !",
+    "pt": "Olha, tem um arco-íris!"
+   },
+   {
+    "fr": "C'est le plus beau paysage du voyage.",
+    "pt": "É a paisagem mais bonita da viagem."
+   }
+  ]
+ },
+ {
+  "title": "Goûter les spécialités brésiliennes",
+  "phrases": [
+   {
+    "fr": "Qu'est-ce qu'il faut absolument goûter ici ?",
+    "pt": "O que a gente tem que provar aqui?"
+   },
+   {
+    "fr": "Le pão de queijo est délicieux le matin.",
+    "pt": "O pão de queijo é uma delícia de manhã."
+   },
+   {
+    "fr": "C'est un petit pain au fromage tout chaud.",
+    "pt": "É um pãozinho de queijo bem quentinho."
+   },
+   {
+    "fr": "Je voudrais aussi une coxinha.",
+    "pt": "Eu queria também uma coxinha."
+   },
+   {
+    "fr": "Elle est farcie au poulet.",
+    "pt": "Ela é recheada de frango."
+   },
+   {
+    "fr": "Le samedi, on mange la feijoada.",
+    "pt": "No sábado, a gente come feijoada."
+   },
+   {
+    "fr": "C'est un plat de haricots noirs et de viande.",
+    "pt": "É um prato de feijão-preto com carne."
+   },
+   {
+    "fr": "Comme dessert, je prends un açaí.",
+    "pt": "De sobremesa, eu vou pegar um açaí."
+   },
+   {
+    "fr": "C'est un peu sucré, mais très bon.",
+    "pt": "É um pouco doce, mas muito bom."
+   },
+   {
+    "fr": "Je pourrais manger ça tous les jours.",
+    "pt": "Eu poderia comer isso todo dia."
+   }
+  ]
+ },
+ {
+  "title": "Se déplacer à Florianópolis",
+  "phrases": [
+   {
+    "fr": "Florianópolis est une île avec quarante plages.",
+    "pt": "Florianópolis é uma ilha com quarenta praias."
+   },
+   {
+    "fr": "Comment on va à la plage de Joaquina ?",
+    "pt": "Como é que a gente vai para a praia da Joaquina?"
+   },
+   {
+    "fr": "Il faut changer de bus au terminal.",
+    "pt": "Tem que trocar de ônibus no terminal."
+   },
+   {
+    "fr": "On peut aussi louer un vélo.",
+    "pt": "Também dá para alugar uma bicicleta."
+   },
+   {
+    "fr": "C'est plus simple de prendre un taxi.",
+    "pt": "É mais fácil pegar um táxi."
+   },
+   {
+    "fr": "Le trajet dure environ trente minutes.",
+    "pt": "O trajeto leva uns trinta minutos."
+   },
+   {
+    "fr": "Le pont relie l'île au continent.",
+    "pt": "A ponte liga a ilha ao continente."
+   },
+   {
+    "fr": "Il y a beaucoup de circulation le week-end.",
+    "pt": "Tem muito trânsito no fim de semana."
+   },
+   {
+    "fr": "Partons tôt pour éviter les bouchons.",
+    "pt": "Vamos sair cedo para fugir do trânsito."
+   },
+   {
+    "fr": "Le chauffeur nous dépose devant la dune.",
+    "pt": "O motorista deixa a gente na frente da duna."
+   }
+  ]
+ },
+ {
+  "title": "Une randonnée vers une plage sauvage",
+  "phrases": [
+   {
+    "fr": "Le sentier commence derrière la petite église.",
+    "pt": "A trilha começa atrás da igrejinha."
+   },
+   {
+    "fr": "Il faut marcher environ une heure.",
+    "pt": "Tem que andar mais ou menos uma hora."
+   },
+   {
+    "fr": "Mets de bonnes chaussures.",
+    "pt": "Coloca um tênis bom."
+   },
+   {
+    "fr": "Le chemin monte beaucoup au début.",
+    "pt": "O caminho sobe bastante no começo."
+   },
+   {
+    "fr": "Tu as assez d'eau ?",
+    "pt": "Você tem água suficiente?"
+   },
+   {
+    "fr": "Faisons une pause à l'ombre.",
+    "pt": "Vamos parar um pouco na sombra."
+   },
+   {
+    "fr": "D'ici, on voit toute la côte.",
+    "pt": "Daqui, dá para ver todo o litoral."
+   },
+   {
+    "fr": "Il n'y a presque personne sur cette plage.",
+    "pt": "Quase não tem ninguém nessa praia."
+   },
+   {
+    "fr": "Ça valait vraiment la peine.",
+    "pt": "Valeu muito a pena."
+   },
+   {
+    "fr": "Rentrons avant le coucher du soleil.",
+    "pt": "Vamos voltar antes do pôr do sol."
+   }
+  ]
+ },
+ {
+  "title": "Un vol annulé",
+  "phrases": [
+   {
+    "fr": "Notre vol vient d'être annulé.",
+    "pt": "O nosso voo acabou de ser cancelado."
+   },
+   {
+    "fr": "Les avions ne décollent pas à cause de la tempête.",
+    "pt": "Os aviões não estão decolando por causa da tempestade."
+   },
+   {
+    "fr": "Toutes les informations sont sur l'écran.",
+    "pt": "Todas as informações estão na tela."
+   },
+   {
+    "fr": "Il y a un autre vol demain matin.",
+    "pt": "Tem outro voo amanhã de manhã."
+   },
+   {
+    "fr": "La compagnie paie l'hôtel cette nuit ?",
+    "pt": "A companhia paga o hotel hoje à noite?"
+   },
+   {
+    "fr": "Oui, et aussi les repas.",
+    "pt": "Sim, e as refeições também."
+   },
+   {
+    "fr": "Il faut garder tous les reçus.",
+    "pt": "Tem que guardar todos os recibos."
+   },
+   {
+    "fr": "Les hôtels près de l'aéroport sont pleins.",
+    "pt": "Os hotéis perto do aeroporto estão cheios."
+   },
+   {
+    "fr": "On peut être remboursés ?",
+    "pt": "A gente pode ser reembolsado?"
+   },
+   {
+    "fr": "Bon, on a une nuit de plus au Brésil !",
+    "pt": "Bom, a gente ganhou mais uma noite no Brasil!"
+   }
+  ],
+  "tip": {
+   "title": "Les pluriels en « -ões », « -ães » et « -éis / -ais »",
+   "example": "Les avions ne décollent pas à cause de la tempête. — Os <b>aviões</b> não estão decolando por causa da tempestade.",
+   "body": "En général, on ajoute simplement un « s » : voo, voos. Mais les mots en « -ão » font le plus souvent « -ões » (avião, aviões ; informação, informações), parfois « -ães » (pão, pães) ou « -ãos » (mão, mãos). Les mots en « -l » changent aussi : hotel donne hotéis, animal donne animais, jornal donne jornais."
+  }
+ },
+ {
+  "title": "Fin du module : un bilan de voyage",
+  "phrases": [
+   {
+    "fr": "Ce module nous a fait voyager dans tout le Brésil.",
+    "pt": "Esse módulo fez a gente viajar pelo Brasil inteiro."
+   },
+   {
+    "fr": "On a commencé à São Paulo, sur l'Avenida Paulista.",
+    "pt": "A gente começou em São Paulo, na Avenida Paulista."
+   },
+   {
+    "fr": "Puis on est allés à Paraty et à Ilha Grande.",
+    "pt": "Depois a gente foi para Paraty e para a Ilha Grande."
+   },
+   {
+    "fr": "On a vu les chutes d'Iguaçu et les plages de Florianópolis.",
+    "pt": "A gente viu as Cataratas do Iguaçu e as praias de Florianópolis."
+   },
+   {
+    "fr": "Tu sais maintenant acheter un billet et réserver une chambre.",
+    "pt": "Agora você sabe comprar uma passagem e reservar um quarto."
+   },
+   {
+    "fr": "Tu sais aussi demander de l'aide en cas de problème.",
+    "pt": "Você também sabe pedir ajuda quando tem algum problema."
+   },
+   {
+    "fr": "Un retard ou une valise perdue ne te font plus peur.",
+    "pt": "Um atraso ou uma mala perdida não te assustam mais."
+   },
+   {
+    "fr": "Ton portugais progresse vraiment bien.",
+    "pt": "O seu português está melhorando muito."
+   },
+   {
+    "fr": "Continue comme ça, un peu chaque jour.",
+    "pt": "Continua assim, um pouco todo dia."
+   },
+   {
+    "fr": "Le prochain module t'attend, bon voyage !",
+    "pt": "O próximo módulo está te esperando, boa viagem!"
+   }
+  ]
+ }
 ];
 
 const level1Module3Lessons = [
-  { title:"Se présenter", phrases:[
-    {fr:"Comment tu t'appelles ?", de:"Wie heißt du?"},
-    {fr:"Je m'appelle Julia, et toi ?", de:"Ich heiße Julia, und du?"},
-    {fr:"Moi, c'est Thomas, enchanté.", de:"Ich bin Thomas, freut mich."},
-    {fr:"D'où viens-tu exactement ?", de:"Woher kommst du genau?"},
-    {fr:"Je viens de Lyon, en France.", de:"Ich komme aus Lyon, in Frankreich."},
-    {fr:"Et toi, tu es d'ici ?", de:"Und du, bist du von hier?"},
-    {fr:"Non, je viens de Hambourg à l'origine.", de:"Nein, ich komme ursprünglich aus Hamburg."},
-    {fr:"Depuis combien de temps es-tu à Berlin ?", de:"Wie lange bist du schon in Berlin?"},
-    {fr:"Depuis environ trois ans maintenant.", de:"Seit etwa drei Jahren jetzt."},
-    {fr:"Ça fait plaisir de te rencontrer.", de:"Es freut mich, dich kennenzulernen."}
-  ]},
-  { title:"Parler de sa famille", phrases:[
-    {fr:"Tu as des frères et sœurs ?", de:"Hast du Geschwister?"},
-    {fr:"Oui, un frère et une petite sœur.", de:"Ja, einen Bruder und eine kleine Schwester."},
-    {fr:"Comment s'appelle ton frère ?", de:"Wie heißt dein Bruder?"},
-    {fr:"Il s'appelle Markus, il est médecin.", de:"Er heißt Markus, er ist Arzt."},
-    {fr:"Et ta sœur, qu'est-ce qu'elle fait ?", de:"Und deine Schwester, was macht sie?"},
-    {fr:"Elle est encore étudiante à Munich.", de:"Sie ist noch Studentin in München."},
-    {fr:"Tes parents habitent où ?", de:"Wo wohnen deine Eltern?"},
-    {fr:"Ils vivent toujours dans leur village natal.", de:"Sie leben immer noch in ihrem Heimatdorf."},
-    {fr:"On se voit souvent pour les fêtes.", de:"Wir sehen uns oft zu den Feiertagen."},
-    {fr:"C'est important de rester proche de sa famille.", de:"Es ist wichtig, der Familie nahe zu bleiben."}
-  ], tip:{
-    title:"« Heißen » et « sein » : se présenter",
-    example:"Comment s'appelle ton frère ? — Wie <b>heißt</b> dein Bruder?",
-    body:"« Heißen » (s'appeler) se conjugue ich heiße, du heißt, er/sie heißt. « Sein » (être) est irrégulier : ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie sind. Ensemble, ces deux verbes suffisent pour toute présentation de base."
-  }},
-  { title:"Décrire son métier", phrases:[
-    {fr:"Qu'est-ce que tu fais comme travail ?", de:"Was machst du beruflich?"},
-    {fr:"Je travaille comme ingénieure dans une usine.", de:"Ich arbeite als Ingenieurin in einer Fabrik."},
-    {fr:"Ça te plaît, ce métier ?", de:"Gefällt dir dieser Beruf?"},
-    {fr:"Beaucoup, même si c'est parfois stressant.", de:"Sehr, auch wenn es manchmal stressig ist."},
-    {fr:"Et toi, tu travailles dans quel domaine ?", de:"Und du, in welchem Bereich arbeitest du?"},
-    {fr:"Je suis professeur dans une école primaire.", de:"Ich bin Lehrer an einer Grundschule."},
-    {fr:"Ça demande beaucoup de patience, j'imagine.", de:"Das erfordert bestimmt viel Geduld."},
-    {fr:"Oui, mais les enfants me rendent heureux.", de:"Ja, aber die Kinder machen mich glücklich."},
-    {fr:"Depuis quand fais-tu ce métier ?", de:"Seit wann machst du diesen Beruf?"},
-    {fr:"Depuis bientôt huit ans déjà.", de:"Seit bald acht Jahren schon."}
-  ]},
-  { title:"Parler de ses passe-temps", phrases:[
-    {fr:"Qu'est-ce que tu fais pendant ton temps libre ?", de:"Was machst du in deiner Freizeit?"},
-    {fr:"J'aime beaucoup lire et faire du vélo.", de:"Ich lese sehr gern und fahre gern Fahrrad."},
-    {fr:"Moi, je préfère la photographie.", de:"Ich bevorzuge die Fotografie."},
-    {fr:"Tu photographies quel genre de sujets ?", de:"Was für Motive fotografierst du?"},
-    {fr:"Surtout des paysages et des vieilles villes.", de:"Vor allem Landschaften und alte Städte."},
-    {fr:"Ça te prend beaucoup de temps libre ?", de:"Nimmt das viel Freizeit in Anspruch?"},
-    {fr:"Tous les week-ends, presque.", de:"Fast jedes Wochenende."},
-    {fr:"Tu fais aussi du sport régulièrement ?", de:"Treibst du auch regelmäßig Sport?"},
-    {fr:"Je cours trois fois par semaine.", de:"Ich laufe dreimal pro Woche."},
-    {fr:"C'est une excellente habitude à garder.", de:"Das ist eine ausgezeichnete Gewohnheit, die man beibehalten sollte."}
-  ]},
-  { title:"Inviter quelqu'un à dîner", phrases:[
-    {fr:"Tu es libre vendredi soir ?", de:"Hast du am Freitagabend Zeit?"},
-    {fr:"Oui, pourquoi, tu as un projet ?", de:"Ja, warum, hast du etwas vor?"},
-    {fr:"Je voudrais t'inviter chez moi pour dîner.", de:"Ich möchte dich zum Abendessen zu mir einladen."},
-    {fr:"Avec grand plaisir, j'accepte volontiers.", de:"Sehr gern, ich nehme gerne an."},
-    {fr:"Mon appartement est près de la gare centrale.", de:"Meine Wohnung liegt in der Nähe des Hauptbahnhofs."},
-    {fr:"Dois-je apporter quelque chose ?", de:"Soll ich etwas mitbringen?"},
-    {fr:"Juste ta bonne humeur, ça suffira.", de:"Nur deine gute Laune, das reicht."},
-    {fr:"À quelle heure dois-je arriver ?", de:"Um wie viel Uhr soll ich kommen?"},
-    {fr:"Vers dix-neuf heures trente, si ça te va.", de:"Gegen neunzehn Uhr dreißig, wenn es dir passt."},
-    {fr:"Parfait, je note déjà la date.", de:"Perfekt, ich trage mir schon das Datum ein."}
-  ], tip:{
-    title:"Les adjectifs possessifs : mein, dein, sein",
-    example:"Mon appartement est près de la gare centrale. — <b>Meine</b> Wohnung liegt in der Nähe des Hauptbahnhofs.",
-    body:"Les possessifs allemands (mein, dein, sein, ihr, unser, euer, ihr) se déclinent comme « ein » : mein devant un nom masculin ou neutre au nominatif, meine devant un nom féminin ou au pluriel. On dit donc mein Bruder, meine Wohnung, mein Buch."
-  }},
-  { title:"Faire connaissance à une fête", phrases:[
-    {fr:"Tu connais déjà quelqu'un ici ?", de:"Kennst du hier schon jemanden?"},
-    {fr:"Pas vraiment, je viens d'arriver.", de:"Nicht wirklich, ich bin gerade erst angekommen."},
-    {fr:"Je m'appelle Lena, enchantée.", de:"Ich heiße Lena, freut mich."},
-    {fr:"Comment connais-tu les organisateurs ?", de:"Woher kennst du die Gastgeber?"},
-    {fr:"On a étudié ensemble à l'université.", de:"Wir haben zusammen an der Uni studiert."},
-    {fr:"L'ambiance est vraiment chaleureuse ce soir.", de:"Die Stimmung ist heute Abend wirklich herzlich."},
-    {fr:"Tu veux boire quelque chose ?", de:"Möchtest du etwas trinken?"},
-    {fr:"Juste un verre d'eau, merci.", de:"Nur ein Glas Wasser, danke."},
-    {fr:"On continue cette conversation dehors ?", de:"Setzen wir das Gespräch draußen fort?"},
-    {fr:"Avec plaisir, il fait bon ce soir.", de:"Gern, es ist heute Abend angenehm."}
-  ]},
-  { title:"Parler du temps qu'il fait", phrases:[
-    {fr:"Quel temps affreux aujourd'hui, non ?", de:"Schreckliches Wetter heute, oder?"},
-    {fr:"Oui, mais demain ça devrait s'améliorer.", de:"Ja, aber morgen soll es besser werden."},
-    {fr:"J'espère vraiment, j'ai des projets en extérieur.", de:"Ich hoffe wirklich, ich habe Pläne draußen."},
-    {fr:"Tu préfères l'été ou l'hiver, toi ?", de:"Magst du lieber Sommer oder Winter?"},
-    {fr:"L'automne, pour être honnête.", de:"Den Herbst, um ehrlich zu sein."},
-    {fr:"Les couleurs des feuilles sont magnifiques ici.", de:"Die Farben der Blätter sind hier wunderschön."},
-    {fr:"C'est vrai, la nature est généreuse en cette saison.", de:"Stimmt, die Natur ist in dieser Jahreszeit großzügig."},
-    {fr:"Et toi, quelle saison préfères-tu ?", de:"Und du, welche Jahreszeit bevorzugst du?"},
-    {fr:"Le printemps, sans hésiter.", de:"Den Frühling, ohne zu zögern."},
-    {fr:"On a chacun nos raisons, j'imagine.", de:"Jeder hat wohl seine Gründe."}
-  ]},
-  { title:"Donner son avis sur un film", phrases:[
-    {fr:"Qu'est-ce que tu as pensé du film ?", de:"Was hast du von dem Film gehalten?"},
-    {fr:"Franchement, j'ai beaucoup aimé la fin.", de:"Ehrlich gesagt hat mir das Ende sehr gefallen."},
-    {fr:"Pourquoi ce film t'a-t-il tant plu ?", de:"Warum hat dir dieser Film so gut gefallen?"},
-    {fr:"Les acteurs étaient incroyablement convaincants.", de:"Die Schauspieler waren unglaublich überzeugend."},
-    {fr:"Combien de temps dure-t-il, déjà ?", de:"Wie lange dauert er eigentlich?"},
-    {fr:"Presque trois heures, mais le temps passe vite.", de:"Fast drei Stunden, aber die Zeit vergeht schnell."},
-    {fr:"Quel est ton réalisateur préféré ?", de:"Wer ist dein Lieblingsregisseur?"},
-    {fr:"J'admire surtout les cinéastes allemands contemporains.", de:"Ich bewundere vor allem zeitgenössische deutsche Filmemacher."},
-    {fr:"On devrait regarder un autre film ensemble.", de:"Wir sollten zusammen noch einen Film anschauen."},
-    {fr:"Avec plaisir, propose-moi quelque chose.", de:"Gern, schlag mir etwas vor."}
-  ], tip:{
-    title:"Poser une question avec un mot interrogatif (W-Frage)",
-    example:"Pourquoi ce film t'a-t-il tant plu ? — <b>Warum</b> hat dir dieser Film so gut gefallen?",
-    body:"Les questions ouvertes commencent par un mot interrogatif (was, wer, wann, wo, warum, wie) suivi immédiatement du verbe conjugué, puis du sujet : Warum hat dir... Ce schéma « mot interrogatif + verbe + sujet » est fixe, contrairement au français qui a plusieurs constructions possibles."
-  }},
-  { title:"Parler de ses projets de vacances", phrases:[
-    {fr:"Tu as déjà des projets pour l'été ?", de:"Hast du schon Pläne für den Sommer?"},
-    {fr:"On pense partir en Croatie en famille.", de:"Wir denken daran, mit der Familie nach Kroatien zu fahren."},
-    {fr:"Vous partez pour combien de temps ?", de:"Wie lange fahrt ihr weg?"},
-    {fr:"Deux semaines, peut-être un peu plus.", de:"Zwei Wochen, vielleicht etwas länger."},
-    {fr:"Et toi, tu as des envies particulières ?", de:"Und du, hast du besondere Wünsche?"},
-    {fr:"J'aimerais découvrir la Scandinavie cette année.", de:"Ich möchte dieses Jahr Skandinavien entdecken."},
-    {fr:"Tu voyages plutôt seul ou en groupe ?", de:"Reist du eher allein oder in der Gruppe?"},
-    {fr:"Seul, j'aime pouvoir changer mes plans facilement.", de:"Allein, ich mag es, meine Pläne leicht ändern zu können."},
-    {fr:"C'est une belle liberté, effectivement.", de:"Das ist tatsächlich eine schöne Freiheit."},
-    {fr:"On se racontera nos aventures à la rentrée.", de:"Wir erzählen uns unsere Abenteuer im Herbst."}
-  ]},
-  { title:"Un coup de fil à un ami", phrases:[
-    {fr:"Salut, ça fait longtemps qu'on ne s'est pas parlé.", de:"Hallo, wir haben schon lange nicht mehr gesprochen."},
-    {fr:"Oui, le temps passe vraiment trop vite.", de:"Ja, die Zeit vergeht wirklich zu schnell."},
-    {fr:"Comment vont les choses de ton côté ?", de:"Wie läuft es bei dir so?"},
-    {fr:"Plutôt bien, le travail me prend beaucoup de temps.", de:"Ziemlich gut, die Arbeit nimmt viel Zeit in Anspruch."},
-    {fr:"On devrait vraiment se revoir bientôt.", de:"Wir sollten uns wirklich bald wiedersehen."},
-    {fr:"Tu es libre le week-end prochain ?", de:"Hast du nächstes Wochenende Zeit?"},
-    {fr:"Je regarde mon agenda et je te réponds.", de:"Ich schaue in meinen Kalender und antworte dir."},
-    {fr:"Prends ton temps, il n'y a pas d'urgence.", de:"Lass dir Zeit, es ist nicht dringend."},
-    {fr:"D'accord, je t'écris dans la soirée.", de:"Okay, ich schreibe dir heute Abend."},
-    {fr:"Parfait, à très vite alors.", de:"Perfekt, dann bis ganz bald."}
-  ]},
-  { title:"Parler de son animal de compagnie", phrases:[
-    {fr:"Tu as un animal de compagnie ?", de:"Hast du ein Haustier?"},
-    {fr:"Oui, un chat qui s'appelle Minka.", de:"Ja, eine Katze, die Minka heißt."},
-    {fr:"Elle est câline ou plutôt indépendante ?", de:"Ist sie anschmiegsam oder eher unabhängig?"},
-    {fr:"Un mélange des deux, honnêtement.", de:"Ehrlich gesagt eine Mischung aus beidem."},
-    {fr:"Moi, j'ai toujours rêvé d'avoir un chien.", de:"Ich habe immer von einem Hund geträumt."},
-    {fr:"Pourquoi tu n'en as jamais eu ?", de:"Warum hattest du noch nie einen?"},
-    {fr:"Mon appartement est un peu trop petit.", de:"Meine Wohnung ist etwas zu klein."},
-    {fr:"Tu pourrais envisager un chien de petite taille.", de:"Du könntest einen kleinen Hund in Erwägung ziehen."},
-    {fr:"C'est vrai, j'y réfléchirai sérieusement.", de:"Stimmt, ich werde ernsthaft darüber nachdenken."},
-    {fr:"Les animaux apportent tellement de joie.", de:"Tiere bringen so viel Freude."}
-  ]},
-  { title:"Décrire son appartement", phrases:[
-    {fr:"Tu habites dans quel quartier de la ville ?", de:"In welchem Stadtviertel wohnst du?"},
-    {fr:"Dans un quartier calme, près du parc.", de:"In einem ruhigen Viertel, in der Nähe des Parks."},
-    {fr:"Ton appartement a combien de pièces ?", de:"Wie viele Zimmer hat deine Wohnung?"},
-    {fr:"Trois pièces, avec un petit balcon.", de:"Drei Zimmer, mit einem kleinen Balkon."},
-    {fr:"Tu y vis depuis longtemps ?", de:"Lebst du schon lange dort?"},
-    {fr:"Depuis cinq ans, je m'y sens bien.", de:"Seit fünf Jahren, ich fühle mich dort wohl."},
-    {fr:"La luminosité est bonne chez toi ?", de:"Ist es bei dir gut hell?"},
-    {fr:"Oui, surtout dans le salon le matin.", de:"Ja, besonders morgens im Wohnzimmer."},
-    {fr:"On devrait organiser une soirée chez toi.", de:"Wir sollten einen Abend bei dir organisieren."},
-    {fr:"Avec plaisir, j'adore recevoir des amis.", de:"Gern, ich liebe es, Freunde einzuladen."}
-  ]},
-  { title:"Parler de sport", phrases:[
-    {fr:"Tu pratiques un sport régulièrement ?", de:"Treibst du regelmäßig Sport?"},
-    {fr:"Oui, je joue au tennis chaque semaine.", de:"Ja, ich spiele jede Woche Tennis."},
-    {fr:"Tu es dans un club ou en autodidacte ?", de:"Bist du in einem Verein oder bringst du es dir selbst bei?"},
-    {fr:"Dans un petit club près de chez moi.", de:"In einem kleinen Verein in meiner Nähe."},
-    {fr:"L'équipe nationale allemande a bien joué dimanche.", de:"Die deutsche Nationalmannschaft hat am Sonntag gut gespielt."},
-    {fr:"Tu suis le football avec passion, toi ?", de:"Verfolgst du den Fußball mit Leidenschaft?"},
-    {fr:"Énormément, surtout pendant les grands tournois.", de:"Sehr, besonders während der großen Turniere."},
-    {fr:"Moi, je préfère regarder les sports d'hiver.", de:"Ich schaue mir lieber Wintersport an."},
-    {fr:"Le ski alpin me fascine particulièrement.", de:"Der Alpinski fasziniert mich besonders."},
-    {fr:"On a chacun nos préférences, finalement.", de:"Letztendlich hat jeder seine Vorlieben."}
-  ]},
-  { title:"Inviter un collègue au café", phrases:[
-    {fr:"Tu veux prendre un café avec moi plus tard ?", de:"Willst du später mit mir einen Kaffee trinken?"},
-    {fr:"Avec plaisir, j'ai justement une pause à quinze heures.", de:"Gern, ich habe genau um fünfzehn Uhr Pause."},
-    {fr:"Je t'appelle dès que je suis libre.", de:"Ich rufe dich an, sobald ich frei bin."},
-    {fr:"Parfait, j'attends ton appel.", de:"Perfekt, ich warte auf deinen Anruf."},
-    {fr:"On devrait aussi inviter Sarah.", de:"Wir sollten auch Sarah einladen."},
-    {fr:"Bonne idée, je lui envoie un message.", de:"Gute Idee, ich schreibe ihr eine Nachricht."},
-    {fr:"Elle nous rejoint à quinze heures quinze.", de:"Sie schließt sich uns um fünfzehn Uhr fünfzehn an."},
-    {fr:"Il y a un nouveau café près du bureau.", de:"Es gibt ein neues Café in der Nähe des Büros."},
-    {fr:"On essaie celui-là alors ?", de:"Probieren wir also dieses aus?"},
-    {fr:"Parfait, ça change un peu de la routine.", de:"Perfekt, das bringt etwas Abwechslung in die Routine."}
-  ], tip:{
-    title:"Les verbes à particule séparable : anrufen, einladen",
-    example:"Je t'appelle dès que je suis libre. — Ich <b>rufe</b> dich an, sobald ich frei bin.",
-    body:"« Anrufen » (appeler au téléphone) et « einladen » (inviter) suivent la même règle que les autres verbes à particule séparable : au présent dans une phrase simple, la particule (an, ein) se détache du verbe et va à la fin : Ich rufe dich an. Ich lade dich ein."
-  }},
-  { title:"Discuter de musique", phrases:[
-    {fr:"Quel genre de musique écoutes-tu le plus ?", de:"Welche Musikrichtung hörst du am meisten?"},
-    {fr:"Surtout de l'électro et un peu de jazz.", de:"Vor allem Elektro und etwas Jazz."},
-    {fr:"Tu joues d'un instrument toi-même ?", de:"Spielst du selbst ein Instrument?"},
-    {fr:"Oui, je joue de la guitare depuis l'enfance.", de:"Ja, ich spiele seit meiner Kindheit Gitarre."},
-    {fr:"Tu as déjà joué devant un public ?", de:"Hast du schon einmal vor Publikum gespielt?"},
-    {fr:"Quelques fois, dans des petits bars.", de:"Ein paar Mal, in kleinen Bars."},
-    {fr:"Ça devait être une expérience formidable.", de:"Das muss eine tolle Erfahrung gewesen sein."},
-    {fr:"Un peu stressant aussi, au début.", de:"Am Anfang auch etwas stressig."},
-    {fr:"Berlin a une scène musicale très riche.", de:"Berlin hat eine sehr reiche Musikszene."},
-    {fr:"C'est une des raisons pour lesquelles j'y vis.", de:"Das ist einer der Gründe, warum ich dort lebe."}
-  ]},
-  { title:"Parler de ses goûts culinaires", phrases:[
-    {fr:"Tu cuisines souvent chez toi ?", de:"Kochst du oft bei dir?"},
-    {fr:"Presque tous les soirs, j'adore ça.", de:"Fast jeden Abend, ich liebe das."},
-    {fr:"Quel est ton plat préféré à préparer ?", de:"Was ist dein Lieblingsgericht zum Kochen?"},
-    {fr:"Un bon ragoût, surtout en hiver.", de:"Ein guter Schmortopf, besonders im Winter."},
-    {fr:"Tu suis des recettes précises ou tu improvises ?", de:"Folgst du genauen Rezepten oder improvisierst du?"},
-    {fr:"J'improvise la plupart du temps.", de:"Ich improvisiere die meiste Zeit."},
-    {fr:"Tu es plutôt sucré ou plutôt salé ?", de:"Bist du eher süß oder eher herzhaft?"},
-    {fr:"Clairement plutôt salé, sans hésitation.", de:"Ganz klar eher herzhaft, ohne zu zögern."},
-    {fr:"On pourrait cuisiner ensemble un de ces jours.", de:"Wir könnten eines Tages zusammen kochen."},
-    {fr:"Avec plaisir, j'adore partager mes recettes.", de:"Gern, ich liebe es, meine Rezepte zu teilen."}
-  ]},
-  { title:"Faire un compliment", phrases:[
-    {fr:"Cette robe te va vraiment à merveille.", de:"Dieses Kleid steht dir wirklich wunderbar."},
-    {fr:"Merci beaucoup, ça me touche.", de:"Vielen Dank, das berührt mich."},
-    {fr:"Ton appartement est vraiment accueillant.", de:"Deine Wohnung ist wirklich gemütlich."},
-    {fr:"C'est gentil, j'ai beaucoup travaillé sur la déco.", de:"Das ist lieb, ich habe viel an der Deko gearbeitet."},
-    {fr:"Ton allemand s'est beaucoup amélioré, d'ailleurs.", de:"Dein Deutsch hat sich übrigens stark verbessert."},
-    {fr:"Merci, je pratique presque tous les jours.", de:"Danke, ich übe fast jeden Tag."},
-    {fr:"Ça se voit vraiment, bravo.", de:"Das merkt man wirklich, Glückwunsch."},
-    {fr:"Tu me donnes vraiment confiance en me disant ça.", de:"Du gibst mir wirklich Selbstvertrauen, wenn du das sagst."},
-    {fr:"C'est entièrement mérité, crois-moi.", de:"Das ist voll und ganz verdient, glaub mir."},
-    {fr:"Merci encore, ça fait vraiment plaisir à entendre.", de:"Danke noch einmal, das freut mich wirklich zu hören."}
-  ]},
-  { title:"Exprimer un désaccord poliment", phrases:[
-    {fr:"Je ne suis pas tout à fait d'accord avec toi.", de:"Ich bin nicht ganz deiner Meinung."},
-    {fr:"Ah bon, pourquoi donc ?", de:"Ach so, warum denn?"},
-    {fr:"Je trouve cette idée un peu risquée.", de:"Ich finde diese Idee etwas riskant."},
-    {fr:"Je comprends ton point de vue, cela dit.", de:"Ich verstehe trotzdem deinen Standpunkt."},
-    {fr:"J'aimerais bien qu'on en discute davantage.", de:"Ich würde gern noch mehr darüber sprechen."},
-    {fr:"Bien sûr, prenons le temps d'en parler.", de:"Natürlich, lass uns uns Zeit dafür nehmen."},
-    {fr:"Peut-être qu'il existe une solution intermédiaire.", de:"Vielleicht gibt es eine Zwischenlösung."},
-    {fr:"C'est exactement ce que je pensais aussi.", de:"Genau das habe ich auch gedacht."},
-    {fr:"Finalement, on n'est pas si éloignés que ça.", de:"Letztendlich liegen wir gar nicht so weit auseinander."},
-    {fr:"J'aime bien discuter calmement comme ça.", de:"Ich diskutiere gern so ruhig wie jetzt."}
-  ], tip:{
-    title:"Dire qu'on aime faire quelque chose : « gern » + verbe",
-    example:"J'aime bien discuter calmement comme ça. — Ich diskutiere <b>gern</b> so ruhig wie jetzt.",
-    body:"Pour dire qu'on aime faire quelque chose, l'allemand ajoute simplement l'adverbe « gern » après le verbe conjugué, sans construction particulière : Ich lese gern (j'aime lire), Ich koche gern (j'aime cuisiner). Le superlatif « am liebsten » exprime la préférence absolue : Ich koche am liebsten vegetarisch."
-  }},
-  { title:"Se dire au revoir après une soirée", phrases:[
-    {fr:"C'était vraiment une super soirée.", de:"Das war wirklich ein toller Abend."},
-    {fr:"Oui, merci encore pour l'invitation.", de:"Ja, danke noch einmal für die Einladung."},
-    {fr:"On devrait refaire ça bientôt.", de:"Das sollten wir bald wiederholen."},
-    {fr:"Avec plaisir, la prochaine fois chez moi.", de:"Gern, nächstes Mal bei mir."},
-    {fr:"Tu rentres comment, en taxi ou à pied ?", de:"Wie kommst du heim, mit dem Taxi oder zu Fuß?"},
-    {fr:"À pied, ce n'est pas très loin.", de:"Zu Fuß, es ist nicht sehr weit."},
-    {fr:"Fais bien attention en rentrant.", de:"Pass gut auf dem Heimweg auf."},
-    {fr:"Promis, écris-moi quand tu es rentré.", de:"Versprochen, schreib mir, wenn du zu Hause bist."},
-    {fr:"Bonne nuit, et encore merci pour tout.", de:"Gute Nacht, und noch mal danke für alles."},
-    {fr:"Bonne nuit à toi aussi, à bientôt.", de:"Dir auch eine gute Nacht, bis bald."}
-  ]},
-  { title:"Fin du module : un bilan", phrases:[
-    {fr:"Ce dernier module était particulièrement riche.", de:"Dieses letzte Modul war besonders reichhaltig."},
-    {fr:"On a appris à discuter de presque tout.", de:"Wir haben gelernt, über fast alles zu sprechen."},
-    {fr:"Famille, travail, goûts, opinions : rien ne nous résiste.", de:"Familie, Arbeit, Vorlieben, Meinungen: nichts kann uns mehr aufhalten."},
-    {fr:"Ce premier niveau touche maintenant à sa fin.", de:"Dieses erste Niveau geht jetzt zu Ende."},
-    {fr:"Le niveau suivant apportera un vocabulaire plus riche.", de:"Das nächste Niveau bringt einen reicheren Wortschatz."},
-    {fr:"Les situations seront aussi plus nuancées.", de:"Die Situationen werden auch nuancierter sein."},
-    {fr:"On progresse vraiment de leçon en leçon.", de:"Wir machen wirklich von Lektion zu Lektion Fortschritte."},
-    {fr:"Félicitations pour cette première étape accomplie.", de:"Glückwunsch zu diesem ersten erreichten Schritt."},
-    {fr:"La régularité reste la clé du succès.", de:"Regelmäßigkeit bleibt der Schlüssel zum Erfolg."},
-    {fr:"À très bientôt pour la suite de l'aventure.", de:"Bis bald für die Fortsetzung des Abenteuers."}
-  ]}
+ {
+  "title": "Se présenter à un voisin",
+  "phrases": [
+   {
+    "fr": "Salut, je m'appelle Julien.",
+    "pt": "Oi, meu nome é Julien."
+   },
+   {
+    "fr": "Enchanté, moi c'est Mariana.",
+    "pt": "Prazer, eu sou a Mariana."
+   },
+   {
+    "fr": "Je viens de France.",
+    "pt": "Eu sou da França."
+   },
+   {
+    "fr": "J'habite au troisième étage.",
+    "pt": "Eu moro no terceiro andar."
+   },
+   {
+    "fr": "Ça fait combien de temps que tu vis ici ?",
+    "pt": "Faz quanto tempo que você mora aqui?"
+   },
+   {
+    "fr": "Je suis arrivé la semaine dernière.",
+    "pt": "Eu cheguei semana passada."
+   },
+   {
+    "fr": "Je parle encore un peu mal portugais.",
+    "pt": "Eu ainda falo português meio mal."
+   },
+   {
+    "fr": "Pas de souci, tu parles très bien !",
+    "pt": "Imagina, você fala muito bem!"
+   },
+   {
+    "fr": "Si tu as besoin de quelque chose, frappe à ma porte.",
+    "pt": "Se precisar de alguma coisa, é só bater na minha porta."
+   },
+   {
+    "fr": "Ravi de te rencontrer, à bientôt !",
+    "pt": "Prazer em te conhecer, até logo!"
+   }
+  ]
+ },
+ {
+  "title": "Présenter sa famille",
+  "phrases": [
+   {
+    "fr": "Voici ma famille.",
+    "pt": "Esta é a minha família."
+   },
+   {
+    "fr": "Mon frère s'appelle Thomas.",
+    "pt": "Meu irmão se chama Thomas."
+   },
+   {
+    "fr": "Ma sœur habite à Lyon.",
+    "pt": "Minha irmã mora em Lyon."
+   },
+   {
+    "fr": "Mes parents sont à la retraite.",
+    "pt": "Meus pais são aposentados."
+   },
+   {
+    "fr": "Tu as des frères et sœurs ?",
+    "pt": "Você tem irmãos?"
+   },
+   {
+    "fr": "J'ai deux sœurs et un frère.",
+    "pt": "Eu tenho duas irmãs e um irmão."
+   },
+   {
+    "fr": "Ta mère est vraiment sympathique.",
+    "pt": "Sua mãe é muito simpática."
+   },
+   {
+    "fr": "Mon grand-père adore raconter des histoires.",
+    "pt": "Meu avô adora contar histórias."
+   },
+   {
+    "fr": "Ma tante prépare le meilleur gâteau du monde.",
+    "pt": "Minha tia faz o melhor bolo do mundo."
+   },
+   {
+    "fr": "On se réunit tous les dimanches.",
+    "pt": "A gente se reúne todo domingo."
+   }
+  ],
+  "tip": {
+   "title": "Les possessifs « meu, minha, seu, sua »",
+   "example": "Ta mère est vraiment sympathique. — <b>Sua</b> mãe é muito simpática.",
+   "body": "Le possessif s'accorde avec l'objet possédé, pas avec le possesseur : meu irmão (mon frère), minha irmã (ma sœur), meus pais (mes parents). Au Brésil, « seu / sua » veut surtout dire « ton / ta » (à côté de você), et on met souvent l'article devant : a minha família. Pour « son / sa » (à lui, à elle), on préfère dire dele, dela : a mãe dele (sa mère à lui)."
+  }
+ },
+ {
+  "title": "Parler de son travail",
+  "phrases": [
+   {
+    "fr": "Qu'est-ce que tu fais dans la vie ?",
+    "pt": "O que você faz da vida?"
+   },
+   {
+    "fr": "Je suis infirmière dans un hôpital.",
+    "pt": "Eu sou enfermeira num hospital."
+   },
+   {
+    "fr": "Je travaille dans l'informatique.",
+    "pt": "Eu trabalho com informática."
+   },
+   {
+    "fr": "Je commence à huit heures du matin.",
+    "pt": "Eu começo às oito horas da manhã."
+   },
+   {
+    "fr": "Mon bureau est près de la plage.",
+    "pt": "Meu escritório fica perto da praia."
+   },
+   {
+    "fr": "Mes collègues sont très sympas.",
+    "pt": "Meus colegas são muito legais."
+   },
+   {
+    "fr": "Tu aimes ton travail ?",
+    "pt": "Você gosta do seu trabalho?"
+   },
+   {
+    "fr": "Oui, mais c'est fatigant parfois.",
+    "pt": "Gosto, mas às vezes cansa."
+   },
+   {
+    "fr": "Je travaille depuis chez moi le vendredi.",
+    "pt": "Eu trabalho de casa às sextas."
+   },
+   {
+    "fr": "Je cherche un nouveau travail.",
+    "pt": "Estou procurando um emprego novo."
+   }
+  ]
+ },
+ {
+  "title": "Les loisirs du week-end",
+  "phrases": [
+   {
+    "fr": "Qu'est-ce que tu fais le week-end ?",
+    "pt": "O que você faz no fim de semana?"
+   },
+   {
+    "fr": "Le samedi, je vais à la plage.",
+    "pt": "No sábado, eu vou à praia."
+   },
+   {
+    "fr": "J'aime bien lire au soleil.",
+    "pt": "Eu curto ler no sol."
+   },
+   {
+    "fr": "Je prends des cours de surf.",
+    "pt": "Eu faço aula de surfe."
+   },
+   {
+    "fr": "Mon amie fait du yoga dans le parc.",
+    "pt": "Minha amiga faz ioga no parque."
+   },
+   {
+    "fr": "Le dimanche, je me repose.",
+    "pt": "No domingo, eu descanso."
+   },
+   {
+    "fr": "Tu joues d'un instrument ?",
+    "pt": "Você toca algum instrumento?"
+   },
+   {
+    "fr": "J'apprends la guitare depuis un an.",
+    "pt": "Estou aprendendo violão faz um ano."
+   },
+   {
+    "fr": "Je fais du vélo au bord de la mer.",
+    "pt": "Eu ando de bicicleta na orla."
+   },
+   {
+    "fr": "On fait une randonnée ensemble ?",
+    "pt": "Vamos fazer uma trilha juntos?"
+   }
+  ]
+ },
+ {
+  "title": "Inviter à un churrasco",
+  "phrases": [
+   {
+    "fr": "On fait un churrasco dimanche.",
+    "pt": "A gente vai fazer um churrasco no domingo."
+   },
+   {
+    "fr": "Tu veux venir ?",
+    "pt": "Você quer vir?"
+   },
+   {
+    "fr": "Avec plaisir, à quelle heure ?",
+    "pt": "Com prazer, que horas?"
+   },
+   {
+    "fr": "Vers midi, chez moi.",
+    "pt": "Lá pelo meio-dia, na minha casa."
+   },
+   {
+    "fr": "Je peux apporter quelque chose ?",
+    "pt": "Posso levar alguma coisa?"
+   },
+   {
+    "fr": "Apporte juste des boissons.",
+    "pt": "Traz só a bebida."
+   },
+   {
+    "fr": "On mange de la picanha et du pain à l'ail.",
+    "pt": "A gente come picanha e pão de alho."
+   },
+   {
+    "fr": "Il y aura aussi une option végétarienne.",
+    "pt": "Também vai ter opção vegetariana."
+   },
+   {
+    "fr": "Mon cousin vient avec sa copine.",
+    "pt": "Meu primo vem com a namorada dele."
+   },
+   {
+    "fr": "Super, on se voit dimanche !",
+    "pt": "Ótimo, a gente se vê no domingo!"
+   }
+  ],
+  "tip": {
+   "title": "« A gente » : le « on » brésilien",
+   "example": "On fait un churrasco dimanche. — <b>A gente</b> vai fazer um churrasco no domingo.",
+   "body": "À l'oral, les Brésiliens disent très souvent « a gente » à la place de « nós » (nous), exactement comme le « on » français. Attention : le verbe se conjugue à la troisième personne du singulier : a gente vai (on va), a gente come (on mange). « Nós vamos » reste correct, mais sonne plus formel."
+  }
+ },
+ {
+  "title": "Faire connaissance à une fête",
+  "phrases": [
+   {
+    "fr": "Tu connais l'hôte de la soirée ?",
+    "pt": "Você conhece o dono da festa?"
+   },
+   {
+    "fr": "Oui, c'est mon ami d'enfance.",
+    "pt": "Conheço, ele é meu amigo de infância."
+   },
+   {
+    "fr": "Je ne connais personne ici.",
+    "pt": "Eu não conheço ninguém aqui."
+   },
+   {
+    "fr": "Je te présente ma colocataire.",
+    "pt": "Deixa eu te apresentar a minha colega de apartamento."
+   },
+   {
+    "fr": "Tu veux une caipirinha ?",
+    "pt": "Quer uma caipirinha?"
+   },
+   {
+    "fr": "Non merci, je préfère un jus.",
+    "pt": "Não, obrigado, prefiro um suco."
+   },
+   {
+    "fr": "La musique est super ce soir.",
+    "pt": "A música está ótima hoje."
+   },
+   {
+    "fr": "Tu danses le forró ?",
+    "pt": "Você dança forró?"
+   },
+   {
+    "fr": "Pas vraiment, mais je veux bien essayer.",
+    "pt": "Não muito, mas topo tentar."
+   },
+   {
+    "fr": "Je vais te montrer les pas de base.",
+    "pt": "Vou te mostrar os passos básicos."
+   }
+  ]
+ },
+ {
+  "title": "Parler de la météo",
+  "phrases": [
+   {
+    "fr": "Quelle chaleur aujourd'hui !",
+    "pt": "Que calor hoje!"
+   },
+   {
+    "fr": "Le thermomètre affiche trente-huit degrés.",
+    "pt": "O termômetro está marcando trinta e oito graus."
+   },
+   {
+    "fr": "On annonce un gros orage pour ce soir.",
+    "pt": "Estão prevendo uma tempestade forte para hoje à noite."
+   },
+   {
+    "fr": "En été, il y a souvent des orages.",
+    "pt": "No verão, tem muita tempestade."
+   },
+   {
+    "fr": "Je n'aime pas l'humidité.",
+    "pt": "Eu não gosto da umidade."
+   },
+   {
+    "fr": "Ne sors pas sans ton parapluie.",
+    "pt": "Não sai sem o seu guarda-chuva."
+   },
+   {
+    "fr": "Le ciel est tout bleu.",
+    "pt": "O céu está todo azul."
+   },
+   {
+    "fr": "Il fait plus frais le soir.",
+    "pt": "À noite fica mais fresco."
+   },
+   {
+    "fr": "Dans le Sud, il fait froid en juillet.",
+    "pt": "No Sul, faz frio em julho."
+   },
+   {
+    "fr": "C'est un temps parfait pour la plage.",
+    "pt": "É um tempo perfeito para a praia."
+   }
+  ]
+ },
+ {
+  "title": "Parler d'une novela",
+  "phrases": [
+   {
+    "fr": "Tu regardes la novela de vingt et une heures ?",
+    "pt": "Você assiste à novela das nove?"
+   },
+   {
+    "fr": "Oui, j'adore cette histoire.",
+    "pt": "Assisto, eu adoro essa história."
+   },
+   {
+    "fr": "J'aime beaucoup l'actrice principale.",
+    "pt": "Eu gosto muito da atriz principal."
+   },
+   {
+    "fr": "Le méchant est vraiment terrible.",
+    "pt": "O vilão é terrível mesmo."
+   },
+   {
+    "fr": "Je n'aime pas les fins tristes.",
+    "pt": "Eu não gosto de final triste."
+   },
+   {
+    "fr": "Hier, l'épisode était incroyable.",
+    "pt": "Ontem o capítulo foi incrível."
+   },
+   {
+    "fr": "Ne me raconte pas la fin !",
+    "pt": "Não me conta o final!"
+   },
+   {
+    "fr": "Ma mère ne rate aucun épisode.",
+    "pt": "Minha mãe não perde nenhum capítulo."
+   },
+   {
+    "fr": "Je regarde ça pour apprendre le portugais.",
+    "pt": "Eu assisto para aprender português."
+   },
+   {
+    "fr": "Tu aimes les séries brésiliennes ?",
+    "pt": "Você gosta das séries brasileiras?"
+   }
+  ],
+  "tip": {
+   "title": "« Gostar de » : aimer quelque chose",
+   "example": "J'aime beaucoup l'actrice principale. — Eu <b>gosto</b> muito <b>da</b> atriz principal.",
+   "body": "En portugais, on n'aime pas « quelque chose » mais « de quelque chose » : gostar de. La préposition « de » se contracte avec l'article : de + o = do, de + a = da, de + os = dos. Eu gosto do filme (j'aime le film), eu gosto da praia (j'aime la plage), eu gosto de dançar (j'aime danser)."
+  }
+ },
+ {
+  "title": "Préparer les vacances",
+  "phrases": [
+   {
+    "fr": "Où est-ce que tu pars en vacances ?",
+    "pt": "Para onde você vai nas férias?"
+   },
+   {
+    "fr": "Je vais à Salvador en janvier.",
+    "pt": "Eu vou para Salvador em janeiro."
+   },
+   {
+    "fr": "Je veux voir le Pelourinho.",
+    "pt": "Eu quero conhecer o Pelourinho."
+   },
+   {
+    "fr": "Tu pars seul ou avec des amis ?",
+    "pt": "Você vai sozinho ou com amigos?"
+   },
+   {
+    "fr": "Je pars avec ma copine.",
+    "pt": "Eu vou com a minha namorada."
+   },
+   {
+    "fr": "On va rester une semaine.",
+    "pt": "A gente vai ficar uma semana."
+   },
+   {
+    "fr": "On a déjà réservé une pousada.",
+    "pt": "A gente já reservou uma pousada."
+   },
+   {
+    "fr": "Tu as de la chance !",
+    "pt": "Que sorte a sua!"
+   },
+   {
+    "fr": "Envoie-moi des photos.",
+    "pt": "Me manda fotos."
+   },
+   {
+    "fr": "Bonnes vacances !",
+    "pt": "Boas férias!"
+   }
+  ]
+ },
+ {
+  "title": "Un appel à un ami",
+  "phrases": [
+   {
+    "fr": "Allô, c'est Pedro ?",
+    "pt": "Alô, é o Pedro?"
+   },
+   {
+    "fr": "Oui, c'est moi. Ça va ?",
+    "pt": "Sou eu. Tudo bem?"
+   },
+   {
+    "fr": "Ça va, et toi ?",
+    "pt": "Tudo, e você?"
+   },
+   {
+    "fr": "Je t'appelle pour ce soir.",
+    "pt": "Estou te ligando por causa de hoje à noite."
+   },
+   {
+    "fr": "Tu es libre vers sept heures ?",
+    "pt": "Você está livre lá pelas sete?"
+   },
+   {
+    "fr": "Je suis encore au travail.",
+    "pt": "Eu ainda estou no trabalho."
+   },
+   {
+    "fr": "Je te rappelle dans dix minutes.",
+    "pt": "Te ligo de volta em dez minutos."
+   },
+   {
+    "fr": "Je n'entends pas bien, ça coupe.",
+    "pt": "Não estou ouvindo direito, está cortando."
+   },
+   {
+    "fr": "Je t'envoie un message sur le téléphone.",
+    "pt": "Te mando uma mensagem no celular."
+   },
+   {
+    "fr": "D'accord, bisous, à plus tard !",
+    "pt": "Combinado, beijo, até mais tarde!"
+   }
+  ]
+ },
+ {
+  "title": "Parler de son animal",
+  "phrases": [
+   {
+    "fr": "Tu as un animal de compagnie ?",
+    "pt": "Você tem algum bicho de estimação?"
+   },
+   {
+    "fr": "J'ai un chien qui s'appelle Bob.",
+    "pt": "Eu tenho um cachorro que se chama Bob."
+   },
+   {
+    "fr": "Il a trois ans.",
+    "pt": "Ele tem três anos."
+   },
+   {
+    "fr": "Il est très joueur.",
+    "pt": "Ele é muito brincalhão."
+   },
+   {
+    "fr": "Je le promène tous les matins.",
+    "pt": "Eu passeio com ele toda manhã."
+   },
+   {
+    "fr": "Ma sœur a deux chats.",
+    "pt": "Minha irmã tem dois gatos."
+   },
+   {
+    "fr": "Les chats dorment toute la journée.",
+    "pt": "Os gatos dormem o dia inteiro."
+   },
+   {
+    "fr": "Je suis allergique aux chats.",
+    "pt": "Eu tenho alergia a gato."
+   },
+   {
+    "fr": "Il peut venir avec nous à la plage ?",
+    "pt": "Ele pode ir com a gente à praia?"
+   },
+   {
+    "fr": "Il est trop mignon !",
+    "pt": "Ele é uma graça!"
+   }
+  ]
+ },
+ {
+  "title": "Décrire son appartement",
+  "phrases": [
+   {
+    "fr": "J'habite dans un petit appartement.",
+    "pt": "Eu moro num apartamento pequeno."
+   },
+   {
+    "fr": "Il y a deux chambres.",
+    "pt": "Tem dois quartos."
+   },
+   {
+    "fr": "La cuisine est petite mais pratique.",
+    "pt": "A cozinha é pequena, mas prática."
+   },
+   {
+    "fr": "J'ai un balcon avec vue sur la mer.",
+    "pt": "Eu tenho uma varanda com vista para o mar."
+   },
+   {
+    "fr": "L'immeuble a une piscine.",
+    "pt": "O prédio tem piscina."
+   },
+   {
+    "fr": "Le gardien est très gentil.",
+    "pt": "O porteiro é muito gentil."
+   },
+   {
+    "fr": "La salle de bains est neuve.",
+    "pt": "O banheiro é novo."
+   },
+   {
+    "fr": "Le loyer est un peu cher.",
+    "pt": "O aluguel é um pouco caro."
+   },
+   {
+    "fr": "C'est près du métro.",
+    "pt": "Fica perto do metrô."
+   },
+   {
+    "fr": "Viens dîner chez moi un de ces jours.",
+    "pt": "Vem jantar lá em casa qualquer dia."
+   }
+  ]
+ },
+ {
+  "title": "Parler de football",
+  "phrases": [
+   {
+    "fr": "Tu es supporter de quelle équipe ?",
+    "pt": "Você torce para qual time?"
+   },
+   {
+    "fr": "Je suis supporter de Flamengo.",
+    "pt": "Eu sou flamenguista."
+   },
+   {
+    "fr": "Mon père préfère Fluminense.",
+    "pt": "Meu pai prefere o Fluminense."
+   },
+   {
+    "fr": "Il y a un match ce soir au Maracanã.",
+    "pt": "Tem jogo hoje à noite no Maracanã."
+   },
+   {
+    "fr": "On regarde le match au bar ?",
+    "pt": "Vamos ver o jogo no bar?"
+   },
+   {
+    "fr": "Qui a gagné hier ?",
+    "pt": "Quem ganhou ontem?"
+   },
+   {
+    "fr": "On a perdu deux à un.",
+    "pt": "A gente perdeu de dois a um."
+   },
+   {
+    "fr": "Quel beau but !",
+    "pt": "Que golaço!"
+   },
+   {
+    "fr": "Je joue au foot le jeudi soir.",
+    "pt": "Eu jogo bola na quinta à noite."
+   },
+   {
+    "fr": "Tu veux jouer avec nous ?",
+    "pt": "Quer jogar com a gente?"
+   }
+  ]
+ },
+ {
+  "title": "Inviter un collègue au cafezinho",
+  "phrases": [
+   {
+    "fr": "On prend un café ?",
+    "pt": "Vamos tomar um cafezinho?"
+   },
+   {
+    "fr": "Quand est-ce que tu as une pause ?",
+    "pt": "Quando você tem um intervalo?"
+   },
+   {
+    "fr": "Je suis libre dans un quart d'heure.",
+    "pt": "Estou livre daqui a quinze minutos."
+   },
+   {
+    "fr": "Où est le meilleur café du quartier ?",
+    "pt": "Onde fica o melhor café do bairro?"
+   },
+   {
+    "fr": "Il y a une boulangerie juste en face.",
+    "pt": "Tem uma padaria bem em frente."
+   },
+   {
+    "fr": "Qu'est-ce que tu prends ?",
+    "pt": "O que você vai querer?"
+   },
+   {
+    "fr": "Un café au lait et un pão de queijo.",
+    "pt": "Um café com leite e um pão de queijo."
+   },
+   {
+    "fr": "Comment s'est passée ta réunion ?",
+    "pt": "Como foi a sua reunião?"
+   },
+   {
+    "fr": "Quel est ton projet en ce moment ?",
+    "pt": "Qual é o seu projeto agora?"
+   },
+   {
+    "fr": "C'est moi qui invite aujourd'hui.",
+    "pt": "Hoje quem paga sou eu."
+   }
+  ],
+  "tip": {
+   "title": "Les mots interrogatifs « O que, Qual, Como, Onde, Quando »",
+   "example": "Où est le meilleur café du quartier ? — <b>Onde</b> fica o melhor café do bairro?",
+   "body": "Les questions commencent par un mot interrogatif, sans inversion du sujet : o que (quoi, qu'est-ce que), qual (quel, lequel), como (comment), onde (où), quando (quand). Attention : devant « é », « quel » se dit « qual » : Qual é o seu nome ? À l'oral, on ajoute souvent « é que » : O que é que você quer ?"
+  }
+ },
+ {
+  "title": "Parler de musique",
+  "phrases": [
+   {
+    "fr": "Quelle musique est-ce que tu écoutes ?",
+    "pt": "Que tipo de música você escuta?"
+   },
+   {
+    "fr": "J'adore la bossa nova.",
+    "pt": "Eu adoro bossa nova."
+   },
+   {
+    "fr": "Mon frère préfère le rock.",
+    "pt": "Meu irmão prefere rock."
+   },
+   {
+    "fr": "Il y a un concert de samba samedi.",
+    "pt": "Tem uma roda de samba no sábado."
+   },
+   {
+    "fr": "On y va ensemble ?",
+    "pt": "Vamos juntos?"
+   },
+   {
+    "fr": "L'entrée est gratuite.",
+    "pt": "A entrada é grátis."
+   },
+   {
+    "fr": "Cette chanson me rappelle mon enfance.",
+    "pt": "Essa música me lembra a minha infância."
+   },
+   {
+    "fr": "Je chante très mal.",
+    "pt": "Eu canto muito mal."
+   },
+   {
+    "fr": "Elle joue du cavaquinho dans un groupe.",
+    "pt": "Ela toca cavaquinho numa banda."
+   },
+   {
+    "fr": "Mets le son plus fort !",
+    "pt": "Aumenta o som!"
+   }
+  ]
+ },
+ {
+  "title": "Les goûts culinaires",
+  "phrases": [
+   {
+    "fr": "Quel est ton plat préféré ?",
+    "pt": "Qual é o seu prato preferido?"
+   },
+   {
+    "fr": "J'adore la feijoada.",
+    "pt": "Eu adoro feijoada."
+   },
+   {
+    "fr": "Je mange du riz et des haricots tous les jours.",
+    "pt": "Eu como arroz e feijão todo dia."
+   },
+   {
+    "fr": "Tu aimes la nourriture épicée ?",
+    "pt": "Você gosta de comida apimentada?"
+   },
+   {
+    "fr": "Un peu, mais pas trop.",
+    "pt": "Um pouco, mas não muito."
+   },
+   {
+    "fr": "Je suis végétarien depuis deux ans.",
+    "pt": "Eu sou vegetariano há dois anos."
+   },
+   {
+    "fr": "Les fruits ici sont délicieux.",
+    "pt": "As frutas aqui são deliciosas."
+   },
+   {
+    "fr": "Mon jus préféré, c'est le jus de mangue.",
+    "pt": "Meu suco preferido é o de manga."
+   },
+   {
+    "fr": "Tu sais cuisiner ?",
+    "pt": "Você sabe cozinhar?"
+   },
+   {
+    "fr": "Je fais des brigadeiros pour la fête.",
+    "pt": "Eu faço brigadeiro para a festa."
+   }
+  ]
+ },
+ {
+  "title": "Faire un compliment",
+  "phrases": [
+   {
+    "fr": "Ta robe est très jolie.",
+    "pt": "Seu vestido é muito bonito."
+   },
+   {
+    "fr": "Merci, je l'ai achetée hier.",
+    "pt": "Obrigada, comprei ontem."
+   },
+   {
+    "fr": "Ta maison est magnifique.",
+    "pt": "Sua casa é linda."
+   },
+   {
+    "fr": "Tu cuisines vraiment bien.",
+    "pt": "Você cozinha muito bem."
+   },
+   {
+    "fr": "Ce gâteau est délicieux.",
+    "pt": "Esse bolo está uma delícia."
+   },
+   {
+    "fr": "Tu as l'air en pleine forme.",
+    "pt": "Você está com uma cara ótima."
+   },
+   {
+    "fr": "J'aime beaucoup ta coupe de cheveux.",
+    "pt": "Eu gostei muito do seu corte de cabelo."
+   },
+   {
+    "fr": "Tes photos sont superbes.",
+    "pt": "Suas fotos estão incríveis."
+   },
+   {
+    "fr": "Tu es très gentil.",
+    "pt": "Você é muito gentil."
+   },
+   {
+    "fr": "Tu me flattes !",
+    "pt": "Assim você me deixa sem graça!"
+   }
+  ]
+ },
+ {
+  "title": "Exprimer un désaccord gentiment",
+  "phrases": [
+   {
+    "fr": "Je ne suis pas tout à fait d'accord.",
+    "pt": "Eu não concordo muito."
+   },
+   {
+    "fr": "Je pense un peu différemment.",
+    "pt": "Eu penso um pouquinho diferente."
+   },
+   {
+    "fr": "Tu as peut-être raison.",
+    "pt": "Talvez você tenha razão."
+   },
+   {
+    "fr": "Mais je préfère la plage à la montagne.",
+    "pt": "Mas eu prefiro praia a montanha."
+   },
+   {
+    "fr": "Attends un petit moment, s'il te plaît.",
+    "pt": "Espera um minutinho, por favor."
+   },
+   {
+    "fr": "Ce n'est pas grave.",
+    "pt": "Não tem problema."
+   },
+   {
+    "fr": "On peut en parler plus tard.",
+    "pt": "A gente pode conversar depois."
+   },
+   {
+    "fr": "Je comprends ton point de vue.",
+    "pt": "Eu entendo o seu ponto de vista."
+   },
+   {
+    "fr": "Chacun ses goûts.",
+    "pt": "Cada um com seu gosto."
+   },
+   {
+    "fr": "On prend un petit café pour en discuter ?",
+    "pt": "Vamos tomar um cafezinho para conversar?"
+   }
+  ],
+  "tip": {
+   "title": "Les diminutifs en « -inho / -inha »",
+   "example": "Attends un petit moment, s'il te plaît. — Espera um <b>minutinho</b>, por favor.",
+   "body": "Les Brésiliens adorent les diminutifs : on ajoute « -inho » (masculin) ou « -inha » (féminin) à la fin du mot. Ils servent à dire « petit », mais surtout à adoucir une phrase ou à la rendre affectueuse : um minutinho (une petite minute), um cafezinho (un petit café), devagarinho (tout doucement). C'est une façon très naturelle de paraître aimable."
+  }
+ },
+ {
+  "title": "Se dire au revoir après une soirée",
+  "phrases": [
+   {
+    "fr": "Il est déjà minuit !",
+    "pt": "Já é meia-noite!"
+   },
+   {
+    "fr": "Je dois y aller, je travaille demain.",
+    "pt": "Eu preciso ir, amanhã eu trabalho."
+   },
+   {
+    "fr": "Merci pour la soirée.",
+    "pt": "Obrigado pela noite."
+   },
+   {
+    "fr": "C'était vraiment génial.",
+    "pt": "Foi muito legal mesmo."
+   },
+   {
+    "fr": "Tu rentres comment ?",
+    "pt": "Como você vai voltar?"
+   },
+   {
+    "fr": "Je vais appeler un taxi.",
+    "pt": "Vou chamar um táxi."
+   },
+   {
+    "fr": "Envoie-moi un message quand tu arrives.",
+    "pt": "Me manda mensagem quando chegar."
+   },
+   {
+    "fr": "On se revoit bientôt ?",
+    "pt": "A gente se vê logo?"
+   },
+   {
+    "fr": "Bien sûr, avec plaisir.",
+    "pt": "Claro, com certeza."
+   },
+   {
+    "fr": "Bonne nuit et rentre bien !",
+    "pt": "Boa noite e vai com Deus!"
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan",
+  "phrases": [
+   {
+    "fr": "Bravo, tu as terminé ce module !",
+    "pt": "Parabéns, você terminou este módulo!"
+   },
+   {
+    "fr": "Maintenant, tu sais te présenter.",
+    "pt": "Agora você sabe se apresentar."
+   },
+   {
+    "fr": "Tu peux parler de ta famille et de ton travail.",
+    "pt": "Você consegue falar da sua família e do seu trabalho."
+   },
+   {
+    "fr": "Tu sais inviter quelqu'un à un churrasco.",
+    "pt": "Você sabe convidar alguém para um churrasco."
+   },
+   {
+    "fr": "Tu peux donner ton avis gentiment.",
+    "pt": "Você consegue dar a sua opinião com jeitinho."
+   },
+   {
+    "fr": "Ton portugais progresse vite.",
+    "pt": "Seu português está melhorando rápido."
+   },
+   {
+    "fr": "N'aie pas peur de faire des erreurs.",
+    "pt": "Não tenha medo de errar."
+   },
+   {
+    "fr": "Les Brésiliens sont très patients.",
+    "pt": "Os brasileiros são muito pacientes."
+   },
+   {
+    "fr": "Continue à parler tous les jours.",
+    "pt": "Continue falando todo dia."
+   },
+   {
+    "fr": "Rendez-vous au niveau suivant !",
+    "pt": "Até o próximo nível!"
+   }
+  ]
+ }
 ];
 
-/* ============================================================
-   NIVEAU 2
-   ============================================================ */
-
 const level2Module1Lessons = [
-  { title:"S'inscrire à la mairie", phrases:[
-    {fr:"Je dois m'inscrire à la mairie du quartier.", de:"Ich muss mich beim Bürgeramt des Viertels anmelden."},
-    {fr:"Avez-vous pris rendez-vous en ligne ?", de:"Haben Sie online einen Termin vereinbart?"},
-    {fr:"Oui, pour dix heures ce matin.", de:"Ja, für zehn Uhr heute Morgen."},
-    {fr:"Avez-vous apporté votre contrat de bail ?", de:"Haben Sie Ihren Mietvertrag mitgebracht?"},
-    {fr:"Oui, voici une copie signée.", de:"Ja, hier ist eine unterschriebene Kopie."},
-    {fr:"Vous recevrez votre certificat par courrier.", de:"Sie erhalten Ihre Bescheinigung per Post."},
-    {fr:"Combien de temps cela prend-il généralement ?", de:"Wie lange dauert das normalerweise?"},
-    {fr:"Environ une semaine, parfois moins.", de:"Etwa eine Woche, manchmal weniger."},
-    {fr:"Cette démarche est obligatoire dans les deux semaines.", de:"Diese Formalität ist innerhalb von zwei Wochen Pflicht."},
-    {fr:"Merci, je m'en occupe tout de suite alors.", de:"Danke, ich erledige das dann sofort."}
-  ]},
-  { title:"Ouvrir un compte en banque", phrases:[
-    {fr:"Je voudrais ouvrir un compte courant.", de:"Ich möchte ein Girokonto eröffnen."},
-    {fr:"Ce conseiller pourra vous aider avec plaisir.", de:"Dieser Berater kann Ihnen gern helfen."},
-    {fr:"Cette offre me plaît beaucoup.", de:"Dieses Angebot gefällt mir sehr."},
-    {fr:"Y a-t-il des frais mensuels ?", de:"Gibt es monatliche Gebühren?"},
-    {fr:"Non, le compte est entièrement gratuit.", de:"Nein, das Konto ist vollkommen kostenlos."},
-    {fr:"Je dois aussi commander une carte bancaire.", de:"Ich muss auch eine Bankkarte bestellen."},
-    {fr:"Elle vous arrivera par la poste sous une semaine.", de:"Sie kommt Ihnen innerhalb einer Woche mit der Post."},
-    {fr:"Pouvez-vous m'aider à configurer l'application ?", de:"Können Sie mir helfen, die App einzurichten?"},
-    {fr:"Bien sûr, cela ne prendra que quelques minutes.", de:"Natürlich, das dauert nur ein paar Minuten."},
-    {fr:"Merci infiniment pour votre patience.", de:"Vielen herzlichen Dank für Ihre Geduld."}
-  ], tip:{
-    title:"Le datif après des verbes comme « helfen » et « gefallen »",
-    example:"Ce conseiller pourra vous aider avec plaisir. — Dieser Berater kann <b>Ihnen</b> gern helfen.",
-    body:"Certains verbes allemands très courants demandent toujours le datif pour leur complément, même quand le français utilise un complément direct : helfen (aider), gefallen (plaire), danken (remercier). On dit donc jemandem helfen, et non jemanden helfen."
-  }},
-  { title:"Une visite chez le médecin", phrases:[
-    {fr:"J'ai rendez-vous à onze heures avec le docteur Fischer.", de:"Ich habe um elf Uhr einen Termin bei Doktor Fischer."},
-    {fr:"Depuis quand avez-vous ces symptômes ?", de:"Seit wann haben Sie diese Beschwerden?"},
-    {fr:"Depuis environ une semaine, docteur.", de:"Seit etwa einer Woche, Herr Doktor."},
-    {fr:"Je vais vous examiner la gorge rapidement.", de:"Ich werde Ihnen kurz den Hals untersuchen."},
-    {fr:"Ce n'est rien de grave, rassurez-vous.", de:"Das ist nichts Ernstes, keine Sorge."},
-    {fr:"Je vous prescris des antibiotiques pour cinq jours.", de:"Ich verschreibe Ihnen Antibiotika für fünf Tage."},
-    {fr:"Dois-je revenir après le traitement ?", de:"Muss ich nach der Behandlung wiederkommen?"},
-    {fr:"Seulement si les symptômes persistent.", de:"Nur wenn die Beschwerden anhalten."},
-    {fr:"Merci docteur, bonne journée à vous.", de:"Danke, Herr Doktor, einen schönen Tag."},
-    {fr:"Prenez soin de vous et reposez-vous bien.", de:"Passen Sie auf sich auf und ruhen Sie sich gut aus."}
-  ]},
-  { title:"Le Biergarten du quartier le soir", phrases:[
-    {fr:"On se retrouve au Biergarten après le travail ?", de:"Treffen wir uns nach der Arbeit im Biergarten?"},
-    {fr:"Avec plaisir, il fait encore bon ce soir.", de:"Gern, es ist heute Abend noch angenehm warm."},
-    {fr:"Les tables en bois sont presque toutes prises.", de:"Die Holztische sind fast alle besetzt."},
-    {fr:"On trouve encore une place là-bas, au fond.", de:"Dort hinten finden wir noch einen Platz."},
-    {fr:"Qu'est-ce que tu prends comme bière ?", de:"Was nimmst du für ein Bier?"},
-    {fr:"Une bière brune, légèrement houblonnée.", de:"Ein dunkles Bier, leicht hopfig."},
-    {fr:"Ces grands bretzels salés sont parfaits à partager.", de:"Diese großen, gesalzenen Brezeln sind perfekt zum Teilen."},
-    {fr:"L'ambiance ici est toujours très décontractée.", de:"Die Atmosphäre hier ist immer sehr entspannt."},
-    {fr:"C'est une vraie tradition sociale en Allemagne.", de:"Das ist eine echte soziale Tradition in Deutschland."},
-    {fr:"On devrait venir plus souvent, franchement.", de:"Wir sollten ehrlich gesagt öfter kommen."}
-  ]},
-  { title:"Hier au travail", phrases:[
-    {fr:"Hier, j'ai travaillé sur un projet important.", de:"Gestern habe ich an einem wichtigen Projekt gearbeitet."},
-    {fr:"Qu'as-tu fait exactement toute la journée ?", de:"Was genau hast du den ganzen Tag gemacht?"},
-    {fr:"J'ai préparé une présentation pour mon équipe.", de:"Ich habe eine Präsentation für mein Team vorbereitet."},
-    {fr:"As-tu réussi à finir à temps ?", de:"Hast du es geschafft, rechtzeitig fertig zu werden?"},
-    {fr:"Oui, j'ai terminé juste avant la réunion.", de:"Ja, ich habe kurz vor dem Meeting fertiggestellt."},
-    {fr:"Mon collègue m'a beaucoup aidé, heureusement.", de:"Mein Kollege hat mir glücklicherweise viel geholfen."},
-    {fr:"Avez-vous présenté le projet à la direction ?", de:"Habt ihr das Projekt der Geschäftsleitung präsentiert?"},
-    {fr:"Oui, et ils ont beaucoup apprécié notre travail.", de:"Ja, und sie haben unsere Arbeit sehr geschätzt."},
-    {fr:"C'est une excellente nouvelle pour l'équipe.", de:"Das ist eine ausgezeichnete Nachricht für das Team."},
-    {fr:"Nous avons bien mérité ce succès.", de:"Wir haben diesen Erfolg wirklich verdient."}
-  ], tip:{
-    title:"Le Perfekt (passé composé) avec « haben »",
-    example:"Hier, j'ai travaillé sur un projet important. — Gestern <b>habe</b> ich an einem wichtigen Projekt <b>gearbeitet</b>.",
-    body:"La plupart des verbes allemands forment leur passé (Perfekt) avec « haben » au présent + le participe passé, qui part en fin de phrase : ich habe gearbeitet, du hast gelernt, er hat gegessen. C'est le temps le plus utilisé à l'oral pour parler du passé, bien plus que le prétérit."
-  }},
-  { title:"Le week-end dernier", phrases:[
-    {fr:"Qu'as-tu fait le week-end dernier ?", de:"Was hast du letztes Wochenende gemacht?"},
-    {fr:"Je suis allé à la campagne avec des amis.", de:"Ich bin mit Freunden aufs Land gefahren."},
-    {fr:"Nous sommes partis vendredi soir déjà.", de:"Wir sind schon Freitagabend losgefahren."},
-    {fr:"Êtes-vous restés dans un hôtel ?", de:"Seid ihr in einem Hotel geblieben?"},
-    {fr:"Non, nous sommes restés chez un ami.", de:"Nein, wir sind bei einem Freund geblieben."},
-    {fr:"Je suis rentré dimanche soir, fatigué mais content.", de:"Ich bin Sonntagabend zurückgekommen, müde aber zufrieden."},
-    {fr:"Êtes-vous arrivés à temps pour la randonnée ?", de:"Seid ihr rechtzeitig für die Wanderung angekommen?"},
-    {fr:"Oui, nous sommes partis à l'aube.", de:"Ja, wir sind im Morgengrauen losgegangen."},
-    {fr:"C'était un week-end vraiment ressourçant.", de:"Das war ein wirklich erholsames Wochenende."},
-    {fr:"On devrait recommencer très bientôt.", de:"Das sollten wir sehr bald wiederholen."}
-  ], tip:{
-    title:"Le Perfekt avec « sein » : les verbes de mouvement",
-    example:"Je suis allé à la campagne avec des amis. — Ich <b>bin</b> mit Freunden aufs Land <b>gefahren</b>.",
-    body:"Les verbes exprimant un déplacement ou un changement d'état (fahren, gehen, kommen, bleiben, aufstehen) forment leur Perfekt avec « sein » et non « haben » : ich bin gefahren, du bist gekommen, sie ist geblieben. C'est une exception importante à retenir, car la plupart des autres verbes utilisent « haben »."
-  }},
-  { title:"Une panne d'électricité", phrases:[
-    {fr:"Le courant vient de couper dans tout l'immeuble.", de:"Der Strom ist gerade im ganzen Haus ausgefallen."},
-    {fr:"As-tu vérifié le tableau électrique ?", de:"Hast du den Sicherungskasten überprüft?"},
-    {fr:"Oui, aucun fusible n'a sauté apparemment.", de:"Ja, offensichtlich ist keine Sicherung herausgesprungen."},
-    {fr:"C'est peut-être une panne générale du quartier.", de:"Vielleicht ist es ein allgemeiner Stromausfall im Viertel."},
-    {fr:"Je vais appeler le fournisseur d'électricité.", de:"Ich rufe den Stromanbieter an."},
-    {fr:"Ils disent que ça devrait revenir dans une heure.", de:"Sie sagen, es sollte in einer Stunde wieder da sein."},
-    {fr:"Allumons quelques bougies en attendant.", de:"Zünden wir in der Zwischenzeit ein paar Kerzen an."},
-    {fr:"Le silence sans électricité est presque agréable.", de:"Die Stille ohne Strom ist fast angenehm."},
-    {fr:"Finalement, le courant est revenu plus tôt que prévu.", de:"Letztendlich kam der Strom früher zurück als erwartet."},
-    {fr:"Quelle soirée inattendue, mais sympathique.", de:"Was für ein unerwarteter, aber netter Abend."}
-  ]},
-  { title:"Les voisins du dessus", phrases:[
-    {fr:"Les voisins du dessus font beaucoup de bruit ce soir.", de:"Die Nachbarn von oben machen heute Abend viel Lärm."},
-    {fr:"Peut-être qu'ils organisent une petite fête.", de:"Vielleicht feiern sie eine kleine Party."},
-    {fr:"Devrions-nous aller leur parler poliment ?", de:"Sollten wir höflich mit ihnen sprechen?"},
-    {fr:"Oui, ça vaut mieux que de se plaindre tout de suite.", de:"Ja, das ist besser, als sich sofort zu beschweren."},
-    {fr:"Bonsoir, pourriez-vous baisser un peu le volume ?", de:"Guten Abend, könnten Sie die Lautstärke etwas senken?"},
-    {fr:"Désolé, on ne s'était pas rendu compte de l'heure.", de:"Entschuldigung, uns war die Zeit nicht bewusst."},
-    {fr:"Aucun problème, merci de votre compréhension.", de:"Kein Problem, danke für Ihr Verständnis."},
-    {fr:"Après le règlement de l'immeuble, le calme revient à vingt-deux heures.", de:"Laut Hausordnung kehrt um zweiundzwanzig Uhr Ruhe ein."},
-    {fr:"C'est une règle assez courante en Allemagne.", de:"Das ist eine recht übliche Regel in Deutschland."},
-    {fr:"Au moins, le problème s'est résolu facilement.", de:"Wenigstens hat sich das Problem leicht gelöst."}
-  ]},
-  { title:"Le jour de la lessive", phrases:[
-    {fr:"Aujourd'hui, c'est mon tour pour la machine à laver.", de:"Heute bin ich mit der Waschmaschine dran."},
-    {fr:"Il y a un planning affiché dans la cave.", de:"Im Keller hängt ein Plan aus."},
-    {fr:"Chaque locataire a un créneau précis.", de:"Jeder Mieter hat einen genauen Zeitschlitz."},
-    {fr:"Le mien est entre quatorze et seize heures.", de:"Meiner ist zwischen vierzehn und sechzehn Uhr."},
-    {fr:"N'oublie pas d'apporter de la lessive.", de:"Vergiss nicht, Waschmittel mitzubringen."},
-    {fr:"Le sèche-linge est souvent occupé le week-end.", de:"Der Trockner ist am Wochenende oft besetzt."},
-    {fr:"Je préfère étendre le linge sur le balcon.", de:"Ich hänge die Wäsche lieber auf dem Balkon auf."},
-    {fr:"C'est plus écologique, effectivement.", de:"Das ist tatsächlich umweltfreundlicher."},
-    {fr:"Et ça sent tellement bon le grand air.", de:"Und es riecht so gut nach frischer Luft."},
-    {fr:"Cette routine devient presque relaxante avec le temps.", de:"Diese Routine wird mit der Zeit fast entspannend."}
-  ]},
-  { title:"Le tri des déchets, en détail", phrases:[
-    {fr:"Il existe cinq bacs différents dans notre cour.", de:"In unserem Hof gibt es fünf verschiedene Tonnen."},
-    {fr:"Le papier et le carton vont dans le bac bleu.", de:"Papier und Karton kommen in die blaue Tonne."},
-    {fr:"Et le verre, dans quel conteneur exactement ?", de:"Und Glas, in welchen Container genau?"},
-    {fr:"Dans les conteneurs de verre près du parc.", de:"In die Glascontainer in der Nähe des Parks."},
-    {fr:"Il faut aussi trier par couleur, apparemment.", de:"Man muss offenbar auch nach Farbe trennen."},
-    {fr:"Oui, blanc, vert et marron séparément.", de:"Ja, weiß, grün und braun getrennt."},
-    {fr:"C'est un système plutôt strict, mais efficace.", de:"Das ist ein ziemlich strenges, aber effizientes System."},
-    {fr:"Les déchets organiques vont dans le bac marron.", de:"Bioabfall kommt in die braune Tonne."},
-    {fr:"Et le reste dans le bac noir habituel.", de:"Und der Rest in die übliche schwarze Tonne."},
-    {fr:"Une fois qu'on a compris, c'est plutôt logique.", de:"Sobald man es verstanden hat, ist es recht logisch."}
-  ]},
-  { title:"Rénover la cuisine", phrases:[
-    {fr:"Nous voulons rénover complètement notre cuisine.", de:"Wir möchten unsere Küche komplett renovieren."},
-    {fr:"Avez-vous déjà un budget en tête ?", de:"Haben Sie schon ein Budget im Kopf?"},
-    {fr:"Environ dix mille euros, pas plus.", de:"Etwa zehntausend Euro, nicht mehr."},
-    {fr:"Quel style de cuisine préférez-vous ?", de:"Welchen Küchenstil bevorzugen Sie?"},
-    {fr:"Quelque chose de moderne, avec beaucoup de rangements.", de:"Etwas Modernes, mit viel Stauraum."},
-    {fr:"Les travaux dureront environ trois semaines.", de:"Die Arbeiten dauern etwa drei Wochen."},
-    {fr:"Pourrons-nous rester dans l'appartement pendant ce temps ?", de:"Können wir während dieser Zeit in der Wohnung bleiben?"},
-    {fr:"Oui, mais la cuisine sera inutilisable quelques jours.", de:"Ja, aber die Küche wird ein paar Tage unbenutzbar sein."},
-    {fr:"On commandera des plats à emporter alors.", de:"Dann bestellen wir eben Essen zum Mitnehmen."},
-    {fr:"Le résultat final en vaudra vraiment la peine.", de:"Das Endergebnis wird sich wirklich lohnen."}
-  ]},
-  { title:"Un dîner improvisé avec des amis", phrases:[
-    {fr:"Je t'appelle pour t'inviter ce soir, si tu es libre.", de:"Ich rufe dich an, um dich heute Abend einzuladen, falls du Zeit hast."},
-    {fr:"Je te remercie, mais je dois d'abord vérifier.", de:"Ich danke dir, aber ich muss erst nachsehen."},
-    {fr:"Nous leur avons déjà envoyé l'adresse.", de:"Wir haben ihnen bereits die Adresse geschickt."},
-    {fr:"Peux-tu nous apporter une bouteille de vin ?", de:"Kannst du uns eine Flasche Wein mitbringen?"},
-    {fr:"Bien sûr, je vous l'apporte avec plaisir.", de:"Natürlich, ich bringe sie euch gern mit."},
-    {fr:"Il me manque encore quelques ingrédients.", de:"Mir fehlen noch ein paar Zutaten."},
-    {fr:"Je peux te prêter ce qu'il te faut.", de:"Ich kann dir leihen, was du brauchst."},
-    {fr:"Merci beaucoup, ça m'aide énormément.", de:"Vielen Dank, das hilft mir sehr."},
-    {fr:"On lui doit vraiment ce bon moment ensemble.", de:"Wir verdanken ihr wirklich diesen schönen Moment zusammen."},
-    {fr:"Ce dîner improvisé était finalement une super idée.", de:"Dieses spontane Abendessen war letztendlich eine super Idee."}
-  ], tip:{
-    title:"Les pronoms personnels à l'accusatif et au datif",
-    example:"Peux-tu nous apporter une bouteille de vin ? — Kannst du <b>uns</b> eine Flasche Wein mitbringen?",
-    body:"Les pronoms personnels changent de forme selon le cas : à l'accusatif (mich, dich, ihn/sie/es, uns, euch, sie), au datif (mir, dir, ihm/ihr/ihm, uns, euch, ihnen). Un verbe comme « mitbringen » prend souvent les deux : un datif (à qui) et un accusatif (quoi) : Kannst du mir das Buch mitbringen?"
-  }},
-  { title:"La salle de sport du quartier", phrases:[
-    {fr:"Je viens de m'inscrire à la salle de sport du coin.", de:"Ich habe mich gerade im Fitnessstudio um die Ecke angemeldet."},
-    {fr:"Quel genre d'abonnement as-tu pris ?", de:"Was für ein Abonnement hast du genommen?"},
-    {fr:"Un abonnement mensuel sans engagement.", de:"Ein monatliches Abo ohne Mindestlaufzeit."},
-    {fr:"Il y a aussi des cours collectifs intéressants.", de:"Es gibt auch interessante Gruppenkurse."},
-    {fr:"Lesquels t'intéressent le plus ?", de:"Welche interessieren dich am meisten?"},
-    {fr:"Le yoga et un peu de musculation.", de:"Yoga und etwas Krafttraining."},
-    {fr:"On pourrait y aller ensemble un jour.", de:"Wir könnten eines Tages zusammen hingehen."},
-    {fr:"Avec plaisir, je manque un peu de motivation seul.", de:"Gern, mir fehlt allein etwas Motivation."},
-    {fr:"On se fixe un rendez-vous fixe chaque semaine ?", de:"Legen wir jede Woche einen festen Termin fest?"},
-    {fr:"Parfait, mardi et jeudi soir me conviennent.", de:"Perfekt, Dienstag- und Donnerstagabend passen mir."}
-  ]},
-  { title:"Un jour férié allemand", phrases:[
-    {fr:"Demain, c'est un jour férié dans toute l'Allemagne.", de:"Morgen ist in ganz Deutschland ein Feiertag."},
-    {fr:"Les magasins seront-ils fermés toute la journée ?", de:"Werden die Geschäfte den ganzen Tag geschlossen sein?"},
-    {fr:"Oui, presque tous, sauf les boulangeries le matin.", de:"Ja, fast alle, außer Bäckereien am Morgen."},
-    {fr:"Que fait-on habituellement ce jour-là ?", de:"Was macht man an diesem Tag normalerweise?"},
-    {fr:"Beaucoup de familles organisent un grand repas.", de:"Viele Familien organisieren ein großes Essen."},
-    {fr:"On pourrait profiter du temps libre pour se promener.", de:"Wir könnten die freie Zeit für einen Spaziergang nutzen."},
-    {fr:"Bonne idée, la météo s'annonce clémente.", de:"Gute Idee, das Wetter soll mild werden."},
-    {fr:"Certains musées restent ouverts quand même.", de:"Manche Museen bleiben trotzdem geöffnet."},
-    {fr:"On pourrait en visiter un dans l'après-midi.", de:"Wir könnten am Nachmittag eines besichtigen."},
-    {fr:"Parfait, cette journée s'annonce vraiment agréable.", de:"Perfekt, dieser Tag verspricht wirklich angenehm zu werden."}
-  ]},
-  { title:"La tradition du dimanche calme", phrases:[
-    {fr:"Le dimanche, presque tout est fermé en Allemagne.", de:"Am Sonntag ist in Deutschland fast alles geschlossen."},
-    {fr:"C'est assez surprenant au début, non ?", de:"Das ist am Anfang ziemlich überraschend, oder?"},
-    {fr:"Oui, mais on finit par apprécier ce calme.", de:"Ja, aber man lernt diese Ruhe zu schätzen."},
-    {fr:"Les gens évitent même de faire trop de bruit.", de:"Die Leute vermeiden sogar, zu viel Lärm zu machen."},
-    {fr:"Tondre la pelouse le dimanche est quasiment interdit.", de:"Rasenmähen am Sonntag ist praktisch verboten."},
-    {fr:"C'est une loi officielle, pas juste une habitude.", de:"Das ist ein offizielles Gesetz, nicht nur eine Gewohnheit."},
-    {fr:"Que font les familles alors, sans magasins ouverts ?", de:"Was machen Familien dann, ohne offene Geschäfte?"},
-    {fr:"Elles se promènent souvent dans la nature.", de:"Sie machen oft Spaziergänge in der Natur."},
-    {fr:"Ou alors elles lisent tranquillement chez elles.", de:"Oder sie lesen ruhig zu Hause."},
-    {fr:"Ce rythme hebdomadaire finit par faire du bien.", de:"Dieser wöchentliche Rhythmus tut am Ende gut."}
-  ]},
-  { title:"Réparer un vélo", phrases:[
-    {fr:"Mon vélo a un pneu complètement crevé.", de:"Mein Fahrrad hat einen völlig platten Reifen."},
-    {fr:"Il y a un réparateur de vélos près de la gare.", de:"In der Nähe des Bahnhofs gibt es eine Fahrradwerkstatt."},
-    {fr:"Combien de temps faut-il pour une réparation simple ?", de:"Wie lange dauert eine einfache Reparatur?"},
-    {fr:"Environ vingt minutes, si ce n'est que ça.", de:"Etwa zwanzig Minuten, wenn es nur das ist."},
-    {fr:"Les freins grincent aussi un peu.", de:"Die Bremsen quietschen auch etwas."},
-    {fr:"Je vais aussi les régler tant que j'y suis.", de:"Ich stelle sie auch gleich ein, solange ich dabei bin."},
-    {fr:"Vous vendez des accessoires comme des lumières ?", de:"Verkaufen Sie auch Zubehör wie Lichter?"},
-    {fr:"Bien sûr, juste là sur cette étagère.", de:"Natürlich, genau dort auf diesem Regal."},
-    {fr:"Je prends aussi un antivol solide.", de:"Ich nehme auch ein stabiles Schloss."},
-    {fr:"Parfait, votre vélo est maintenant comme neuf.", de:"Perfekt, Ihr Fahrrad ist jetzt wie neu."}
-  ]},
-  { title:"Une visite à la mairie pour un document", phrases:[
-    {fr:"J'ai besoin d'un extrait de mon acte de naissance.", de:"Ich brauche einen Auszug aus meiner Geburtsurkunde."},
-    {fr:"Avez-vous apporté une pièce d'identité valide ?", de:"Haben Sie einen gültigen Ausweis mitgebracht?"},
-    {fr:"Oui, voici mon passeport.", de:"Ja, hier ist mein Reisepass."},
-    {fr:"Le document sera prêt dans quelques jours.", de:"Das Dokument ist in ein paar Tagen fertig."},
-    {fr:"Puis-je le récupérer en ligne plutôt ?", de:"Kann ich es stattdessen online abholen?"},
-    {fr:"Oui, vous recevrez un lien par e-mail.", de:"Ja, Sie erhalten einen Link per E-Mail."},
-    {fr:"Faut-il payer des frais pour cette démarche ?", de:"Muss man für diesen Vorgang eine Gebühr zahlen?"},
-    {fr:"Seulement dix euros, en espèces ou par carte.", de:"Nur zehn Euro, bar oder mit Karte."},
-    {fr:"Très bien, je vais payer par carte.", de:"Sehr gut, ich zahle mit Karte."},
-    {fr:"Merci pour votre aide, bonne journée.", de:"Danke für Ihre Hilfe, einen schönen Tag."}
-  ]},
-  { title:"Organiser un anniversaire", phrases:[
-    {fr:"On organise une fête surprise pour son anniversaire.", de:"Wir organisieren eine Überraschungsparty zu seinem Geburtstag."},
-    {fr:"Qui s'occupe d'inviter les proches ?", de:"Wer kümmert sich darum, die Nahestehenden einzuladen?"},
-    {fr:"Je m'en charge, j'ai déjà sa liste de contacts.", de:"Ich erledige das, ich habe schon seine Kontaktliste."},
-    {fr:"Il faudra aussi réserver un lieu adapté.", de:"Wir müssen auch einen passenden Ort reservieren."},
-    {fr:"Cette salle au-dessus du café pourrait convenir.", de:"Dieser Saal über dem Café könnte passen."},
-    {fr:"Et pour le gâteau, qui s'en occupe ?", de:"Und um den Kuchen, wer kümmert sich darum?"},
-    {fr:"Je connais une excellente pâtisserie du quartier.", de:"Ich kenne eine ausgezeichnete Bäckerei im Viertel."},
-    {fr:"Parfait, tout commence à bien se mettre en place.", de:"Perfekt, alles fängt an, sich gut zu fügen."},
-    {fr:"Il ne faut surtout pas qu'il se doute de quelque chose.", de:"Er darf vor allem nichts ahnen."},
-    {fr:"Ça va être une soirée vraiment mémorable.", de:"Das wird ein wirklich unvergesslicher Abend."}
-  ]},
-  { title:"Changer d'appartement", phrases:[
-    {fr:"Nous avons décidé de déménager avec notre famille.", de:"Wir haben beschlossen, mit unserer Familie umzuziehen."},
-    {fr:"Vous partez avec un camion de déménagement ?", de:"Zieht ihr mit einem Umzugswagen um?"},
-    {fr:"Oui, avec l'aide de quelques amis.", de:"Ja, mit der Hilfe ein paar Freunde."},
-    {fr:"Nous habiterons désormais près du parc.", de:"Wir werden ab jetzt in der Nähe des Parks wohnen."},
-    {fr:"Le trajet jusqu'au nouveau logement prend une heure.", de:"Die Fahrt zur neuen Wohnung dauert eine Stunde."},
-    {fr:"Je viens justement de chez le notaire.", de:"Ich komme gerade vom Notar."},
-    {fr:"Tout s'est bien passé pour la signature ?", de:"Ist alles gut gelaufen bei der Unterschrift?"},
-    {fr:"Oui, parfaitement, sans aucun souci.", de:"Ja, einwandfrei, ohne jegliches Problem."},
-    {fr:"On ira chez vous pour vous aider samedi.", de:"Wir kommen am Samstag zu euch, um zu helfen."},
-    {fr:"Merci mille fois pour votre gentillesse.", de:"Tausend Dank für eure Freundlichkeit."}
-  ], tip:{
-    title:"Les prépositions à datif fixe : mit, bei, nach, aus, zu",
-    example:"On ira chez vous pour vous aider samedi. — Wir kommen am Samstag <b>zu</b> euch, um zu helfen.",
-    body:"Certaines prépositions entraînent toujours le datif, sans exception : mit (avec), bei (chez/près de), nach (après/vers), aus (de, provenance), zu (vers, chez). On dit donc bei dir, zu euch, aus der Stadt, nach der Arbeit — à retenir comme un bloc, sans réfléchir au contexte."
-  }},
-  { title:"Fin du module : un bilan", phrases:[
-    {fr:"Ce module nous a plongés dans le vrai quotidien allemand.", de:"Dieses Modul hat uns in den echten deutschen Alltag eintauchen lassen."},
-    {fr:"On a appris à gérer les démarches administratives.", de:"Wir haben gelernt, mit den Verwaltungsangelegenheiten umzugehen."},
-    {fr:"Le passé composé n'a plus aucun secret pour nous.", de:"Das Perfekt hat für uns keine Geheimnisse mehr."},
-    {fr:"Le prochain module nous emmènera en voyage, à nouveau.", de:"Das nächste Modul nimmt uns wieder auf Reisen mit."},
-    {fr:"Le vocabulaire sera encore un peu plus riche.", de:"Der Wortschatz wird noch etwas reicher sein."},
-    {fr:"On sent vraiment une nette progression depuis le début.", de:"Man spürt wirklich einen deutlichen Fortschritt seit dem Anfang."},
-    {fr:"Chaque petite victoire compte énormément.", de:"Jeder kleine Erfolg zählt enorm."},
-    {fr:"Félicitations pour ce travail constant.", de:"Glückwunsch zu dieser beständigen Arbeit."},
-    {fr:"Profitons d'une courte pause avant de continuer.", de:"Lassen wir uns eine kurze Pause, bevor wir weitermachen."},
-    {fr:"À bientôt pour la suite de ce niveau.", de:"Bis bald für die Fortsetzung dieses Niveaus."}
-  ]}
+ {
+  "title": "Obtenir son CPF",
+  "phrases": [
+   {
+    "fr": "Pour presque tout ici, on te demande ton CPF.",
+    "pt": "Pra quase tudo aqui, pedem o seu CPF."
+   },
+   {
+    "fr": "Où est-ce que je peux faire ce numéro fiscal ?",
+    "pt": "Onde eu posso tirar esse número?"
+   },
+   {
+    "fr": "Tu peux le demander en ligne sur le site de la Receita Federal.",
+    "pt": "Você pode pedir pela internet, no site da Receita Federal."
+   },
+   {
+    "fr": "Il faut juste apporter son passeport et un justificatif de domicile.",
+    "pt": "É só levar o passaporte e um comprovante de residência."
+   },
+   {
+    "fr": "Je n'ai pas encore de facture à mon nom.",
+    "pt": "Eu ainda não tenho nenhuma conta no meu nome."
+   },
+   {
+    "fr": "Le contrat de location suffit, ne t'inquiète pas.",
+    "pt": "O contrato de aluguel já basta, não se preocupe."
+   },
+   {
+    "fr": "Combien de temps faut-il pour l'obtenir ?",
+    "pt": "Quanto tempo demora pra sair?"
+   },
+   {
+    "fr": "En général, c'est prêt en quelques jours.",
+    "pt": "Em geral, fica pronto em poucos dias."
+   },
+   {
+    "fr": "Sans CPF, impossible d'acheter une puce de téléphone.",
+    "pt": "Sem CPF, não dá pra comprar um chip de celular."
+   },
+   {
+    "fr": "Enfin, j'ai mon numéro, je suis officiellement installé !",
+    "pt": "Finalmente tenho o meu número, agora estou oficialmente instalado!"
+   }
+  ]
+ },
+ {
+  "title": "Ouvrir un compte en banque",
+  "phrases": [
+   {
+    "fr": "Bonjour, je voudrais ouvrir un compte courant.",
+    "pt": "Bom dia, eu gostaria de abrir uma conta corrente."
+   },
+   {
+    "fr": "Vous avez déjà rempli le formulaire en ligne ?",
+    "pt": "O senhor já preencheu o formulário on-line?"
+   },
+   {
+    "fr": "Oui, je l'ai rempli hier soir.",
+    "pt": "Sim, eu preenchi ontem à noite."
+   },
+   {
+    "fr": "J'ai aussi envoyé une photo de mes documents.",
+    "pt": "Eu também mandei uma foto dos meus documentos."
+   },
+   {
+    "fr": "Parfait, le directeur a déjà approuvé votre demande.",
+    "pt": "Perfeito, o gerente já aprovou o seu pedido."
+   },
+   {
+    "fr": "La carte arrive chez vous en une semaine.",
+    "pt": "O cartão chega na sua casa em uma semana."
+   },
+   {
+    "fr": "Et en attendant, vous pouvez payer avec Pix.",
+    "pt": "E enquanto isso, você pode pagar com Pix."
+   },
+   {
+    "fr": "J'ai déjà enregistré ma clé Pix dans l'application.",
+    "pt": "Eu já cadastrei a minha chave Pix no aplicativo."
+   },
+   {
+    "fr": "Ma collègue m'a conseillé cette banque.",
+    "pt": "A minha colega me indicou esse banco."
+   },
+   {
+    "fr": "Merci, vous m'avez beaucoup aidé.",
+    "pt": "Obrigado, o senhor me ajudou muito."
+   }
+  ],
+  "tip": {
+   "title": "Le « pretérito perfeito » des verbes réguliers",
+   "example": "Oui, je l'ai rempli hier soir. — Sim, eu <b>preenchi</b> ontem à noite.",
+   "body": "Pour une action terminée dans le passé, là où le français utilise le passé composé, le portugais emploie un temps simple : le pretérito perfeito. Pour les verbes en -ar : eu falei, você falou, a gente falou, eles falaram. En -er et -ir : eu comi, você comeu ; eu abri, você abriu. Pas d'auxiliaire : « j'ai mangé » se dit simplement « eu comi »."
+  }
+ },
+ {
+  "title": "Au poste de santé",
+  "phrases": [
+   {
+    "fr": "Je me sens mal depuis trois jours.",
+    "pt": "Estou me sentindo mal há três dias."
+   },
+   {
+    "fr": "Il y a un poste de santé tout près d'ici.",
+    "pt": "Tem um posto de saúde bem perto daqui."
+   },
+   {
+    "fr": "Les consultations sont gratuites, grâce au système public.",
+    "pt": "As consultas são gratuitas, graças ao SUS."
+   },
+   {
+    "fr": "Il faut prendre un numéro à l'accueil.",
+    "pt": "Tem que pegar uma senha na recepção."
+   },
+   {
+    "fr": "Quels sont vos symptômes ?",
+    "pt": "Quais são os seus sintomas?"
+   },
+   {
+    "fr": "J'ai mal à la gorge et un peu de fièvre.",
+    "pt": "Estou com dor de garganta e um pouco de febre."
+   },
+   {
+    "fr": "Vous êtes allergique à un médicament ?",
+    "pt": "Você tem alergia a algum remédio?"
+   },
+   {
+    "fr": "Non, à aucun, pour autant que je sache.",
+    "pt": "Não, a nenhum, que eu saiba."
+   },
+   {
+    "fr": "Buvez beaucoup d'eau et reposez-vous bien.",
+    "pt": "Beba bastante água e descanse bem."
+   },
+   {
+    "fr": "Revenez si la fièvre ne baisse pas.",
+    "pt": "Volte aqui se a febre não baixar."
+   }
+  ]
+ },
+ {
+  "title": "Le petit bar du coin le soir",
+  "phrases": [
+   {
+    "fr": "On se retrouve au bar du coin après le travail ?",
+    "pt": "Vamos nos encontrar no boteco da esquina depois do trabalho?"
+   },
+   {
+    "fr": "Bonne idée, il fait encore chaud ce soir.",
+    "pt": "Boa ideia, ainda está calor hoje à noite."
+   },
+   {
+    "fr": "Toutes les tables sur le trottoir sont déjà prises.",
+    "pt": "Todas as mesas na calçada já estão ocupadas."
+   },
+   {
+    "fr": "On peut s'asseoir au comptoir en attendant.",
+    "pt": "A gente pode sentar no balcão enquanto isso."
+   },
+   {
+    "fr": "Une bière bien fraîche, s'il vous plaît.",
+    "pt": "Uma cerveja bem gelada, por favor."
+   },
+   {
+    "fr": "Et une portion de frites pour partager.",
+    "pt": "E uma porção de batata frita pra dividir."
+   },
+   {
+    "fr": "Ici, on mange les meilleures coxinhas du quartier.",
+    "pt": "Aqui tem as melhores coxinhas do bairro."
+   },
+   {
+    "fr": "Le match commence à la télévision dans dix minutes.",
+    "pt": "O jogo começa na televisão daqui a dez minutos."
+   },
+   {
+    "fr": "Tout le monde ici soutient la même équipe.",
+    "pt": "Todo mundo aqui torce pro mesmo time."
+   },
+   {
+    "fr": "On se partage l'addition à la fin ?",
+    "pt": "A gente racha a conta no final?"
+   }
+  ]
+ },
+ {
+  "title": "Hier au travail",
+  "phrases": [
+   {
+    "fr": "Hier, je suis allé au bureau très tôt.",
+    "pt": "Ontem eu fui pro escritório bem cedo."
+   },
+   {
+    "fr": "Qu'est-ce que tu as fait toute la journée ?",
+    "pt": "O que você fez o dia inteiro?"
+   },
+   {
+    "fr": "J'ai fait une présentation pour toute l'équipe.",
+    "pt": "Eu fiz uma apresentação pra equipe toda."
+   },
+   {
+    "fr": "J'ai eu trois réunions à la suite.",
+    "pt": "Eu tive três reuniões seguidas."
+   },
+   {
+    "fr": "Le patron était de très bonne humeur.",
+    "pt": "O chefe estava de muito bom humor."
+   },
+   {
+    "fr": "Le soir, je suis resté coincé dans les embouteillages.",
+    "pt": "À noite, eu fiquei preso no trânsito."
+   },
+   {
+    "fr": "J'ai mis presque deux heures pour rentrer.",
+    "pt": "Eu levei quase duas horas pra voltar pra casa."
+   },
+   {
+    "fr": "Tu as pu dîner tranquillement ensuite ?",
+    "pt": "Você conseguiu jantar com calma depois?"
+   },
+   {
+    "fr": "Non, j'étais trop fatigué, je suis allé dormir.",
+    "pt": "Não, eu estava cansado demais, fui dormir."
+   },
+   {
+    "fr": "J'ai été très occupé toute la semaine.",
+    "pt": "Eu estive muito ocupado a semana toda."
+   }
+  ],
+  "tip": {
+   "title": "Les passés irréguliers « fui, fiz, tive, estive »",
+   "example": "Hier, je suis allé au bureau très tôt. — Ontem eu <b>fui</b> pro escritório bem cedo.",
+   "body": "Quelques verbes très fréquents ont un pretérito perfeito irrégulier qu'il faut apprendre par cœur : ir et ser donnent tous les deux « fui, foi » (je suis allé / j'ai été), fazer donne « fiz, fez », ter donne « tive, teve », estar donne « estive, esteve ». Le contexte permet de distinguer « eu fui ao mercado » (je suis allé au marché) de « foi ótimo » (c'était super)."
+  }
+ },
+ {
+  "title": "Un dimanche à la maison",
+  "phrases": [
+   {
+    "fr": "Qu'est-ce que tu es en train de faire ?",
+    "pt": "O que você está fazendo?"
+   },
+   {
+    "fr": "Je suis en train de ranger le salon.",
+    "pt": "Estou arrumando a sala."
+   },
+   {
+    "fr": "Mon mari est en train de préparer le déjeuner.",
+    "pt": "O meu marido está preparando o almoço."
+   },
+   {
+    "fr": "Les enfants regardent un dessin animé.",
+    "pt": "As crianças estão assistindo um desenho."
+   },
+   {
+    "fr": "Ça sent très bon dans la cuisine.",
+    "pt": "Está cheirando muito bem na cozinha."
+   },
+   {
+    "fr": "Nous attendons ma belle-mère pour le repas.",
+    "pt": "A gente está esperando a minha sogra pro almoço."
+   },
+   {
+    "fr": "Elle est en train de traverser toute la ville en bus.",
+    "pt": "Ela está atravessando a cidade inteira de ônibus."
+   },
+   {
+    "fr": "Il commence à pleuvoir dehors.",
+    "pt": "Está começando a chover lá fora."
+   },
+   {
+    "fr": "Je suis en train d'apprendre à faire du pão de queijo.",
+    "pt": "Estou aprendendo a fazer pão de queijo."
+   },
+   {
+    "fr": "Ce dimanche se passe vraiment bien.",
+    "pt": "Esse domingo está sendo muito gostoso."
+   }
+  ],
+  "tip": {
+   "title": "« Estar + gerúndio » : être en train de",
+   "example": "Je suis en train de ranger le salon. — <b>Estou arrumando</b> a sala.",
+   "body": "Au Brésil, pour une action en cours, on utilise « estar » suivi du gérondif, formé en remplaçant la terminaison de l'infinitif par -ando, -endo ou -indo : falar devient falando, comer devient comendo, dormir devient dormindo. C'est beaucoup plus fréquent que « être en train de » en français : « o que você está fazendo ? » est la façon normale de demander « qu'est-ce que tu fais ? »."
+  }
+ },
+ {
+  "title": "Une coupure de courant",
+  "phrases": [
+   {
+    "fr": "Le courant vient de couper dans tout l'immeuble.",
+    "pt": "Acabou a luz no prédio inteiro."
+   },
+   {
+    "fr": "Tu as une lampe de poche quelque part ?",
+    "pt": "Você tem uma lanterna em algum lugar?"
+   },
+   {
+    "fr": "J'utilise la lumière de mon téléphone.",
+    "pt": "Estou usando a lanterna do celular."
+   },
+   {
+    "fr": "C'est à cause de l'orage de cet après-midi.",
+    "pt": "É por causa da tempestade de hoje à tarde."
+   },
+   {
+    "fr": "Toute la rue est dans le noir.",
+    "pt": "A rua inteira está no escuro."
+   },
+   {
+    "fr": "J'espère que la nourriture du frigo ne va pas s'abîmer.",
+    "pt": "Espero que a comida da geladeira não estrague."
+   },
+   {
+    "fr": "J'ai appelé la compagnie d'électricité.",
+    "pt": "Eu liguei pra companhia de energia."
+   },
+   {
+    "fr": "Ils disent que ça revient dans deux heures.",
+    "pt": "Eles disseram que volta em duas horas."
+   },
+   {
+    "fr": "L'ascenseur ne marche pas, on monte à pied.",
+    "pt": "O elevador não está funcionando, a gente sobe de escada."
+   },
+   {
+    "fr": "Ah, la lumière est revenue !",
+    "pt": "Ah, a luz voltou!"
+   }
+  ]
+ },
+ {
+  "title": "Le portier et la copropriété",
+  "phrases": [
+   {
+    "fr": "Le portier de l'immeuble s'appelle Seu Antônio.",
+    "pt": "O porteiro do prédio se chama Seu Antônio."
+   },
+   {
+    "fr": "Il connaît tous les habitants par leur prénom.",
+    "pt": "Ele conhece todos os moradores pelo nome."
+   },
+   {
+    "fr": "Bonsoir, un colis est arrivé pour moi ?",
+    "pt": "Boa noite, chegou alguma encomenda pra mim?"
+   },
+   {
+    "fr": "Oui, je l'ai gardé ici, à la loge.",
+    "pt": "Chegou sim, eu guardei aqui na portaria."
+   },
+   {
+    "fr": "La réunion de copropriété a lieu jeudi.",
+    "pt": "A reunião de condomínio é na quinta."
+   },
+   {
+    "fr": "On va parler des travaux de la piscine.",
+    "pt": "A gente vai falar da reforma da piscina."
+   },
+   {
+    "fr": "Les charges ont encore augmenté ce mois-ci.",
+    "pt": "O condomínio aumentou de novo esse mês."
+   },
+   {
+    "fr": "Le voisin du cinquième fait trop de bruit la nuit.",
+    "pt": "O vizinho do quinto andar faz barulho demais à noite."
+   },
+   {
+    "fr": "Je vais en parler au syndic.",
+    "pt": "Vou falar com o síndico."
+   },
+   {
+    "fr": "Merci, Seu Antônio, bonne nuit !",
+    "pt": "Obrigado, Seu Antônio, boa noite!"
+   }
+  ]
+ },
+ {
+  "title": "Au marché de rue",
+  "phrases": [
+   {
+    "fr": "Le marché a lieu dans notre rue tous les mercredis.",
+    "pt": "A feira é na nossa rua toda quarta-feira."
+   },
+   {
+    "fr": "Les fruits sont bien moins chers qu'au supermarché.",
+    "pt": "As frutas são bem mais baratas que no supermercado."
+   },
+   {
+    "fr": "Combien coûte le kilo de mangues ?",
+    "pt": "Quanto é o quilo da manga?"
+   },
+   {
+    "fr": "Cinq reais le kilo, et elles sont bien sucrées.",
+    "pt": "Cinco reais o quilo, e estão bem docinhas."
+   },
+   {
+    "fr": "Vous pouvez m'en faire goûter une ?",
+    "pt": "Posso provar uma?"
+   },
+   {
+    "fr": "Je vais prendre aussi des papayes et des fruits de la passion.",
+    "pt": "Vou levar também mamão e maracujá."
+   },
+   {
+    "fr": "À la fin du marché, les prix baissent.",
+    "pt": "No fim da feira, os preços caem."
+   },
+   {
+    "fr": "On va manger un pastel avec un jus de canne ?",
+    "pt": "Vamos comer um pastel com caldo de cana?"
+   },
+   {
+    "fr": "C'est une vraie tradition à São Paulo.",
+    "pt": "É uma tradição de verdade em São Paulo."
+   },
+   {
+    "fr": "Je peux payer par Pix ?",
+    "pt": "Posso pagar no Pix?"
+   }
+  ]
+ },
+ {
+  "title": "La boulangerie du coin",
+  "phrases": [
+   {
+    "fr": "Chaque matin, je passe à la boulangerie du coin.",
+    "pt": "Toda manhã eu passo na padaria da esquina."
+   },
+   {
+    "fr": "Je voudrais six petits pains, s'il vous plaît.",
+    "pt": "Me vê seis pãezinhos, por favor."
+   },
+   {
+    "fr": "Ils sortent tout juste du four.",
+    "pt": "Acabaram de sair do forno."
+   },
+   {
+    "fr": "Et un café au lait au comptoir.",
+    "pt": "E um café com leite no balcão."
+   },
+   {
+    "fr": "Le pain beurré grillé est délicieux ici.",
+    "pt": "O pão na chapa daqui é uma delícia."
+   },
+   {
+    "fr": "Vous avez du fromage minas frais ?",
+    "pt": "Vocês têm queijo minas frescal?"
+   },
+   {
+    "fr": "Il en reste un peu, je vous en coupe combien ?",
+    "pt": "Ainda tem um pouco, quanto eu corto?"
+   },
+   {
+    "fr": "Deux cents grammes, ça ira très bien.",
+    "pt": "Duzentos gramas está ótimo."
+   },
+   {
+    "fr": "La boulangère connaît déjà ma commande par cœur.",
+    "pt": "A moça da padaria já sabe o meu pedido de cor."
+   },
+   {
+    "fr": "À demain, et bonne journée !",
+    "pt": "Até amanhã, e bom dia pra você!"
+   }
+  ]
+ },
+ {
+  "title": "Rénover la cuisine",
+  "phrases": [
+   {
+    "fr": "On veut refaire complètement notre cuisine.",
+    "pt": "A gente quer reformar a cozinha inteira."
+   },
+   {
+    "fr": "Vous avez déjà un budget en tête ?",
+    "pt": "Vocês já têm um orçamento em mente?"
+   },
+   {
+    "fr": "Environ quinze mille reais, pas plus.",
+    "pt": "Mais ou menos quinze mil reais, no máximo."
+   },
+   {
+    "fr": "Il faut changer le carrelage et l'évier.",
+    "pt": "Tem que trocar o piso e a pia."
+   },
+   {
+    "fr": "Le maçon peut commencer lundi prochain.",
+    "pt": "O pedreiro pode começar na segunda que vem."
+   },
+   {
+    "fr": "Les travaux vont durer combien de semaines ?",
+    "pt": "A obra vai durar quantas semanas?"
+   },
+   {
+    "fr": "Trois semaines, si tout se passe bien.",
+    "pt": "Três semanas, se tudo der certo."
+   },
+   {
+    "fr": "Pendant ce temps, on mangera chez ma mère.",
+    "pt": "Enquanto isso, a gente vai comer na casa da minha mãe."
+   },
+   {
+    "fr": "Je préfère des placards blancs, c'est plus lumineux.",
+    "pt": "Prefiro armários brancos, fica mais claro."
+   },
+   {
+    "fr": "Ça va être magnifique une fois terminé.",
+    "pt": "Vai ficar lindo quando estiver pronto."
+   }
+  ]
+ },
+ {
+  "title": "Quand j'étais enfant à Belo Horizonte",
+  "phrases": [
+   {
+    "fr": "Quand j'étais petit, j'habitais à Belo Horizonte.",
+    "pt": "Quando eu era pequeno, eu morava em Belo Horizonte."
+   },
+   {
+    "fr": "Le dimanche, nous allions chez ma grand-mère.",
+    "pt": "Aos domingos, a gente ia pra casa da minha avó."
+   },
+   {
+    "fr": "Elle préparait toujours du pão de queijo maison.",
+    "pt": "Ela sempre fazia pão de queijo caseiro."
+   },
+   {
+    "fr": "Mes cousins et moi jouions au foot dans la rue.",
+    "pt": "Eu e os meus primos jogávamos bola na rua."
+   },
+   {
+    "fr": "Il n'y avait presque pas de voitures à l'époque.",
+    "pt": "Quase não tinha carro naquela época."
+   },
+   {
+    "fr": "Mon grand-père racontait des histoires après le déjeuner.",
+    "pt": "O meu avô contava histórias depois do almoço."
+   },
+   {
+    "fr": "Je détestais aller à l'école le lundi.",
+    "pt": "Eu odiava ir pra escola na segunda-feira."
+   },
+   {
+    "fr": "En été, il pleuvait tous les après-midi.",
+    "pt": "No verão, chovia toda tarde."
+   },
+   {
+    "fr": "Nous regardions le feuilleton tous ensemble le soir.",
+    "pt": "A gente assistia a novela todo mundo junto à noite."
+   },
+   {
+    "fr": "C'était une enfance très heureuse.",
+    "pt": "Era uma infância muito feliz."
+   }
+  ],
+  "tip": {
+   "title": "Le « pretérito imperfeito » pour les habitudes passées",
+   "example": "Quand j'étais petit, j'habitais à Belo Horizonte. — Quando eu <b>era</b> pequeno, eu <b>morava</b> em Belo Horizonte.",
+   "body": "Comme l'imparfait français, le pretérito imperfeito décrit les habitudes et le décor du passé. Les verbes en -ar prennent -ava (eu morava, a gente jogava), ceux en -er et -ir prennent -ia (eu comia, ela dormia). Seuls quatre verbes sont irréguliers : ser (era), ter (tinha), vir (vinha) et pôr (punha)."
+  }
+ },
+ {
+  "title": "La salle de sport du quartier",
+  "phrases": [
+   {
+    "fr": "Je viens de m'inscrire à la salle de sport du coin.",
+    "pt": "Acabei de me matricular na academia da esquina."
+   },
+   {
+    "fr": "Quel abonnement tu as choisi ?",
+    "pt": "Que plano você escolheu?"
+   },
+   {
+    "fr": "Un abonnement mensuel, sans engagement.",
+    "pt": "Um plano mensal, sem fidelidade."
+   },
+   {
+    "fr": "La salle est ouverte jusqu'à onze heures du soir.",
+    "pt": "A academia fica aberta até as onze da noite."
+   },
+   {
+    "fr": "Il y a beaucoup de monde vers dix-neuf heures.",
+    "pt": "Fica muito cheio por volta das sete da noite."
+   },
+   {
+    "fr": "Le coach m'a préparé un programme d'entraînement.",
+    "pt": "O professor montou um treino pra mim."
+   },
+   {
+    "fr": "Aujourd'hui, c'est le jour des jambes.",
+    "pt": "Hoje é dia de perna."
+   },
+   {
+    "fr": "J'ai des courbatures partout depuis hier.",
+    "pt": "Estou todo dolorido desde ontem."
+   },
+   {
+    "fr": "Après la séance, je bois un jus d'açaí.",
+    "pt": "Depois do treino, eu tomo um suco de açaí."
+   },
+   {
+    "fr": "Tu veux venir t'entraîner avec moi demain ?",
+    "pt": "Quer treinar comigo amanhã?"
+   }
+  ]
+ },
+ {
+  "title": "Un jour férié à São Paulo",
+  "phrases": [
+   {
+    "fr": "Demain, c'est férié, on ne travaille pas.",
+    "pt": "Amanhã é feriado, a gente não trabalha."
+   },
+   {
+    "fr": "Et vendredi, beaucoup de gens font le pont.",
+    "pt": "E na sexta, muita gente emenda."
+   },
+   {
+    "fr": "La moitié de la ville part vers la plage.",
+    "pt": "Metade da cidade desce pro litoral."
+   },
+   {
+    "fr": "La route va être complètement bouchée.",
+    "pt": "A estrada vai ficar completamente parada."
+   },
+   {
+    "fr": "Moi, je préfère rester en ville et me reposer.",
+    "pt": "Eu prefiro ficar na cidade e descansar."
+   },
+   {
+    "fr": "Les rues sont enfin calmes et vides.",
+    "pt": "As ruas ficam finalmente calmas e vazias."
+   },
+   {
+    "fr": "On peut faire du vélo sur l'avenue Paulista.",
+    "pt": "Dá pra andar de bicicleta na Avenida Paulista."
+   },
+   {
+    "fr": "Les centres commerciaux restent ouverts quand même.",
+    "pt": "Os shoppings continuam abertos mesmo assim."
+   },
+   {
+    "fr": "On va voir une exposition au musée ?",
+    "pt": "Vamos ver uma exposição no museu?"
+   },
+   {
+    "fr": "Profite bien de ton long week-end !",
+    "pt": "Aproveita bem o seu feriadão!"
+   }
+  ]
+ },
+ {
+  "title": "La fête de la Saint-Jean",
+  "phrases": [
+   {
+    "fr": "En juin, il y a des fêtes de la Saint-Jean partout.",
+    "pt": "Em junho, tem festa junina em todo lugar."
+   },
+   {
+    "fr": "L'école de ma fille organise la sienne samedi.",
+    "pt": "A escola da minha filha vai fazer a dela no sábado."
+   },
+   {
+    "fr": "Il faut venir habillé comme à la campagne.",
+    "pt": "Tem que ir vestido de caipira."
+   },
+   {
+    "fr": "Je vais mettre une chemise à carreaux et un chapeau de paille.",
+    "pt": "Vou colocar uma camisa xadrez e um chapéu de palha."
+   },
+   {
+    "fr": "On mange du maïs, de la canjica et du gâteau de maïs.",
+    "pt": "A gente come milho, canjica e bolo de fubá."
+   },
+   {
+    "fr": "Le vin chaud aux épices est délicieux quand il fait frais.",
+    "pt": "O quentão é uma delícia quando está friozinho."
+   },
+   {
+    "fr": "Les enfants vont danser la quadrille.",
+    "pt": "As crianças vão dançar a quadrilha."
+   },
+   {
+    "fr": "Il y a des petits drapeaux colorés partout.",
+    "pt": "Tem bandeirinhas coloridas por toda parte."
+   },
+   {
+    "fr": "Fais attention au feu de joie au milieu de la cour.",
+    "pt": "Cuidado com a fogueira no meio do pátio."
+   },
+   {
+    "fr": "C'est ma période préférée de l'année.",
+    "pt": "É a minha época preferida do ano."
+   }
+  ]
+ },
+ {
+  "title": "Une pluie d'été qui inonde la rue",
+  "phrases": [
+   {
+    "fr": "Le ciel est devenu noir en quelques minutes.",
+    "pt": "O céu ficou preto em poucos minutos."
+   },
+   {
+    "fr": "Il pleut des cordes depuis une heure.",
+    "pt": "Está chovendo canivete há uma hora."
+   },
+   {
+    "fr": "La rue est complètement inondée.",
+    "pt": "A rua está completamente alagada."
+   },
+   {
+    "fr": "Les voitures ne peuvent plus passer.",
+    "pt": "Os carros não conseguem mais passar."
+   },
+   {
+    "fr": "Je vais attendre que ça passe ici, au café.",
+    "pt": "Vou esperar passar aqui no café."
+   },
+   {
+    "fr": "En été, ça arrive presque tous les jours.",
+    "pt": "No verão, isso acontece quase todo dia."
+   },
+   {
+    "fr": "Ces pluies ne durent jamais très longtemps.",
+    "pt": "Essas chuvas nunca duram muito."
+   },
+   {
+    "fr": "Le métro, lui, fonctionne normalement.",
+    "pt": "O metrô está funcionando normalmente."
+   },
+   {
+    "fr": "Prends toujours un parapluie dans ton sac.",
+    "pt": "Leve sempre um guarda-chuva na bolsa."
+   },
+   {
+    "fr": "Voilà, le soleil revient déjà !",
+    "pt": "Pronto, o sol já está voltando!"
+   }
+  ]
+ },
+ {
+  "title": "Déjeuner au restaurant au poids",
+  "phrases": [
+   {
+    "fr": "Pour le déjeuner, on va au restaurant au poids ?",
+    "pt": "Pro almoço, vamos no restaurante por quilo?"
+   },
+   {
+    "fr": "On se sert soi-même au buffet.",
+    "pt": "A gente mesmo se serve no bufê."
+   },
+   {
+    "fr": "Ensuite, on pèse l'assiette à la caisse.",
+    "pt": "Depois, a gente pesa o prato no caixa."
+   },
+   {
+    "fr": "Il y a du riz, des haricots et de la farofa.",
+    "pt": "Tem arroz, feijão e farofa."
+   },
+   {
+    "fr": "Aujourd'hui, ils servent de la feijoada.",
+    "pt": "Hoje eles estão servindo feijoada."
+   },
+   {
+    "fr": "J'ai pris trop de nourriture, mon assiette est pleine.",
+    "pt": "Eu peguei comida demais, o meu prato está cheio."
+   },
+   {
+    "fr": "Ça fait trente-deux reais avec la boisson.",
+    "pt": "Deu trinta e dois reais com a bebida."
+   },
+   {
+    "fr": "Le dessert est compris dans le prix ?",
+    "pt": "A sobremesa está incluída no preço?"
+   },
+   {
+    "fr": "Non, mais le petit café est offert.",
+    "pt": "Não, mas o cafezinho é por conta da casa."
+   },
+   {
+    "fr": "C'est rapide, pas cher et très bon.",
+    "pt": "É rápido, barato e muito gostoso."
+   }
+  ]
+ },
+ {
+  "title": "Organiser un anniversaire",
+  "phrases": [
+   {
+    "fr": "On organise une fête surprise pour Juliana.",
+    "pt": "A gente vai fazer uma festa surpresa pra Juliana."
+   },
+   {
+    "fr": "Qui s'occupe d'inviter tout le monde ?",
+    "pt": "Quem fica responsável por convidar todo mundo?"
+   },
+   {
+    "fr": "J'ai déjà créé un groupe de discussion pour les amis.",
+    "pt": "Eu já criei um grupo pros amigos."
+   },
+   {
+    "fr": "On fait une cagnotte pour le cadeau ?",
+    "pt": "A gente faz uma vaquinha pro presente?"
+   },
+   {
+    "fr": "J'ai commandé un gâteau au chocolat et des brigadeiros.",
+    "pt": "Eu encomendei um bolo de chocolate e brigadeiros."
+   },
+   {
+    "fr": "Il faut aussi des boissons et des petits salés.",
+    "pt": "Também precisa de bebida e salgadinhos."
+   },
+   {
+    "fr": "Rendez-vous chez moi à vingt heures précises.",
+    "pt": "Todo mundo na minha casa às oito em ponto."
+   },
+   {
+    "fr": "Surtout, ne dis rien à Juliana !",
+    "pt": "Mas não conta nada pra Juliana, hein!"
+   },
+   {
+    "fr": "Quand elle arrive, on éteint toutes les lumières.",
+    "pt": "Quando ela chegar, a gente apaga todas as luzes."
+   },
+   {
+    "fr": "Ensuite, tout le monde chante joyeux anniversaire.",
+    "pt": "Depois, todo mundo canta parabéns."
+   }
+  ]
+ },
+ {
+  "title": "Changer d'appartement",
+  "phrases": [
+   {
+    "fr": "On a décidé de déménager dans un plus grand appartement.",
+    "pt": "A gente decidiu se mudar pra um apartamento maior."
+   },
+   {
+    "fr": "Tu peux m'aider à porter les cartons samedi ?",
+    "pt": "Você pode me ajudar a carregar as caixas no sábado?"
+   },
+   {
+    "fr": "Bien sûr, je t'aide avec plaisir.",
+    "pt": "Claro, eu te ajudo com prazer."
+   },
+   {
+    "fr": "Appelle-moi quand le camion arrive.",
+    "pt": "Me liga quando o caminhão chegar."
+   },
+   {
+    "fr": "Je te prête ma voiture pour les petites choses.",
+    "pt": "Eu te empresto o meu carro pras coisas pequenas."
+   },
+   {
+    "fr": "Le nouveau quartier est très calme et arboré.",
+    "pt": "O bairro novo é bem tranquilo e arborizado."
+   },
+   {
+    "fr": "Il y a une station de métro à deux rues.",
+    "pt": "Tem uma estação de metrô a duas quadras."
+   },
+   {
+    "fr": "Le propriétaire m'a envoyé les clés hier.",
+    "pt": "O proprietário me mandou as chaves ontem."
+   },
+   {
+    "fr": "Je t'envoie la nouvelle adresse par message.",
+    "pt": "Eu te mando o endereço novo por mensagem."
+   },
+   {
+    "fr": "Alors à samedi, on se voit là-bas !",
+    "pt": "Então até sábado, a gente se vê lá!"
+   }
+  ],
+  "tip": {
+   "title": "Les pronoms compléments à la brésilienne : « me liga », « te ajudo »",
+   "example": "Appelle-moi quand le camion arrive. — <b>Me liga</b> quando o caminhão chegar.",
+   "body": "À l'oral, les Brésiliens placent presque toujours le pronom complément avant le verbe, même en début de phrase : « me liga » (appelle-moi), « te ajudo » (je t'aide), « me passa o sal » (passe-moi le sel). « Te » s'emploie couramment avec « você », et « a gente se vê » (on se voit) utilise « se » comme pronom de « a gente ». La forme écrite très soignée « ligue-me » existe, mais sonne très formelle au Brésil."
+  }
+ },
+ {
+  "title": "Fin du module : un bilan",
+  "phrases": [
+   {
+    "fr": "Ce module nous a plongés dans le vrai quotidien brésilien.",
+    "pt": "Esse módulo mergulhou a gente no verdadeiro dia a dia brasileiro."
+   },
+   {
+    "fr": "On sait maintenant obtenir un CPF et ouvrir un compte.",
+    "pt": "Agora a gente sabe tirar o CPF e abrir uma conta."
+   },
+   {
+    "fr": "On peut parler au portier et aux voisins sans stress.",
+    "pt": "A gente consegue falar com o porteiro e com os vizinhos sem estresse."
+   },
+   {
+    "fr": "Faire ses courses au marché n'a plus de secret.",
+    "pt": "Fazer compras na feira não tem mais segredo."
+   },
+   {
+    "fr": "On sait raconter ce qu'on a fait hier.",
+    "pt": "A gente sabe contar o que fez ontem."
+   },
+   {
+    "fr": "Et décrire nos habitudes d'enfance.",
+    "pt": "E descrever os nossos hábitos de infância."
+   },
+   {
+    "fr": "Le gérondif est devenu un réflexe naturel.",
+    "pt": "O gerúndio virou um reflexo natural."
+   },
+   {
+    "fr": "Mon portugais devient de plus en plus fluide.",
+    "pt": "O meu português está ficando cada vez mais fluente."
+   },
+   {
+    "fr": "Je comprends même les blagues du boulanger.",
+    "pt": "Eu entendo até as piadas do moço da padaria."
+   },
+   {
+    "fr": "On continue, la suite sera encore plus intéressante !",
+    "pt": "Bora continuar, o que vem por aí vai ser ainda mais interessante!"
+   }
+  ]
+ }
 ];
 
 const level2Module2Lessons = [
-  { title:"Road trip dans les Alpes bavaroises", phrases:[
-    {fr:"On traverse des cols magnifiques aujourd'hui.", de:"Wir fahren heute durch wunderschöne Pässe."},
-    {fr:"La route devient de plus en plus sinueuse.", de:"Die Straße wird immer kurviger."},
-    {fr:"Arrête-toi un instant à ce point de vue.", de:"Halte kurz an diesem Aussichtspunkt an."},
-    {fr:"Les sommets enneigés sont à couper le souffle.", de:"Die schneebedeckten Gipfel sind atemberaubend."},
-    {fr:"On dirait presque une carte postale.", de:"Es sieht fast wie eine Postkarte aus."},
-    {fr:"Il faudra faire attention au brouillard plus haut.", de:"Weiter oben müssen wir auf Nebel achten."},
-    {fr:"Les pneus d'hiver sont indispensables sur ces routes.", de:"Winterreifen sind auf diesen Straßen unverzichtbar."},
-    {fr:"On arrivera au chalet avant la nuit.", de:"Wir kommen vor Einbruch der Nacht an der Hütte an."},
-    {fr:"J'ai hâte de voir le lever du soleil demain.", de:"Ich freue mich auf den Sonnenaufgang morgen."},
-    {fr:"Ce road trip dépasse toutes nos attentes.", de:"Dieser Roadtrip übertrifft alle unsere Erwartungen."}
-  ]},
-  { title:"Une randonnée vers un château du Rhin", phrases:[
-    {fr:"Le sentier grimpe directement vers les ruines.", de:"Der Weg führt direkt zu den Ruinen hinauf."},
-    {fr:"Ce château a été construit au douzième siècle.", de:"Diese Burg wurde im zwölften Jahrhundert erbaut."},
-    {fr:"Certaines tours sont encore remarquablement conservées.", de:"Manche Türme sind noch bemerkenswert gut erhalten."},
-    {fr:"On aperçoit le fleuve depuis les remparts.", de:"Von den Mauern aus sieht man den Fluss."},
-    {fr:"Des légendes entourent encore cet endroit.", de:"Legenden umranken diesen Ort noch immer."},
-    {fr:"On raconte qu'un chevalier y aurait vécu seul.", de:"Man erzählt sich, ein Ritter habe dort allein gelebt."},
-    {fr:"Cette histoire me donne un peu froid dans le dos.", de:"Diese Geschichte gibt mir eine leichte Gänsehaut."},
-    {fr:"Les vignes entourent la colline tout autour.", de:"Die Weinreben umgeben den Hügel rundherum."},
-    {fr:"On pourrait redescendre par un autre chemin.", de:"Wir könnten auf einem anderen Weg wieder hinuntergehen."},
-    {fr:"Cette excursion valait vraiment la montée.", de:"Dieser Ausflug hat den Aufstieg wirklich wert gewesen."}
-  ]},
-  { title:"Un voyage d'affaires à Stuttgart", phrases:[
-    {fr:"La réunion a lieu dans ce bâtiment moderne.", de:"Das Treffen findet in diesem modernen Gebäude statt."},
-    {fr:"Le siège social se trouve au centre-ville.", de:"Der Hauptsitz liegt im Stadtzentrum."},
-    {fr:"L'usine automobile est en revanche en périphérie.", de:"Die Automobilfabrik liegt dagegen am Stadtrand."},
-    {fr:"On visite l'atelier sur le site même.", de:"Wir besichtigen die Werkstatt direkt vor Ort."},
-    {fr:"Les ingénieurs travaillent sur un nouveau prototype.", de:"Die Ingenieure arbeiten an einem neuen Prototyp."},
-    {fr:"Mon collègue m'attend sur le parking.", de:"Mein Kollege wartet auf dem Parkplatz auf mich."},
-    {fr:"On déjeune dans la cantine de l'entreprise.", de:"Wir essen in der Firmenkantine."},
-    {fr:"L'hôtel se trouve juste en face de la gare.", de:"Das Hotel liegt genau gegenüber dem Bahnhof."},
-    {fr:"Je dois encore préparer mon rapport sur l'ordinateur.", de:"Ich muss meinen Bericht noch am Computer vorbereiten."},
-    {fr:"Ce voyage professionnel s'est révélé très productif.", de:"Diese Geschäftsreise hat sich als sehr produktiv erwiesen."}
-  ], tip:{
-    title:"Les prépositions mixtes : in, auf, an avec accusatif ou datif",
-    example:"La réunion a lieu dans ce bâtiment moderne. — Das Treffen findet <b>in</b> diesem modernen Gebäude statt.",
-    body:"Neuf prépositions (in, auf, an, über, unter, vor, hinter, neben, zwischen) prennent le datif pour indiquer un lieu fixe (« où ? », pas de mouvement : in diesem Gebäude) mais l'accusatif pour indiquer une destination (« où vers ? », avec mouvement : Ich gehe in das Gebäude). C'est la règle la plus importante à retenir pour ces prépositions."
-  }},
-  { title:"Visiter Leipzig et son marché", phrases:[
-    {fr:"Leipzig a un centre historique très animé.", de:"Leipzig hat ein sehr lebendiges historisches Zentrum."},
-    {fr:"Le marché principal est entouré de belles façades.", de:"Der Hauptmarkt ist von schönen Fassaden umgeben."},
-    {fr:"Cette ville est connue pour sa tradition musicale.", de:"Diese Stadt ist für ihre musikalische Tradition bekannt."},
-    {fr:"Bach a vécu et travaillé ici longtemps.", de:"Bach lebte und arbeitete hier lange Zeit."},
-    {fr:"On pourrait visiter l'église Saint-Thomas.", de:"Wir könnten die Thomaskirche besichtigen."},
-    {fr:"Les étudiants donnent une ambiance très jeune à la ville.", de:"Die Studenten geben der Stadt eine sehr junge Atmosphäre."},
-    {fr:"Il y a aussi de nombreuses galeries d'art alternatives.", de:"Es gibt auch viele alternative Kunstgalerien."},
-    {fr:"Ce quartier abandonné a été transformé en ateliers.", de:"Dieses verlassene Viertel wurde in Ateliers verwandelt."},
-    {fr:"L'énergie créative se sent vraiment dans les rues.", de:"Die kreative Energie spürt man wirklich in den Straßen."},
-    {fr:"Leipzig surprend toujours ceux qui la découvrent.", de:"Leipzig überrascht immer diejenigen, die sie entdecken."}
-  ]},
-  { title:"Sur la côte de la mer Baltique", phrases:[
-    {fr:"L'air ici est bien meilleur qu'en ville.", de:"Die Luft hier ist viel besser als in der Stadt."},
-    {fr:"Les plages de sable blanc s'étendent à perte de vue.", de:"Die weißen Sandstrände erstrecken sich bis zum Horizont."},
-    {fr:"Il fait plus frais ici que dans le sud.", de:"Hier ist es kühler als im Süden."},
-    {fr:"La mer Baltique est plus calme que la mer du Nord.", de:"Die Ostsee ist ruhiger als die Nordsee."},
-    {fr:"Ces petites maisons de pêcheurs sont vraiment pittoresques.", de:"Diese kleinen Fischerhäuser sind wirklich malerisch."},
-    {fr:"On devrait louer des vélos pour explorer la côte.", de:"Wir sollten Fahrräder mieten, um die Küste zu erkunden."},
-    {fr:"Le vent est plus fort en bord de mer.", de:"Am Meer ist der Wind stärker."},
-    {fr:"Les mouettes crient de plus en plus fort.", de:"Die Möwen schreien immer lauter."},
-    {fr:"Ce coucher de soleil est le plus beau de notre voyage.", de:"Dieser Sonnenuntergang ist der schönste unserer Reise."},
-    {fr:"On a vraiment eu plus de chance que prévu avec la météo.", de:"Mit dem Wetter hatten wir wirklich mehr Glück als erwartet."}
-  ], tip:{
-    title:"Le comparatif régulier et irrégulier",
-    example:"L'air ici est bien meilleur qu'en ville. — Die Luft hier ist viel <b>besser</b> als in der Stadt.",
-    body:"Le comparatif régulier ajoute -er à l'adjectif (schnell → schneller, klein → kleiner), souvent avec un Umlaut si possible (kalt → kälter). Mais certains adjectifs très courants sont irréguliers : gut → besser, viel → mehr, gern → lieber. Le complément de comparaison se construit toujours avec « als » : besser als, schneller als."
-  }},
-  { title:"L'île de Rügen", phrases:[
-    {fr:"On prend le ferry pour rejoindre l'île.", de:"Wir nehmen die Fähre, um auf die Insel zu kommen."},
-    {fr:"La traversée dure moins d'une heure.", de:"Die Überfahrt dauert weniger als eine Stunde."},
-    {fr:"Les falaises de craie blanche sont impressionnantes.", de:"Die weißen Kreidefelsen sind beeindruckend."},
-    {fr:"On peut les admirer depuis un sentier côtier.", de:"Man kann sie von einem Küstenweg aus bewundern."},
-    {fr:"Ce petit train à vapeur traverse toute l'île.", de:"Dieser kleine Dampfzug durchquert die ganze Insel."},
-    {fr:"Les plages ici restent étonnamment peu fréquentées.", de:"Die Strände hier bleiben erstaunlich wenig besucht."},
-    {fr:"On loge dans une villa typique du bord de mer.", de:"Wir wohnen in einer typischen Villa am Meer."},
-    {fr:"L'architecture locale a un charme particulier.", de:"Die lokale Architektur hat einen besonderen Charme."},
-    {fr:"On pourrait rester ici plusieurs jours de plus.", de:"Wir könnten hier noch mehrere Tage länger bleiben."},
-    {fr:"Cette île mérite vraiment sa réputation.", de:"Diese Insel verdient wirklich ihren Ruf."}
-  ]},
-  { title:"Une nuit en auberge de jeunesse", phrases:[
-    {fr:"L'auberge de jeunesse est juste près du port.", de:"Die Jugendherberge liegt direkt am Hafen."},
-    {fr:"Le dortoir compte six lits en tout.", de:"Der Schlafsaal hat insgesamt sechs Betten."},
-    {fr:"On partage la cuisine avec les autres voyageurs.", de:"Wir teilen uns die Küche mit den anderen Reisenden."},
-    {fr:"C'est une bonne occasion de rencontrer du monde.", de:"Das ist eine gute Gelegenheit, Leute zu treffen."},
-    {fr:"Ce groupe d'Australiens part demain en Scandinavie.", de:"Diese Gruppe Australier reist morgen nach Skandinavien weiter."},
-    {fr:"Y a-t-il un couvre-feu le soir ?", de:"Gibt es abends eine Sperrstunde?"},
-    {fr:"Oui, la porte ferme à minuit précis.", de:"Ja, die Tür schließt genau um Mitternacht."},
-    {fr:"Le petit-déjeuner est inclus dans le prix.", de:"Das Frühstück ist im Preis enthalten."},
-    {fr:"L'ambiance décontractée me plaît énormément ici.", de:"Die entspannte Atmosphäre gefällt mir hier sehr."},
-    {fr:"Ce genre de voyage crée vraiment de beaux souvenirs.", de:"Diese Art zu reisen schafft wirklich schöne Erinnerungen."}
-  ]},
-  { title:"Le long du Danube à vélo", phrases:[
-    {fr:"Nous voulons faire cette piste cyclable jusqu'à Vienne.", de:"Wir wollen diese Radstrecke bis Wien fahren."},
-    {fr:"Peut-on camper librement le long du fleuve ?", de:"Darf man am Fluss frei campen?"},
-    {fr:"Non, il faut utiliser les campings officiels.", de:"Nein, man muss die offiziellen Campingplätze benutzen."},
-    {fr:"Les paysages changent constamment le long du parcours.", de:"Die Landschaft ändert sich ständig entlang der Strecke."},
-    {fr:"Je veux absolument m'arrêter à cette petite ville.", de:"Ich will unbedingt in dieser kleinen Stadt anhalten."},
-    {fr:"On ne peut pas rouler plus de six heures par jour.", de:"Man darf nicht mehr als sechs Stunden am Tag fahren."},
-    {fr:"Nos jambes nous le feraient payer trop cher.", de:"Unsere Beine würden uns das zu teuer machen lassen."},
-    {fr:"Les monastères au bord du fleuve sont superbes.", de:"Die Klöster am Flussufer sind wunderschön."},
-    {fr:"On veut absolument en visiter un avant la fin.", de:"Wir wollen unbedingt eines vor dem Ende besichtigen."},
-    {fr:"Ce voyage à vélo restera une aventure inoubliable.", de:"Diese Fahrradreise wird ein unvergessliches Abenteuer bleiben."}
-  ], tip:{
-    title:"Les modaux « wollen » et « dürfen »",
-    example:"Peut-on camper librement le long du fleuve ? — <b>Darf</b> man am Fluss frei campen?",
-    body:"« Wollen » (vouloir, une intention forte) et « dürfen » (avoir la permission de) sont deux modaux à bien distinguer de « können » (être capable de) et « müssen » (être obligé de) : Ich will reisen (je veux voyager, c'est mon choix) contre Man darf hier campen (c'est autorisé)."
-  }},
-  { title:"Renouveler son titre de séjour", phrases:[
-    {fr:"Je dois renouveler mon titre de séjour ce mois-ci.", de:"Ich muss diesen Monat meinen Aufenthaltstitel verlängern."},
-    {fr:"Avez-vous rassemblé tous les documents nécessaires ?", de:"Haben Sie alle nötigen Unterlagen zusammengestellt?"},
-    {fr:"Oui, y compris mon contrat de travail actuel.", de:"Ja, einschließlich meines aktuellen Arbeitsvertrags."},
-    {fr:"Il faut aussi une preuve d'assurance maladie.", de:"Man braucht auch einen Nachweis über die Krankenversicherung."},
-    {fr:"Le traitement du dossier prend plusieurs semaines.", de:"Die Bearbeitung des Antrags dauert mehrere Wochen."},
-    {fr:"Entre-temps, mon ancien titre reste-t-il valide ?", de:"Bleibt mein alter Titel in der Zwischenzeit gültig?"},
-    {fr:"Oui, une attestation provisoire vous sera remise.", de:"Ja, Sie erhalten eine vorläufige Bescheinigung."},
-    {fr:"Cette procédure semble plus simple que je ne le pensais.", de:"Dieser Vorgang scheint einfacher zu sein, als ich dachte."},
-    {fr:"L'administration allemande est en réalité plutôt bien organisée.", de:"Die deutsche Verwaltung ist in Wirklichkeit recht gut organisiert."},
-    {fr:"Merci pour toutes ces explications précises.", de:"Danke für all diese genauen Erklärungen."}
-  ]},
-  { title:"Louer un camping-car", phrases:[
-    {fr:"Nous aimerions louer un camping-car pour deux semaines.", de:"Wir möchten gern für zwei Wochen ein Wohnmobil mieten."},
-    {fr:"Ce modèle convient-il pour quatre personnes ?", de:"Eignet sich dieses Modell für vier Personen?"},
-    {fr:"Oui, il dispose de quatre couchettes confortables.", de:"Ja, es verfügt über vier bequeme Schlafplätze."},
-    {fr:"L'assurance tous risques est-elle incluse ?", de:"Ist die Vollkaskoversicherung inklusive?"},
-    {fr:"Oui, avec une franchise raisonnable en cas de dommage.", de:"Ja, mit einer angemessenen Selbstbeteiligung im Schadensfall."},
-    {fr:"Où peut-on vider les eaux usées en cours de route ?", de:"Wo kann man unterwegs das Abwasser entleeren?"},
-    {fr:"Il existe des stations spécialisées sur les grandes aires.", de:"Auf großen Rastplätzen gibt es spezielle Stationen."},
-    {fr:"Ce mode de voyage offre une vraie liberté.", de:"Diese Art zu reisen bietet echte Freiheit."},
-    {fr:"On peut changer d'itinéraire à tout moment.", de:"Man kann die Route jederzeit ändern."},
-    {fr:"C'est exactement l'aventure que nous recherchions.", de:"Das ist genau das Abenteuer, das wir gesucht haben."}
-  ]},
-  { title:"Le marché de Noël de Nuremberg", phrases:[
-    {fr:"Le marché de Noël de Nuremberg est mondialement connu.", de:"Der Nürnberger Christkindlesmarkt ist weltbekannt."},
-    {fr:"Les petites figurines en prunes séchées sont typiques d'ici.", de:"Die kleinen Zwetschgenmännla sind typisch für diese Stadt."},
-    {fr:"L'odeur des marrons chauds flotte dans toute la place.", de:"Der Duft von heißen Maronen liegt über dem ganzen Platz."},
-    {fr:"Cette crèche en bois est magnifiquement sculptée.", de:"Diese Holzkrippe ist wunderschön geschnitzt."},
-    {fr:"Les habitants attendent ce marché toute l'année.", de:"Die Einwohner freuen sich das ganze Jahr auf diesen Markt."},
-    {fr:"La fille de Noël ouvre la fête chaque année.", de:"Das Christkind eröffnet jedes Jahr das Fest."},
-    {fr:"On trouve ici des cadeaux vraiment originaux.", de:"Hier findet man wirklich originelle Geschenke."},
-    {fr:"Ce pain d'épices de Nuremberg est particulièrement réputé.", de:"Dieser Nürnberger Lebkuchen ist besonders bekannt."},
-    {fr:"Toute la vieille ville scintille de lumières.", de:"Die ganze Altstadt glitzert vor Lichtern."},
-    {fr:"C'est une des plus belles traditions allemandes.", de:"Das ist eine der schönsten deutschen Traditionen."}
-  ]},
-  { title:"Le château de Heidelberg", phrases:[
-    {fr:"Le château de Heidelberg domine toute la ville.", de:"Das Heidelberger Schloss überragt die ganze Stadt."},
-    {fr:"On visite ce château parce qu'il reste magnifique.", de:"Wir besichtigen dieses Schloss, weil es trotz der Ruinen wunderschön bleibt."},
-    {fr:"Le vieux pont attire beaucoup de visiteurs parce que la vue y est superbe.", de:"Die Alte Brücke zieht viele Besucher an, weil die Aussicht dort großartig ist."},
-    {fr:"Beaucoup d'étudiants vivent ici parce que l'université est très ancienne.", de:"Viele Studenten leben hier, weil die Universität sehr alt ist."},
-    {fr:"La ville est jolie parce qu'elle n'a pas été détruite pendant la guerre.", de:"Die Stadt ist hübsch, weil sie im Krieg nicht zerstört wurde."},
-    {fr:"On monte souvent à pied parce que le funiculaire est fermé.", de:"Man geht oft zu Fuß hinauf, weil die Bergbahn geschlossen ist."},
-    {fr:"Je préfère cette vue parce qu'elle montre tout le Neckar.", de:"Ich mag diese Aussicht lieber, weil sie den ganzen Neckar zeigt."},
-    {fr:"On reste plus longtemps parce que l'ambiance est très agréable.", de:"Wir bleiben länger, weil die Atmosphäre sehr angenehm ist."},
-    {fr:"Ce tonneau géant impressionne tous les visiteurs.", de:"Dieses riesige Weinfass beeindruckt alle Besucher."},
-    {fr:"Heidelberg restera un des points forts de notre voyage.", de:"Heidelberg wird einer der Höhepunkte unserer Reise bleiben."}
-  ], tip:{
-    title:"La subordonnée avec « weil » : le verbe en fin de phrase",
-    example:"On visite ce château parce qu'il reste magnifique. — Wir besichtigen dieses Schloss, <b>weil</b> es trotz der Ruinen wunderschön <b>bleibt</b>.",
-    body:"Dans une subordonnée introduite par « weil » (parce que), le verbe conjugué n'est plus en deuxième position comme dans une phrase principale : il part tout à la fin de la subordonnée. C'est la même règle pour « dass », « wenn » et « obwohl »."
-  }},
-  { title:"Le lac de Constance", phrases:[
-    {fr:"Le lac de Constance touche trois pays différents.", de:"Der Bodensee grenzt an drei verschiedene Länder."},
-    {fr:"On peut traverser en bateau jusqu'en Suisse.", de:"Man kann mit dem Boot bis in die Schweiz übersetzen."},
-    {fr:"Les vergers de pommiers couvrent toute la région.", de:"Apfelplantagen bedecken die ganze Region."},
-    {fr:"Cette petite île fleurie est particulièrement célèbre.", de:"Diese kleine Blumeninsel ist besonders berühmt."},
-    {fr:"On s'y promène pendant des heures sans se fatiguer.", de:"Man spaziert stundenlang dort, ohne müde zu werden."},
-    {fr:"Le climat ici est étonnamment doux.", de:"Das Klima hier ist erstaunlich mild."},
-    {fr:"Certains vignobles produisent même un vin local.", de:"Manche Weinberge erzeugen sogar einen lokalen Wein."},
-    {fr:"On pourrait faire une pause déjeuner au bord de l'eau.", de:"Wir könnten eine Mittagspause am Wasser machen."},
-    {fr:"La vue sur les Alpes depuis la rive est splendide.", de:"Die Aussicht auf die Alpen vom Ufer aus ist herrlich."},
-    {fr:"Cette région mérite vraiment plus qu'une simple visite.", de:"Diese Region verdient wirklich mehr als nur einen kurzen Besuch."}
-  ]},
-  { title:"Un échange linguistique en voyage", phrases:[
-    {fr:"On a rencontré un couple allemand à l'auberge.", de:"Wir haben im Hostel ein deutsches Paar getroffen."},
-    {fr:"Ils veulent pratiquer leur français, et nous notre allemand.", de:"Sie wollen ihr Französisch üben, und wir unser Deutsch."},
-    {fr:"On alterne une phrase en français, une en allemand.", de:"Wir wechseln uns ab, ein Satz Französisch, ein Satz Deutsch."},
-    {fr:"C'est un excellent moyen de progresser rapidement.", de:"Das ist ein ausgezeichnetes Mittel, um schnell Fortschritte zu machen."},
-    {fr:"Ils corrigent gentiment nos erreurs de grammaire.", de:"Sie korrigieren freundlich unsere Grammatikfehler."},
-    {fr:"Nous faisons pareil quand ils se trompent en français.", de:"Wir machen dasselbe, wenn sie beim Französisch Fehler machen."},
-    {fr:"On a échangé nos coordonnées avant de se séparer.", de:"Wir haben vor der Trennung unsere Kontaktdaten ausgetauscht."},
-    {fr:"On continuera à s'écrire après ce voyage.", de:"Wir werden uns auch nach dieser Reise weiter schreiben."},
-    {fr:"Ce genre de rencontre rend le voyage encore plus riche.", de:"Solche Begegnungen machen die Reise noch bereichernder."},
-    {fr:"On espère vraiment les revoir un jour.", de:"Wir hoffen wirklich, sie eines Tages wiederzusehen."}
-  ]},
-  { title:"L'Oktoberfest à Munich", phrases:[
-    {fr:"L'Oktoberfest attire des millions de visiteurs chaque année.", de:"Das Oktoberfest zieht jedes Jahr Millionen Besucher an."},
-    {fr:"Les grandes tentes à bière peuvent accueillir des milliers de personnes.", de:"Die großen Bierzelte können Tausende von Menschen fassen."},
-    {fr:"Il faut réserver une table plusieurs mois à l'avance.", de:"Man muss einen Tisch mehrere Monate vorher reservieren."},
-    {fr:"Les serveuses portent le traditionnel Dirndl bavarois.", de:"Die Kellnerinnen tragen das traditionelle bayerische Dirndl."},
-    {fr:"Ces chopes d'un litre sont vraiment lourdes à porter.", de:"Diese Ein-Liter-Krüge sind wirklich schwer zu tragen."},
-    {fr:"L'orchestre joue de la musique traditionnelle toute la journée.", de:"Die Kapelle spielt den ganzen Tag traditionelle Musik."},
-    {fr:"Il y a aussi des attractions de fête foraine à côté.", de:"Es gibt daneben auch Volksfestattraktionen."},
-    {fr:"Cette ambiance festive est vraiment contagieuse.", de:"Diese festliche Stimmung ist wirklich ansteckend."},
-    {fr:"On goûte bien sûr un authentique poulet rôti bavarois.", de:"Wir probieren natürlich ein authentisches bayerisches Hühnchen."},
-    {fr:"Cet événement reste un symbole fort de la culture allemande.", de:"Dieses Ereignis bleibt ein starkes Symbol der deutschen Kultur."}
-  ]},
-  { title:"Une grève des trains", phrases:[
-    {fr:"Les cheminots ont annoncé une grève pour demain.", de:"Die Eisenbahner haben für morgen einen Streik angekündigt."},
-    {fr:"Seulement quelques trains circuleront normalement.", de:"Nur wenige Züge werden normal fahren."},
-    {fr:"Nous devons absolument trouver une alternative rapidement.", de:"Wir müssen unbedingt schnell eine Alternative finden."},
-    {fr:"Un bus longue distance part dans deux heures.", de:"Ein Fernbus fährt in zwei Stunden ab."},
-    {fr:"Cette solution coûte un peu plus cher, mais elle fonctionne.", de:"Diese Lösung kostet etwas mehr, aber sie funktioniert."},
-    {fr:"Beaucoup de voyageurs partagent notre situation aujourd'hui.", de:"Viele Reisende teilen heute unsere Situation."},
-    {fr:"Les grèves sont apparemment assez fréquentes en cette période.", de:"Streiks sind in dieser Zeit offenbar recht häufig."},
-    {fr:"Les syndicats négocient en ce moment de meilleurs salaires.", de:"Die Gewerkschaften verhandeln gerade über bessere Gehälter."},
-    {fr:"On comprend leurs revendications, même si ça nous complique la vie.", de:"Wir verstehen ihre Forderungen, auch wenn es uns das Leben erschwert."},
-    {fr:"Finalement, on arrivera simplement un peu plus tard que prévu.", de:"Letztendlich kommen wir einfach etwas später an als geplant."}
-  ], tip:{
-    title:"L'ordre des mots : le verbe en position deux",
-    example:"Les cheminots ont annoncé une grève pour demain. — Die Eisenbahner <b>haben</b> für morgen einen Streik angekündigt.",
-    body:"Dans une phrase principale allemande, le verbe conjugué occupe toujours la deuxième position, quel que soit l'élément placé en premier : qu'on commence par le sujet, un complément de temps ou de lieu, le verbe reste en deuxième place et le sujet se déplace après si besoin : Für morgen haben die Eisenbahner einen Streik angekündigt."
-  }},
-  { title:"Un passeport perdu", phrases:[
-    {fr:"J'ai perdu mon passeport quelque part dans la gare.", de:"Ich habe meinen Reisepass irgendwo im Bahnhof verloren."},
-    {fr:"Avez-vous vérifié aux objets trouvés ?", de:"Haben Sie beim Fundbüro nachgefragt?"},
-    {fr:"Oui, mais personne ne l'a rapporté pour l'instant.", de:"Ja, aber bisher hat niemand ihn abgegeben."},
-    {fr:"Vous devez contacter votre consulat le plus vite possible.", de:"Sie müssen so schnell wie möglich Ihr Konsulat kontaktieren."},
-    {fr:"Ils peuvent délivrer un document de voyage provisoire.", de:"Sie können ein vorläufiges Reisedokument ausstellen."},
-    {fr:"Il faut aussi déposer une déclaration à la police.", de:"Man muss auch eine Anzeige bei der Polizei aufgeben."},
-    {fr:"Cela prendra-t-il beaucoup de temps ?", de:"Wird das viel Zeit in Anspruch nehmen?"},
-    {fr:"Comptez environ deux jours ouvrables.", de:"Rechnen Sie mit etwa zwei Werktagen."},
-    {fr:"Heureusement, j'avais une photocopie dans mon sac.", de:"Zum Glück hatte ich eine Kopie in meiner Tasche."},
-    {fr:"Cela devrait grandement simplifier les choses.", de:"Das sollte die Dinge erheblich vereinfachen."}
-  ]},
-  { title:"Préparer le voyage de retour", phrases:[
-    {fr:"Il est temps de préparer notre retour vers la France.", de:"Es ist Zeit, unsere Rückreise nach Frankreich vorzubereiten."},
-    {fr:"As-tu confirmé l'horaire exact de notre vol ?", de:"Hast du die genaue Uhrzeit unseres Fluges bestätigt?"},
-    {fr:"Oui, nous décollons demain à quinze heures.", de:"Ja, wir starten morgen um fünfzehn Uhr."},
-    {fr:"Il faut encore faire les valises ce soir.", de:"Wir müssen heute Abend noch die Koffer packen."},
-    {fr:"N'oublions pas les souvenirs achetés au marché.", de:"Vergessen wir nicht die Souvenirs vom Markt."},
-    {fr:"As-tu vérifié le poids total des bagages ?", de:"Hast du das Gesamtgewicht des Gepäcks überprüft?"},
-    {fr:"Oui, tout rentre dans la limite autorisée.", de:"Ja, alles bleibt innerhalb der erlaubten Grenze."},
-    {fr:"Ce voyage restera gravé dans nos mémoires.", de:"Diese Reise wird uns in Erinnerung bleiben."},
-    {fr:"On a tellement appris sur ce pays magnifique.", de:"Wir haben so viel über dieses wunderschöne Land gelernt."},
-    {fr:"Il faudra absolument revenir un jour.", de:"Wir müssen unbedingt eines Tages zurückkommen."}
-  ]},
-  { title:"Les derniers achats souvenirs", phrases:[
-    {fr:"Il nous reste encore une heure avant l'aéroport.", de:"Uns bleibt noch eine Stunde bis zum Flughafen."},
-    {fr:"On pourrait acheter un dernier souvenir ici.", de:"Wir könnten hier noch ein letztes Souvenir kaufen."},
-    {fr:"Cette boutique vend de jolis objets artisanaux.", de:"Dieser Laden verkauft hübsche Kunsthandwerksgegenstände."},
-    {fr:"Je voudrais rapporter du vrai chocolat allemand.", de:"Ich möchte echte deutsche Schokolade mitbringen."},
-    {fr:"Et ce petit coucou en bois pour ma grand-mère.", de:"Und diesen kleinen Holzkuckuck für meine Großmutter."},
-    {fr:"Vous acceptez les paiements en carte étrangère ?", de:"Akzeptieren Sie ausländische Kartenzahlungen?"},
-    {fr:"Bien sûr, sans problème particulier.", de:"Natürlich, ohne besonderes Problem."},
-    {fr:"On devrait emballer ces objets fragiles avec soin.", de:"Wir sollten diese zerbrechlichen Gegenstände sorgfältig einpacken."},
-    {fr:"Je les mettrai dans mon bagage à main.", de:"Ich packe sie in mein Handgepäck."},
-    {fr:"Parfait, tout est prêt pour le départ.", de:"Perfekt, alles ist bereit für die Abreise."}
-  ]},
-  { title:"Fin du module : un bilan de voyage", phrases:[
-    {fr:"Ce module nous a emmenés dans des coins vraiment variés d'Allemagne.", de:"Dieses Modul hat uns in wirklich vielfältige Ecken Deutschlands geführt."},
-    {fr:"On a appris à gérer les imprévus plus sereinement.", de:"Wir haben gelernt, mit Zwischenfällen gelassener umzugehen."},
-    {fr:"Les subordonnées avec « weil » et « dass » deviennent naturelles maintenant.", de:"Die Nebensätze mit „weil\" und „dass\" werden jetzt ganz natürlich."},
-    {fr:"Le prochain module ira encore plus loin dans la conversation.", de:"Das nächste Modul geht noch weiter in Richtung Konversation."},
-    {fr:"Chaque étape de ce voyage nous a appris quelque chose.", de:"Jede Etappe dieser Reise hat uns etwas gelehrt."},
-    {fr:"On se sent vraiment plus à l'aise à l'oral.", de:"Wir fühlen uns beim Sprechen wirklich wohler."},
-    {fr:"Cette confiance grandissante est la meilleure des récompenses.", de:"Dieses wachsende Selbstvertrauen ist die beste Belohnung."},
-    {fr:"Félicitations pour ce beau parcours jusqu'ici.", de:"Glückwunsch zu diesem schönen Weg bis hierhin."},
-    {fr:"Accordons-nous un instant de repos bien mérité.", de:"Gönnen wir uns einen wohlverdienten Moment der Ruhe."},
-    {fr:"À très vite pour la suite de ce niveau.", de:"Bis ganz bald für die Fortsetzung dieses Niveaus."}
-  ]}
+ {
+  "title": "Arrivée à Salvador de Bahia",
+  "phrases": [
+   {
+    "fr": "Notre avion vient d'atterrir à Salvador.",
+    "pt": "Nosso avião acabou de pousar em Salvador."
+   },
+   {
+    "fr": "Il fait déjà très chaud alors qu'il est tôt.",
+    "pt": "Já está fazendo muito calor, e ainda é cedo."
+   },
+   {
+    "fr": "On prend un taxi ou l'application de transport ?",
+    "pt": "A gente pega um táxi ou chama um carro pelo aplicativo?"
+   },
+   {
+    "fr": "Notre pousada se trouve près du centre historique.",
+    "pt": "Nossa pousada fica perto do centro histórico."
+   },
+   {
+    "fr": "Le chauffeur nous a conseillé quelques restaurants.",
+    "pt": "O motorista nos indicou alguns restaurantes."
+   },
+   {
+    "fr": "La ville est bien plus grande que je ne l'imaginais.",
+    "pt": "A cidade é bem maior do que eu imaginava."
+   },
+   {
+    "fr": "Regarde la mer de l'autre côté de la baie.",
+    "pt": "Olha o mar do outro lado da baía."
+   },
+   {
+    "fr": "On dépose les valises et on part se promener.",
+    "pt": "A gente deixa as malas e sai para passear."
+   },
+   {
+    "fr": "La réceptionniste nous a offert un jus de fruits frais.",
+    "pt": "A recepcionista ofereceu para a gente um suco de fruta natural."
+   },
+   {
+    "fr": "Je sens que ce voyage va être inoubliable.",
+    "pt": "Estou sentindo que essa viagem vai ser inesquecível."
+   }
+  ]
+ },
+ {
+  "title": "Une promenade dans le Pelourinho",
+  "phrases": [
+   {
+    "fr": "Les maisons colorées du Pelourinho sont magnifiques.",
+    "pt": "As casas coloridas do Pelourinho são lindas."
+   },
+   {
+    "fr": "Ce quartier date de l'époque coloniale.",
+    "pt": "Esse bairro é da época colonial."
+   },
+   {
+    "fr": "Les rues pavées montent et descendent sans arrêt.",
+    "pt": "As ruas de pedra sobem e descem sem parar."
+   },
+   {
+    "fr": "Entendez-vous les tambours au loin ?",
+    "pt": "Vocês estão ouvindo os tambores ao longe?"
+   },
+   {
+    "fr": "Un groupe répète sur la place tous les mardis.",
+    "pt": "Um grupo ensaia na praça toda terça-feira."
+   },
+   {
+    "fr": "Cette église est entièrement décorée d'or à l'intérieur.",
+    "pt": "Essa igreja é toda decorada com ouro por dentro."
+   },
+   {
+    "fr": "On a pris des dizaines de photos ce matin.",
+    "pt": "A gente tirou dezenas de fotos hoje de manhã."
+   },
+   {
+    "fr": "Fais attention à ton sac dans la foule.",
+    "pt": "Cuidado com a sua bolsa no meio da multidão."
+   },
+   {
+    "fr": "Un vendeur nous a proposé des rubans colorés.",
+    "pt": "Um vendedor ofereceu umas fitinhas coloridas para a gente."
+   },
+   {
+    "fr": "On les attache au poignet en faisant trois vœux.",
+    "pt": "A gente amarra no pulso fazendo três pedidos."
+   }
+  ]
+ },
+ {
+  "title": "Prendre l'Elevador Lacerda",
+  "phrases": [
+   {
+    "fr": "Nous venons de descendre vers la ville basse.",
+    "pt": "A gente acabou de descer para a Cidade Baixa."
+   },
+   {
+    "fr": "L'ascenseur relie les deux parties de la ville.",
+    "pt": "O elevador liga as duas partes da cidade."
+   },
+   {
+    "fr": "Le trajet ne dure qu'une trentaine de secondes.",
+    "pt": "A viagem dura só uns trinta segundos."
+   },
+   {
+    "fr": "Le billet coûte presque rien.",
+    "pt": "A passagem custa quase nada."
+   },
+   {
+    "fr": "Le Mercado Modelo vient d'ouvrir ses portes.",
+    "pt": "O Mercado Modelo acabou de abrir as portas."
+   },
+   {
+    "fr": "J'ai acheté un petit berimbau en souvenir.",
+    "pt": "Eu comprei um berimbau pequeno de lembrança."
+   },
+   {
+    "fr": "La vue sur la baie de tous les Saints est superbe.",
+    "pt": "A vista da Baía de Todos os Santos é maravilhosa."
+   },
+   {
+    "fr": "Le bateau pour l'île vient de partir.",
+    "pt": "O barco para a ilha acabou de sair."
+   },
+   {
+    "fr": "Le prochain part dans une heure.",
+    "pt": "O próximo sai daqui a uma hora."
+   },
+   {
+    "fr": "En attendant, on boit une eau de coco.",
+    "pt": "Enquanto isso, a gente toma uma água de coco."
+   }
+  ],
+  "tip": {
+   "title": "« Acabar de » + infinitif : venir de",
+   "example": "Le bateau pour l'île vient de partir. — O barco para a ilha <b>acabou de</b> sair.",
+   "body": "Pour dire qu'une action vient tout juste de se produire, le portugais utilise « acabar de » suivi de l'infinitif, là où le français dit « venir de ». On conjugue « acabar » au passé : eu acabei de chegar (je viens d'arriver), ela acabou de ligar (elle vient d'appeler). Attention : au présent, « acabar » seul veut dire « finir »."
+  }
+ },
+ {
+  "title": "Dîner bahianais",
+  "phrases": [
+   {
+    "fr": "Ce soir, on goûte la cuisine de Bahia.",
+    "pt": "Hoje à noite a gente vai provar a comida baiana."
+   },
+   {
+    "fr": "La moqueca est préparée avec du lait de coco.",
+    "pt": "A moqueca é feita com leite de coco."
+   },
+   {
+    "fr": "On la sert dans une marmite en terre cuite.",
+    "pt": "Ela é servida numa panela de barro."
+   },
+   {
+    "fr": "Elle est accompagnée de riz et de farofa.",
+    "pt": "Ela vem acompanhada de arroz e farofa."
+   },
+   {
+    "fr": "Faites attention, le piment est très fort.",
+    "pt": "Cuidado, a pimenta é muito forte."
+   },
+   {
+    "fr": "Sur la place, une dame vend des acarajés.",
+    "pt": "Na praça, uma senhora vende acarajé."
+   },
+   {
+    "fr": "Elle porte une longue robe blanche traditionnelle.",
+    "pt": "Ela está com um vestido branco comprido e tradicional."
+   },
+   {
+    "fr": "Je le veux sans piment, s'il vous plaît.",
+    "pt": "Eu quero sem pimenta, por favor."
+   },
+   {
+    "fr": "Je n'ai jamais mangé quelque chose d'aussi bon.",
+    "pt": "Eu nunca comi nada tão gostoso."
+   },
+   {
+    "fr": "En dessert, on a pris une cocada.",
+    "pt": "De sobremesa, a gente pediu uma cocada."
+   }
+  ]
+ },
+ {
+  "title": "Une plage près de Salvador",
+  "phrases": [
+   {
+    "fr": "Cette plage est bien plus calme que celle d'hier.",
+    "pt": "Essa praia é bem mais tranquila do que a de ontem."
+   },
+   {
+    "fr": "L'eau est plus chaude que je ne le pensais.",
+    "pt": "A água está mais quente do que eu pensava."
+   },
+   {
+    "fr": "Ici, le sable est plus fin et plus blanc.",
+    "pt": "Aqui a areia é mais fina e mais branca."
+   },
+   {
+    "fr": "Le soleil tape plus fort qu'en France.",
+    "pt": "O sol é mais forte do que na França."
+   },
+   {
+    "fr": "Remets de la crème solaire toutes les deux heures.",
+    "pt": "Passa protetor solar de novo a cada duas horas."
+   },
+   {
+    "fr": "On loue un parasol et deux chaises.",
+    "pt": "A gente aluga um guarda-sol e duas cadeiras."
+   },
+   {
+    "fr": "Le vendeur passe avec du fromage grillé.",
+    "pt": "O vendedor passa com queijo coalho na brasa."
+   },
+   {
+    "fr": "Cette noix de coco est meilleure que celle d'hier.",
+    "pt": "Esse coco está melhor do que o de ontem."
+   },
+   {
+    "fr": "Les vagues sont moins hautes le matin.",
+    "pt": "As ondas são menos altas de manhã."
+   },
+   {
+    "fr": "Cette plage est la plus belle du voyage.",
+    "pt": "Essa praia é a mais bonita da viagem."
+   }
+  ],
+  "tip": {
+   "title": "Les comparatifs « mais… do que », « melhor », « pior »",
+   "example": "Cette plage est bien plus calme que celle d'hier. — Essa praia é bem <b>mais</b> tranquila <b>do que</b> a de ontem.",
+   "body": "Pour comparer, on utilise « mais… do que » (plus… que) et « menos… do que » (moins… que) : mais caro do que, menos quente do que. Comme en français, « bon » et « mauvais » ont des formes irrégulières : « melhor » (meilleur, mieux) et « pior » (pire). On ne dit donc jamais « mais bom » : esse coco é melhor."
+  }
+ },
+ {
+  "title": "Un cours de capoeira",
+  "phrases": [
+   {
+    "fr": "J'ai réservé un cours de capoeira pour débutants.",
+    "pt": "Eu reservei uma aula de capoeira para iniciantes."
+   },
+   {
+    "fr": "Le maître nous a accueillis avec un grand sourire.",
+    "pt": "O mestre recebeu a gente com um sorrisão."
+   },
+   {
+    "fr": "On forme un cercle autour des deux joueurs.",
+    "pt": "A gente faz uma roda em volta dos dois jogadores."
+   },
+   {
+    "fr": "Tout le monde frappe dans les mains en chantant.",
+    "pt": "Todo mundo bate palma cantando."
+   },
+   {
+    "fr": "C'est à la fois une danse et un art martial.",
+    "pt": "É ao mesmo tempo uma dança e uma luta."
+   },
+   {
+    "fr": "Mes jambes tremblaient après dix minutes.",
+    "pt": "Minhas pernas estavam tremendo depois de dez minutos."
+   },
+   {
+    "fr": "Le maître m'a montré comment esquiver.",
+    "pt": "O mestre me mostrou como fazer a esquiva."
+   },
+   {
+    "fr": "Je n'arrivais pas à suivre le rythme.",
+    "pt": "Eu não conseguia acompanhar o ritmo."
+   },
+   {
+    "fr": "On a appris deux chansons traditionnelles.",
+    "pt": "A gente aprendeu duas músicas tradicionais."
+   },
+   {
+    "fr": "Je suis épuisé, mais très content.",
+    "pt": "Estou exausto, mas muito feliz."
+   }
+  ]
+ },
+ {
+  "title": "Le bus de nuit vers la Chapada Diamantina",
+  "phrases": [
+   {
+    "fr": "On a acheté les billets à la gare routière.",
+    "pt": "A gente comprou as passagens na rodoviária."
+   },
+   {
+    "fr": "Le bus part à vingt-deux heures.",
+    "pt": "O ônibus sai às dez da noite."
+   },
+   {
+    "fr": "Le voyage dure environ sept heures.",
+    "pt": "A viagem dura umas sete horas."
+   },
+   {
+    "fr": "Les sièges s'inclinent presque complètement.",
+    "pt": "As poltronas reclinam quase totalmente."
+   },
+   {
+    "fr": "Prends une veste, la climatisation est glaciale.",
+    "pt": "Leva um casaco, o ar-condicionado é gelado."
+   },
+   {
+    "fr": "Le bus fait une pause dans une station-service.",
+    "pt": "O ônibus faz uma parada num posto de gasolina."
+   },
+   {
+    "fr": "J'ai réussi à dormir quelques heures.",
+    "pt": "Eu consegui dormir algumas horas."
+   },
+   {
+    "fr": "On arrive à Lençóis au lever du soleil.",
+    "pt": "A gente chega em Lençóis ao nascer do sol."
+   },
+   {
+    "fr": "Le petit village est entouré de montagnes.",
+    "pt": "A vila é cercada de montanhas."
+   },
+   {
+    "fr": "Je meurs d'envie d'un bon café.",
+    "pt": "Estou morrendo de vontade de tomar um café bem gostoso."
+   }
+  ]
+ },
+ {
+  "title": "Randonnée dans la Chapada Diamantina",
+  "phrases": [
+   {
+    "fr": "Prenez le sentier à gauche après le pont.",
+    "pt": "Peguem a trilha à esquerda depois da ponte."
+   },
+   {
+    "fr": "Suivez le guide et ne sortez pas du chemin.",
+    "pt": "Sigam o guia e não saiam do caminho."
+   },
+   {
+    "fr": "Buvez beaucoup d'eau pendant la montée.",
+    "pt": "Bebam bastante água durante a subida."
+   },
+   {
+    "fr": "Montez doucement, les rochers glissent.",
+    "pt": "Subam devagar, as pedras escorregam."
+   },
+   {
+    "fr": "Regardez, voilà la cascade !",
+    "pt": "Olhem, lá está a cachoeira!"
+   },
+   {
+    "fr": "L'eau a la couleur du thé à cause des plantes.",
+    "pt": "A água tem cor de chá por causa das plantas."
+   },
+   {
+    "fr": "Le guide nous a raconté l'histoire des chercheurs de diamants.",
+    "pt": "O guia contou para a gente a história dos garimpeiros."
+   },
+   {
+    "fr": "Du sommet, on voit toute la vallée.",
+    "pt": "Lá de cima, dá para ver o vale inteiro."
+   },
+   {
+    "fr": "Ne laissez aucun déchet sur le chemin.",
+    "pt": "Não deixem nenhum lixo na trilha."
+   },
+   {
+    "fr": "On est rentrés juste avant la nuit.",
+    "pt": "A gente voltou bem antes de escurecer."
+   }
+  ],
+  "tip": {
+   "title": "L'impératif poli à la brésilienne : « Pegue », « Siga », « Vire »",
+   "example": "Prenez le sentier à gauche après le pont. — <b>Peguem</b> a trilha à esquerda depois da ponte.",
+   "body": "Pour donner une consigne polie, le portugais du Brésil utilise les formes du subjonctif : pegue / peguem (prenez), siga / sigam (suivez), vire (tournez), suba (montez). C'est ce qu'on entend dans les indications : « Siga reto e vire à direita » (continuez tout droit et tournez à droite). Entre amis, on entend aussi la forme familière : « Pega », « Olha »."
+  }
+ },
+ {
+  "title": "Recife, la Venise brésilienne",
+  "phrases": [
+   {
+    "fr": "Recife est traversée par beaucoup de rivières et de ponts.",
+    "pt": "Recife é cortada por muitos rios e pontes."
+   },
+   {
+    "fr": "On l'appelle parfois la Venise brésilienne.",
+    "pt": "Às vezes ela é chamada de Veneza brasileira."
+   },
+   {
+    "fr": "Le vieux Recife a été restauré récemment.",
+    "pt": "O Recife Antigo foi restaurado há pouco tempo."
+   },
+   {
+    "fr": "On a visité un atelier de céramique géant.",
+    "pt": "A gente visitou um ateliê de cerâmica enorme."
+   },
+   {
+    "fr": "La plage de Boa Viagem est très longue.",
+    "pt": "A praia de Boa Viagem é muito comprida."
+   },
+   {
+    "fr": "Il est interdit de nager à certains endroits.",
+    "pt": "É proibido nadar em alguns lugares."
+   },
+   {
+    "fr": "Les panneaux signalent la présence de requins.",
+    "pt": "As placas avisam que tem tubarão."
+   },
+   {
+    "fr": "On préfère se baigner dans les piscines naturelles.",
+    "pt": "A gente prefere tomar banho nas piscinas naturais."
+   },
+   {
+    "fr": "Le soir, on a mangé une tapioca au fromage.",
+    "pt": "À noite, a gente comeu uma tapioca de queijo."
+   },
+   {
+    "fr": "Demain, on traverse jusqu'à Olinda.",
+    "pt": "Amanhã a gente vai até Olinda."
+   }
+  ]
+ },
+ {
+  "title": "Olinda et le frevo",
+  "phrases": [
+   {
+    "fr": "Olinda est perchée sur une colline près de la mer.",
+    "pt": "Olinda fica no alto de um morro perto do mar."
+   },
+   {
+    "fr": "Ses églises et ses maisons sont classées au patrimoine mondial.",
+    "pt": "As igrejas e as casas são patrimônio mundial."
+   },
+   {
+    "fr": "Pendant le carnaval, les rues sont pleines de monde.",
+    "pt": "No carnaval, as ruas ficam lotadas."
+   },
+   {
+    "fr": "Des poupées géantes défilent dans les ruelles.",
+    "pt": "Bonecos gigantes desfilam pelas ladeiras."
+   },
+   {
+    "fr": "Le frevo est une musique très rapide et joyeuse.",
+    "pt": "O frevo é uma música muito rápida e alegre."
+   },
+   {
+    "fr": "Les danseurs tiennent de petites ombrelles colorées.",
+    "pt": "Os dançarinos seguram sombrinhas coloridas."
+   },
+   {
+    "fr": "Un musicien nous a appris quelques pas.",
+    "pt": "Um músico ensinou alguns passos para a gente."
+   },
+   {
+    "fr": "Je transpirais comme jamais.",
+    "pt": "Eu estava suando como nunca."
+   },
+   {
+    "fr": "Le coucher de soleil depuis le haut de la ville est splendide.",
+    "pt": "O pôr do sol lá do alto da cidade é maravilhoso."
+   },
+   {
+    "fr": "Je reviendrai pour le carnaval, c'est promis.",
+    "pt": "Eu vou voltar no carnaval, prometo."
+   }
+  ]
+ },
+ {
+  "title": "Porto de Galinhas en jangada",
+  "phrases": [
+   {
+    "fr": "On a pris une jangada pour aller aux piscines naturelles.",
+    "pt": "A gente pegou uma jangada para ir às piscinas naturais."
+   },
+   {
+    "fr": "C'est un bateau traditionnel à voile en bois.",
+    "pt": "É um barco tradicional de madeira, com vela."
+   },
+   {
+    "fr": "Il faut y aller à marée basse.",
+    "pt": "Tem que ir na maré baixa."
+   },
+   {
+    "fr": "L'eau est si claire qu'on voit les poissons.",
+    "pt": "A água é tão clara que dá para ver os peixes."
+   },
+   {
+    "fr": "Le pêcheur connaît chaque rocher par cœur.",
+    "pt": "O jangadeiro conhece cada pedra de cor."
+   },
+   {
+    "fr": "Il ne faut pas marcher sur le corail.",
+    "pt": "Não pode pisar no coral."
+   },
+   {
+    "fr": "J'ai loué un masque et un tuba.",
+    "pt": "Eu aluguei uma máscara e um snorkel."
+   },
+   {
+    "fr": "Un petit poisson jaune nous a suivis.",
+    "pt": "Um peixinho amarelo seguiu a gente."
+   },
+   {
+    "fr": "La marée monte vite, il faut rentrer.",
+    "pt": "A maré sobe rápido, tem que voltar."
+   },
+   {
+    "fr": "Le village est plein de statues de poules.",
+    "pt": "A vila é cheia de estátuas de galinha."
+   }
+  ]
+ },
+ {
+  "title": "Fortaleza et les jangadas du soir",
+  "phrases": [
+   {
+    "fr": "On est déjà arrivés à Fortaleza ?",
+    "pt": "A gente já chegou em Fortaleza?"
+   },
+   {
+    "fr": "Non, il reste encore une heure de route.",
+    "pt": "Não, ainda falta uma hora de estrada."
+   },
+   {
+    "fr": "J'ai déjà réservé l'hôtel en bord de mer.",
+    "pt": "Eu já reservei o hotel na beira-mar."
+   },
+   {
+    "fr": "Le marché d'artisanat est encore ouvert.",
+    "pt": "A feirinha de artesanato ainda está aberta."
+   },
+   {
+    "fr": "Tu as déjà goûté le crabe d'ici ?",
+    "pt": "Você já provou o caranguejo daqui?"
+   },
+   {
+    "fr": "Pas encore, mais j'en ai très envie.",
+    "pt": "Ainda não, mas estou com muita vontade."
+   },
+   {
+    "fr": "Le jeudi, tout le monde mange du crabe sur la plage.",
+    "pt": "Na quinta-feira, todo mundo come caranguejo na praia."
+   },
+   {
+    "fr": "Il ne sait pas encore casser les pinces.",
+    "pt": "Ele ainda não sabe quebrar as patas."
+   },
+   {
+    "fr": "On utilise un petit marteau en bois.",
+    "pt": "A gente quebra com um martelinho de madeira."
+   },
+   {
+    "fr": "Il est déjà minuit, mais la plage est encore animée.",
+    "pt": "Já é meia-noite, mas a praia ainda está animada."
+   }
+  ],
+  "tip": {
+   "title": "« Já » et « ainda » : déjà et encore",
+   "example": "Pas encore, mais j'en ai très envie. — <b>Ainda</b> não, mas estou com muita vontade.",
+   "body": "« Já » signifie « déjà » : você já provou? (tu as déjà goûté ?). « Ainda » signifie « encore, toujours » : ainda está aberta (c'est encore ouvert). Pour répondre « pas encore », on dit « ainda não », et pour « plus maintenant », « não… mais » : não chove mais (il ne pleut plus)."
+  }
+ },
+ {
+  "title": "En buggy sur les dunes",
+  "phrases": [
+   {
+    "fr": "On a loué un buggy avec chauffeur pour la journée.",
+    "pt": "A gente alugou um bugue com motorista para o dia todo."
+   },
+   {
+    "fr": "Avec ou sans émotion ?",
+    "pt": "Com emoção ou sem emoção?"
+   },
+   {
+    "fr": "Avec émotion, bien sûr !",
+    "pt": "Com emoção, claro!"
+   },
+   {
+    "fr": "Le buggy descend les dunes à toute vitesse.",
+    "pt": "O bugue desce as dunas a toda velocidade."
+   },
+   {
+    "fr": "Accroche-toi bien à la barre.",
+    "pt": "Segura firme na barra."
+   },
+   {
+    "fr": "On a glissé sur une planche jusqu'à la lagune.",
+    "pt": "A gente desceu de prancha até a lagoa."
+   },
+   {
+    "fr": "Le vent soulève le sable partout.",
+    "pt": "O vento levanta areia para todo lado."
+   },
+   {
+    "fr": "J'ai du sable jusque dans les oreilles.",
+    "pt": "Estou com areia até dentro das orelhas."
+   },
+   {
+    "fr": "Le chauffeur conduit comme un pilote de course.",
+    "pt": "O motorista dirige como um piloto de corrida."
+   },
+   {
+    "fr": "C'était le meilleur moment de la journée.",
+    "pt": "Foi o melhor momento do dia."
+   }
+  ]
+ },
+ {
+  "title": "Les Lençóis Maranhenses",
+  "phrases": [
+   {
+    "fr": "Les Lençóis Maranhenses ressemblent à un désert.",
+    "pt": "Os Lençóis Maranhenses parecem um deserto."
+   },
+   {
+    "fr": "Pourtant, il y a des lagunes entre les dunes.",
+    "pt": "Mas tem lagoas no meio das dunas."
+   },
+   {
+    "fr": "Elles se remplissent pendant la saison des pluies.",
+    "pt": "Elas enchem na época das chuvas."
+   },
+   {
+    "fr": "La meilleure période, c'est entre juin et septembre.",
+    "pt": "A melhor época é entre junho e setembro."
+   },
+   {
+    "fr": "On y accède seulement en véhicule tout-terrain.",
+    "pt": "Só dá para chegar de carro quatro por quatro."
+   },
+   {
+    "fr": "Le sable est blanc comme des draps.",
+    "pt": "A areia é branca como lençol."
+   },
+   {
+    "fr": "C'est de là que vient le nom du parc.",
+    "pt": "É daí que vem o nome do parque."
+   },
+   {
+    "fr": "L'eau des lagunes est tiède et transparente.",
+    "pt": "A água das lagoas é morna e transparente."
+   },
+   {
+    "fr": "Il faut marcher pieds nus sur les dunes.",
+    "pt": "Tem que andar descalço nas dunas."
+   },
+   {
+    "fr": "Je n'ai jamais vu un paysage pareil.",
+    "pt": "Eu nunca vi uma paisagem assim."
+   }
+  ]
+ },
+ {
+  "title": "Un échange de langues à l'auberge",
+  "phrases": [
+   {
+    "fr": "On a rencontré un couple de Brésiliens à l'auberge.",
+    "pt": "A gente conheceu um casal de brasileiros no albergue."
+   },
+   {
+    "fr": "Ils apprennent le français depuis un an.",
+    "pt": "Eles estão aprendendo francês há um ano."
+   },
+   {
+    "fr": "Ils voulaient pratiquer avec nous.",
+    "pt": "Eles queriam praticar com a gente."
+   },
+   {
+    "fr": "On a parlé une heure en français, une heure en portugais.",
+    "pt": "A gente conversou uma hora em francês e uma hora em português."
+   },
+   {
+    "fr": "Ils corrigeaient gentiment mes erreurs.",
+    "pt": "Eles corrigiam meus erros com carinho."
+   },
+   {
+    "fr": "Ils m'ont appris des expressions du Nordeste.",
+    "pt": "Eles me ensinaram umas expressões do Nordeste."
+   },
+   {
+    "fr": "Ici, on dit « oxente » quand on est surpris.",
+    "pt": "Aqui, a gente fala « oxente » quando fica surpreso."
+   },
+   {
+    "fr": "Mon accent les faisait beaucoup rire.",
+    "pt": "Meu sotaque fazia eles rirem muito."
+   },
+   {
+    "fr": "On a échangé nos numéros de téléphone.",
+    "pt": "A gente trocou o número de celular."
+   },
+   {
+    "fr": "Ils vont peut-être nous rendre visite en France.",
+    "pt": "Talvez eles venham visitar a gente na França."
+   }
+  ]
+ },
+ {
+  "title": "Une grève des bus",
+  "phrases": [
+   {
+    "fr": "Les chauffeurs de bus sont en grève aujourd'hui.",
+    "pt": "Os motoristas de ônibus estão em greve hoje."
+   },
+   {
+    "fr": "On cherche une autre solution pour aller à l'aéroport.",
+    "pt": "A gente está procurando outro jeito para ir ao aeroporto."
+   },
+   {
+    "fr": "Je passe par l'application pour commander une voiture.",
+    "pt": "Eu vou pelo aplicativo para chamar um carro."
+   },
+   {
+    "fr": "Le prix a doublé à cause de la grève.",
+    "pt": "O preço dobrou por causa da greve."
+   },
+   {
+    "fr": "On a payé cent reais pour la course.",
+    "pt": "A gente pagou cem reais pela corrida."
+   },
+   {
+    "fr": "Le chauffeur est passé par la route de la plage.",
+    "pt": "O motorista passou pela estrada da praia."
+   },
+   {
+    "fr": "On part pour Fernando de Noronha ce soir.",
+    "pt": "A gente vai para Fernando de Noronha hoje à noite."
+   },
+   {
+    "fr": "J'ai acheté un cadeau pour ma sœur.",
+    "pt": "Eu comprei um presente para a minha irmã."
+   },
+   {
+    "fr": "Merci pour votre patience.",
+    "pt": "Obrigado pela paciência."
+   },
+   {
+    "fr": "On est arrivés à temps, par miracle.",
+    "pt": "A gente chegou a tempo, por milagre."
+   }
+  ],
+  "tip": {
+   "title": "« Por » ou « para » ?",
+   "example": "On a payé cent reais pour la course. — A gente pagou cem reais <b>pela</b> corrida.",
+   "body": "« Para » indique la destination ou le but : vou para Noronha (je vais à Noronha), um presente para a minha irmã (un cadeau pour ma sœur). « Por » indique le passage, la cause, l'échange ou le prix : passou pela estrada (il est passé par la route), obrigado pela paciência (merci pour votre patience). « Por » se contracte avec l'article : pelo, pela."
+  }
+ },
+ {
+  "title": "Fernando de Noronha",
+  "phrases": [
+   {
+    "fr": "L'archipel est un parc national protégé.",
+    "pt": "O arquipélago é um parque nacional protegido."
+   },
+   {
+    "fr": "Il faut payer une taxe pour chaque jour passé sur l'île.",
+    "pt": "Tem que pagar uma taxa por cada dia na ilha."
+   },
+   {
+    "fr": "Le nombre de visiteurs est limité.",
+    "pt": "O número de visitantes é limitado."
+   },
+   {
+    "fr": "Ce matin, on a vu des dauphins depuis la falaise.",
+    "pt": "Hoje de manhã, a gente viu golfinhos lá do mirante."
+   },
+   {
+    "fr": "Ils sautaient hors de l'eau en groupe.",
+    "pt": "Eles pulavam para fora da água em grupo."
+   },
+   {
+    "fr": "J'ai nagé à côté d'une tortue de mer.",
+    "pt": "Eu nadei do lado de uma tartaruga marinha."
+   },
+   {
+    "fr": "Il est interdit de toucher les animaux.",
+    "pt": "É proibido tocar nos animais."
+   },
+   {
+    "fr": "La Baía do Sancho est souvent élue la plus belle plage du monde.",
+    "pt": "A Baía do Sancho é sempre eleita a praia mais bonita do mundo."
+   },
+   {
+    "fr": "On descend jusqu'à la plage par une échelle dans la roche.",
+    "pt": "A gente desce até a praia por uma escada na pedra."
+   },
+   {
+    "fr": "Cet endroit est un vrai paradis.",
+    "pt": "Esse lugar é um verdadeiro paraíso."
+   }
+  ]
+ },
+ {
+  "title": "Un passeport égaré",
+  "phrases": [
+   {
+    "fr": "Je ne trouve plus mon passeport nulle part.",
+    "pt": "Não estou achando meu passaporte em lugar nenhum."
+   },
+   {
+    "fr": "Tu l'avais encore à l'hôtel ce matin ?",
+    "pt": "Você ainda estava com ele no hotel hoje de manhã?"
+   },
+   {
+    "fr": "Je crois que je l'ai laissé dans le taxi.",
+    "pt": "Acho que eu esqueci no táxi."
+   },
+   {
+    "fr": "On a appelé la compagnie de taxis tout de suite.",
+    "pt": "A gente ligou para a empresa de táxi na hora."
+   },
+   {
+    "fr": "Personne ne l'a encore rapporté.",
+    "pt": "Ninguém devolveu ainda."
+   },
+   {
+    "fr": "Il faut faire une déclaration au commissariat.",
+    "pt": "Tem que fazer um boletim de ocorrência na delegacia."
+   },
+   {
+    "fr": "Ensuite, on contactera le consulat de France.",
+    "pt": "Depois, a gente entra em contato com o consulado da França."
+   },
+   {
+    "fr": "Le chauffeur vient de me rappeler !",
+    "pt": "O motorista acabou de me ligar de volta!"
+   },
+   {
+    "fr": "Il l'a trouvé sous le siège arrière.",
+    "pt": "Ele achou embaixo do banco de trás."
+   },
+   {
+    "fr": "Quel soulagement, je lui dois une fière chandelle.",
+    "pt": "Que alívio, eu devo essa para ele."
+   }
+  ]
+ },
+ {
+  "title": "Les derniers souvenirs",
+  "phrases": [
+   {
+    "fr": "Il nous reste encore deux heures avant le vol.",
+    "pt": "A gente ainda tem duas horas antes do voo."
+   },
+   {
+    "fr": "On passe une dernière fois au marché ?",
+    "pt": "Vamos dar uma última passada na feira?"
+   },
+   {
+    "fr": "Je voudrais rapporter du café et de la cachaça.",
+    "pt": "Eu queria levar café e cachaça."
+   },
+   {
+    "fr": "Ce hamac est fait à la main dans la région.",
+    "pt": "Essa rede é feita à mão aqui na região."
+   },
+   {
+    "fr": "Vous pouvez me faire un prix si j'en prends deux ?",
+    "pt": "O senhor faz um desconto se eu levar duas?"
+   },
+   {
+    "fr": "Je vous fais les deux pour cent cinquante reais.",
+    "pt": "Eu faço as duas por cento e cinquenta reais."
+   },
+   {
+    "fr": "Marché conclu, je les prends.",
+    "pt": "Fechado, vou levar."
+   },
+   {
+    "fr": "Ma valise est presque pleine à craquer.",
+    "pt": "Minha mala está quase explodindo."
+   },
+   {
+    "fr": "Il faudra peut-être payer un supplément bagage.",
+    "pt": "Talvez a gente tenha que pagar bagagem extra."
+   },
+   {
+    "fr": "Tant pis, ça en vaut la peine.",
+    "pt": "Paciência, vale a pena."
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan de voyage",
+  "phrases": [
+   {
+    "fr": "Ce module nous a fait découvrir tout le Nordeste.",
+    "pt": "Esse módulo fez a gente conhecer o Nordeste inteiro."
+   },
+   {
+    "fr": "On a voyagé en bus, en bateau et en buggy.",
+    "pt": "A gente viajou de ônibus, de barco e de bugue."
+   },
+   {
+    "fr": "On sait maintenant gérer les imprévus en portugais.",
+    "pt": "Agora a gente sabe lidar com imprevistos em português."
+   },
+   {
+    "fr": "Raconter ce qu'on a fait au passé devient naturel.",
+    "pt": "Contar o que a gente fez no passado está ficando natural."
+   },
+   {
+    "fr": "Je fais la différence entre « por » et « para ».",
+    "pt": "Eu já sei a diferença entre « por » e « para »."
+   },
+   {
+    "fr": "Je comprends mieux les accents du Nordeste.",
+    "pt": "Eu entendo melhor os sotaques do Nordeste."
+   },
+   {
+    "fr": "Mon vocabulaire de voyage s'est bien enrichi.",
+    "pt": "Meu vocabulário de viagem ficou bem mais rico."
+   },
+   {
+    "fr": "J'ose parler davantage avec les gens.",
+    "pt": "Eu tenho mais coragem de conversar com as pessoas."
+   },
+   {
+    "fr": "Le portugais me paraît de moins en moins difficile.",
+    "pt": "O português está me parecendo cada vez menos difícil."
+   },
+   {
+    "fr": "Bravo, on continue l'aventure !",
+    "pt": "Parabéns, vamos continuar a aventura!"
+   }
+  ]
+ }
 ];
 
 const level2Module3Lessons = [
-  { title:"Discuter de l'actualité", phrases:[
-    {fr:"Tu as suivi les nouvelles ce matin ?", de:"Hast du heute Morgen die Nachrichten verfolgt?"},
-    {fr:"Oui, il y a eu une grande annonce économique.", de:"Ja, es gab eine große wirtschaftliche Ankündigung."},
-    {fr:"Qu'en penses-tu personnellement ?", de:"Was denkst du persönlich darüber?"},
-    {fr:"C'est difficile à dire sans plus d'informations.", de:"Es ist schwer zu sagen, ohne mehr Informationen."},
-    {fr:"Les journaux donnent des avis très différents.", de:"Die Zeitungen geben sehr unterschiedliche Meinungen."},
-    {fr:"Je préfère me faire ma propre opinion.", de:"Ich bilde mir lieber meine eigene Meinung."},
-    {fr:"C'est une approche sage, je trouve.", de:"Das finde ich einen klugen Ansatz."},
-    {fr:"On devrait en reparler une fois les détails connus.", de:"Wir sollten noch mal darüber sprechen, wenn die Details bekannt sind."},
-    {fr:"D'accord, ça me semble raisonnable.", de:"Einverstanden, das scheint mir vernünftig."},
-    {fr:"Merci pour cette discussion intéressante.", de:"Danke für dieses interessante Gespräch."}
-  ]},
-  { title:"Parler de ses études", phrases:[
-    {fr:"Je pense que tu devrais continuer tes études.", de:"Ich denke, dass du dein Studium fortsetzen solltest."},
-    {fr:"Je crois que ce master me correspond vraiment bien.", de:"Ich glaube, dass dieser Master wirklich gut zu mir passt."},
-    {fr:"Les professeurs disent que le programme est exigeant.", de:"Die Professoren sagen, dass das Programm anspruchsvoll ist."},
-    {fr:"On sait que cette université a une excellente réputation.", de:"Man weiß, dass diese Universität einen ausgezeichneten Ruf hat."},
-    {fr:"J'espère que je serai accepté dans ce programme.", de:"Ich hoffe, dass ich in dieses Programm aufgenommen werde."},
-    {fr:"Je suis sûr que tu vas y arriver.", de:"Ich bin sicher, dass du es schaffen wirst."},
-    {fr:"Il paraît que les frais de scolarité restent raisonnables ici.", de:"Es scheint, dass die Studiengebühren hier moderat bleiben."},
-    {fr:"Je trouve que l'enseignement allemand est très pratique.", de:"Ich finde, dass die deutsche Lehre sehr praxisnah ist."},
-    {fr:"C'est vrai que les stages sont très valorisés.", de:"Es ist wahr, dass Praktika sehr geschätzt werden."},
-    {fr:"On verra bien ce que l'avenir nous réserve.", de:"Wir werden sehen, was die Zukunft für uns bereithält."}
-  ], tip:{
-    title:"La subordonnée avec « dass »",
-    example:"Je pense que tu devrais continuer tes études. — Ich denke, <b>dass</b> du dein Studium fortsetzen solltest.",
-    body:"« Dass » (que) introduit une subordonnée complétive, exactement comme en français après penser, croire, savoir, espérer. Comme pour « weil », le verbe conjugué part en fin de subordonnée : Ich denke, dass du Recht hast. Une virgule sépare toujours la principale de la subordonnée."
-  }},
-  { title:"Changer de carrière", phrases:[
-    {fr:"J'envisage sérieusement de changer de carrière.", de:"Ich denke ernsthaft über einen Berufswechsel nach."},
-    {fr:"Qu'est-ce qui te pousse à cette décision ?", de:"Was bringt dich zu dieser Entscheidung?"},
-    {fr:"Je ne me sens plus épanoui dans mon travail actuel.", de:"Ich fühle mich in meinem aktuellen Job nicht mehr erfüllt."},
-    {fr:"Vers quel domaine voudrais-tu te tourner ?", de:"In welchen Bereich möchtest du dich wenden?"},
-    {fr:"J'aimerais travailler dans le domaine environnemental.", de:"Ich würde gern im Umweltbereich arbeiten."},
-    {fr:"C'est un secteur en pleine croissance en ce moment.", de:"Das ist derzeit ein stark wachsender Sektor."},
-    {fr:"Faudrait-il reprendre une formation complète ?", de:"Müsste man eine komplette Ausbildung neu beginnen?"},
-    {fr:"Probablement une formation courte et ciblée.", de:"Wahrscheinlich eine kurze, gezielte Weiterbildung."},
-    {fr:"Ça demande du courage, mais c'est admirable.", de:"Das erfordert Mut, aber es ist bewundernswert."},
-    {fr:"Merci, ton soutien me motive énormément.", de:"Danke, deine Unterstützung motiviert mich enorm."}
-  ]},
-  { title:"Débattre de l'écologie", phrases:[
-    {fr:"On devrait tous réduire notre consommation de plastique.", de:"Wir sollten alle unseren Plastikverbrauch reduzieren."},
-    {fr:"Je suis tout à fait d'accord sur ce point.", de:"In diesem Punkt stimme ich voll und ganz zu."},
-    {fr:"Les transports en commun restent la meilleure solution en ville.", de:"Öffentliche Verkehrsmittel bleiben in der Stadt die beste Lösung."},
-    {fr:"Certains préfèrent quand même leur voiture par confort.", de:"Manche bevorzugen trotzdem aus Bequemlichkeit ihr Auto."},
-    {fr:"C'est compréhensible, mais ça pose un vrai problème.", de:"Das ist verständlich, aber es stellt ein echtes Problem dar."},
-    {fr:"Les énergies renouvelables se développent vite en Allemagne.", de:"Erneuerbare Energien entwickeln sich in Deutschland schnell."},
-    {fr:"Chaque petit geste compte, même à titre individuel.", de:"Jede kleine Geste zählt, auch im persönlichen Bereich."},
-    {fr:"Je trie mes déchets depuis des années maintenant.", de:"Ich trenne meinen Müll inzwischen seit Jahren."},
-    {fr:"On pourrait aussi réduire notre consommation de viande.", de:"Wir könnten auch unseren Fleischkonsum reduzieren."},
-    {fr:"Un petit pas à la fois, c'est déjà bien.", de:"Ein kleiner Schritt nach dem anderen ist schon gut."}
-  ]},
-  { title:"Les différences culturelles franco-allemandes", phrases:[
-    {fr:"Je m'intéresse beaucoup aux différences entre nos deux cultures.", de:"Ich interessiere mich sehr für die Unterschiede zwischen unseren beiden Kulturen."},
-    {fr:"Je me souviens d'avoir été surpris par la ponctualité ici.", de:"Ich erinnere mich, dass ich von der Pünktlichkeit hier überrascht war."},
-    {fr:"Les Allemands se sentent souvent mal à l'aise avec le retard.", de:"Die Deutschen fühlen sich mit Verspätung oft unwohl."},
-    {fr:"En France, on se détend davantage sur les horaires.", de:"In Frankreich entspannt man sich mehr bei den Uhrzeiten."},
-    {fr:"Je me réjouis toujours de découvrir de nouvelles coutumes.", de:"Ich freue mich immer darauf, neue Bräuche zu entdecken."},
-    {fr:"On s'habitue vite aux petites différences du quotidien.", de:"Man gewöhnt sich schnell an die kleinen Unterschiede im Alltag."},
-    {fr:"Je m'amuse souvent à comparer nos expressions idiomatiques.", de:"Ich amüsiere mich oft dabei, unsere idiomatischen Ausdrücke zu vergleichen."},
-    {fr:"Cette richesse culturelle m'intéresse infiniment.", de:"Diese kulturelle Vielfalt interessiert mich unendlich."},
-    {fr:"On se comprend finalement assez bien, malgré tout.", de:"Letztendlich versteht man sich trotz allem recht gut."},
-    {fr:"Ces différences rendent nos échanges encore plus intéressants.", de:"Diese Unterschiede machen unseren Austausch noch interessanter."}
-  ], tip:{
-    title:"Les verbes réfléchis : sich freuen, sich interessieren",
-    example:"Je m'intéresse beaucoup aux différences entre nos deux cultures. — Ich <b>interessiere mich</b> sehr für die Unterschiede.",
-    body:"Beaucoup de verbes allemands s'emploient avec un pronom réfléchi à l'accusatif (mich, dich, sich, uns, euch, sich) : sich freuen (se réjouir), sich interessieren (s'intéresser), sich erinnern (se souvenir). Le pronom réfléchi se place juste après le verbe conjugué : Ich freue mich, Er interessiert sich für..."
-  }},
-  { title:"Discuter d'un livre", phrases:[
-    {fr:"Tu as fini le livre que je t'ai prêté ?", de:"Hast du das Buch fertig gelesen, das ich dir geliehen habe?"},
-    {fr:"Oui, je l'ai terminé hier soir très tard.", de:"Ja, ich habe es gestern Abend sehr spät beendet."},
-    {fr:"Qu'est-ce que tu en as retenu principalement ?", de:"Was hast du vor allem daraus mitgenommen?"},
-    {fr:"L'histoire du personnage principal m'a beaucoup touché.", de:"Die Geschichte der Hauptfigur hat mich sehr berührt."},
-    {fr:"L'auteur décrit magnifiquement le Berlin d'après-guerre.", de:"Der Autor beschreibt das Nachkriegsberlin wunderschön."},
-    {fr:"Je ne connaissais pas du tout cette période historique.", de:"Diese historische Periode kannte ich überhaupt nicht."},
-    {fr:"Ce roman m'a vraiment donné envie d'en apprendre plus.", de:"Dieser Roman hat mir wirklich Lust gemacht, mehr zu lernen."},
-    {fr:"Je peux te prêter la suite si tu veux.", de:"Ich kann dir die Fortsetzung leihen, wenn du möchtest."},
-    {fr:"Avec plaisir, j'ai vraiment hâte de la lire.", de:"Gern, ich freue mich wirklich darauf, sie zu lesen."},
-    {fr:"On devrait créer un petit club de lecture entre nous.", de:"Wir sollten unter uns einen kleinen Lesekreis gründen."}
-  ]},
-  { title:"Parler de politique avec tact", phrases:[
-    {fr:"On peut discuter de politique sans se fâcher, j'espère.", de:"Wir können hoffentlich über Politik reden, ohne uns zu streiten."},
-    {fr:"Bien sûr, chacun a droit à son opinion.", de:"Natürlich, jeder hat ein Recht auf seine Meinung."},
-    {fr:"Je trouve ce débat électoral plutôt équilibré.", de:"Ich finde diese Wahldebatte eher ausgeglichen."},
-    {fr:"Certains points me laissent tout de même sceptique.", de:"Manche Punkte lassen mich trotzdem skeptisch zurück."},
-    {fr:"C'est normal d'avoir des doutes sur certains sujets.", de:"Es ist normal, bei manchen Themen Zweifel zu haben."},
-    {fr:"J'essaie toujours d'écouter plusieurs points de vue différents.", de:"Ich versuche immer, mehrere verschiedene Standpunkte anzuhören."},
-    {fr:"C'est exactement la bonne attitude à avoir.", de:"Das ist genau die richtige Einstellung."},
-    {fr:"On a vraiment de la chance de pouvoir en parler calmement.", de:"Wir haben wirklich Glück, ruhig darüber sprechen zu können."},
-    {fr:"Oui, ce genre de dialogue reste précieux.", de:"Ja, solche Gespräche bleiben wertvoll."},
-    {fr:"Merci d'avoir partagé ton point de vue avec moi.", de:"Danke, dass du deinen Standpunkt mit mir geteilt hast."}
-  ]},
-  { title:"Donner des conseils à un ami", phrases:[
-    {fr:"Tu sembles un peu préoccupé ces derniers temps.", de:"Du wirkst in letzter Zeit etwas besorgt."},
-    {fr:"Oui, j'ai beaucoup de pression au travail actuellement.", de:"Ja, ich habe momentan viel Druck bei der Arbeit."},
-    {fr:"As-tu essayé d'en parler avec ton supérieur ?", de:"Hast du versucht, mit deinem Vorgesetzten zu sprechen?"},
-    {fr:"Pas encore, j'ai un peu peur de sa réaction.", de:"Noch nicht, ich habe etwas Angst vor seiner Reaktion."},
-    {fr:"Je pense qu'il vaut mieux être honnête dès le début.", de:"Ich denke, es ist besser, von Anfang an ehrlich zu sein."},
-    {fr:"Tu as probablement raison, je vais essayer cette semaine.", de:"Du hast wahrscheinlich recht, ich versuche es diese Woche."},
-    {fr:"N'oublie pas non plus de prendre du temps pour toi.", de:"Vergiss auch nicht, dir Zeit für dich selbst zu nehmen."},
-    {fr:"C'est vrai, je néglige un peu mon repos ces jours-ci.", de:"Stimmt, ich vernachlässige in diesen Tagen etwas meine Erholung."},
-    {fr:"Appelle-moi quand tu veux, je suis toujours disponible.", de:"Ruf mich an, wann immer du willst, ich bin immer erreichbar."},
-    {fr:"Merci énormément, ton soutien compte vraiment pour moi.", de:"Vielen Dank, deine Unterstützung bedeutet mir wirklich viel."}
-  ]},
-  { title:"Le quotidien au bureau en Allemagne", phrases:[
-    {fr:"Les réunions commencent toujours très exactement à l'heure ici.", de:"Hier beginnen Meetings immer ganz genau pünktlich."},
-    {fr:"Les pauses café sont prises au sérieux aussi.", de:"Auch Kaffeepausen werden hier ernst genommen."},
-    {fr:"On tutoie rarement ses supérieurs au début.", de:"Man siezt seine Vorgesetzten anfangs meist."},
-    {fr:"Beaucoup d'entreprises respectent strictement les horaires de fin de journée.", de:"Viele Firmen halten die Feierabendzeiten strikt ein."},
-    {fr:"J'apprécie énormément cet équilibre entre travail et vie privée.", de:"Ich schätze dieses Gleichgewicht zwischen Arbeit und Privatleben sehr."},
-    {fr:"Les décisions se prennent souvent après de longues discussions.", de:"Entscheidungen werden oft nach langen Diskussionen getroffen."},
-    {fr:"Ça peut sembler lent, mais c'est très réfléchi.", de:"Das kann langsam wirken, ist aber sehr durchdacht."},
-    {fr:"Une fois la décision prise, on s'y tient fermement.", de:"Sobald die Entscheidung getroffen ist, hält man sich fest daran."},
-    {fr:"Cette rigueur a aussi ses avantages, je trouve.", de:"Diese Strenge hat auch ihre Vorteile, finde ich."},
-    {fr:"On s'habitue finalement très bien à ce rythme.", de:"Letztendlich gewöhnt man sich sehr gut an diesen Rhythmus."}
-  ]},
-  { title:"Discuter de la retraite", phrases:[
-    {fr:"Mes parents prennent leur retraite l'année prochaine.", de:"Meine Eltern gehen nächstes Jahr in Rente."},
-    {fr:"Ont-ils déjà des projets pour cette nouvelle étape ?", de:"Haben sie schon Pläne für diesen neuen Lebensabschnitt?"},
-    {fr:"Ils veulent voyager davantage à travers l'Europe.", de:"Sie wollen mehr durch Europa reisen."},
-    {fr:"C'est une belle manière de profiter de leur temps libre.", de:"Das ist eine schöne Art, ihre Freizeit zu nutzen."},
-    {fr:"Mon père pense aussi reprendre son ancien hobby, la peinture.", de:"Mein Vater will auch sein altes Hobby, die Malerei, wieder aufnehmen."},
-    {fr:"C'est touchant de le voir retrouver sa passion.", de:"Es ist berührend, ihn seine Leidenschaft wiederfinden zu sehen."},
-    {fr:"Et toi, tu penses déjà à ta propre retraite ?", de:"Und du, denkst du schon an deine eigene Rente?"},
-    {fr:"C'est encore un peu loin, honnêtement.", de:"Das ist ehrlich gesagt noch etwas weit weg."},
-    {fr:"Il n'est jamais trop tôt pour y réfléchir, cela dit.", de:"Es ist aber nie zu früh, darüber nachzudenken."},
-    {fr:"Tu as raison, j'y penserai plus sérieusement.", de:"Du hast recht, ich werde ernsthafter darüber nachdenken."}
-  ]},
-  { title:"Parler de bénévolat", phrases:[
-    {fr:"Je fais du bénévolat une fois par semaine.", de:"Ich mache einmal pro Woche ehrenamtliche Arbeit."},
-    {fr:"Dans quel genre d'association t'engages-tu ?", de:"In welcher Art von Verein engagierst du dich?"},
-    {fr:"Dans une association qui aide les personnes âgées isolées.", de:"In einem Verein, der isolierten älteren Menschen hilft."},
-    {fr:"Qu'est-ce qui t'a poussé à t'engager là-dedans ?", de:"Was hat dich dazu bewogen, dich dort zu engagieren?"},
-    {fr:"J'avais envie de donner un sens différent à mon temps libre.", de:"Ich wollte meiner Freizeit einen anderen Sinn geben."},
-    {fr:"Ça doit être une expérience vraiment enrichissante.", de:"Das muss eine wirklich bereichernde Erfahrung sein."},
-    {fr:"Oui, j'apprends énormément de chaque personne que je rencontre.", de:"Ja, ich lerne enorm viel von jeder Person, die ich treffe."},
-    {fr:"Tu recommanderais cette association à d'autres personnes ?", de:"Würdest du diesen Verein anderen Leuten empfehlen?"},
-    {fr:"Sans hésiter, ils manquent toujours de bénévoles.", de:"Ohne zu zögern, ihnen fehlen immer Freiwillige."},
-    {fr:"Je vais sérieusement y réfléchir, merci pour l'info.", de:"Ich werde ernsthaft darüber nachdenken, danke für den Hinweis."}
-  ]},
-  { title:"Un rêve d'enfance", phrases:[
-    {fr:"Mon plus grand rêve d'enfant était de devenir pilote.", de:"Mein größter Kindheitstraum war, Pilot zu werden."},
-    {fr:"Ce vieux rêve te tient-il encore à cœur ?", de:"Ist dir dieser alte Traum immer noch wichtig?"},
-    {fr:"Un peu moins qu'avant, mais il reste présent.", de:"Etwas weniger als früher, aber er bleibt präsent."},
-    {fr:"Mon petit frère voulait devenir un grand musicien célèbre.", de:"Mein kleiner Bruder wollte ein großer, berühmter Musiker werden."},
-    {fr:"Il a finalement choisi un chemin plus pratique.", de:"Letztendlich hat er einen praktischeren Weg gewählt."},
-    {fr:"Ce choix raisonnable ne l'a pourtant jamais rendu malheureux.", de:"Diese vernünftige Entscheidung hat ihn trotzdem nie unglücklich gemacht."},
-    {fr:"Mes vieux parents gardent toujours espoir pour leurs petits-enfants.", de:"Meine alten Eltern hegen immer Hoffnung für ihre kleinen Enkelkinder."},
-    {fr:"Les beaux rêves d'enfance façonnent souvent notre vie d'adulte.", de:"Schöne Kindheitsträume prägen oft unser Erwachsenenleben."},
-    {fr:"Même irréalisés, ils donnent une direction précieuse.", de:"Auch unverwirklicht geben sie eine wertvolle Richtung."},
-    {fr:"C'est une belle réflexion, vraiment inspirante.", de:"Das ist ein schöner, wirklich inspirierender Gedanke."}
-  ], tip:{
-    title:"L'adjectif épithète décliné : der neue Kollege",
-    example:"Mon plus grand rêve d'enfant était de devenir pilote. — Mein <b>größter</b> Kindheitstraum war, Pilot zu werden.",
-    body:"Quand un adjectif précède directement un nom, il prend une terminaison qui dépend du genre, du cas et de l'article qui précède : der neue Kollege (masculin, nominatif, article défini), ein neuer Kollege (sans article défini). C'est l'un des points les plus subtils de la grammaire allemande, à pratiquer longuement."
-  }},
-  { title:"Une mauvaise journée", phrases:[
-    {fr:"Ma journée a été particulièrement difficile aujourd'hui.", de:"Mein Tag war heute besonders schwierig."},
-    {fr:"Raconte-moi ce qui s'est passé exactement.", de:"Erzähl mir, was genau passiert ist."},
-    {fr:"J'ai raté mon train et manqué une réunion importante.", de:"Ich habe meinen Zug verpasst und ein wichtiges Meeting verpasst."},
-    {fr:"Ça arrive à tout le monde, ne t'en fais pas trop.", de:"Das passiert jedem, mach dir nicht zu viele Sorgen."},
-    {fr:"Ensuite, mon ordinateur a eu un gros problème technique.", de:"Danach hatte mein Computer ein großes technisches Problem."},
-    {fr:"Quelle journée vraiment compliquée, je comprends ta frustration.", de:"Was für ein wirklich kompliziertes Tag, ich verstehe deinen Frust."},
-    {fr:"Heureusement, la soirée s'est un peu mieux passée.", de:"Zum Glück lief der Abend etwas besser."},
-    {fr:"Qu'est-ce qui t'a redonné un peu de bonne humeur ?", de:"Was hat dir ein bisschen gute Laune zurückgegeben?"},
-    {fr:"Un bon repas avec des amis proches.", de:"Ein gutes Essen mit engen Freunden."},
-    {fr:"C'est exactement ce qu'il fallait après une telle journée.", de:"Das war genau das Richtige nach so einem Tag."}
-  ]},
-  { title:"Discuter des traditions de Noël", phrases:[
-    {fr:"La veille de Noël est la soirée la plus importante en Allemagne.", de:"Der Heiligabend ist der wichtigste Abend in Deutschland."},
-    {fr:"L'arbre du salon est toujours décoré le vingt-quatre décembre.", de:"Der Baum des Wohnzimmers wird immer am vierundzwanzigsten Dezember geschmückt."},
-    {fr:"Les cadeaux des enfants s'ouvrent déjà ce soir-là.", de:"Die Geschenke der Kinder werden schon an diesem Abend geöffnet."},
-    {fr:"Le repas du soir est généralement simple et léger.", de:"Das Abendessen des Abends ist meist einfach und leicht."},
-    {fr:"La maison de mes grands-parents sent toujours le pain d'épices.", de:"Das Haus meiner Großeltern riecht immer nach Lebkuchen."},
-    {fr:"Le quartier des voisins s'illumine entièrement chaque année.", de:"Das Viertel der Nachbarn erstrahlt jedes Jahr vollständig."},
-    {fr:"La famille de mon mari a sa propre tradition particulière.", de:"Die Familie meines Mannes hat ihre eigene besondere Tradition."},
-    {fr:"Le vingt-cinq devient alors le jour du grand repas familial.", de:"Der Fünfundzwanzigste wird dann zum Tag des großen Familienessens."},
-    {fr:"Ces moments restent les plus précieux de l'année des enfants.", de:"Diese Momente bleiben die kostbarsten im Jahr der Kinder."},
-    {fr:"J'adore vraiment l'atmosphère unique de cette période.", de:"Ich liebe die einzigartige Atmosphäre dieser Zeit wirklich."}
-  ], tip:{
-    title:"Le génitif simple : des Freundes",
-    example:"La famille de mon mari a sa propre tradition. — Die Familie <b>meines Mannes</b> hat ihre eigene Tradition.",
-    body:"Le génitif exprime la possession (l'équivalent du « de » français) et se forme en ajoutant -s (ou -es) au nom masculin ou neutre : der Mann → des Mannes, et en ne changeant rien pour le féminin : die Familie meiner Mutter. À l'oral, on remplace souvent le génitif par « von + datif », mais à l'écrit il reste très utilisé."
-  }},
-  { title:"Parler d'un voyage marquant", phrases:[
-    {fr:"Quel voyage t'a le plus marqué jusqu'à présent ?", de:"Welche Reise hat dich bisher am meisten geprägt?"},
-    {fr:"Sans doute mon premier séjour en Allemagne, étonnamment.", de:"Zweifellos erstaunlicherweise mein erster Aufenthalt in Deutschland."},
-    {fr:"Qu'est-ce qui t'a particulièrement touché à l'époque ?", de:"Was hat dich damals besonders berührt?"},
-    {fr:"La gentillesse inattendue de parfaits inconnus.", de:"Die unerwartete Freundlichkeit völlig Fremder."},
-    {fr:"Ce genre de rencontre change vraiment notre vision du monde.", de:"Solche Begegnungen verändern wirklich unser Weltbild."},
-    {fr:"Je suis rentré avec une toute nouvelle perspective.", de:"Ich bin mit einer ganz neuen Perspektive zurückgekommen."},
-    {fr:"C'est aussi pour ça que j'ai décidé de m'installer ici.", de:"Auch deshalb habe ich beschlossen, mich hier niederzulassen."},
-    {fr:"Cette décision a dû demander beaucoup de courage.", de:"Diese Entscheidung muss viel Mut erfordert haben."},
-    {fr:"Oui, mais je ne le regrette absolument pas.", de:"Ja, aber ich bereue es überhaupt nicht."},
-    {fr:"On sent vraiment que ce choix t'a épanoui.", de:"Man merkt wirklich, dass diese Entscheidung dich erfüllt hat."}
-  ]},
-  { title:"Discuter de la parentalité", phrases:[
-    {fr:"Devenir parent change vraiment toute une vie.", de:"Elternwerden verändert wirklich ein ganzes Leben."},
-    {fr:"Tu te sentais prêt avant la naissance de ton premier enfant ?", de:"Hast du dich vor der Geburt deines ersten Kindes bereit gefühlt?"},
-    {fr:"Honnêtement, personne ne l'est jamais totalement.", de:"Ehrlich gesagt ist das niemand jemals ganz."},
-    {fr:"On apprend surtout sur le tas, je crois.", de:"Man lernt vor allem durch die Praxis, glaube ich."},
-    {fr:"Le système allemand soutient bien les jeunes parents.", de:"Das deutsche System unterstützt junge Eltern gut."},
-    {fr:"Le congé parental dure assez longtemps ici, effectivement.", de:"Die Elternzeit dauert hier tatsächlich recht lange."},
-    {fr:"C'est un vrai soulagement les premiers mois.", de:"Das ist in den ersten Monaten eine echte Erleichterung."},
-    {fr:"On peut vraiment profiter de cette période précieuse.", de:"Man kann diese wertvolle Zeit wirklich genießen."},
-    {fr:"Chaque enfant apporte son lot de surprises, bonnes ou mauvaises.", de:"Jedes Kind bringt seinen Anteil an Überraschungen, guten wie schlechten."},
-    {fr:"C'est le plus beau des défis, malgré tout.", de:"Das ist trotz allem die schönste aller Herausforderungen."}
-  ]},
-  { title:"Les différences entre régions allemandes", phrases:[
-    {fr:"La Bavière et la Rhénanie ont des mentalités très différentes.", de:"Bayern und das Rheinland haben sehr unterschiedliche Mentalitäten."},
-    {fr:"Le nord semble en effet plus réservé que le sud.", de:"Der Norden wirkt tatsächlich zurückhaltender als der Süden."},
-    {fr:"Les dialectes changent énormément d'une région à l'autre.", de:"Die Dialekte ändern sich von Region zu Region enorm."},
-    {fr:"Un Berlinois et un Bavarois ne se comprennent pas toujours facilement.", de:"Ein Berliner und ein Bayer verstehen sich nicht immer leicht."},
-    {fr:"C'est un peu comme en France entre le nord et le sud.", de:"Das ist etwas wie in Frankreich zwischen Norden und Süden."},
-    {fr:"Chaque région garde fièrement ses propres traditions.", de:"Jede Region bewahrt stolz ihre eigenen Traditionen."},
-    {fr:"Les plats typiques varient aussi fortement selon l'endroit.", de:"Die typischen Gerichte variieren je nach Ort auch stark."},
-    {fr:"Cette diversité rend le pays vraiment passionnant à explorer.", de:"Diese Vielfalt macht das Land wirklich spannend zu erkunden."},
-    {fr:"Il reste encore tellement de régions à découvrir.", de:"Es gibt noch so viele Regionen zu entdecken."},
-    {fr:"On n'a pas fini d'explorer ce beau pays.", de:"Wir sind mit der Erkundung dieses schönen Landes noch nicht fertig."}
-  ]},
-  { title:"Organiser des retrouvailles entre amis", phrases:[
-    {fr:"Même si nous habitons loin, on devrait se revoir.", de:"Obwohl wir weit voneinander entfernt wohnen, sollten wir uns wiedersehen."},
-    {fr:"Si tout le monde est libre, on pourrait choisir juin.", de:"Wenn alle Zeit haben, könnten wir uns für Juni entscheiden."},
-    {fr:"Bien qu'organiser ça soit compliqué, ça en vaut la peine.", de:"Obwohl die Organisation kompliziert ist, lohnt sich das."},
-    {fr:"Quand on se retrouve, on dirait qu'aucun temps n'est passé.", de:"Wenn wir uns treffen, scheint keine Zeit vergangen zu sein."},
-    {fr:"Même si nos vies ont beaucoup changé, l'amitié reste intacte.", de:"Obwohl sich unser Leben stark verändert hat, bleibt die Freundschaft intakt."},
-    {fr:"Si on loue une maison ensemble, ça coûterait moins cher.", de:"Wenn wir zusammen ein Haus mieten, würde es weniger kosten."},
-    {fr:"Bien que je sois occupé, je trouverai du temps pour ça.", de:"Obwohl ich beschäftigt bin, finde ich Zeit dafür."},
-    {fr:"Quand ce genre de week-end arrive, c'est toujours trop court.", de:"Wenn solch ein Wochenende kommt, ist es immer zu kurz."},
-    {fr:"Même si on se dispute parfois, on s'adore vraiment.", de:"Obwohl wir uns manchmal streiten, lieben wir uns wirklich."},
-    {fr:"Vivement ces retrouvailles tant attendues.", de:"Freuen wir uns schon auf dieses lang erwartete Wiedersehen."}
-  ], tip:{
-    title:"Les conjonctions « obwohl » et « wenn »",
-    example:"Même si nous habitons loin, on devrait se revoir. — <b>Obwohl</b> wir weit voneinander entfernt wohnen, sollten wir uns wiedersehen.",
-    body:"« Obwohl » (bien que, même si) introduit une concession et, comme « weil » ou « dass », envoie le verbe conjugué en fin de subordonnée. « Wenn » (si, quand) fonctionne de la même façon pour une condition ou une répétition : Wenn alle Zeit haben, könnten wir... Dans les deux cas, si la subordonnée est en premier, le verbe de la principale suit juste après la virgule."
-  }},
-  { title:"Un déménagement à l'étranger", phrases:[
-    {fr:"Mon cousin a décidé de s'installer définitivement à Berlin.", de:"Mein Cousin hat beschlossen, sich dauerhaft in Berlin niederzulassen."},
-    {fr:"Qu'est-ce qui l'a convaincu de faire ce grand saut ?", de:"Was hat ihn überzeugt, diesen großen Sprung zu wagen?"},
-    {fr:"Une opportunité professionnelle qu'il ne pouvait pas refuser.", de:"Eine berufliche Gelegenheit, die er nicht ablehnen konnte."},
-    {fr:"Ça demande énormément de courage, un tel changement de vie.", de:"So eine Lebensveränderung erfordert enorm viel Mut."},
-    {fr:"Il connaissait déjà un peu la langue avant de partir.", de:"Er kannte die Sprache schon ein wenig, bevor er ging."},
-    {fr:"Ça a dû beaucoup l'aider pour les premiers mois.", de:"Das muss ihm in den ersten Monaten sehr geholfen haben."},
-    {fr:"Sa famille lui manque forcément un peu parfois.", de:"Seine Familie fehlt ihm sicherlich manchmal etwas."},
-    {fr:"Mais il revient les voir régulièrement en France.", de:"Aber er kommt regelmäßig zurück, um sie in Frankreich zu besuchen."},
-    {fr:"Finalement, il semble vraiment épanoui dans sa nouvelle vie.", de:"Letztendlich scheint er in seinem neuen Leben wirklich glücklich."},
-    {fr:"C'est inspirant de voir quelqu'un se lancer ainsi.", de:"Es ist inspirierend, jemanden so einen Schritt wagen zu sehen."}
-  ]},
-  { title:"Fin du module : un bilan", phrases:[
-    {fr:"Ce module nous a appris à discuter de sujets profonds.", de:"Dieses Modul hat uns gelehrt, über tiefere Themen zu sprechen."},
-    {fr:"Politique, écologie, famille : on peut maintenant tout aborder.", de:"Politik, Ökologie, Familie: wir können jetzt alles ansprechen."},
-    {fr:"Les subordonnées complexes commencent vraiment à devenir naturelles.", de:"Die komplexen Nebensätze werden wirklich langsam natürlich."},
-    {fr:"Ce deuxième niveau se termine sur une belle note.", de:"Dieses zweite Niveau endet auf einer schönen Note."},
-    {fr:"Le niveau suivant nous mènera vers un allemand encore plus fin.", de:"Das nächste Niveau führt uns zu noch feinerem Deutsch."},
-    {fr:"On abordera des nuances plus subtiles de la langue.", de:"Wir werden subtilere Nuancen der Sprache behandeln."},
-    {fr:"Chaque module nous rapproche d'une vraie aisance à l'oral.", de:"Jedes Modul bringt uns echter Sprechgewandtheit näher."},
-    {fr:"Félicitations pour ce travail sérieux et régulier.", de:"Glückwunsch zu dieser ernsthaften und regelmäßigen Arbeit."},
-    {fr:"Accordons-nous une pause avant d'attaquer la suite.", de:"Gönnen wir uns eine Pause, bevor wir weitermachen."},
-    {fr:"À très bientôt pour le niveau le plus avancé.", de:"Bis ganz bald für das fortgeschrittenste Niveau."}
-  ]}
+ {
+  "title": "Commenter les nouvelles du jour",
+  "phrases": [
+   {
+    "fr": "Tu as vu les infos à la télé ce matin ?",
+    "pt": "Você viu o jornal na televisão hoje de manhã?"
+   },
+   {
+    "fr": "Oui, ils ont parlé de la nouvelle ligne de métro.",
+    "pt": "Vi, sim, falaram da nova linha de metrô."
+   },
+   {
+    "fr": "Les travaux vont durer encore deux ans.",
+    "pt": "As obras vão durar mais dois anos."
+   },
+   {
+    "fr": "Franchement, ça va beaucoup aider les habitants.",
+    "pt": "Sinceramente, isso vai ajudar muito os moradores."
+   },
+   {
+    "fr": "Mon voisin dit que c'est une perte d'argent.",
+    "pt": "Meu vizinho diz que é dinheiro jogado fora."
+   },
+   {
+    "fr": "Il y avait aussi une alerte de fortes pluies.",
+    "pt": "Também teve um alerta de chuva forte."
+   },
+   {
+    "fr": "Dans le sud, il a fait très froid cette semaine.",
+    "pt": "No Sul, fez muito frio esta semana."
+   },
+   {
+    "fr": "Je lis surtout les nouvelles sur mon téléphone.",
+    "pt": "Eu leio as notícias mais no celular."
+   },
+   {
+    "fr": "Il faut toujours vérifier la source d'une information.",
+    "pt": "É sempre bom conferir a fonte de uma notícia."
+   },
+   {
+    "fr": "On en reparle ce soir au dîner ?",
+    "pt": "A gente conversa mais sobre isso no jantar?"
+   }
+  ]
+ },
+ {
+  "title": "Donner son avis sur un projet",
+  "phrases": [
+   {
+    "fr": "Je pense que ton idée est vraiment bonne.",
+    "pt": "Eu acho que a sua ideia é muito boa."
+   },
+   {
+    "fr": "Tu crois que ça peut marcher au Brésil ?",
+    "pt": "Você acha que isso pode dar certo no Brasil?"
+   },
+   {
+    "fr": "À mon avis, il faut commencer petit.",
+    "pt": "Na minha opinião, tem que começar pequeno."
+   },
+   {
+    "fr": "Ma sœur trouve que le prix est trop élevé.",
+    "pt": "A minha irmã acha que o preço está alto demais."
+   },
+   {
+    "fr": "Je ne pense pas que ce soit le bon moment.",
+    "pt": "Eu acho que não é o momento certo."
+   },
+   {
+    "fr": "Pourquoi tu dis ça ?",
+    "pt": "Por que você está dizendo isso?"
+   },
+   {
+    "fr": "Les clients ont déjà donné leur avis en ligne.",
+    "pt": "Os clientes já deram a opinião deles na internet."
+   },
+   {
+    "fr": "La plupart ont beaucoup aimé le concept.",
+    "pt": "A maioria gostou muito da proposta."
+   },
+   {
+    "fr": "Je suis d'accord avec toi sur ce point.",
+    "pt": "Eu concordo com você nesse ponto."
+   },
+   {
+    "fr": "Réfléchis encore un peu avant de décider.",
+    "pt": "Pensa mais um pouco antes de decidir."
+   }
+  ],
+  "tip": {
+   "title": "« Achar que » : donner son avis",
+   "example": "Je pense que ton idée est vraiment bonne. — Eu <b>acho que</b> a sua ideia é muito boa.",
+   "body": "Au Brésil, pour dire « je pense que » ou « je trouve que », on utilise presque toujours « achar que », bien plus que « pensar que ». Pour la négation, on dit très souvent « eu acho que não » (je ne crois pas) en plaçant le « não » après. Exemples : « Você acha que vai chover? » (Tu crois qu'il va pleuvoir ?), « Acho que sim » (je crois que oui)."
+  }
+ },
+ {
+  "title": "Changer de travail",
+  "phrases": [
+   {
+    "fr": "J'ai envie de changer de travail depuis un moment.",
+    "pt": "Faz um tempo que estou com vontade de mudar de emprego."
+   },
+   {
+    "fr": "Qu'est-ce qui ne va pas dans ton poste actuel ?",
+    "pt": "O que não está bom no seu emprego atual?"
+   },
+   {
+    "fr": "Je passe trois heures par jour dans les embouteillages.",
+    "pt": "Eu passo três horas por dia no trânsito."
+   },
+   {
+    "fr": "Et le salaire n'a pas augmenté depuis deux ans.",
+    "pt": "E o salário não aumenta há dois anos."
+   },
+   {
+    "fr": "J'ai reçu une proposition d'une entreprise à Curitiba.",
+    "pt": "Recebi uma proposta de uma empresa em Curitiba."
+   },
+   {
+    "fr": "Le problème, c'est que toute ma famille vit ici.",
+    "pt": "O problema é que a minha família toda mora aqui."
+   },
+   {
+    "fr": "Tu pourrais demander à travailler à distance.",
+    "pt": "Você podia pedir para trabalhar de casa."
+   },
+   {
+    "fr": "J'ai déjà posé la question à mon chef.",
+    "pt": "Eu já fiz essa pergunta para o meu chefe."
+   },
+   {
+    "fr": "Il m'a répondu qu'il allait y réfléchir.",
+    "pt": "Ele me respondeu que ia pensar no assunto."
+   },
+   {
+    "fr": "Quoi que tu décides, je te soutiens.",
+    "pt": "Seja qual for a sua decisão, eu te apoio."
+   }
+  ]
+ },
+ {
+  "title": "Parler de l'environnement",
+  "phrases": [
+   {
+    "fr": "La plage était pleine de déchets dimanche dernier.",
+    "pt": "A praia estava cheia de lixo no domingo passado."
+   },
+   {
+    "fr": "Des volontaires ont tout ramassé le lendemain.",
+    "pt": "Uns voluntários recolheram tudo no dia seguinte."
+   },
+   {
+    "fr": "Chacun devrait remporter ses ordures.",
+    "pt": "Cada um devia levar o próprio lixo embora."
+   },
+   {
+    "fr": "Dans mon immeuble, on trie enfin le plastique.",
+    "pt": "No meu prédio, a gente finalmente separa o plástico."
+   },
+   {
+    "fr": "J'ai arrêté d'acheter des bouteilles d'eau.",
+    "pt": "Eu parei de comprar garrafa de água."
+   },
+   {
+    "fr": "Maintenant, j'ai toujours ma gourde avec moi.",
+    "pt": "Agora eu sempre ando com a minha garrafinha."
+   },
+   {
+    "fr": "La déforestation en Amazonie m'inquiète beaucoup.",
+    "pt": "O desmatamento na Amazônia me preocupa muito."
+   },
+   {
+    "fr": "Les petits gestes comptent aussi, je crois.",
+    "pt": "Eu acho que os pequenos gestos também contam."
+   },
+   {
+    "fr": "Tu viens à vélo au travail parfois ?",
+    "pt": "Você vem de bicicleta para o trabalho às vezes?"
+   },
+   {
+    "fr": "Oui, depuis qu'il y a une piste cyclable.",
+    "pt": "Venho, sim, desde que fizeram uma ciclovia."
+   }
+  ]
+ },
+ {
+  "title": "Le grand derby du dimanche",
+  "phrases": [
+   {
+    "fr": "Tu es pour quelle équipe, toi ?",
+    "pt": "Você torce para qual time?"
+   },
+   {
+    "fr": "Je suis pour l'équipe de mon père, évidemment.",
+    "pt": "Eu torço para o time do meu pai, claro."
+   },
+   {
+    "fr": "Ce derby est toujours très tendu.",
+    "pt": "Esse clássico é sempre muito tenso."
+   },
+   {
+    "fr": "Le stade était plein à craquer.",
+    "pt": "O estádio estava lotadíssimo."
+   },
+   {
+    "fr": "Le deuxième but était vraiment très beau.",
+    "pt": "O segundo gol foi lindíssimo."
+   },
+   {
+    "fr": "Mon beau-frère était furieux contre l'arbitre.",
+    "pt": "O meu cunhado ficou furioso com o juiz."
+   },
+   {
+    "fr": "On a regardé le match chez lui avec des amis.",
+    "pt": "A gente assistiu ao jogo na casa dele com uns amigos."
+   },
+   {
+    "fr": "Il avait préparé des brochettes et des boissons fraîches.",
+    "pt": "Ele tinha preparado espetinho e bebida gelada."
+   },
+   {
+    "fr": "Après le match, tout le monde chantait dans la rue.",
+    "pt": "Depois do jogo, todo mundo cantava na rua."
+   },
+   {
+    "fr": "La semaine prochaine, c'est la revanche.",
+    "pt": "Semana que vem tem a revanche."
+   }
+  ],
+  "tip": {
+   "title": "Le superlatif en « -íssimo »",
+   "example": "Le deuxième but était vraiment très beau. — O segundo gol foi <b>lindíssimo</b>.",
+   "body": "Pour dire « très, extrêmement », le portugais ajoute souvent le suffixe « -íssimo » (ou « -íssima ») à l'adjectif, au lieu de « muito ». On enlève la voyelle finale : lindo devient lindíssimo, cheio devient cheíssimo, caro devient caríssimo. Les Brésiliens l'utilisent beaucoup à l'oral pour insister : « O show foi ótimo, estava lotadíssimo! »"
+  }
+ },
+ {
+  "title": "Une soirée devant la novela",
+  "phrases": [
+   {
+    "fr": "Tu as vu le dernier épisode de la novela ?",
+    "pt": "Você viu o último capítulo da novela?"
+   },
+   {
+    "fr": "Non, ne me raconte pas la fin !",
+    "pt": "Não, não me conta o final!"
+   },
+   {
+    "fr": "Ma grand-mère la regarde tous les soirs à vingt et une heures.",
+    "pt": "A minha avó assiste todas as noites às nove horas."
+   },
+   {
+    "fr": "Toute la famille s'assoit devant la télé.",
+    "pt": "A família inteira senta na frente da televisão."
+   },
+   {
+    "fr": "Le méchant de l'histoire est très bien joué.",
+    "pt": "O vilão da história é muito bem interpretado."
+   },
+   {
+    "fr": "Au début, je trouvais ça un peu exagéré.",
+    "pt": "No começo, eu achava meio exagerado."
+   },
+   {
+    "fr": "Maintenant, je n'arrive plus à m'arrêter.",
+    "pt": "Agora eu não consigo mais parar."
+   },
+   {
+    "fr": "Ça m'aide aussi à comprendre le portugais parlé.",
+    "pt": "Isso também me ajuda a entender o português falado."
+   },
+   {
+    "fr": "Les acteurs parlent avec l'accent de Rio.",
+    "pt": "Os atores falam com sotaque carioca."
+   },
+   {
+    "fr": "On regarde l'épisode de demain ensemble ?",
+    "pt": "Vamos assistir ao capítulo de amanhã juntos?"
+   }
+  ]
+ },
+ {
+  "title": "Bossa nova et MPB",
+  "phrases": [
+   {
+    "fr": "Quel genre de musique tu écoutes en ce moment ?",
+    "pt": "Que tipo de música você está ouvindo agora?"
+   },
+   {
+    "fr": "Je redécouvre la bossa nova des années soixante.",
+    "pt": "Estou redescobrindo a bossa nova dos anos sessenta."
+   },
+   {
+    "fr": "C'est une musique douce, parfaite pour le soir.",
+    "pt": "É uma música suave, perfeita para a noite."
+   },
+   {
+    "fr": "Mon père avait plein de vieux vinyles.",
+    "pt": "O meu pai tinha um monte de discos de vinil antigos."
+   },
+   {
+    "fr": "Il les écoutait chaque dimanche matin.",
+    "pt": "Ele ouvia todo domingo de manhã."
+   },
+   {
+    "fr": "Les paroles de la MPB sont souvent très poétiques.",
+    "pt": "As letras da MPB costumam ser muito poéticas."
+   },
+   {
+    "fr": "J'essaie de chanter, mais je me trompe de mots.",
+    "pt": "Eu tento cantar, mas erro as palavras."
+   },
+   {
+    "fr": "Il y a un concert gratuit sur la place samedi.",
+    "pt": "Vai ter um show de graça na praça no sábado."
+   },
+   {
+    "fr": "Je vais apprendre à jouer de la guitare.",
+    "pt": "Eu vou aprender a tocar violão."
+   },
+   {
+    "fr": "Tu me prêtes tes vieux disques ?",
+    "pt": "Você me empresta os seus discos antigos?"
+   }
+  ]
+ },
+ {
+  "title": "Conseiller un ami stressé",
+  "phrases": [
+   {
+    "fr": "Tu as l'air fatigué ces derniers jours.",
+    "pt": "Você está com cara de cansado esses dias."
+   },
+   {
+    "fr": "Je dors mal à cause du travail.",
+    "pt": "Estou dormindo mal por causa do trabalho."
+   },
+   {
+    "fr": "Tu devrais prendre quelques jours de repos.",
+    "pt": "Você devia tirar uns dias de folga."
+   },
+   {
+    "fr": "Je ne peux pas, on a un gros projet à rendre.",
+    "pt": "Não dá, a gente tem um projeto grande para entregar."
+   },
+   {
+    "fr": "Au moins, déconnecte ton téléphone le soir.",
+    "pt": "Pelo menos desliga o celular à noite."
+   },
+   {
+    "fr": "L'année dernière, j'ai vécu la même chose.",
+    "pt": "No ano passado, eu passei pela mesma coisa."
+   },
+   {
+    "fr": "Ce qui m'a aidé, c'est de marcher au bord de la mer.",
+    "pt": "O que me ajudou foi caminhar na beira do mar."
+   },
+   {
+    "fr": "Et parler avec quelqu'un, ça soulage beaucoup.",
+    "pt": "E conversar com alguém alivia muito."
+   },
+   {
+    "fr": "Merci, ça me fait du bien de t'écouter.",
+    "pt": "Obrigado, me faz bem te ouvir."
+   },
+   {
+    "fr": "Appelle-moi quand tu veux, d'accord ?",
+    "pt": "Me liga quando quiser, tá bom?"
+   }
+  ]
+ },
+ {
+  "title": "Les collègues de bureau à São Paulo",
+  "phrases": [
+   {
+    "fr": "Ici, tout le monde se tutoie dès le premier jour.",
+    "pt": "Aqui todo mundo se chama de você desde o primeiro dia."
+   },
+   {
+    "fr": "Les collègues m'ont très bien accueilli.",
+    "pt": "Os colegas me receberam muito bem."
+   },
+   {
+    "fr": "On prend souvent un petit café ensemble l'après-midi.",
+    "pt": "A gente sempre toma um cafezinho junto à tarde."
+   },
+   {
+    "fr": "Les réunions commencent rarement à l'heure.",
+    "pt": "As reuniões quase nunca começam na hora."
+   },
+   {
+    "fr": "À midi, on déjeune au restaurant au kilo.",
+    "pt": "No almoço, a gente come no restaurante por quilo."
+   },
+   {
+    "fr": "On se sert soi-même et on paie au poids.",
+    "pt": "A gente se serve e paga pelo peso."
+   },
+   {
+    "fr": "Le vendredi, il y a souvent un apéro après le travail.",
+    "pt": "Na sexta, sempre tem um happy hour depois do trabalho."
+   },
+   {
+    "fr": "Ma collègue m'a invité à son mariage.",
+    "pt": "A minha colega me convidou para o casamento dela."
+   },
+   {
+    "fr": "Les Brésiliens sont très chaleureux au travail.",
+    "pt": "Os brasileiros são muito calorosos no trabalho."
+   },
+   {
+    "fr": "Je me sens déjà comme chez moi.",
+    "pt": "Eu já me sinto em casa."
+   }
+  ]
+ },
+ {
+  "title": "Les réseaux sociaux",
+  "phrases": [
+   {
+    "fr": "Tu passes combien de temps sur ton téléphone par jour ?",
+    "pt": "Quanto tempo por dia você passa no celular?"
+   },
+   {
+    "fr": "Beaucoup trop, je l'avoue.",
+    "pt": "Tempo demais, eu confesso."
+   },
+   {
+    "fr": "Au Brésil, tout le monde utilise les messageries vocales.",
+    "pt": "No Brasil, todo mundo manda mensagem de voz."
+   },
+   {
+    "fr": "Ma mère m'envoie des audios de cinq minutes.",
+    "pt": "A minha mãe me manda áudios de cinco minutos."
+   },
+   {
+    "fr": "Le groupe de la famille ne s'arrête jamais.",
+    "pt": "O grupo da família não para nunca."
+   },
+   {
+    "fr": "J'ai publié des photos de mon voyage hier.",
+    "pt": "Eu postei umas fotos da minha viagem ontem."
+   },
+   {
+    "fr": "Elles ont eu beaucoup de commentaires.",
+    "pt": "Elas tiveram muitos comentários."
+   },
+   {
+    "fr": "Parfois, je me compare trop aux autres.",
+    "pt": "Às vezes eu me comparo demais com os outros."
+   },
+   {
+    "fr": "Le mois dernier, j'ai fait une pause d'une semaine.",
+    "pt": "No mês passado, eu dei uma pausa de uma semana."
+   },
+   {
+    "fr": "J'ai dormi beaucoup mieux sans écran.",
+    "pt": "Eu dormi muito melhor sem tela."
+   }
+  ]
+ },
+ {
+  "title": "Faire du bénévolat",
+  "phrases": [
+   {
+    "fr": "Je fais du bénévolat dans une ONG du quartier.",
+    "pt": "Eu faço trabalho voluntário numa ONG do bairro."
+   },
+   {
+    "fr": "On donne des cours de soutien aux enfants.",
+    "pt": "A gente dá aula de reforço para as crianças."
+   },
+   {
+    "fr": "Comment tu as connu cette association ?",
+    "pt": "Como você conheceu essa associação?"
+   },
+   {
+    "fr": "Une amie m'en a parlé à l'université.",
+    "pt": "Uma amiga me falou dela na faculdade."
+   },
+   {
+    "fr": "Le samedi, on prépare des repas pour les familles.",
+    "pt": "No sábado, a gente prepara refeições para as famílias."
+   },
+   {
+    "fr": "Il y a toujours besoin de bras en plus.",
+    "pt": "Sempre precisa de mais gente para ajudar."
+   },
+   {
+    "fr": "Je pourrais venir avec toi la semaine prochaine ?",
+    "pt": "Eu posso ir com você na semana que vem?"
+   },
+   {
+    "fr": "Bien sûr, ils seront ravis de te rencontrer.",
+    "pt": "Claro, eles vão adorar te conhecer."
+   },
+   {
+    "fr": "Ça m'a appris à voir la ville autrement.",
+    "pt": "Isso me ensinou a ver a cidade de outro jeito."
+   },
+   {
+    "fr": "Je reçois beaucoup plus que je ne donne.",
+    "pt": "Eu recebo muito mais do que eu dou."
+   }
+  ]
+ },
+ {
+  "title": "Un rêve d'enfance",
+  "phrases": [
+   {
+    "fr": "Quand j'étais petit, je voulais être pilote.",
+    "pt": "Quando eu era pequeno, eu queria ser piloto."
+   },
+   {
+    "fr": "Et toi, quel était ton rêve ?",
+    "pt": "E você, qual era o seu sonho?"
+   },
+   {
+    "fr": "Je rêvais de vivre près de la plage.",
+    "pt": "Eu sonhava em morar perto da praia."
+   },
+   {
+    "fr": "J'aimerais beaucoup ouvrir un petit café un jour.",
+    "pt": "Eu gostaria muito de abrir um cafezinho um dia."
+   },
+   {
+    "fr": "Ce serait un endroit simple et accueillant.",
+    "pt": "Seria um lugar simples e aconchegante."
+   },
+   {
+    "fr": "Tu pourrais vendre du pain au fromage maison.",
+    "pt": "Você poderia vender pão de queijo caseiro."
+   },
+   {
+    "fr": "Ce serait génial, mais il faut de l'argent.",
+    "pt": "Seria ótimo, mas precisa de dinheiro."
+   },
+   {
+    "fr": "Tu pourrais commencer par une petite foire.",
+    "pt": "Você poderia começar numa feirinha."
+   },
+   {
+    "fr": "Mes parents ne croyaient pas beaucoup à mes rêves.",
+    "pt": "Os meus pais não acreditavam muito nos meus sonhos."
+   },
+   {
+    "fr": "Il n'est jamais trop tard pour essayer.",
+    "pt": "Nunca é tarde demais para tentar."
+   }
+  ],
+  "tip": {
+   "title": "Le conditionnel : « gostaria, seria, poderia »",
+   "example": "J'aimerais beaucoup ouvrir un petit café un jour. — Eu <b>gostaria</b> muito de abrir um cafezinho um dia.",
+   "body": "Le conditionnel (« futuro do pretérito ») se forme comme en français, avec la terminaison « -ia » ajoutée à l'infinitif : gostar donne gostaria, ser donne seria, poder donne poderia. Il sert à exprimer un souhait poli ou une hypothèse : « Seria legal » (ce serait sympa), « Você poderia me ajudar? » (tu pourrais m'aider ?). À l'oral, les Brésiliens le remplacent souvent par l'imparfait : « Você podia me ajudar? »"
+  }
+ },
+ {
+  "title": "Une journée difficile",
+  "phrases": [
+   {
+    "fr": "Aujourd'hui, tout est allé de travers.",
+    "pt": "Hoje deu tudo errado."
+   },
+   {
+    "fr": "Raconte-moi ce qui s'est passé.",
+    "pt": "Me conta o que aconteceu."
+   },
+   {
+    "fr": "Le bus est tombé en panne sur l'avenue.",
+    "pt": "O ônibus quebrou no meio da avenida."
+   },
+   {
+    "fr": "Je suis arrivé en retard à la réunion.",
+    "pt": "Eu cheguei atrasado na reunião."
+   },
+   {
+    "fr": "En plus, il pleuvait des cordes.",
+    "pt": "E ainda por cima estava chovendo muito."
+   },
+   {
+    "fr": "J'ai oublié mon parapluie dans le taxi.",
+    "pt": "Eu esqueci o guarda-chuva no táxi."
+   },
+   {
+    "fr": "Ma batterie était à plat toute l'après-midi.",
+    "pt": "A bateria do meu celular acabou a tarde inteira."
+   },
+   {
+    "fr": "Viens, je t'offre un bon jus de fruit.",
+    "pt": "Vem, eu te pago um suco bem gostoso."
+   },
+   {
+    "fr": "Demain sera sûrement une meilleure journée.",
+    "pt": "Amanhã com certeza vai ser um dia melhor."
+   },
+   {
+    "fr": "Merci, j'en avais vraiment besoin.",
+    "pt": "Obrigado, eu estava precisando mesmo."
+   }
+  ]
+ },
+ {
+  "title": "Retrouver un vieil ami",
+  "phrases": [
+   {
+    "fr": "Ça fait combien de temps qu'on ne s'est pas vus ?",
+    "pt": "Faz quanto tempo que a gente não se vê?"
+   },
+   {
+    "fr": "Ça fait au moins cinq ans, je crois.",
+    "pt": "Faz pelo menos cinco anos, eu acho."
+   },
+   {
+    "fr": "Tu n'as presque pas changé.",
+    "pt": "Você quase não mudou."
+   },
+   {
+    "fr": "Ça fait trois ans que j'habite à Florianópolis.",
+    "pt": "Faz três anos que eu moro em Florianópolis."
+   },
+   {
+    "fr": "Je me suis marié l'année dernière.",
+    "pt": "Eu me casei no ano passado."
+   },
+   {
+    "fr": "Félicitations, je ne savais pas du tout !",
+    "pt": "Parabéns, eu não sabia de nada!"
+   },
+   {
+    "fr": "Tu as encore des nouvelles des autres de l'école ?",
+    "pt": "Você ainda tem notícias do pessoal da escola?"
+   },
+   {
+    "fr": "Seulement par le groupe de messages.",
+    "pt": "Só pelo grupo de mensagens."
+   },
+   {
+    "fr": "On devrait organiser des retrouvailles.",
+    "pt": "A gente devia organizar um reencontro."
+   },
+   {
+    "fr": "Promis, on ne laisse plus passer autant de temps.",
+    "pt": "Prometo, a gente não deixa passar tanto tempo de novo."
+   }
+  ],
+  "tip": {
+   "title": "« Faz… que » : ça fait… que",
+   "example": "Ça fait trois ans que j'habite à Florianópolis. — <b>Faz</b> três anos <b>que</b> eu moro em Florianópolis.",
+   "body": "Pour exprimer une durée qui continue jusqu'à maintenant, on utilise « faz + durée + que », exactement comme « ça fait… que » en français. Le verbe qui suit reste au présent : « Faz dois meses que eu estudo português » (ça fait deux mois que j'étudie le portugais). On peut aussi dire « há » : « Eu moro aqui há três anos » (j'habite ici depuis trois ans)."
+  }
+ },
+ {
+  "title": "Raconter un voyage marquant",
+  "phrases": [
+   {
+    "fr": "Quel voyage t'a le plus marqué ?",
+    "pt": "Qual viagem mais te marcou?"
+   },
+   {
+    "fr": "Sans doute les chutes d'Iguaçu, il y a deux ans.",
+    "pt": "Sem dúvida as Cataratas do Iguaçu, há dois anos."
+   },
+   {
+    "fr": "Le bruit de l'eau était impressionnant.",
+    "pt": "O barulho da água era impressionante."
+   },
+   {
+    "fr": "On était complètement trempés après la passerelle.",
+    "pt": "A gente ficou encharcado depois da passarela."
+   },
+   {
+    "fr": "J'ai pris plus de trois cents photos.",
+    "pt": "Eu tirei mais de trezentas fotos."
+   },
+   {
+    "fr": "Le soir, on a mangé dans une petite auberge.",
+    "pt": "À noite, a gente jantou numa pousadinha."
+   },
+   {
+    "fr": "Le propriétaire nous a raconté l'histoire de la région.",
+    "pt": "O dono nos contou a história da região."
+   },
+   {
+    "fr": "C'est là que j'ai vraiment commencé à parler portugais.",
+    "pt": "Foi lá que eu comecei a falar português de verdade."
+   },
+   {
+    "fr": "Je rêve d'y retourner avec mes enfants.",
+    "pt": "Eu sonho em voltar lá com os meus filhos."
+   },
+   {
+    "fr": "Tu me donneras l'adresse de l'auberge ?",
+    "pt": "Você me passa o endereço da pousada?"
+   }
+  ]
+ },
+ {
+  "title": "Préparer un anniversaire surprise",
+  "phrases": [
+   {
+    "fr": "Samedi, c'est l'anniversaire de Juliana.",
+    "pt": "Sábado é o aniversário da Juliana."
+   },
+   {
+    "fr": "On lui prépare une fête surprise ?",
+    "pt": "Vamos fazer uma festa surpresa para ela?"
+   },
+   {
+    "fr": "Bonne idée, mais il ne faut rien lui dire.",
+    "pt": "Boa ideia, mas não pode contar nada para ela."
+   },
+   {
+    "fr": "Je m'occupe des petits gâteaux au chocolat.",
+    "pt": "Eu cuido dos brigadeiros."
+   },
+   {
+    "fr": "Et moi, j'apporte les amuse-gueules salés.",
+    "pt": "E eu levo os salgadinhos."
+   },
+   {
+    "fr": "Son copain va l'emmener se promener pendant ce temps.",
+    "pt": "O namorado dela vai levar ela para passear enquanto isso."
+   },
+   {
+    "fr": "Tout le monde doit arriver avant dix-neuf heures.",
+    "pt": "Todo mundo tem que chegar antes das sete da noite."
+   },
+   {
+    "fr": "On éteindra la lumière quand elle ouvrira la porte.",
+    "pt": "A gente apaga a luz quando ela abrir a porta."
+   },
+   {
+    "fr": "Ensuite on chantera « Joyeux anniversaire » tous ensemble.",
+    "pt": "Depois a gente canta « Parabéns pra você » todo mundo junto."
+   },
+   {
+    "fr": "J'espère qu'elle ne va pas pleurer !",
+    "pt": "Espero que ela não chore!"
+   }
+  ]
+ },
+ {
+  "title": "Une festa junina entre amis",
+  "phrases": [
+   {
+    "fr": "En juin, il y a des fêtes juninas partout.",
+    "pt": "Em junho tem festa junina em todo lugar."
+   },
+   {
+    "fr": "Il faut venir habillé en tenue de campagne.",
+    "pt": "Tem que ir vestido de caipira."
+   },
+   {
+    "fr": "J'ai acheté une chemise à carreaux pour l'occasion.",
+    "pt": "Eu comprei uma camisa xadrez para a ocasião."
+   },
+   {
+    "fr": "Il y aura du maïs grillé et du vin chaud.",
+    "pt": "Vai ter milho assado e quentão."
+   },
+   {
+    "fr": "J'adore la canjica de ta mère.",
+    "pt": "Eu adoro a canjica da sua mãe."
+   },
+   {
+    "fr": "Tout le monde danse la quadrille autour du feu.",
+    "pt": "Todo mundo dança quadrilha em volta da fogueira."
+   },
+   {
+    "fr": "L'année dernière, j'ai gagné à la pêche aux canards.",
+    "pt": "No ano passado, eu ganhei na pescaria."
+   },
+   {
+    "fr": "Les enfants ont adoré les jeux traditionnels.",
+    "pt": "As crianças adoraram as brincadeiras típicas."
+   },
+   {
+    "fr": "C'est ma fête brésilienne préférée.",
+    "pt": "É a minha festa brasileira favorita."
+   },
+   {
+    "fr": "On se retrouve à l'entrée de la place à vingt heures ?",
+    "pt": "A gente se encontra na entrada da praça às oito da noite?"
+   }
+  ]
+ },
+ {
+  "title": "Le Carnaval et les blocos de rua",
+  "phrases": [
+   {
+    "fr": "Tu restes en ville pendant le Carnaval ?",
+    "pt": "Você vai ficar na cidade no Carnaval?"
+   },
+   {
+    "fr": "Oui, je vais suivre les blocos de rua.",
+    "pt": "Vou, sim, vou sair nos blocos de rua."
+   },
+   {
+    "fr": "L'année dernière, je suis resté chez moi malade.",
+    "pt": "No ano passado, eu fiquei em casa doente."
+   },
+   {
+    "fr": "Cette fois, je veux profiter de tout.",
+    "pt": "Dessa vez, eu quero aproveitar tudo."
+   },
+   {
+    "fr": "Ma voisine est devenue très amie avec les musiciens.",
+    "pt": "A minha vizinha ficou muito amiga dos músicos."
+   },
+   {
+    "fr": "Le bloco part de la place à huit heures du matin.",
+    "pt": "O bloco sai da praça às oito da manhã."
+   },
+   {
+    "fr": "Le parcours se trouve près de la plage.",
+    "pt": "O percurso fica perto da praia."
+   },
+   {
+    "fr": "N'oublie pas la crème solaire et beaucoup d'eau.",
+    "pt": "Não esquece o protetor solar e muita água."
+   },
+   {
+    "fr": "J'ai été très content de ton invitation.",
+    "pt": "Eu fiquei muito feliz com o seu convite."
+   },
+   {
+    "fr": "Ne t'inquiète pas, ça va bien se passer.",
+    "pt": "Fica tranquilo, vai dar tudo certo."
+   }
+  ],
+  "tip": {
+   "title": "Les sens de « ficar »",
+   "example": "J'ai été très content de ton invitation. — Eu <b>fiquei</b> muito feliz com o seu convite.",
+   "body": "« Ficar » est un verbe passe-partout au Brésil. Il veut dire « rester » (ficar em casa), « se trouver » (a praia fica perto), mais aussi « devenir » ou « être » suite à un changement (fiquei feliz, ficou furioso). On le retrouve dans des expressions très courantes : « Fica tranquilo » (ne t'inquiète pas), « Fica à vontade » (fais comme chez toi)."
+  }
+ },
+ {
+  "title": "La saudade d'un ami parti",
+  "phrases": [
+   {
+    "fr": "Mon meilleur ami est parti vivre à l'étranger.",
+    "pt": "O meu melhor amigo foi morar no exterior."
+   },
+   {
+    "fr": "Il me manque beaucoup.",
+    "pt": "Estou com muita saudade dele."
+   },
+   {
+    "fr": "On s'appelle en vidéo tous les dimanches.",
+    "pt": "A gente faz chamada de vídeo todo domingo."
+   },
+   {
+    "fr": "Il dit que la cuisine d'ici lui manque.",
+    "pt": "Ele diz que sente falta da comida daqui."
+   },
+   {
+    "fr": "Surtout le haricot noir de sa mère.",
+    "pt": "Principalmente do feijão da mãe dele."
+   },
+   {
+    "fr": "La saudade, c'est un mot difficile à traduire.",
+    "pt": "Saudade é uma palavra difícil de traduzir."
+   },
+   {
+    "fr": "C'est un mélange de manque et de tendresse.",
+    "pt": "É uma mistura de falta e de carinho."
+   },
+   {
+    "fr": "Il va revenir pour les fêtes de fin d'année.",
+    "pt": "Ele vai voltar para as festas de fim de ano."
+   },
+   {
+    "fr": "On va lui préparer une grande feijoada.",
+    "pt": "A gente vai preparar uma feijoada enorme para ele."
+   },
+   {
+    "fr": "J'ai hâte de le serrer dans mes bras.",
+    "pt": "Não vejo a hora de dar um abraço nele."
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan",
+  "phrases": [
+   {
+    "fr": "Dans ce module, on a appris à donner notre avis.",
+    "pt": "Neste módulo, a gente aprendeu a dar a nossa opinião."
+   },
+   {
+    "fr": "On peut parler de foot, de musique et de novelas.",
+    "pt": "A gente pode falar de futebol, de música e de novela."
+   },
+   {
+    "fr": "Raconter un souvenir devient de plus en plus facile.",
+    "pt": "Contar uma lembrança está ficando cada vez mais fácil."
+   },
+   {
+    "fr": "Les verbes au passé commencent à être naturels.",
+    "pt": "Os verbos no passado estão começando a ficar naturais."
+   },
+   {
+    "fr": "Je comprends mieux les blagues de mes amis brésiliens.",
+    "pt": "Eu entendo melhor as piadas dos meus amigos brasileiros."
+   },
+   {
+    "fr": "Je n'ai plus peur de faire des erreurs.",
+    "pt": "Eu não tenho mais medo de errar."
+   },
+   {
+    "fr": "Le portugais du Brésil me paraît de plus en plus familier.",
+    "pt": "O português do Brasil está ficando cada vez mais familiar para mim."
+   },
+   {
+    "fr": "Je suis fier du chemin parcouru.",
+    "pt": "Eu estou orgulhoso do caminho que eu fiz."
+   },
+   {
+    "fr": "Continue comme ça, tu fais de beaux progrès.",
+    "pt": "Continua assim, você está progredindo muito."
+   },
+   {
+    "fr": "Rendez-vous au prochain niveau !",
+    "pt": "Até o próximo nível!"
+   }
+  ]
+ }
 ];
 
-/* ============================================================
-   NIVEAU 3
-   ============================================================ */
-
 const level3Module1Lessons = [
-  { title:"La déclaration d'impôts", phrases:[
-    {fr:"J'aurais besoin d'aide pour ma déclaration d'impôts.", de:"Ich hätte gern Hilfe bei meiner Steuererklärung."},
-    {fr:"Pourriez-vous m'expliquer ce formulaire plus en détail ?", de:"Könnten Sie mir dieses Formular genauer erklären?"},
-    {fr:"Je voudrais déduire mes frais professionnels cette année.", de:"Ich möchte dieses Jahr meine Werbungskosten absetzen."},
-    {fr:"Auriez-vous le temps de regarder mon dossier cette semaine ?", de:"Hätten Sie Zeit, sich diese Woche meine Unterlagen anzusehen?"},
-    {fr:"Ce serait vraiment utile d'avoir un deuxième avis.", de:"Es wäre wirklich hilfreich, eine zweite Meinung zu haben."},
-    {fr:"Je n'aurais jamais pensé que ce serait aussi compliqué.", de:"Ich hätte nie gedacht, dass das so kompliziert wäre."},
-    {fr:"Pourriez-vous vérifier si j'ai droit à un remboursement ?", de:"Könnten Sie prüfen, ob ich Anspruch auf eine Rückerstattung habe?"},
-    {fr:"Ce serait formidable si on pouvait finir avant la date limite.", de:"Es wäre großartig, wenn wir vor der Frist fertig würden."},
-    {fr:"J'aurais aimé commencer cette démarche plus tôt dans l'année.", de:"Ich hätte gern früher im Jahr mit diesem Vorgang angefangen."},
-    {fr:"Merci, votre aide me soulage énormément.", de:"Danke, Ihre Hilfe erleichtert mich sehr."}
-  ], tip:{
-    title:"Le Konjunktiv II de politesse : « Ich hätte gern », « Könnten Sie »",
-    example:"J'aurais besoin d'aide pour ma déclaration d'impôts. — Ich <b>hätte gern</b> Hilfe bei meiner Steuererklärung.",
-    body:"Le Konjunktiv II de « haben » (hätte), « können » (könnte) et « werden » (würde) sert à formuler une demande polie ou un souhait atténué, exactement comme le conditionnel français : Ich hätte gern... (je voudrais bien), Könnten Sie...? (pourriez-vous...?). C'est la forme la plus utilisée dans les échanges professionnels ou formels."
-  }},
-  { title:"Choisir une assurance maladie", phrases:[
-    {fr:"En Allemagne, on doit choisir entre assurance publique et privée.", de:"In Deutschland muss man zwischen gesetzlicher und privater Versicherung wählen."},
-    {fr:"L'assurance publique dépend directement de votre revenu mensuel.", de:"Die gesetzliche Versicherung richtet sich direkt nach Ihrem Monatseinkommen."},
-    {fr:"L'assurance privée propose souvent des prestations plus étendues.", de:"Die private Versicherung bietet oft umfassendere Leistungen."},
-    {fr:"Il faut cependant bien étudier les conditions avant de s'engager.", de:"Man muss die Bedingungen jedoch gut prüfen, bevor man sich verpflichtet."},
-    {fr:"Un conseiller indépendant peut comparer les offres objectivement.", de:"Ein unabhängiger Berater kann die Angebote objektiv vergleichen."},
-    {fr:"Mon employeur verse automatiquement sa part des cotisations.", de:"Mein Arbeitgeber zahlt automatisch seinen Anteil der Beiträge."},
-    {fr:"Changer d'assurance plus tard reste possible, sous conditions.", de:"Die Versicherung später zu wechseln bleibt unter bestimmten Bedingungen möglich."},
-    {fr:"Cette décision influence vraiment toute la vie quotidienne.", de:"Diese Entscheidung beeinflusst wirklich das ganze Alltagsleben."},
-    {fr:"Je recommande de ne pas se décider dans l'urgence.", de:"Ich empfehle, sich nicht unter Zeitdruck zu entscheiden."},
-    {fr:"Prendre le temps de bien réfléchir en vaut la peine.", de:"Es lohnt sich, sich Zeit zum Nachdenken zu nehmen."}
-  ]},
-  { title:"Une réunion de parents d'élèves", phrases:[
-    {fr:"Les nouveaux horaires seront annoncés lors de cette réunion.", de:"Die neuen Stundenpläne werden bei diesem Treffen bekannt gegeben."},
-    {fr:"Le programme scolaire a été modifié cette année.", de:"Der Lehrplan wurde dieses Jahr geändert."},
-    {fr:"Les notes seront communiquées par une application dédiée.", de:"Die Noten werden über eine eigene App mitgeteilt."},
-    {fr:"Les enfants sont évalués régulièrement tout au long de l'année.", de:"Die Kinder werden das ganze Jahr über regelmäßig bewertet."},
-    {fr:"Ce voyage scolaire sera organisé au printemps prochain.", de:"Diese Klassenfahrt wird im kommenden Frühling organisiert."},
-    {fr:"Les parents seront invités à participer à certaines sorties.", de:"Die Eltern werden eingeladen, an manchen Ausflügen teilzunehmen."},
-    {fr:"La cantine est entièrement gérée par la mairie.", de:"Die Kantine wird vollständig von der Gemeinde verwaltet."},
-    {fr:"Les repas sont préparés chaque jour avec des produits locaux.", de:"Die Mahlzeiten werden jeden Tag mit lokalen Produkten zubereitet."},
-    {fr:"Des cours de soutien seront proposés aux élèves en difficulté.", de:"Schülern mit Schwierigkeiten werden Nachhilfekurse angeboten."},
-    {fr:"Cette école semble vraiment bien organisée dans l'ensemble.", de:"Diese Schule scheint insgesamt wirklich gut organisiert zu sein."}
-  ], tip:{
-    title:"Le passif au présent : wird + participe passé",
-    example:"Les notes seront communiquées par une application dédiée. — Die Noten <b>werden</b> über eine eigene App <b>mitgeteilt</b>.",
-    body:"Le passif allemand se forme avec « werden » conjugué + le participe passé, qui part en fin de phrase : Die Noten werden mitgeteilt (les notes sont communiquées). On l'utilise quand l'action compte plus que celui qui l'accomplit — très fréquent dans un cadre administratif ou institutionnel."
-  }},
-  { title:"S'impliquer dans un club associatif", phrases:[
-    {fr:"Je me suis inscrit dans un club de randonnée du quartier.", de:"Ich habe mich in einem Wanderverein des Viertels angemeldet."},
-    {fr:"Les associations jouent un rôle social très important en Allemagne.", de:"Vereine spielen in Deutschland eine sehr wichtige soziale Rolle."},
-    {fr:"Presque chaque village possède son propre club de sport.", de:"Fast jedes Dorf hat seinen eigenen Sportverein."},
-    {fr:"On y organise aussi des fêtes de quartier régulièrement.", de:"Dort werden auch regelmäßig Nachbarschaftsfeste organisiert."},
-    {fr:"Le président du club est élu chaque année par les membres.", de:"Der Vereinsvorsitzende wird jedes Jahr von den Mitgliedern gewählt."},
-    {fr:"J'apprécie beaucoup l'esprit communautaire qui règne ici.", de:"Ich schätze den Gemeinschaftsgeist, der hier herrscht, sehr."},
-    {fr:"Les cotisations restent généralement assez modestes.", de:"Die Mitgliedsbeiträge bleiben meist recht überschaubar."},
-    {fr:"On y rencontre des gens de tous âges et de tous milieux.", de:"Man trifft dort Menschen jeden Alters und jeder Herkunft."},
-    {fr:"Cette structure m'a vraiment aidé à m'intégrer plus vite.", de:"Diese Struktur hat mir wirklich geholfen, mich schneller zu integrieren."},
-    {fr:"Je recommande vivement ce genre d'engagement local.", de:"Ich empfehle dieses lokale Engagement sehr."}
-  ]},
-  { title:"Négocier une augmentation de salaire", phrases:[
-    {fr:"Mon manager m'a dit qu'il examinerait ma demande.", de:"Mein Chef hat mir gesagt, dass er meine Anfrage prüfen werde."},
-    {fr:"Il a affirmé que mes résultats étaient très satisfaisants.", de:"Er hat behauptet, meine Ergebnisse seien sehr zufriedenstellend."},
-    {fr:"Ma collègue a expliqué qu'elle avait obtenu la même augmentation.", de:"Meine Kollegin hat erklärt, sie habe dieselbe Erhöhung erhalten."},
-    {fr:"Il a précisé que la décision finale viendrait de la direction.", de:"Er hat klargestellt, die endgültige Entscheidung komme von der Geschäftsführung."},
-    {fr:"Elle a ajouté que le budget était assez serré cette année.", de:"Sie hat hinzugefügt, das Budget sei dieses Jahr recht knapp."},
-    {fr:"J'ai répondu que je comprenais parfaitement la situation.", de:"Ich habe geantwortet, ich verstehe die Situation vollkommen."},
-    {fr:"Il a promis que la réponse arriverait avant la fin du mois.", de:"Er hat versprochen, die Antwort komme vor Monatsende."},
-    {fr:"J'ai préparé des arguments solides pour appuyer ma demande.", de:"Ich habe solide Argumente vorbereitet, um meine Anfrage zu unterstützen."},
-    {fr:"On m'a conseillé de rester patient malgré tout.", de:"Man hat mir geraten, trotz allem geduldig zu bleiben."},
-    {fr:"Finalement, cette négociation s'est plutôt bien terminée.", de:"Letztendlich ist diese Verhandlung eher gut ausgegangen."}
-  ], tip:{
-    title:"Le discours indirect simple : Konjunktiv I",
-    example:"Il a affirmé que mes résultats étaient très satisfaisants. — Er hat behauptet, meine Ergebnisse <b>seien</b> sehr zufriedenstellend.",
-    body:"Pour rapporter les paroles de quelqu'un de façon plus formelle (presse, discours indirect écrit), l'allemand utilise le Konjunktiv I : sein → er sei, haben → er habe, kommen → er komme. À l'oral courant, on utilise souvent simplement l'indicatif avec « dass », mais le Konjunktiv I reste très présent à l'écrit."
-  }},
-  { title:"Gérer un conflit avec un collègue", phrases:[
-    {fr:"Un désaccord est apparu avec un collègue la semaine dernière.", de:"Letzte Woche kam es zu einer Meinungsverschiedenheit mit einem Kollegen."},
-    {fr:"Nous avons décidé d'en parler calmement en tête-à-tête.", de:"Wir haben beschlossen, ruhig unter vier Augen darüber zu sprechen."},
-    {fr:"Chacun a pu exposer son point de vue sans être interrompu.", de:"Jeder konnte seinen Standpunkt darlegen, ohne unterbrochen zu werden."},
-    {fr:"Finalement, le malentendu venait d'un simple problème de communication.", de:"Letztendlich kam das Missverständnis von einem einfachen Kommunikationsproblem."},
-    {fr:"Nous avons trouvé un compromis qui convenait aux deux parties.", de:"Wir haben einen Kompromiss gefunden, der beiden Seiten passte."},
-    {fr:"Notre relation professionnelle s'en est même trouvée renforcée.", de:"Unsere berufliche Beziehung wurde dadurch sogar gestärkt."},
-    {fr:"Il est toujours préférable d'aborder les tensions rapidement.", de:"Es ist immer besser, Spannungen schnell anzusprechen."},
-    {fr:"Les non-dits finissent presque toujours par s'aggraver.", de:"Unausgesprochenes verschlimmert sich fast immer mit der Zeit."},
-    {fr:"Cette expérience m'a appris à mieux communiquer au travail.", de:"Diese Erfahrung hat mich gelehrt, bei der Arbeit besser zu kommunizieren."},
-    {fr:"Un bon dialogue résout souvent plus que prévu.", de:"Ein gutes Gespräch löst oft mehr, als man erwartet."}
-  ]},
-  { title:"Un sinistre et l'assurance habitation", phrases:[
-    {fr:"Un dégât des eaux a endommagé le plafond de la cuisine.", de:"Ein Wasserschaden hat die Decke der Küche beschädigt."},
-    {fr:"Nous avons immédiatement contacté notre assurance habitation.", de:"Wir haben sofort unsere Hausratversicherung kontaktiert."},
-    {fr:"Un expert viendra constater les dégâts cette semaine.", de:"Ein Gutachter wird diese Woche den Schaden begutachten."},
-    {fr:"Il faut photographier tous les dommages avant toute réparation.", de:"Man muss alle Schäden fotografieren, bevor man etwas repariert."},
-    {fr:"L'assurance couvre généralement ce type d'incident domestique.", de:"Die Versicherung deckt solche Haushaltsvorfälle in der Regel ab."},
-    {fr:"Le remboursement arrivera probablement dans un mois environ.", de:"Die Rückerstattung kommt wahrscheinlich in etwa einem Monat."},
-    {fr:"En attendant, nous avons dû limiter l'usage de la cuisine.", de:"In der Zwischenzeit mussten wir die Nutzung der Küche einschränken."},
-    {fr:"Ce genre de sinistre reste heureusement assez rare.", de:"Solche Schäden bleiben glücklicherweise recht selten."},
-    {fr:"L'assurance nous a proposé un logement de remplacement temporaire.", de:"Die Versicherung hat uns eine vorübergehende Ersatzwohnung angeboten."},
-    {fr:"Tout devrait être réglé avant la fin du mois.", de:"Bis Ende des Monats sollte alles geregelt sein."}
-  ]},
-  { title:"Un litige avec le propriétaire", phrases:[
-    {fr:"Le propriétaire qui gère notre immeuble refuse certaines réparations.", de:"Der Vermieter, der unser Haus verwaltet, verweigert bestimmte Reparaturen."},
-    {fr:"L'humidité qui s'infiltre dans le mur devient vraiment préoccupante.", de:"Die Feuchtigkeit, die in die Wand eindringt, wird wirklich besorgniserregend."},
-    {fr:"Nous avons contacté une association qui défend les locataires.", de:"Wir haben einen Verein kontaktiert, der Mieter vertritt."},
-    {fr:"L'avocat que nous avons consulté connaît bien ce genre de dossier.", de:"Der Anwalt, den wir konsultiert haben, kennt sich mit solchen Fällen gut aus."},
-    {fr:"Le contrat que nous avons signé mentionne cette obligation.", de:"Der Vertrag, den wir unterschrieben haben, erwähnt diese Verpflichtung."},
-    {fr:"La loi qui protège les locataires est plutôt stricte ici.", de:"Das Gesetz, das Mieter schützt, ist hier recht streng."},
-    {fr:"Un médiateur qui connaît bien ces litiges pourrait nous aider.", de:"Ein Mediator, der sich mit solchen Streitigkeiten auskennt, könnte uns helfen."},
-    {fr:"Nous espérons résoudre ce problème sans aller jusqu'au tribunal.", de:"Wir hoffen, dieses Problem ohne ein Gericht zu lösen."},
-    {fr:"Cette situation que nous vivons concerne apparemment d'autres voisins aussi.", de:"Diese Situation, die wir erleben, betrifft offenbar auch andere Nachbarn."},
-    {fr:"Nous resterons patients tant qu'une solution raisonnable existe.", de:"Wir bleiben geduldig, solange eine vernünftige Lösung möglich ist."}
-  ], tip:{
-    title:"Les subordonnées relatives : der, die, das comme pronom relatif",
-    example:"Le propriétaire qui gère notre immeuble refuse certaines réparations. — Der Vermieter, <b>der</b> unser Haus verwaltet, verweigert bestimmte Reparaturen.",
-    body:"Les pronoms relatifs allemands (der, die, das, selon le genre et le cas de l'antécédent) introduisent une subordonnée qui envoie, comme toujours, le verbe en fin de proposition. Ils sont toujours encadrés par des virgules, et prennent le cas qui correspond à leur fonction dans la relative (nominatif, accusatif, datif ou génitif)."
-  }},
-  { title:"Envisager d'acheter un logement", phrases:[
-    {fr:"Nous envisageons sérieusement d'acheter notre premier appartement.", de:"Wir überlegen ernsthaft, unsere erste Wohnung zu kaufen."},
-    {fr:"Les taux d'intérêt actuels compliquent un peu le projet.", de:"Die aktuellen Zinssätze erschweren das Vorhaben etwas."},
-    {fr:"Un courtier nous a aidés à comparer plusieurs offres de prêt.", de:"Ein Makler hat uns geholfen, mehrere Kreditangebote zu vergleichen."},
-    {fr:"L'apport personnel reste un critère déterminant pour les banques.", de:"Das Eigenkapital bleibt für die Banken ein entscheidendes Kriterium."},
-    {fr:"Nous avons visité une dizaine de biens ces derniers mois.", de:"Wir haben in den letzten Monaten rund zehn Objekte besichtigt."},
-    {fr:"Ce quartier nous plaît particulièrement pour ses écoles proches.", de:"Dieses Viertel gefällt uns besonders wegen der nahen Schulen."},
-    {fr:"Les frais de notaire s'ajoutent toujours au prix affiché.", de:"Die Notarkosten kommen immer zum angegebenen Preis hinzu."},
-    {fr:"Cette décision engage véritablement toute notre vie future.", de:"Diese Entscheidung bindet wirklich unser ganzes zukünftiges Leben."},
-    {fr:"Nous préférons prendre encore un peu de temps avant de signer.", de:"Wir ziehen es vor, uns vor der Unterschrift noch etwas Zeit zu lassen."},
-    {fr:"Ce projet reste malgré tout très excitant pour nous deux.", de:"Dieses Vorhaben bleibt trotz allem für uns beide sehr aufregend."}
-  ]},
-  { title:"Le test de naturalisation allemande", phrases:[
-    {fr:"Je prépare actuellement le test de naturalisation allemande.", de:"Ich bereite mich derzeit auf den deutschen Einbürgerungstest vor."},
-    {fr:"Ce test porte sur l'histoire, la politique et la société.", de:"Dieser Test behandelt Geschichte, Politik und Gesellschaft."},
-    {fr:"Il faut répondre correctement à au moins dix-sept questions.", de:"Man muss mindestens siebzehn Fragen richtig beantworten."},
-    {fr:"J'étudie chaque soir une partie du manuel officiel.", de:"Ich lerne jeden Abend einen Teil des offiziellen Handbuchs."},
-    {fr:"Certaines questions concernent spécifiquement la région où l'on vit.", de:"Manche Fragen betreffen speziell die Region, in der man lebt."},
-    {fr:"Ce processus m'a vraiment poussé à mieux comprendre ce pays.", de:"Dieser Prozess hat mich wirklich dazu gebracht, dieses Land besser zu verstehen."},
-    {fr:"Une fois ce test réussi, je pourrai déposer ma demande officielle.", de:"Sobald dieser Test bestanden ist, kann ich meinen offiziellen Antrag stellen."},
-    {fr:"La naturalisation exige aussi un bon niveau d'allemand.", de:"Die Einbürgerung erfordert auch ein gutes Deutschniveau."},
-    {fr:"Ce parcours demande de la patience, mais il en vaut la peine.", de:"Dieser Weg erfordert Geduld, aber er lohnt sich."},
-    {fr:"J'ai vraiment hâte de devenir officiellement citoyen allemand.", de:"Ich freue mich wirklich darauf, offiziell deutscher Staatsbürger zu werden."}
-  ]},
-  { title:"Préparer un examen de langue officiel", phrases:[
-    {fr:"Je m'inscris à l'examen de langue du niveau B2.", de:"Ich melde mich zur Sprachprüfung auf Niveau B2 an."},
-    {fr:"L'épreuve orale m'inquiète davantage que la partie écrite.", de:"Der mündliche Teil macht mir mehr Sorgen als der schriftliche."},
-    {fr:"Je m'entraîne chaque jour avec des enregistrements audio.", de:"Ich übe jeden Tag mit Audioaufnahmen."},
-    {fr:"Mon professeur me corrige régulièrement mes erreurs de grammaire.", de:"Mein Lehrer korrigiert regelmäßig meine Grammatikfehler."},
-    {fr:"Le jour de l'examen, il faudra rester concentré malgré le stress.", de:"Am Prüfungstag muss man trotz des Stresses konzentriert bleiben."},
-    {fr:"Cette certification ouvrira de nouvelles portes professionnelles.", de:"Diese Zertifizierung wird neue berufliche Türen öffnen."},
-    {fr:"Beaucoup d'employeurs exigent désormais ce niveau de langue.", de:"Viele Arbeitgeber verlangen inzwischen dieses Sprachniveau."},
-    {fr:"J'ai énormément progressé depuis mon arrivée dans ce pays.", de:"Ich habe seit meiner Ankunft in diesem Land enorm viele Fortschritte gemacht."},
-    {fr:"Les résultats arriveront environ trois semaines après l'examen.", de:"Die Ergebnisse kommen etwa drei Wochen nach der Prüfung."},
-    {fr:"Quel que soit le résultat, cet effort méritait d'être fait.", de:"Wie auch immer das Ergebnis ausfällt, diese Mühe war es wert."}
-  ]},
-  { title:"S'occuper de ses parents vieillissants", phrases:[
-    {fr:"Après que mon père est tombé malade, toute la famille s'est organisée.", de:"Nachdem mein Vater erkrankt war, hat sich die ganze Familie organisiert."},
-    {fr:"Avant de prendre une décision, nous avons consulté plusieurs médecins.", de:"Bevor wir eine Entscheidung trafen, haben wir mehrere Ärzte konsultiert."},
-    {fr:"Après avoir discuté longuement, nous avons choisi une aide à domicile.", de:"Nachdem wir lange diskutiert hatten, haben wir uns für eine häusliche Pflege entschieden."},
-    {fr:"Avant que la situation ne s'aggrave, il fallait vraiment agir.", de:"Bevor sich die Situation verschlimmerte, mussten wir wirklich handeln."},
-    {fr:"Après s'être habituée à cette aide, ma mère se sent plus rassurée.", de:"Nachdem sie sich an diese Hilfe gewöhnt hatte, fühlt sich meine Mutter beruhigter."},
-    {fr:"Nous nous appelons chaque jour avant d'aller nous coucher.", de:"Wir rufen uns jeden Tag an, bevor wir schlafen gehen."},
-    {fr:"Après avoir pris cette décision, un vrai poids s'est envolé.", de:"Nachdem wir diese Entscheidung getroffen hatten, fiel eine echte Last von uns ab."},
-    {fr:"Prendre soin de ses parents demande beaucoup d'organisation familiale.", de:"Für seine Eltern zu sorgen erfordert viel familiäre Organisation."},
-    {fr:"Mes frères et sœurs se répartissent les visites chaque semaine.", de:"Meine Geschwister teilen sich die Besuche jede Woche auf."},
-    {fr:"Cette épreuve a finalement resserré les liens de notre famille.", de:"Diese Prüfung hat letztendlich die Bindungen unserer Familie gestärkt."}
-  ], tip:{
-    title:"« Nachdem » et « bevor » dans les subordonnées temporelles",
-    example:"Après que mon père est tombé malade, toute la famille s'est organisée. — <b>Nachdem</b> mein Vater erkrankt war, hat sich die ganze Familie organisiert.",
-    body:"« Nachdem » (après que) exige souvent un temps antérieur à celui de la principale (le plus-que-parfait si la principale est au passé), tandis que « bevor » (avant que) garde généralement le même temps que l'action principale. Dans les deux cas, le verbe conjugué de la subordonnée part en fin de proposition, comme pour « weil » ou « dass »."
-  }},
-  { title:"Le télétravail au quotidien", phrases:[
-    {fr:"Je travaille désormais trois jours par semaine depuis mon domicile.", de:"Ich arbeite jetzt drei Tage pro Woche von zu Hause aus."},
-    {fr:"Cette organisation me permet un meilleur équilibre de vie.", de:"Diese Organisation ermöglicht mir eine bessere Lebensbalance."},
-    {fr:"Il faut néanmoins instaurer une vraie discipline personnelle.", de:"Man muss trotzdem eine echte persönliche Disziplin einführen."},
-    {fr:"Mon entreprise a équipé tous les employés en matériel adéquat.", de:"Mein Unternehmen hat alle Mitarbeiter mit geeigneter Ausstattung versehen."},
-    {fr:"Les réunions se déroulent presque toujours en visioconférence maintenant.", de:"Besprechungen finden jetzt fast immer per Videokonferenz statt."},
-    {fr:"Cette flexibilité horaire représente un énorme avantage pour moi.", de:"Diese flexible Arbeitszeit stellt für mich einen enormen Vorteil dar."},
-    {fr:"Certains collègues préfèrent quand même venir chaque jour au bureau.", de:"Manche Kollegen kommen trotzdem lieber jeden Tag ins Büro."},
-    {fr:"Le lien social se maintient grâce à des rencontres mensuelles.", de:"Der soziale Kontakt bleibt durch monatliche Treffen erhalten."},
-    {fr:"Cette nouvelle façon de travailler transforme vraiment notre quotidien.", de:"Diese neue Arbeitsweise verändert unseren Alltag wirklich."},
-    {fr:"Je ne reviendrais plus en arrière, honnêtement.", de:"Ich würde ehrlich gesagt nicht mehr zurückwechseln."}
-  ]},
-  { title:"Réflexions sur l'intégration", phrases:[
-    {fr:"S'intégrer complètement dans un nouveau pays prend du temps.", de:"Sich vollständig in ein neues Land zu integrieren braucht Zeit."},
-    {fr:"La langue reste évidemment la clé la plus importante.", de:"Die Sprache bleibt offensichtlich der wichtigste Schlüssel."},
-    {fr:"Participer à des événements locaux aide énormément à s'ouvrir aux autres.", de:"An lokalen Veranstaltungen teilzunehmen hilft enorm, sich anderen zu öffnen."},
-    {fr:"Les petites différences culturelles finissent par devenir des habitudes.", de:"Die kleinen kulturellen Unterschiede werden mit der Zeit zur Gewohnheit."},
-    {fr:"Garder ses propres traditions n'empêche pas de s'adapter.", de:"Die eigenen Traditionen zu behalten verhindert nicht die Anpassung."},
-    {fr:"J'ai appris à apprécier des aspects que je ne comprenais pas d'abord.", de:"Ich habe gelernt, Aspekte zu schätzen, die ich anfangs nicht verstand."},
-    {fr:"Certains amis allemands sont devenus comme une seconde famille.", de:"Manche deutschen Freunde sind wie eine zweite Familie geworden."},
-    {fr:"L'intégration se fait rarement du jour au lendemain.", de:"Integration passiert selten über Nacht."},
-    {fr:"Chaque petite victoire du quotidien finit par compter énormément.", de:"Jeder kleine Alltagserfolg zählt letztendlich enorm."},
-    {fr:"Je me sens désormais vraiment chez moi ici.", de:"Ich fühle mich inzwischen wirklich zu Hause hier."}
-  ]},
-  { title:"Les élections locales", phrases:[
-    {fr:"Les élections municipales auront lieu dans quelques semaines.", de:"Die Kommunalwahlen finden in ein paar Wochen statt."},
-    {fr:"Chaque résident européen peut voter aux élections locales ici.", de:"Jeder EU-Bürger darf hier bei den Kommunalwahlen wählen."},
-    {fr:"Les candidats débattent souvent dans la salle des fêtes du village.", de:"Die Kandidaten diskutieren oft im Festsaal des Dorfes."},
-    {fr:"Les sujets principaux concernent les transports et le logement.", de:"Die Hauptthemen betreffen Verkehr und Wohnungsbau."},
-    {fr:"J'apprécie de pouvoir participer même sans la nationalité allemande.", de:"Ich schätze es, auch ohne deutsche Staatsangehörigkeit teilnehmen zu können."},
-    {fr:"Cette participation citoyenne me fait vraiment sentir impliqué.", de:"Diese Bürgerbeteiligung lässt mich wirklich eingebunden fühlen."},
-    {fr:"Les résultats seront annoncés dimanche soir à la mairie.", de:"Die Ergebnisse werden Sonntagabend im Rathaus bekannt gegeben."},
-    {fr:"La participation électorale semble plus élevée que d'habitude cette année.", de:"Die Wahlbeteiligung scheint dieses Jahr höher als gewöhnlich."},
-    {fr:"Chaque voix compte vraiment à ce niveau local.", de:"Auf dieser lokalen Ebene zählt wirklich jede Stimme."},
-    {fr:"S'engager politiquement, même modestement, reste important.", de:"Sich politisch zu engagieren, auch nur bescheiden, bleibt wichtig."}
-  ]},
-  { title:"La culture du Feierabend", phrases:[
-    {fr:"Le mot « Feierabend » désigne la fin méritée de la journée de travail.", de:"Das Wort „Feierabend\" bezeichnet das wohlverdiente Ende des Arbeitstages."},
-    {fr:"Une fois le bureau fermé, les appels professionnels sont rares.", de:"Sobald das Büro geschlossen ist, sind geschäftliche Anrufe selten."},
-    {fr:"Cette séparation stricte m'a beaucoup surpris au début.", de:"Diese strikte Trennung hat mich am Anfang sehr überrascht."},
-    {fr:"Désormais, je l'apprécie énormément pour mon équilibre personnel.", de:"Inzwischen schätze ich sie sehr für mein persönliches Gleichgewicht."},
-    {fr:"Les collègues partent généralement à l'heure, sans se sentir coupables.", de:"Die Kollegen gehen meist pünktlich, ohne sich schuldig zu fühlen."},
-    {fr:"On consacre vraiment ce temps libre à sa famille ou ses loisirs.", de:"Diese Freizeit wird wirklich der Familie oder den Hobbys gewidmet."},
-    {fr:"Ce concept reflète une vraie philosophie de vie allemande.", de:"Dieses Konzept spiegelt eine echte deutsche Lebensphilosophie wider."},
-    {fr:"Les Français pourraient d'ailleurs s'en inspirer un peu.", de:"Die Franzosen könnten sich übrigens etwas davon inspirieren lassen."},
-    {fr:"Travailler efficacement, puis déconnecter complètement, voilà l'idée.", de:"Effizient arbeiten und dann komplett abschalten, das ist die Idee."},
-    {fr:"J'essaie désormais d'appliquer ce principe moi aussi.", de:"Ich versuche inzwischen, dieses Prinzip auch selbst anzuwenden."}
-  ]},
-  { title:"Un jardin communautaire", phrases:[
-    {fr:"Notre quartier a récemment créé un jardin communautaire partagé.", de:"Unser Viertel hat vor kurzem einen gemeinsamen Nachbarschaftsgarten angelegt."},
-    {fr:"Chaque famille y cultive une petite parcelle de légumes.", de:"Jede Familie bewirtschaftet dort ein kleines Gemüsebeet."},
-    {fr:"On partage les outils et les récoltes entre voisins.", de:"Werkzeuge und Ernte werden unter Nachbarn geteilt."},
-    {fr:"Ce projet renforce vraiment les liens au sein du quartier.", de:"Dieses Projekt stärkt wirklich die Bindungen innerhalb der Nachbarschaft."},
-    {fr:"Les enfants apprennent à reconnaître les légumes de saison.", de:"Die Kinder lernen, saisonales Gemüse zu erkennen."},
-    {fr:"On organise un repas commun chaque mois avec les récoltes.", de:"Jeden Monat wird mit der Ernte ein gemeinsames Essen organisiert."},
-    {fr:"Même les personnes sans jardin peuvent y participer.", de:"Auch Menschen ohne eigenen Garten können daran teilnehmen."},
-    {fr:"Ce genre d'initiative se multiplie dans toute l'Allemagne.", de:"Solche Initiativen vermehren sich in ganz Deutschland."},
-    {fr:"Jardiner ensemble crée un sentiment d'appartenance très fort.", de:"Gemeinsam zu gärtnern schafft ein sehr starkes Zugehörigkeitsgefühl."},
-    {fr:"Je recommande vraiment ce type de projet collectif.", de:"Ich empfehle solche Gemeinschaftsprojekte wirklich sehr."}
-  ]},
-  { title:"Le vide-grenier du quartier", phrases:[
-    {fr:"Le vide-grenier du quartier a lieu deux fois par an.", de:"Der Nachbarschaftsflohmarkt findet zweimal im Jahr statt."},
-    {fr:"On vide nos armoires pour vendre ce qu'on n'utilise plus.", de:"Wir räumen unsere Schränke aus, um Ungenutztes zu verkaufen."},
-    {fr:"Les enfants adorent vendre leurs anciens jouets eux-mêmes.", de:"Die Kinder lieben es, ihre alten Spielsachen selbst zu verkaufen."},
-    {fr:"Les prix restent toujours très symboliques pour ce genre d'événement.", de:"Die Preise bleiben für solche Veranstaltungen immer sehr symbolisch."},
-    {fr:"On y trouve parfois de vraies petites merveilles cachées.", de:"Man findet dort manchmal kleine versteckte Schätze."},
-    {fr:"L'ambiance conviviale attire vraiment tout le quartier.", de:"Die gemütliche Atmosphäre zieht wirklich das ganze Viertel an."},
-    {fr:"Cette tradition encourage une consommation plus raisonnable.", de:"Diese Tradition fördert einen vernünftigeren Konsum."},
-    {fr:"On discute souvent longuement avec des voisins qu'on connaît peu.", de:"Man unterhält sich oft lange mit Nachbarn, die man kaum kennt."},
-    {fr:"L'argent récolté finance parfois un projet collectif du quartier.", de:"Das gesammelte Geld finanziert manchmal ein gemeinsames Projekt des Viertels."},
-    {fr:"Ce rendez-vous devient vraiment un moment attendu chaque année.", de:"Dieser Termin wird wirklich zu einem erwarteten Moment jedes Jahr."}
-  ]},
-  { title:"Une soirée entre voisins de longue date", phrases:[
-    {fr:"Nos voisins nous ont invités pour fêter dix ans dans l'immeuble.", de:"Unsere Nachbarn haben uns eingeladen, um zehn Jahre im Haus zu feiern."},
-    {fr:"Chacun a apporté un plat typique de sa région d'origine.", de:"Jeder hat ein typisches Gericht aus seiner Herkunftsregion mitgebracht."},
-    {fr:"Nous avons énormément ri en nous souvenant des débuts difficiles.", de:"Wir haben enorm gelacht, als wir uns an die schwierigen Anfänge erinnerten."},
-    {fr:"Cette communauté s'est construite petit à petit, au fil des années.", de:"Diese Gemeinschaft hat sich im Laufe der Jahre nach und nach aufgebaut."},
-    {fr:"Les enfants des uns ont grandi avec ceux des autres.", de:"Die Kinder der einen sind mit denen der anderen aufgewachsen."},
-    {fr:"On s'entraide naturellement pour les petits services du quotidien.", de:"Man hilft sich natürlich bei den kleinen Diensten des Alltags."},
-    {fr:"Cette entente n'existe pas toujours entre voisins, malheureusement.", de:"Dieses Einvernehmen besteht leider nicht immer zwischen Nachbarn."},
-    {fr:"Nous nous sentons vraiment chanceux d'avoir un tel entourage.", de:"Wir fühlen uns wirklich glücklich, ein solches Umfeld zu haben."},
-    {fr:"Cette soirée restera un merveilleux souvenir collectif.", de:"Dieser Abend wird eine wunderbare gemeinsame Erinnerung bleiben."},
-    {fr:"Longue vie à notre belle petite communauté.", de:"Ein langes Leben unserer schönen kleinen Gemeinschaft."}
-  ]},
-  { title:"Fin du module : un bilan", phrases:[
-    {fr:"Ce module nous a plongés dans un quotidien allemand plus profond.", de:"Dieses Modul hat uns in einen tieferen deutschen Alltag eintauchen lassen."},
-    {fr:"On a abordé des sujets administratifs et sociaux complexes.", de:"Wir haben komplexe verwaltungstechnische und soziale Themen behandelt."},
-    {fr:"Le passif et le discours indirect deviennent vraiment naturels maintenant.", de:"Das Passiv und die indirekte Rede werden jetzt wirklich natürlich."},
-    {fr:"Le prochain module nous emmènera vers des voyages plus approfondis.", de:"Das nächste Modul führt uns zu tiefer gehenden Reisen."},
-    {fr:"On continuera à affiner les nuances les plus subtiles.", de:"Wir werden weiterhin die subtilsten Nuancen verfeinern."},
-    {fr:"Chaque sujet abordé enrichit vraiment notre vision de ce pays.", de:"Jedes behandelte Thema bereichert wirklich unser Bild von diesem Land."},
-    {fr:"On se rapproche vraiment d'un allemand de niveau avancé.", de:"Wir kommen einem fortgeschrittenen Deutschniveau wirklich näher."},
-    {fr:"Félicitations pour cette belle traversée de ce module exigeant.", de:"Glückwunsch zu diesem schönen Durchgang durch dieses anspruchsvolle Modul."},
-    {fr:"Accordons-nous un moment de repos avant la suite.", de:"Gönnen wir uns einen Moment der Ruhe vor der Fortsetzung."},
-    {fr:"À très bientôt pour continuer cette belle aventure.", de:"Bis ganz bald, um dieses schöne Abenteuer fortzusetzen."}
-  ]}
+ {
+  "title": "Le contrat de location et le fiador",
+  "phrases": [
+   {
+    "fr": "Le propriétaire exige que nous présentions un garant avant de signer.",
+    "pt": "O proprietário exige que a gente apresente um fiador antes de assinar."
+   },
+   {
+    "fr": "Au Brésil, le garant doit souvent posséder un bien dans la même ville.",
+    "pt": "No Brasil, o fiador muitas vezes precisa ter um imóvel na mesma cidade."
+   },
+   {
+    "fr": "J'espère que l'agence acceptera une assurance caution à la place.",
+    "pt": "Espero que a imobiliária aceite um seguro-fiança no lugar."
+   },
+   {
+    "fr": "Il est important que vous lisiez chaque clause attentivement.",
+    "pt": "É importante que você leia cada cláusula com atenção."
+   },
+   {
+    "fr": "Le contrat prévoit un réajustement annuel du loyer.",
+    "pt": "O contrato prevê um reajuste anual do aluguel."
+   },
+   {
+    "fr": "Je préfère qu'on négocie une durée de trente mois.",
+    "pt": "Prefiro que a gente negocie um prazo de trinta meses."
+   },
+   {
+    "fr": "L'appartement se trouve dans un quartier calme de Curitiba.",
+    "pt": "O apartamento fica num bairro tranquilo de Curitiba."
+   },
+   {
+    "fr": "Il faut que nous fassions l'état des lieux ensemble.",
+    "pt": "É preciso que a gente faça a vistoria juntos."
+   },
+   {
+    "fr": "Je doute que le propriétaire baisse encore le prix.",
+    "pt": "Duvido que o proprietário abaixe ainda mais o preço."
+   },
+   {
+    "fr": "Pourvu que tout soit signé avant la fin du mois !",
+    "pt": "Tomara que tudo esteja assinado antes do fim do mês!"
+   }
+  ],
+  "tip": {
+   "title": "« Espero que… / É importante que… » : le subjonctif présent",
+   "example": "Il est important que vous lisiez chaque clause attentivement. — É importante que você <b>leia</b> cada cláusula com atenção.",
+   "body": "Comme en français, le portugais emploie le subjonctif après les verbes de souhait, de doute ou d'obligation : espero que, é importante que, duvido que, é preciso que. On le forme à partir de la première personne du présent : eu leio donne que eu leia, eu faço donne que eu faça. Les irréguliers à retenir : seja (ser), esteja (estar), vá (ir), tenha (ter)."
+  }
+ },
+ {
+  "title": "La déclaration de l'impôt sur le revenu",
+  "phrases": [
+   {
+    "fr": "Cette année, je dois faire ma déclaration d'impôt sur le revenu avant fin mai.",
+    "pt": "Este ano, preciso fazer minha declaração do Imposto de Renda antes do fim de maio."
+   },
+   {
+    "fr": "Le logiciel de l'administration fiscale est assez simple à utiliser.",
+    "pt": "O programa da Receita Federal é bem simples de usar."
+   },
+   {
+    "fr": "Mes dépenses de santé peuvent être entièrement déduites.",
+    "pt": "Meus gastos com saúde podem ser totalmente deduzidos."
+   },
+   {
+    "fr": "J'ai rassemblé tous mes justificatifs dans un dossier.",
+    "pt": "Juntei todos os meus comprovantes numa pasta."
+   },
+   {
+    "fr": "Mon comptable m'a conseillé de choisir la déclaration complète.",
+    "pt": "Meu contador me aconselhou a escolher a declaração completa."
+   },
+   {
+    "fr": "Si tout va bien, je recevrai un remboursement en juillet.",
+    "pt": "Se tudo der certo, vou receber a restituição em julho."
+   },
+   {
+    "fr": "Il ne faut surtout pas oublier le numéro de CPF des personnes à charge.",
+    "pt": "Não se pode esquecer de jeito nenhum o CPF dos dependentes."
+   },
+   {
+    "fr": "Une erreur peut faire tomber la déclaration dans le filet de contrôle.",
+    "pt": "Um erro pode fazer a declaração cair na malha fina."
+   },
+   {
+    "fr": "J'ai attendu le dernier moment, comme d'habitude.",
+    "pt": "Deixei para a última hora, como sempre."
+   },
+   {
+    "fr": "La prochaine fois, je m'organiserai dès janvier.",
+    "pt": "Da próxima vez, vou me organizar desde janeiro."
+   }
+  ]
+ },
+ {
+  "title": "Choisir un plan de santé",
+  "phrases": [
+   {
+    "fr": "Quand j'aurai un contrat fixe, je prendrai un plan de santé privé.",
+    "pt": "Quando eu tiver um contrato fixo, vou contratar um plano de saúde particular."
+   },
+   {
+    "fr": "Le système public de santé est gratuit pour tout le monde.",
+    "pt": "O SUS é gratuito para todo mundo."
+   },
+   {
+    "fr": "Mais les délais pour voir un spécialiste peuvent être longs.",
+    "pt": "Mas a espera para ver um especialista pode ser longa."
+   },
+   {
+    "fr": "Si vous pouvez, comparez au moins trois offres.",
+    "pt": "Se você puder, compare pelo menos três propostas."
+   },
+   {
+    "fr": "Ce plan inclut les consultations, les examens et l'hospitalisation.",
+    "pt": "Esse plano inclui consultas, exames e internação."
+   },
+   {
+    "fr": "Il y a un délai de carence de six mois pour certaines interventions.",
+    "pt": "Tem uma carência de seis meses para algumas cirurgias."
+   },
+   {
+    "fr": "Dès que je recevrai ma carte, je prendrai rendez-vous chez le dentiste.",
+    "pt": "Assim que eu receber minha carteirinha, vou marcar consulta no dentista."
+   },
+   {
+    "fr": "Mon entreprise paie une partie de la mensualité.",
+    "pt": "Minha empresa paga uma parte da mensalidade."
+   },
+   {
+    "fr": "Quand vous voudrez changer de plan, prévenez-nous un mois avant.",
+    "pt": "Quando você quiser trocar de plano, avise a gente com um mês de antecedência."
+   },
+   {
+    "fr": "La santé, c'est vraiment la dernière chose sur laquelle économiser.",
+    "pt": "Saúde é realmente a última coisa em que se deve economizar."
+   }
+  ],
+  "tip": {
+   "title": "« Quando eu tiver… / Se você puder… » : le futur du subjonctif",
+   "example": "Quand j'aurai un contrat fixe, je prendrai un plan de santé privé. — Quando eu <b>tiver</b> um contrato fixo, vou contratar um plano de saúde particular.",
+   "body": "Ce temps n'existe pas en français : après quando, se, assim que ou enquanto, pour parler d'une action future, le portugais utilise le futur du subjonctif là où le français met un futur ou un présent. On le forme à partir du passé simple à la troisième personne du pluriel, sans -am : tiveram donne tiver, puderam donne puder, quiseram donne quiser. Exemples : se você puder (si tu peux), quando ele chegar (quand il arrivera)."
+  }
+ },
+ {
+  "title": "Une matinée au cartório",
+  "phrases": [
+   {
+    "fr": "Je dois faire authentifier ma signature au cartório.",
+    "pt": "Preciso reconhecer firma no cartório."
+   },
+   {
+    "fr": "Au Brésil, beaucoup de démarches exigent encore des copies certifiées.",
+    "pt": "No Brasil, muitos trâmites ainda exigem cópias autenticadas."
+   },
+   {
+    "fr": "La file d'attente était énorme dès huit heures du matin.",
+    "pt": "A fila já estava enorme às oito horas da manhã."
+   },
+   {
+    "fr": "On m'a donné un ticket avec un numéro et j'ai attendu une heure.",
+    "pt": "Me deram uma senha e eu esperei uma hora."
+   },
+   {
+    "fr": "Le guichetier m'a demandé de revenir avec un justificatif de domicile.",
+    "pt": "O atendente pediu para eu voltar com um comprovante de residência."
+   },
+   {
+    "fr": "Cette bureaucratie me rend parfois complètement fou.",
+    "pt": "Essa burocracia às vezes me deixa completamente louco."
+   },
+   {
+    "fr": "Heureusement, certains services sont désormais disponibles en ligne.",
+    "pt": "Felizmente, alguns serviços agora estão disponíveis on-line."
+   },
+   {
+    "fr": "Il faut payer une petite taxe pour chaque document.",
+    "pt": "É preciso pagar uma pequena taxa por cada documento."
+   },
+   {
+    "fr": "Mon voisin m'a conseillé d'y aller juste après le déjeuner.",
+    "pt": "Meu vizinho me aconselhou a ir logo depois do almoço."
+   },
+   {
+    "fr": "Finalement, je suis reparti avec tous mes papiers en règle.",
+    "pt": "No fim, saí de lá com todos os documentos em ordem."
+   }
+  ]
+ },
+ {
+  "title": "La réunion du condomínio",
+  "phrases": [
+   {
+    "fr": "Le syndic a convoqué une réunion pour nous, les copropriétaires, jeudi soir.",
+    "pt": "O síndico convocou uma reunião para nós, condôminos, na quinta à noite."
+   },
+   {
+    "fr": "Il faut voter avant de commencer les travaux de la façade.",
+    "pt": "É preciso votar antes de começarem as obras da fachada."
+   },
+   {
+    "fr": "Le gardien a demandé une augmentation pour que nous la discutions.",
+    "pt": "O porteiro pediu um aumento para nós discutirmos."
+   },
+   {
+    "fr": "Il est temps que les voisins participent davantage.",
+    "pt": "Está na hora de os vizinhos participarem mais."
+   },
+   {
+    "fr": "Certains se plaignent du bruit dans la salle des fêtes.",
+    "pt": "Alguns reclamam do barulho no salão de festas."
+   },
+   {
+    "fr": "La proposition a été approuvée à la majorité.",
+    "pt": "A proposta foi aprovada pela maioria."
+   },
+   {
+    "fr": "Les charges vont augmenter un peu l'année prochaine.",
+    "pt": "O condomínio vai ficar um pouco mais caro no ano que vem."
+   },
+   {
+    "fr": "J'ai suggéré d'installer des panneaux solaires sur le toit.",
+    "pt": "Sugeri instalar placas solares no telhado."
+   },
+   {
+    "fr": "Le syndic nous a demandé de voter avant de partir.",
+    "pt": "O síndico pediu para a gente votar antes de ir embora."
+   },
+   {
+    "fr": "Comme toujours, la réunion a duré bien plus longtemps que prévu.",
+    "pt": "Como sempre, a reunião durou bem mais do que o previsto."
+   }
+  ],
+  "tip": {
+   "title": "« Para a gente fazer / antes de eles chegarem » : l'infinitif personnel",
+   "example": "Il faut voter avant de commencer les travaux de la façade. — É preciso votar antes de <b>começarem</b> as obras da fachada.",
+   "body": "Particularité du portugais : l'infinitif peut se conjuguer pour préciser qui fait l'action. On ajoute -mos pour nós (fazermos), -em pour eles (fazerem), et rien pour eu, você, a gente. On l'emploie surtout après une préposition : para nós discutirmos (pour que nous discutions), antes de eles chegarem (avant qu'ils arrivent). Là où le français doit utiliser « que » + subjonctif, le portugais reste à l'infinitif."
+  }
+ },
+ {
+  "title": "Le trafic sur l'Eixo Monumental",
+  "phrases": [
+   {
+    "fr": "Brasília a été pensée pour la voiture, et ça se sent tous les jours.",
+    "pt": "Brasília foi pensada para o carro, e isso se sente todos os dias."
+   },
+   {
+    "fr": "Aux heures de pointe, les grands axes sont complètement saturés.",
+    "pt": "No horário de pico, os eixos principais ficam completamente engarrafados."
+   },
+   {
+    "fr": "Je mets presque une heure pour traverser la ville.",
+    "pt": "Levo quase uma hora para atravessar a cidade."
+   },
+   {
+    "fr": "À São Paulo, la circulation alternée interdit certaines plaques selon le jour.",
+    "pt": "Em São Paulo, o rodízio proíbe algumas placas dependendo do dia."
+   },
+   {
+    "fr": "Ma voiture ne peut pas circuler le mardi dans le centre.",
+    "pt": "Meu carro não pode rodar na terça no centro."
+   },
+   {
+    "fr": "J'ai fini par adopter le vélo pour les petits trajets.",
+    "pt": "Acabei adotando a bicicleta para os trajetos curtos."
+   },
+   {
+    "fr": "Les amendes pour excès de vitesse arrivent directement par courrier.",
+    "pt": "As multas por excesso de velocidade chegam direto pelo correio."
+   },
+   {
+    "fr": "On parle depuis longtemps d'agrandir le réseau de métro.",
+    "pt": "Faz tempo que se fala em ampliar a rede de metrô."
+   },
+   {
+    "fr": "Le covoiturage avec des collègues nous fait gagner du temps.",
+    "pt": "A carona com os colegas faz a gente ganhar tempo."
+   },
+   {
+    "fr": "Avec un peu de musique, les embouteillages passent plus vite.",
+    "pt": "Com uma musiquinha, o trânsito passa mais rápido."
+   }
+  ]
+ },
+ {
+  "title": "Négocier une augmentation",
+  "phrases": [
+   {
+    "fr": "J'ai demandé un rendez-vous à ma responsable pour parler de mon salaire.",
+    "pt": "Pedi uma reunião com a minha gestora para falar do meu salário."
+   },
+   {
+    "fr": "Elle m'a dit qu'elle analyserait ma demande avec les ressources humaines.",
+    "pt": "Ela me disse que ia analisar meu pedido com o RH."
+   },
+   {
+    "fr": "J'ai préparé une liste de mes résultats de l'année.",
+    "pt": "Preparei uma lista dos meus resultados do ano."
+   },
+   {
+    "fr": "Mes responsabilités ont beaucoup augmenté depuis mon arrivée.",
+    "pt": "Minhas responsabilidades aumentaram muito desde que eu cheguei."
+   },
+   {
+    "fr": "Je pense mériter une revalorisation au-dessus de l'inflation.",
+    "pt": "Acho que mereço um reajuste acima da inflação."
+   },
+   {
+    "fr": "Si l'augmentation n'est pas possible, j'accepterais plus de jours de télétravail.",
+    "pt": "Se o aumento não for possível, eu aceitaria mais dias de home office."
+   },
+   {
+    "fr": "Elle a reconnu que mon travail était excellent.",
+    "pt": "Ela reconheceu que o meu trabalho era excelente."
+   },
+   {
+    "fr": "La réponse définitive arrivera à la fin du trimestre.",
+    "pt": "A resposta definitiva vai sair no fim do trimestre."
+   },
+   {
+    "fr": "Il ne faut jamais avoir honte de défendre sa valeur.",
+    "pt": "Nunca se deve ter vergonha de defender o próprio valor."
+   },
+   {
+    "fr": "Je suis sorti de la réunion plutôt confiant.",
+    "pt": "Saí da reunião bem confiante."
+   }
+  ]
+ },
+ {
+  "title": "La rénovation de la cuisine",
+  "phrases": [
+   {
+    "fr": "Notre cuisine a été entièrement refaite le mois dernier.",
+    "pt": "Nossa cozinha foi totalmente reformada no mês passado."
+   },
+   {
+    "fr": "Le vieux carrelage a été retiré en une seule journée.",
+    "pt": "O piso antigo foi retirado em um dia só."
+   },
+   {
+    "fr": "Les meubles ont été fabriqués sur mesure par un menuisier du quartier.",
+    "pt": "Os móveis foram feitos sob medida por um marceneiro do bairro."
+   },
+   {
+    "fr": "Ici, on loue souvent les appartements sans meubles de cuisine.",
+    "pt": "Aqui, alugam-se muitos apartamentos sem armários na cozinha."
+   },
+   {
+    "fr": "Le devis a été approuvé après une longue négociation.",
+    "pt": "O orçamento foi aprovado depois de uma longa negociação."
+   },
+   {
+    "fr": "Malheureusement, les travaux ont pris deux semaines de retard.",
+    "pt": "Infelizmente, a obra atrasou duas semanas."
+   },
+   {
+    "fr": "La poussière s'est installée partout dans la maison.",
+    "pt": "A poeira se espalhou pela casa inteira."
+   },
+   {
+    "fr": "Le plan de travail en granit a été posé hier.",
+    "pt": "A bancada de granito foi instalada ontem."
+   },
+   {
+    "fr": "On vend ce genre de matériaux beaucoup moins cher en périphérie.",
+    "pt": "Vende-se esse tipo de material bem mais barato na periferia."
+   },
+   {
+    "fr": "Le résultat a dépassé toutes nos attentes.",
+    "pt": "O resultado superou todas as nossas expectativas."
+   }
+  ],
+  "tip": {
+   "title": "« Foi construído / vende-se » : la voix passive",
+   "example": "Notre cuisine a été entièrement refaite le mois dernier. — Nossa cozinha <b>foi</b> totalmente <b>reformada</b> no mês passado.",
+   "body": "Le passif se forme comme en français, avec ser + participe passé accordé : a cozinha foi reformada, os móveis foram feitos. Le portugais utilise aussi beaucoup le passif avec « se », très courant sur les panneaux : vende-se (à vendre), aluga-se (à louer), precisa-se de funcionário (on recherche un employé). À l'oral brésilien, on dit souvent simplement « se aluga » ou on utilise une tournure active."
+  }
+ },
+ {
+  "title": "Un désaccord avec un collègue",
+  "phrases": [
+   {
+    "fr": "Un malentendu est apparu avec un collègue sur un projet important.",
+    "pt": "Surgiu um mal-entendido com um colega sobre um projeto importante."
+   },
+   {
+    "fr": "Nous avons décidé d'en parler seul à seul autour d'un café.",
+    "pt": "Decidimos conversar a sós, tomando um cafezinho."
+   },
+   {
+    "fr": "Il pensait que je voulais m'attribuer tout le mérite.",
+    "pt": "Ele achava que eu queria levar todo o crédito."
+   },
+   {
+    "fr": "Je lui ai expliqué calmement mon point de vue.",
+    "pt": "Expliquei para ele, com calma, o meu ponto de vista."
+   },
+   {
+    "fr": "Il m'a écouté sans m'interrompre une seule fois.",
+    "pt": "Ele me ouviu sem me interromper nenhuma vez."
+   },
+   {
+    "fr": "Au Brésil, on évite souvent les confrontations directes au travail.",
+    "pt": "No Brasil, a gente costuma evitar confrontos diretos no trabalho."
+   },
+   {
+    "fr": "On a fini par trouver un compromis qui convenait à tous les deux.",
+    "pt": "Acabamos encontrando um meio-termo bom para os dois."
+   },
+   {
+    "fr": "Depuis, notre collaboration s'est nettement améliorée.",
+    "pt": "Desde então, nossa parceria melhorou bastante."
+   },
+   {
+    "fr": "Parler franchement évite que les tensions s'accumulent.",
+    "pt": "Falar com franqueza evita que as tensões se acumulem."
+   },
+   {
+    "fr": "Aujourd'hui, on déjeune même ensemble le vendredi.",
+    "pt": "Hoje a gente até almoça junto na sexta-feira."
+   }
+  ]
+ },
+ {
+  "title": "Le télétravail au quotidien",
+  "phrases": [
+   {
+    "fr": "Je travaille de chez moi trois jours par semaine.",
+    "pt": "Trabalho de casa três dias por semana."
+   },
+   {
+    "fr": "J'ai aménagé un petit bureau dans la chambre d'amis.",
+    "pt": "Montei um pequeno escritório no quarto de hóspedes."
+   },
+   {
+    "fr": "Le plus difficile, c'est de séparer la vie privée du travail.",
+    "pt": "O mais difícil é separar a vida pessoal do trabalho."
+   },
+   {
+    "fr": "Je m'impose des horaires fixes pour ne pas déborder.",
+    "pt": "Eu me imponho horários fixos para não passar do limite."
+   },
+   {
+    "fr": "Les coupures d'internet pendant les orages sont mon pire cauchemar.",
+    "pt": "A queda da internet durante as tempestades é o meu pior pesadelo."
+   },
+   {
+    "fr": "Je profite de la pause déjeuner pour aller marcher au parc Barigui.",
+    "pt": "Aproveito a hora do almoço para caminhar no Parque Barigui."
+   },
+   {
+    "fr": "Les visioconférences me fatiguent plus que les réunions en personne.",
+    "pt": "As videochamadas me cansam mais do que as reuniões presenciais."
+   },
+   {
+    "fr": "Mon chat adore apparaître à l'écran pendant les appels.",
+    "pt": "Meu gato adora aparecer na tela durante as chamadas."
+   },
+   {
+    "fr": "Je gagne deux heures de transport chaque jour.",
+    "pt": "Ganho duas horas de deslocamento por dia."
+   },
+   {
+    "fr": "Malgré tout, mes collègues me manquent parfois.",
+    "pt": "Mesmo assim, às vezes sinto falta dos meus colegas."
+   }
+  ]
+ },
+ {
+  "title": "Un dégât des eaux",
+  "phrases": [
+   {
+    "fr": "Une fuite chez le voisin du dessus a abîmé notre plafond.",
+    "pt": "Um vazamento no apartamento de cima estragou o nosso teto."
+   },
+   {
+    "fr": "Nous avons tout de suite prévenu le syndic de l'immeuble.",
+    "pt": "Avisamos o síndico do prédio na mesma hora."
+   },
+   {
+    "fr": "Un plombier est venu couper l'eau en urgence.",
+    "pt": "Um encanador veio fechar o registro com urgência."
+   },
+   {
+    "fr": "L'assurance habitation enverra un expert cette semaine.",
+    "pt": "O seguro residencial vai mandar um perito esta semana."
+   },
+   {
+    "fr": "Il faut prendre des photos de tous les dégâts.",
+    "pt": "É preciso tirar fotos de todos os estragos."
+   },
+   {
+    "fr": "Le voisin s'est excusé et a promis de tout payer.",
+    "pt": "O vizinho pediu desculpas e prometeu pagar tudo."
+   },
+   {
+    "fr": "La peinture devra être refaite dans tout le salon.",
+    "pt": "A pintura vai ter que ser refeita na sala inteira."
+   },
+   {
+    "fr": "En attendant, nous avons déplacé les meubles dans la chambre.",
+    "pt": "Enquanto isso, levamos os móveis para o quarto."
+   },
+   {
+    "fr": "L'humidité a laissé une odeur désagréable pendant des jours.",
+    "pt": "A umidade deixou um cheiro ruim por vários dias."
+   },
+   {
+    "fr": "Au final, tout a été réglé sans dispute.",
+    "pt": "No fim, tudo foi resolvido sem briga."
+   }
+  ]
+ },
+ {
+  "title": "Rêver d'acheter un appartement",
+  "phrases": [
+   {
+    "fr": "Si j'avais assez d'économies, j'achèterais un appartement à Brasília.",
+    "pt": "Se eu tivesse economias suficientes, compraria um apartamento em Brasília."
+   },
+   {
+    "fr": "Les taux du crédit immobilier sont encore très élevés.",
+    "pt": "Os juros do financiamento imobiliário ainda estão muito altos."
+   },
+   {
+    "fr": "Si les taux baissaient, nous demanderions un prêt tout de suite.",
+    "pt": "Se os juros baixassem, a gente pediria um financiamento na hora."
+   },
+   {
+    "fr": "La banque exige un apport d'au moins vingt pour cent.",
+    "pt": "O banco exige uma entrada de pelo menos vinte por cento."
+   },
+   {
+    "fr": "On pourrait aussi utiliser notre épargne salariale pour l'apport.",
+    "pt": "A gente também poderia usar o FGTS para a entrada."
+   },
+   {
+    "fr": "Si j'étais toi, je visiterais au moins dix appartements.",
+    "pt": "Se eu fosse você, visitaria pelo menos dez apartamentos."
+   },
+   {
+    "fr": "Un appartement près du lac Paranoá serait un rêve.",
+    "pt": "Um apartamento perto do Lago Paranoá seria um sonho."
+   },
+   {
+    "fr": "Si nous trouvions le bon bien, nous signerions sans hésiter.",
+    "pt": "Se a gente encontrasse o imóvel certo, assinaria sem pensar duas vezes."
+   },
+   {
+    "fr": "Un courtier nous aide à comparer les offres des banques.",
+    "pt": "Um corretor está ajudando a gente a comparar as propostas dos bancos."
+   },
+   {
+    "fr": "Être propriétaire, ce serait enfin se sentir chez soi.",
+    "pt": "Ter a casa própria seria finalmente se sentir em casa."
+   }
+  ],
+  "tip": {
+   "title": "« Se eu tivesse… eu compraria » : l'hypothèse irréelle",
+   "example": "Si j'avais assez d'économies, j'achèterais un appartement à Brasília. — Se eu <b>tivesse</b> economias suficientes, <b>compraria</b> um apartamento em Brasília.",
+   "body": "Pour une hypothèse peu probable ou imaginaire, le portugais met le subjonctif imparfait après « se », là où le français met l'imparfait : se eu tivesse (si j'avais), se eu fosse (si j'étais), se os juros baixassem (si les taux baissaient). La conséquence est au conditionnel, comme en français : compraria, pediria, seria. À l'oral, beaucoup de Brésiliens remplacent le conditionnel par l'imparfait : se eu tivesse dinheiro, comprava uma casa."
+  }
+ },
+ {
+  "title": "Le tri sélectif à Curitiba",
+  "phrases": [
+   {
+    "fr": "Curitiba est connue depuis longtemps pour son programme de recyclage.",
+    "pt": "Curitiba é conhecida há muito tempo pelo seu programa de reciclagem."
+   },
+   {
+    "fr": "Chez nous, on sépare le recyclable des déchets organiques.",
+    "pt": "Lá em casa, a gente separa o lixo reciclável do orgânico."
+   },
+   {
+    "fr": "Le camion de collecte sélective passe le mercredi matin.",
+    "pt": "O caminhão da coleta seletiva passa na quarta de manhã."
+   },
+   {
+    "fr": "Il existait autrefois un échange de déchets contre des fruits et légumes.",
+    "pt": "Antigamente existia uma troca de lixo por frutas e verduras."
+   },
+   {
+    "fr": "Les ramasseurs de matériaux recyclables jouent un rôle essentiel.",
+    "pt": "Os catadores de materiais recicláveis têm um papel essencial."
+   },
+   {
+    "fr": "Nous avons installé un composteur sur la terrasse.",
+    "pt": "Instalamos uma composteira na varanda."
+   },
+   {
+    "fr": "Les huiles de cuisson usagées se déposent dans un point de collecte.",
+    "pt": "O óleo de cozinha usado deve ser levado a um ponto de coleta."
+   },
+   {
+    "fr": "Les enfants apprennent à recycler dès l'école primaire.",
+    "pt": "As crianças aprendem a reciclar desde o ensino fundamental."
+   },
+   {
+    "fr": "Réduire le plastique demande un vrai changement d'habitudes.",
+    "pt": "Reduzir o plástico exige uma verdadeira mudança de hábitos."
+   },
+   {
+    "fr": "Chaque petit geste compte vraiment pour la planète.",
+    "pt": "Cada pequeno gesto realmente conta para o planeta."
+   }
+  ]
+ },
+ {
+  "title": "Prendre soin de ses parents",
+  "phrases": [
+   {
+    "fr": "Depuis que ma mère s'est cassé la jambe, nous nous relayons auprès d'elle.",
+    "pt": "Desde que minha mãe quebrou a perna, a gente se reveza para cuidar dela."
+   },
+   {
+    "fr": "Mon frère s'occupe des rendez-vous médicaux.",
+    "pt": "Meu irmão cuida das consultas médicas."
+   },
+   {
+    "fr": "Moi, je fais les courses et je l'appelle tous les soirs.",
+    "pt": "Eu faço as compras e ligo para ela todas as noites."
+   },
+   {
+    "fr": "Au Brésil, il est courant que plusieurs générations vivent ensemble.",
+    "pt": "No Brasil, é comum várias gerações morarem juntas."
+   },
+   {
+    "fr": "Nous avons engagé une aide-soignante pour les après-midi.",
+    "pt": "Contratamos uma cuidadora para as tardes."
+   },
+   {
+    "fr": "Ma mère refuse catégoriquement d'aller en maison de retraite.",
+    "pt": "Minha mãe se recusa terminantemente a ir para uma casa de repouso."
+   },
+   {
+    "fr": "Il faut respecter son désir d'autonomie autant que possible.",
+    "pt": "É preciso respeitar o desejo de independência dela o máximo possível."
+   },
+   {
+    "fr": "Ces moments difficiles ont rapproché toute la famille.",
+    "pt": "Esses momentos difíceis aproximaram a família inteira."
+   },
+   {
+    "fr": "Le dimanche, nous déjeunons tous chez elle.",
+    "pt": "No domingo, a gente almoça todo mundo na casa dela."
+   },
+   {
+    "fr": "Elle dit que nous la gâtons beaucoup trop.",
+    "pt": "Ela diz que a gente a mima demais."
+   }
+  ]
+ },
+ {
+  "title": "Le vote obligatoire",
+  "phrases": [
+   {
+    "fr": "Au Brésil, le vote est obligatoire de dix-huit à soixante-dix ans.",
+    "pt": "No Brasil, o voto é obrigatório dos dezoito aos setenta anos."
+   },
+   {
+    "fr": "Celui qui ne vote pas doit justifier son absence.",
+    "pt": "Quem não vota precisa justificar a ausência."
+   },
+   {
+    "fr": "Les urnes électroniques donnent les résultats en quelques heures.",
+    "pt": "As urnas eletrônicas dão o resultado em poucas horas."
+   },
+   {
+    "fr": "Mes voisins discutent politique avec beaucoup de passion.",
+    "pt": "Meus vizinhos discutem política com muita paixão."
+   },
+   {
+    "fr": "Les débats télévisés attirent des millions de spectateurs.",
+    "pt": "Os debates na televisão atraem milhões de espectadores."
+   },
+   {
+    "fr": "Certains pensent que le vote devrait être facultatif.",
+    "pt": "Alguns acham que o voto deveria ser facultativo."
+   },
+   {
+    "fr": "D'autres estiment qu'il renforce la participation citoyenne.",
+    "pt": "Outros acham que ele fortalece a participação cidadã."
+   },
+   {
+    "fr": "Le jour du scrutin, les écoles servent de bureaux de vote.",
+    "pt": "No dia da eleição, as escolas funcionam como seções eleitorais."
+   },
+   {
+    "fr": "Mieux vaut éviter de parler politique au déjeuner de famille.",
+    "pt": "É melhor evitar falar de política no almoço de família."
+   },
+   {
+    "fr": "En tant qu'étranger, j'observe tout cela avec curiosité.",
+    "pt": "Como estrangeiro, observo tudo isso com curiosidade."
+   }
+  ]
+ },
+ {
+  "title": "Le jardin potager du quartier",
+  "phrases": [
+   {
+    "fr": "Notre association de quartier a créé un potager communautaire.",
+    "pt": "A associação do nosso bairro criou uma horta comunitária."
+   },
+   {
+    "fr": "Chaque famille cultive sa petite parcelle de légumes.",
+    "pt": "Cada família cultiva o seu canteiro de verduras."
+   },
+   {
+    "fr": "On y plante du manioc, des herbes aromatiques et des tomates.",
+    "pt": "Lá a gente planta mandioca, temperos e tomate."
+   },
+   {
+    "fr": "Les outils sont partagés entre tous les voisins.",
+    "pt": "As ferramentas são compartilhadas entre todos os vizinhos."
+   },
+   {
+    "fr": "Le samedi matin, on organise des corvées collectives.",
+    "pt": "No sábado de manhã, a gente organiza mutirões."
+   },
+   {
+    "fr": "Les plus âgés transmettent leurs connaissances aux enfants.",
+    "pt": "Os mais velhos passam o seu conhecimento para as crianças."
+   },
+   {
+    "fr": "Avec le soleil, tout pousse incroyablement vite ici.",
+    "pt": "Com esse sol, tudo cresce incrivelmente rápido aqui."
+   },
+   {
+    "fr": "Nous échangeons souvent nos récoltes contre des confitures maison.",
+    "pt": "A gente costuma trocar a colheita por doces caseiros."
+   },
+   {
+    "fr": "Ce jardin a transformé un terrain vague abandonné.",
+    "pt": "Essa horta transformou um terreno baldio abandonado."
+   },
+   {
+    "fr": "Je n'aurais jamais cru aimer autant jardiner.",
+    "pt": "Nunca imaginei que fosse gostar tanto de mexer com a terra."
+   }
+  ]
+ },
+ {
+  "title": "Le bazar solidaire",
+  "phrases": [
+   {
+    "fr": "L'église du quartier organise un bazar solidaire deux fois par an.",
+    "pt": "A igreja do bairro organiza um bazar beneficente duas vezes por ano."
+   },
+   {
+    "fr": "On y vend des vêtements, des livres et des objets d'occasion.",
+    "pt": "Lá se vendem roupas, livros e objetos usados."
+   },
+   {
+    "fr": "Tout l'argent récolté va à une crèche du quartier.",
+    "pt": "Todo o dinheiro arrecadado vai para uma creche do bairro."
+   },
+   {
+    "fr": "J'ai enfin vidé mon placard des vêtements que je ne mettais plus.",
+    "pt": "Finalmente esvaziei meu armário das roupas que eu não usava mais."
+   },
+   {
+    "fr": "Ma voisine a trouvé un vieux tourne-disque pour presque rien.",
+    "pt": "Minha vizinha achou uma vitrola antiga por quase nada."
+   },
+   {
+    "fr": "Ici, marchander fait partie du jeu.",
+    "pt": "Aqui, pechinchar faz parte da brincadeira."
+   },
+   {
+    "fr": "Il y avait aussi des gâteaux et du café pour les visiteurs.",
+    "pt": "Também tinha bolo e café para os visitantes."
+   },
+   {
+    "fr": "Les enfants vendaient eux-mêmes leurs anciens jouets.",
+    "pt": "As crianças vendiam elas mesmas os brinquedos antigos."
+   },
+   {
+    "fr": "C'est une belle occasion de rencontrer les gens du quartier.",
+    "pt": "É uma ótima oportunidade de conhecer o pessoal do bairro."
+   },
+   {
+    "fr": "Je suis reparti avec plus d'objets que je n'en avais apporté.",
+    "pt": "Voltei para casa com mais coisas do que eu tinha levado."
+   }
+  ]
+ },
+ {
+  "title": "Réflexions sur la vie au Brésil",
+  "phrases": [
+   {
+    "fr": "S'installer dans un nouveau pays demande beaucoup de patience.",
+    "pt": "Se mudar para um país novo exige muita paciência."
+   },
+   {
+    "fr": "La langue reste la clé pour vraiment comprendre les gens.",
+    "pt": "A língua continua sendo a chave para entender as pessoas de verdade."
+   },
+   {
+    "fr": "Les Brésiliens sont accueillants, mais l'amitié profonde prend du temps.",
+    "pt": "Os brasileiros são acolhedores, mas a amizade profunda leva tempo."
+   },
+   {
+    "fr": "J'ai dû m'habituer à ce qu'on arrive en retard aux fêtes.",
+    "pt": "Tive que me acostumar com o pessoal chegando atrasado nas festas."
+   },
+   {
+    "fr": "Le fameux « jeitinho » m'a surpris au début.",
+    "pt": "O famoso jeitinho brasileiro me surpreendeu no começo."
+   },
+   {
+    "fr": "Aujourd'hui, je ne pourrais plus vivre sans le pão de queijo du matin.",
+    "pt": "Hoje, eu não conseguiria mais viver sem o pão de queijo de manhã."
+   },
+   {
+    "fr": "Il y a des jours où ma famille me manque terriblement.",
+    "pt": "Tem dias em que sinto uma falta enorme da minha família."
+   },
+   {
+    "fr": "Les Brésiliens ont même un mot pour ce sentiment : la saudade.",
+    "pt": "Os brasileiros têm até uma palavra para esse sentimento: saudade."
+   },
+   {
+    "fr": "Je me sens désormais un peu d'ici et un peu de là-bas.",
+    "pt": "Agora me sinto um pouco daqui e um pouco de lá."
+   },
+   {
+    "fr": "Si c'était à refaire, je recommencerais sans hésiter.",
+    "pt": "Se fosse para fazer de novo, eu faria tudo outra vez sem hesitar."
+   }
+  ]
+ },
+ {
+  "title": "Un churrasco entre voisins",
+  "phrases": [
+   {
+    "fr": "Nos voisins ont organisé un churrasco dans la salle des fêtes de l'immeuble.",
+    "pt": "Nossos vizinhos organizaram um churrasco no salão de festas do prédio."
+   },
+   {
+    "fr": "Chacun a apporté quelque chose à manger ou à boire.",
+    "pt": "Cada um levou alguma coisa para comer ou beber."
+   },
+   {
+    "fr": "Le voisin du troisième étage s'est chargé du barbecue.",
+    "pt": "O vizinho do terceiro andar ficou responsável pela churrasqueira."
+   },
+   {
+    "fr": "La picanha était cuite à la perfection.",
+    "pt": "A picanha estava no ponto perfeito."
+   },
+   {
+    "fr": "On a cotisé pour acheter la viande et le charbon.",
+    "pt": "A gente fez uma vaquinha para comprar a carne e o carvão."
+   },
+   {
+    "fr": "Quelqu'un a sorti une guitare et tout le monde s'est mis à chanter.",
+    "pt": "Alguém pegou um violão e todo mundo começou a cantar."
+   },
+   {
+    "fr": "Les enfants couraient partout autour de la piscine.",
+    "pt": "As crianças corriam para todo lado em volta da piscina."
+   },
+   {
+    "fr": "Nous avons ri en nous rappelant nos débuts dans l'immeuble.",
+    "pt": "A gente riu lembrando dos nossos primeiros tempos no prédio."
+   },
+   {
+    "fr": "La fête s'est terminée bien après minuit.",
+    "pt": "A festa terminou bem depois da meia-noite."
+   },
+   {
+    "fr": "On a promis de recommencer au prochain anniversaire.",
+    "pt": "A gente prometeu repetir no próximo aniversário."
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan",
+  "phrases": [
+   {
+    "fr": "Ce module nous a fait entrer dans un quotidien brésilien bien plus profond.",
+    "pt": "Este módulo fez a gente entrar num cotidiano brasileiro bem mais profundo."
+   },
+   {
+    "fr": "Nous avons abordé des sujets administratifs et sociaux plutôt complexes.",
+    "pt": "Tratamos de assuntos administrativos e sociais bem complexos."
+   },
+   {
+    "fr": "Le subjonctif commence enfin à devenir naturel.",
+    "pt": "O subjuntivo está finalmente começando a ficar natural."
+   },
+   {
+    "fr": "Quand tu entendras « quando eu tiver », tu sauras l'utiliser.",
+    "pt": "Quando você ouvir « quando eu tiver », vai saber usar."
+   },
+   {
+    "fr": "La voix passive n'a plus de secret pour toi.",
+    "pt": "A voz passiva não tem mais segredo para você."
+   },
+   {
+    "fr": "Tu peux maintenant parler d'impôts, de loyer et de travaux en portugais.",
+    "pt": "Agora você consegue falar de impostos, aluguel e obras em português."
+   },
+   {
+    "fr": "Il est normal que certaines tournures demandent encore de la pratique.",
+    "pt": "É normal que algumas construções ainda exijam prática."
+   },
+   {
+    "fr": "Si tu continues à ce rythme, tu parleras comme un vrai Brésilien.",
+    "pt": "Se você continuar nesse ritmo, vai falar como um brasileiro de verdade."
+   },
+   {
+    "fr": "Prends le temps de réécouter les leçons les plus difficiles.",
+    "pt": "Tire um tempo para ouvir de novo as lições mais difíceis."
+   },
+   {
+    "fr": "Bravo pour tout ce chemin parcouru en portugais !",
+    "pt": "Parabéns por todo esse caminho percorrido em português!"
+   }
+  ]
+ }
 ];
 
 const level3Module2Lessons = [
-  { title:"Un road trip à travers l'ex-Allemagne de l'Est", phrases:[
-    {fr:"On traverse aujourd'hui des régions longtemps méconnues des touristes.", de:"Wir durchfahren heute Regionen, die von Touristen lange unbeachtet blieben."},
-    {fr:"Ces petites villes gardent une architecture vraiment particulière.", de:"Diese kleinen Städte bewahren eine wirklich besondere Architektur."},
-    {fr:"On sent encore ici des traces de l'histoire divisée du pays.", de:"Man spürt hier noch Spuren der geteilten Geschichte des Landes."},
-    {fr:"Certains bâtiments datent clairement de l'époque communiste.", de:"Manche Gebäude stammen deutlich aus der kommunistischen Zeit."},
-    {fr:"La région s'est pourtant beaucoup transformée depuis la réunification.", de:"Die Region hat sich seit der Wiedervereinigung jedoch stark verändert."},
-    {fr:"Ces paysages de forêts et de lacs sont étonnamment calmes.", de:"Diese Wald- und Seenlandschaften sind erstaunlich ruhig."},
-    {fr:"On rencontre très peu d'autres voyageurs sur cette route.", de:"Auf dieser Strecke trifft man sehr wenige andere Reisende."},
-    {fr:"C'est justement ce qui rend ce voyage si authentique.", de:"Genau das macht diese Reise so authentisch."},
-    {fr:"Les habitants se montrent toujours curieux de notre itinéraire.", de:"Die Einwohner zeigen sich immer neugierig auf unsere Route."},
-    {fr:"Cette partie du pays mérite vraiment plus d'attention.", de:"Dieser Teil des Landes verdient wirklich mehr Aufmerksamkeit."}
-  ]},
-  { title:"Visiter un mémorial historique", phrases:[
-    {fr:"Ce mémorial a été construit en mémoire des victimes du mur.", de:"Dieses Mahnmal wurde zum Gedenken an die Opfer der Mauer errichtet."},
-    {fr:"Le musée a été entièrement rénové il y a quelques années.", de:"Das Museum wurde vor ein paar Jahren vollständig renoviert."},
-    {fr:"Ces témoignages ont été recueillis auprès d'anciens habitants.", de:"Diese Zeugnisse wurden von ehemaligen Bewohnern gesammelt."},
-    {fr:"Le mur a été érigé en une seule nuit, en mille neuf cent soixante et un.", de:"Die Mauer wurde in einer einzigen Nacht, im Jahr neunzehnhunderteinundsechzig, errichtet."},
-    {fr:"Des milliers de personnes ont été séparées de leur famille du jour au lendemain.", de:"Tausende von Menschen wurden über Nacht von ihrer Familie getrennt."},
-    {fr:"Cette portion du mur a été volontairement conservée comme témoignage.", de:"Dieser Teil der Mauer wurde absichtlich als Zeugnis erhalten."},
-    {fr:"Les visites scolaires sont organisées tout au long de l'année.", de:"Schulbesuche werden das ganze Jahr über organisiert."},
-    {fr:"Cette visite nous a été recommandée par plusieurs amis allemands.", de:"Dieser Besuch wurde uns von mehreren deutschen Freunden empfohlen."},
-    {fr:"On ressort de ce lieu profondément bouleversé.", de:"Man verlässt diesen Ort tief erschüttert."},
-    {fr:"Cette mémoire doit absolument être transmise aux générations futures.", de:"Diese Erinnerung muss unbedingt an künftige Generationen weitergegeben werden."}
-  ], tip:{
-    title:"Le passif au passé : wurde + participe passé",
-    example:"Ce mémorial a été construit en mémoire des victimes du mur. — Dieses Mahnmal <b>wurde</b> zum Gedenken an die Opfer der Mauer <b>errichtet</b>.",
-    body:"Pour mettre le passif au passé (Präteritum, le temps préféré du passif à l'écrit), on utilise « wurde » (au lieu de « wird ») + le participe passé en fin de phrase : Die Mauer wurde errichtet (le mur a été construit). C'est la forme la plus naturelle pour raconter des faits historiques."
-  }},
-  { title:"Faire du bénévolat dans une ferme bio", phrases:[
-    {fr:"J'ai passé une semaine à travailler dans une ferme biologique.", de:"Ich habe eine Woche auf einem Biohof gearbeitet."},
-    {fr:"Le réveil était fixé à six heures tous les matins.", de:"Der Wecker war jeden Morgen auf sechs Uhr gestellt."},
-    {fr:"On nourrissait les animaux avant même le petit-déjeuner.", de:"Wir fütterten die Tiere schon vor dem Frühstück."},
-    {fr:"Le fermier nous expliquait patiemment chaque tâche à accomplir.", de:"Der Bauer erklärte uns geduldig jede zu erledigende Aufgabe."},
-    {fr:"En échange du travail, le logement et les repas étaient offerts.", de:"Als Gegenleistung für die Arbeit wurden Unterkunft und Mahlzeiten gestellt."},
-    {fr:"Les légumes récoltés étaient d'une fraîcheur incomparable.", de:"Das geerntete Gemüse war von unvergleichlicher Frische."},
-    {fr:"Ce mode de vie simple m'a profondément marqué.", de:"Diese einfache Lebensweise hat mich tief beeindruckt."},
-    {fr:"J'ai beaucoup appris sur l'agriculture durable pendant ce séjour.", de:"Ich habe während dieses Aufenthalts viel über nachhaltige Landwirtschaft gelernt."},
-    {fr:"Le soir, on partageait tous ensemble un grand repas convivial.", de:"Abends teilten wir alle zusammen ein großes, gemütliches Essen."},
-    {fr:"Cette expérience a complètement changé ma façon de consommer.", de:"Diese Erfahrung hat meine Art zu konsumieren völlig verändert."}
-  ]},
-  { title:"Un échange universitaire à Fribourg", phrases:[
-    {fr:"Si j'avais plus de temps, je resterais un semestre entier ici.", de:"Wenn ich mehr Zeit hätte, würde ich ein ganzes Semester hierbleiben."},
-    {fr:"Si les cours étaient en anglais, ce serait plus simple au début.", de:"Wenn die Kurse auf Englisch wären, wäre es am Anfang einfacher."},
-    {fr:"Si je parlais mieux allemand, je comprendrais toutes les conférences.", de:"Wenn ich besser Deutsch sprechen würde, würde ich alle Vorlesungen verstehen."},
-    {fr:"Si je n'avais pas cette bourse, ce voyage ne serait pas possible.", de:"Wenn ich dieses Stipendium nicht hätte, wäre diese Reise nicht möglich."},
-    {fr:"Fribourg serait l'endroit idéal si je devais choisir une ville universitaire.", de:"Freiburg wäre der ideale Ort, wenn ich eine Universitätsstadt wählen müsste."},
-    {fr:"Si j'étais resté chez moi, j'aurais manqué cette expérience formidable.", de:"Wenn ich zu Hause geblieben wäre, hätte ich diese großartige Erfahrung verpasst."},
-    {fr:"Les professeurs seraient ravis si plus d'étudiants posaient des questions.", de:"Die Professoren wären begeistert, wenn mehr Studenten Fragen stellen würden."},
-    {fr:"Si je pouvais recommencer, je ferais exactement le même choix.", de:"Wenn ich noch einmal anfangen könnte, würde ich genau dieselbe Wahl treffen."},
-    {fr:"Sans cet échange, je n'aurais jamais découvert cette belle région.", de:"Ohne diesen Austausch hätte ich diese schöne Region nie entdeckt."},
-    {fr:"Je recommanderais cette expérience à n'importe quel étudiant.", de:"Ich würde diese Erfahrung jedem Studenten empfehlen."}
-  ], tip:{
-    title:"Le Konjunktiv II pour l'irréel : « Wenn ich... wäre, würde ich... »",
-    example:"Si j'avais plus de temps, je resterais un semestre entier ici. — Wenn ich mehr Zeit <b>hätte</b>, <b>würde</b> ich ein ganzes Semester hierbleiben.",
-    body:"Pour exprimer une condition irréelle ou hypothétique (« si j'étais... »), l'allemand combine « wenn » + Konjunktiv II dans la subordonnée, et « würde » + infinitif (ou le Konjunktiv II direct pour haben/sein/les modaux) dans la principale : Wenn ich Zeit hätte, würde ich bleiben."
-  }},
-  { title:"Assister à un mariage allemand", phrases:[
-    {fr:"On nous a invités au mariage d'un collègue proche.", de:"Wir wurden zur Hochzeit eines engen Kollegen eingeladen."},
-    {fr:"La mariée portait une robe d'une élégance discrète.", de:"Die Braut trug ein Kleid von dezenter Eleganz."},
-    {fr:"Les invités ont scié une bûche ensemble devant l'église.", de:"Die Gäste haben gemeinsam vor der Kirche einen Baumstamm durchgesägt."},
-    {fr:"Cette tradition symbolise la première épreuve du couple.", de:"Diese Tradition symbolisiert die erste Prüfung des Paares."},
-    {fr:"Le dîner s'est prolongé jusque tard dans la nuit.", de:"Das Abendessen zog sich bis spät in die Nacht."},
-    {fr:"Plusieurs discours émouvants ont été prononcés par les proches.", de:"Mehrere bewegende Reden wurden von den Angehörigen gehalten."},
-    {fr:"La piste de danse ne s'est jamais vraiment vidée.", de:"Die Tanzfläche hat sich nie wirklich geleert."},
-    {fr:"Certaines coutumes rappelaient étonnamment celles de nos mariages français.", de:"Manche Bräuche erinnerten erstaunlich an unsere französischen Hochzeiten."},
-    {fr:"D'autres, en revanche, nous étaient complètement inconnues.", de:"Andere waren uns dagegen völlig unbekannt."},
-    {fr:"Cette soirée restera un merveilleux souvenir de notre séjour.", de:"Dieser Abend wird eine wunderbare Erinnerung an unseren Aufenthalt bleiben."}
-  ]},
-  { title:"Le parc national de la mer des Wadden", phrases:[
-    {fr:"Cette zone côtière est classée au patrimoine mondial de l'UNESCO.", de:"Dieses Küstengebiet ist UNESCO-Weltnaturerbe."},
-    {fr:"La marée se retire sur plusieurs kilomètres deux fois par jour.", de:"Die Flut zieht sich zweimal täglich über mehrere Kilometer zurück."},
-    {fr:"On peut marcher directement sur le fond marin asséché.", de:"Man kann direkt auf dem trockengelegten Meeresboden gehen."},
-    {fr:"Un guide expérimenté nous accompagne pour éviter tout danger.", de:"Ein erfahrener Führer begleitet uns, um jede Gefahr zu vermeiden."},
-    {fr:"Les phoques se reposent paisiblement sur les bancs de sable.", de:"Die Seehunde ruhen friedlich auf den Sandbänken."},
-    {fr:"L'écosystème fragile abrite des milliers d'oiseaux migrateurs.", de:"Das empfindliche Ökosystem beherbergt Tausende von Zugvögeln."},
-    {fr:"Il faut absolument revenir avant le retour de la marée.", de:"Man muss unbedingt vor der zurückkehrenden Flut wieder da sein."},
-    {fr:"Ce paysage changeant fascine vraiment tous ceux qui le découvrent.", de:"Diese sich wandelnde Landschaft fasziniert wirklich jeden, der sie entdeckt."},
-    {fr:"On n'imaginait pas un tel spectacle naturel en Allemagne.", de:"Ein solches Naturschauspiel hätten wir in Deutschland nicht erwartet."},
-    {fr:"Cette excursion reste l'un des points forts de notre voyage.", de:"Dieser Ausflug bleibt einer der Höhepunkte unserer Reise."}
-  ]},
-  { title:"Une ascension guidée dans les Alpes", phrases:[
-    {fr:"Notre guide nous a fait monter par un sentier peu fréquenté.", de:"Unser Führer hat uns über einen wenig begangenen Weg hinaufgeführt."},
-    {fr:"On a dû escalader un petit passage rocheux avant le sommet.", de:"Wir mussten vor dem Gipfel eine kleine Felspassage hochklettern."},
-    {fr:"Le vent nous a presque fait reculer à mi-parcours.", de:"Der Wind hätte uns fast auf halbem Weg zurückweichen lassen."},
-    {fr:"Finalement, nous sommes montés jusqu'au sommet sans incident.", de:"Letztendlich sind wir ohne Zwischenfall bis zum Gipfel hinaufgestiegen."},
-    {fr:"On est redescendus par un chemin complètement différent.", de:"Wir sind über einen völlig anderen Weg wieder hinabgestiegen."},
-    {fr:"Le guide nous a fait traverser un glacier avec précaution.", de:"Der Führer hat uns vorsichtig über einen Gletscher geführt."},
-    {fr:"Nous avons dû contourner une zone jugée trop instable.", de:"Wir mussten eine als zu instabil eingeschätzte Zone umgehen."},
-    {fr:"Cette randonnée nous a fait dépasser nos propres limites.", de:"Diese Wanderung hat uns über unsere eigenen Grenzen hinausgehen lassen."},
-    {fr:"On est rentrés épuisés, mais vraiment fiers de nous.", de:"Wir sind erschöpft, aber wirklich stolz auf uns zurückgekehrt."},
-    {fr:"Cette ascension restera gravée dans nos mémoires pour longtemps.", de:"Dieser Aufstieg wird uns noch lange in Erinnerung bleiben."}
-  ], tip:{
-    title:"Les verbes complexes de déplacement avec particule",
-    example:"On est redescendus par un chemin complètement différent. — Wir sind über einen völlig anderen Weg wieder <b>hinabgestiegen</b>.",
-    body:"L'allemand est très précis sur la direction d'un déplacement grâce à des particules composées : hinauf (vers le haut, en s'éloignant du locuteur), hinab/hinunter (vers le bas), hinüber (de l'autre côté). Ces verbes (hinaufsteigen, hinabsteigen) se conjuguent avec « sein » au Perfekt, comme tous les verbes de mouvement."
-  }},
-  { title:"Le carnaval de Cologne", phrases:[
-    {fr:"Le carnaval de Cologne transforme complètement la ville chaque année.", de:"Der Kölner Karneval verwandelt die Stadt jedes Jahr vollständig."},
-    {fr:"Les habitants se déguisent avec une créativité impressionnante.", de:"Die Einwohner verkleiden sich mit beeindruckender Kreativität."},
-    {fr:"Le grand défilé du lundi attire des foules immenses.", de:"Der große Rosenmontagsumzug zieht riesige Menschenmengen an."},
-    {fr:"On lance des bonbons et des fleurs depuis les chars.", de:"Von den Wagen aus werden Süßigkeiten und Blumen geworfen."},
-    {fr:"Les bars restent ouverts pratiquement sans interruption.", de:"Die Bars bleiben praktisch ununterbrochen geöffnet."},
-    {fr:"Cette fête remonte à des traditions très anciennes.", de:"Dieses Fest geht auf sehr alte Traditionen zurück."},
-    {fr:"Tout le monde se tutoie spontanément pendant cette période.", de:"Während dieser Zeit duzt man sich spontan."},
-    {fr:"L'ambiance reste bon enfant malgré l'agitation générale.", de:"Die Stimmung bleibt trotz der allgemeinen Aufregung gutmütig."},
-    {fr:"On danse et on chante dans les rues jusqu'au bout de la nuit.", de:"Man tanzt und singt bis tief in die Nacht in den Straßen."},
-    {fr:"Cette expérience collective reste unique en son genre.", de:"Diese kollektive Erfahrung bleibt einzigartig."}
-  ]},
-  { title:"Une nuit en train-couchette", phrases:[
-    {fr:"Nous avons réservé une cabine couchette pour la nuit.", de:"Wir haben für die Nacht ein Schlafwagenabteil reserviert."},
-    {fr:"Le contrôleur nous a montré comment installer les lits.", de:"Der Schaffner hat uns gezeigt, wie man die Betten herrichtet."},
-    {fr:"Le bercement du train rend l'endormissement plus facile.", de:"Das Schaukeln des Zuges erleichtert das Einschlafen."},
-    {fr:"On s'est réveillés déjà dans un tout autre paysage.", de:"Wir sind bereits in einer ganz anderen Landschaft aufgewacht."},
-    {fr:"Ce mode de voyage économise une nuit d'hôtel entière.", de:"Diese Reiseart spart eine ganze Hotelnacht."},
-    {fr:"Le petit-déjeuner était servi directement dans le compartiment.", de:"Das Frühstück wurde direkt im Abteil serviert."},
-    {fr:"Dormir en mouvement reste une expérience vraiment particulière.", de:"In Bewegung zu schlafen bleibt eine wirklich besondere Erfahrung."},
-    {fr:"Certains passagers préfèrent rester éveillés toute la nuit.", de:"Manche Fahrgäste bleiben lieber die ganze Nacht wach."},
-    {fr:"Ce voyage avait un charme presque nostalgique.", de:"Diese Reise hatte einen fast nostalgischen Charme."},
-    {fr:"On recommencerait cette expérience sans hésiter.", de:"Wir würden diese Erfahrung ohne zu zögern wiederholen."}
-  ]},
-  { title:"Un retard dû à une tempête de neige", phrases:[
-    {fr:"Une tempête de neige a bloqué toute la ligne ferroviaire.", de:"Ein Schneesturm hat die ganze Zugstrecke blockiert."},
-    {fr:"Les annonces se succédaient sans vraiment rassurer les passagers.", de:"Die Durchsagen folgten einander, ohne die Fahrgäste wirklich zu beruhigen."},
-    {fr:"Nous sommes restés bloqués pendant presque quatre heures.", de:"Wir blieben fast vier Stunden lang stecken."},
-    {fr:"Un passager a partagé son thé chaud avec tout le wagon.", de:"Ein Fahrgast hat seinen heißen Tee mit dem ganzen Wagen geteilt."},
-    {fr:"Ce genre de situation finit par créer une vraie solidarité.", de:"Solche Situationen schaffen letztendlich echte Solidarität."},
-    {fr:"Finalement, le train a redémarré doucement vers vingt-deux heures.", de:"Letztendlich fuhr der Zug gegen zweiundzwanzig Uhr langsam wieder an."},
-    {fr:"Toute la voiture a applaudi quand le train s'est remis en marche.", de:"Der ganze Wagen hat applaudiert, als der Zug sich wieder in Bewegung setzte."},
-    {fr:"Cette aventure imprévue restera une anecdote mémorable.", de:"Dieses unerwartete Abenteuer bleibt eine denkwürdige Anekdote."},
-    {fr:"On a échangé nos coordonnées avec plusieurs passagers sympathiques.", de:"Wir haben mit mehreren sympathischen Fahrgästen unsere Kontaktdaten ausgetauscht."},
-    {fr:"Les imprévus créent parfois les plus belles rencontres.", de:"Unvorhergesehenes schafft manchmal die schönsten Begegnungen."}
-  ]},
-  { title:"Une cure thermale à Baden-Baden", phrases:[
-    {fr:"Baden-Baden est réputée depuis des siècles pour ses sources chaudes.", de:"Baden-Baden ist seit Jahrhunderten für seine heißen Quellen bekannt."},
-    {fr:"L'architecture thermale du dix-neuvième siècle reste impressionnante.", de:"Die Thermenarchitektur des neunzehnten Jahrhunderts bleibt beeindruckend."},
-    {fr:"On alterne les bains chauds et les bains plus frais.", de:"Man wechselt zwischen heißen und kühleren Bädern."},
-    {fr:"Cette coutume vient directement de la tradition romaine antique.", de:"Dieser Brauch stammt direkt aus der antiken römischen Tradition."},
-    {fr:"Le silence qui règne ici favorise une vraie détente.", de:"Die hier herrschende Stille fördert eine echte Entspannung."},
-    {fr:"De nombreux curistes viennent chaque année pour leur santé.", de:"Zahlreiche Kurgäste kommen jedes Jahr wegen ihrer Gesundheit hierher."},
-    {fr:"Les jardins thermaux sont particulièrement bien entretenus.", de:"Die Kurgärten werden besonders gut gepflegt."},
-    {fr:"Après la cure, on se sent remarquablement léger et apaisé.", de:"Nach der Kur fühlt man sich auffallend leicht und entspannt."},
-    {fr:"Cette parenthèse nous a vraiment permis de nous reposer entièrement.", de:"Diese Auszeit hat uns wirklich erlaubt, uns vollständig zu erholen."},
-    {fr:"On repart d'ici le corps et l'esprit complètement renouvelés.", de:"Wir reisen von hier mit vollkommen erneuertem Körper und Geist ab."}
-  ]},
-  { title:"Les vendanges dans la vallée de la Moselle", phrases:[
-    {fr:"Bien que la pente soit très raide, les vignes poussent remarquablement bien.", de:"Obwohl der Hang sehr steil ist, wachsen die Reben bemerkenswert gut."},
-    {fr:"Les vendanges restent malgré tout un travail physiquement exigeant.", de:"Die Weinlese bleibt trotzdem körperlich anspruchsvoll."},
-    {fr:"Bien qu'il ait plu toute la matinée, nous avons continué à travailler.", de:"Obwohl es den ganzen Vormittag geregnet hat, haben wir weitergearbeitet."},
-    {fr:"L'ambiance reste pourtant toujours joyeuse parmi les vendangeurs.", de:"Die Stimmung bleibt unter den Erntehelfern trotzdem immer fröhlich."},
-    {fr:"Bien que novices, nous avons appris très vite les gestes essentiels.", de:"Obwohl wir Anfänger waren, haben wir die wichtigsten Handgriffe sehr schnell gelernt."},
-    {fr:"Le vin blanc produit ici reste malgré tout particulièrement réputé.", de:"Der hier produzierte Weißwein bleibt trotzdem besonders bekannt."},
-    {fr:"Bien que fatigante, cette expérience nous a apporté énormément de satisfaction.", de:"Obwohl ermüdend, hat uns diese Erfahrung enorm viel Zufriedenheit gebracht."},
-    {fr:"Le soir, on partageait malgré tout un repas copieux ensemble.", de:"Abends teilten wir trotzdem gemeinsam ein üppiges Essen."},
-    {fr:"Bien que difficile, ce travail saisonnier attire chaque année de nouveaux volontaires.", de:"Obwohl mühsam, zieht diese Saisonarbeit jedes Jahr neue Freiwillige an."},
-    {fr:"On repart de cette vallée avec quelques belles bouteilles malgré tout.", de:"Wir verlassen dieses Tal trotzdem mit ein paar schönen Flaschen."}
-  ], tip:{
-    title:"« Obwohl » et « trotzdem » : nuancer une opposition",
-    example:"Bien que la pente soit très raide, les vignes poussent remarquablement bien. — <b>Obwohl</b> der Hang sehr steil ist, wachsen die Reben bemerkenswert gut.",
-    body:"« Obwohl » (bien que) introduit une subordonnée et envoie le verbe en fin de proposition, comme « weil » ou « dass ». « Trotzdem » (malgré cela, néanmoins), en revanche, commence une phrase principale indépendante et occupe la première place, suivi directement du verbe en position deux : Trotzdem bleibt die Stimmung fröhlich."
-  }},
-  { title:"Assister à un match de football", phrases:[
-    {fr:"Le stade était complet bien avant le début du match.", de:"Das Stadion war schon lange vor Spielbeginn ausverkauft."},
-    {fr:"Les supporters chantaient à l'unisson dès l'entrée des joueurs.", de:"Die Fans sangen schon beim Einlaufen der Spieler einstimmig."},
-    {fr:"L'ambiance dans les tribunes était absolument électrique.", de:"Die Stimmung auf den Tribünen war absolut elektrisierend."},
-    {fr:"Le but de l'équipe locale a déclenché une explosion de joie.", de:"Das Tor der Heimmannschaft löste einen Freudensturm aus."},
-    {fr:"Les supporters adverses sont restés remarquablement fair-play.", de:"Die gegnerischen Fans blieben erstaunlich fair."},
-    {fr:"Cette rivalité entre les deux clubs remonte à plusieurs décennies.", de:"Diese Rivalität zwischen den beiden Vereinen reicht mehrere Jahrzehnte zurück."},
-    {fr:"Après le match, tout le monde a chanté l'hymne du club ensemble.", de:"Nach dem Spiel haben alle gemeinsam die Vereinshymne gesungen."},
-    {fr:"On a ressenti un vrai sentiment d'appartenance collective.", de:"Wir haben ein echtes Gefühl kollektiver Zugehörigkeit gespürt."},
-    {fr:"Même sans être fan de football, l'expérience était captivante.", de:"Auch ohne Fußballfan zu sein, war die Erfahrung fesselnd."},
-    {fr:"C'était clairement l'un des moments forts de notre séjour.", de:"Das war klar einer der Höhepunkte unseres Aufenthalts."}
-  ]},
-  { title:"Découvrir le cinéma allemand", phrases:[
-    {fr:"Nous avons assisté à une rétrospective de cinéma allemand contemporain.", de:"Wir haben eine Retrospektive des zeitgenössischen deutschen Kinos besucht."},
-    {fr:"Ces réalisateurs abordent souvent des sujets historiques sensibles.", de:"Diese Regisseure behandeln oft sensible historische Themen."},
-    {fr:"Le style visuel de ce film m'a particulièrement impressionné.", de:"Der visuelle Stil dieses Films hat mich besonders beeindruckt."},
-    {fr:"Les dialogues semblaient volontairement sobres et réalistes.", de:"Die Dialoge wirkten bewusst nüchtern und realistisch."},
-    {fr:"Ce réalisateur explore souvent la mémoire collective du pays.", de:"Dieser Regisseur erforscht oft das kollektive Gedächtnis des Landes."},
-    {fr:"Le débat après la séance s'est révélé vraiment passionnant.", de:"Die Diskussion nach der Vorstellung erwies sich als wirklich spannend."},
-    {fr:"Je ne connaissais absolument pas cette partie de la culture allemande.", de:"Diesen Teil der deutschen Kultur kannte ich überhaupt nicht."},
-    {fr:"Ce genre de découverte enrichit vraiment notre compréhension du pays.", de:"Solche Entdeckungen bereichern wirklich unser Verständnis des Landes."},
-    {fr:"On a acheté plusieurs films à regarder une fois rentrés.", de:"Wir haben mehrere Filme gekauft, die wir uns nach der Rückkehr ansehen werden."},
-    {fr:"Cette soirée culturelle restera un très beau souvenir.", de:"Dieser kulturelle Abend bleibt eine sehr schöne Erinnerung."}
-  ]},
-  { title:"Un programme d'immersion linguistique", phrases:[
-    {fr:"Ce programme nous impose de ne parler qu'allemand pendant un mois.", de:"Dieses Programm verlangt von uns, einen Monat lang nur Deutsch zu sprechen."},
-    {fr:"Les premiers jours se révèlent souvent particulièrement épuisants.", de:"Die ersten Tage erweisen sich oft als besonders anstrengend."},
-    {fr:"Progressivement, la langue devient un vrai réflexe naturel.", de:"Allmählich wird die Sprache zu einem echten natürlichen Reflex."},
-    {fr:"Les familles d'accueil nous intègrent complètement à leur quotidien.", de:"Die Gastfamilien integrieren uns vollständig in ihren Alltag."},
-    {fr:"Cette méthode immersive dépasse largement tout apprentissage classique.", de:"Diese immersive Methode übertrifft jedes klassische Lernen bei weitem."},
-    {fr:"Les erreurs deviennent naturellement moins fréquentes avec le temps.", de:"Fehler werden mit der Zeit natürlich seltener."},
-    {fr:"On commence même à rêver partiellement en allemand.", de:"Man beginnt sogar teilweise auf Deutsch zu träumen."},
-    {fr:"Ce programme a transformé radicalement notre niveau de langue.", de:"Dieses Programm hat unser Sprachniveau radikal verändert."},
-    {fr:"Je recommanderais cette expérience à quiconque veut vraiment progresser.", de:"Ich würde diese Erfahrung jedem empfehlen, der wirklich Fortschritte machen will."},
-    {fr:"On repart avec une confiance linguistique totalement nouvelle.", de:"Wir reisen mit einem völlig neuen sprachlichen Selbstvertrauen ab."}
-  ]},
-  { title:"La route des châteaux", phrases:[
-    {fr:"Cet itinéraire relie plusieurs dizaines de châteaux à travers le pays.", de:"Diese Route verbindet mehrere Dutzend Schlösser durch das ganze Land."},
-    {fr:"Chaque château raconte un chapitre différent de l'histoire allemande.", de:"Jedes Schloss erzählt ein anderes Kapitel der deutschen Geschichte."},
-    {fr:"Certains ont été reconstruits à l'identique après la guerre.", de:"Manche wurden nach dem Krieg originalgetreu wiederaufgebaut."},
-    {fr:"D'autres restent à l'état de ruines romantiques.", de:"Andere verbleiben als romantische Ruinen."},
-    {fr:"Les jardins qui les entourent méritent souvent autant d'attention.", de:"Die umliegenden Gärten verdienen oft genauso viel Aufmerksamkeit."},
-    {fr:"On pourrait facilement y consacrer plusieurs semaines entières.", de:"Man könnte dafür leicht mehrere ganze Wochen einplanen."},
-    {fr:"Cette diversité architecturale reflète les différents royaumes historiques.", de:"Diese architektonische Vielfalt spiegelt die verschiedenen historischen Königreiche wider."},
-    {fr:"Chaque région a développé son propre style de construction.", de:"Jede Region hat ihren eigenen Baustil entwickelt."},
-    {fr:"Cette route reste l'un des plus beaux itinéraires culturels d'Europe.", de:"Diese Route bleibt eine der schönsten Kulturrouten Europas."},
-    {fr:"Nous n'en avons exploré qu'une petite partie, finalement.", de:"Letztendlich haben wir nur einen kleinen Teil davon erkundet."}
-  ]},
-  { title:"Une sortie en canoë sur un lac bavarois", phrases:[
-    {fr:"Le lac était d'un calme absolument parfait ce matin-là.", de:"Der See war an diesem Morgen von absolut perfekter Ruhe."},
-    {fr:"On a pagayé lentement jusqu'au centre du lac.", de:"Wir sind langsam bis zur Mitte des Sees gepaddelt."},
-    {fr:"Les montagnes se reflétaient parfaitement dans l'eau.", de:"Die Berge spiegelten sich perfekt im Wasser."},
-    {fr:"Un héron s'est envolé juste devant notre canoë.", de:"Ein Reiher flog direkt vor unserem Kanu auf."},
-    {fr:"Nous avons fait une pause baignade au milieu du trajet.", de:"Wir haben mitten auf der Strecke eine Badepause gemacht."},
-    {fr:"L'eau était étonnamment claire et agréablement fraîche.", de:"Das Wasser war erstaunlich klar und angenehm kühl."},
-    {fr:"On a croisé très peu d'autres embarcations ce jour-là.", de:"An diesem Tag sind wir sehr wenigen anderen Booten begegnet."},
-    {fr:"Ce moment de tranquillité nous a vraiment ressourcés.", de:"Dieser ruhige Moment hat uns wirklich neue Kraft gegeben."},
-    {fr:"On est rentrés au coucher du soleil, totalement apaisés.", de:"Wir sind bei Sonnenuntergang vollkommen entspannt zurückgekehrt."},
-    {fr:"Cette journée restera l'une des plus douces de notre voyage.", de:"Dieser Tag bleibt einer der angenehmsten unserer Reise."}
-  ]},
-  { title:"Une tempête surprend notre randonnée", phrases:[
-    {fr:"L'inattendu nous a rattrapés à peine une heure après le départ.", de:"Das Unerwartete hat uns kaum eine Stunde nach dem Start eingeholt."},
-    {fr:"Le ciel s'est obscurci avec une rapidité vraiment inquiétante.", de:"Der Himmel verdunkelte sich mit einer wirklich beängstigenden Geschwindigkeit."},
-    {fr:"L'essentiel était désormais de redescendre en toute sécurité.", de:"Das Wichtigste war jetzt, sicher wieder abzusteigen."},
-    {fr:"Le nouveau, parmi nous, n'avait jamais vécu une telle situation.", de:"Der Neue unter uns hatte so etwas noch nie erlebt."},
-    {fr:"Nous avons trouvé refuge dans une petite cabane abandonnée.", de:"Wir haben in einer kleinen verlassenen Hütte Schutz gefunden."},
-    {fr:"L'inconnu de la montagne devient vite source d'une vraie peur.", de:"Das Unbekannte der Berge wird schnell zur Quelle echter Angst."},
-    {fr:"Le vieux de notre groupe est resté étonnamment calme dans la tempête.", de:"Der Alte unserer Gruppe blieb im Sturm erstaunlich ruhig."},
-    {fr:"Une fois l'orage passé, le silence retrouvé semblait presque irréel.", de:"Als das Gewitter vorüber war, wirkte die zurückgekehrte Stille fast unwirklich."},
-    {fr:"Cette épreuve a renforcé la confiance entre tous les membres du groupe.", de:"Diese Prüfung hat das Vertrauen zwischen allen Gruppenmitgliedern gestärkt."},
-    {fr:"On repense souvent au courage dont chacun a fait preuve ce jour-là.", de:"Man denkt oft an den Mut zurück, den jeder an diesem Tag gezeigt hat."}
-  ], tip:{
-    title:"Les adjectifs substantivés : das Neue, der Deutsche",
-    example:"Le nouveau, parmi nous, n'avait jamais vécu une telle situation. — <b>Der Neue</b> unter uns hatte so etwas noch nie erlebt.",
-    body:"En allemand, un adjectif peut devenir un nom en prenant une majuscule et la terminaison de l'adjectif épithète correspondant au genre et au cas : der Neue (le nouveau), das Neue (la nouveauté, la chose nouvelle), der Alte (le vieil homme). Ces formes sont très fréquentes pour désigner une personne ou une idée abstraite sans répéter le nom."
-  }},
-  { title:"Revenir sur les lieux d'un ancien voyage", phrases:[
-    {fr:"Nous revenons ici exactement dix ans après notre premier voyage.", de:"Wir kehren genau zehn Jahre nach unserer ersten Reise hierher zurück."},
-    {fr:"Beaucoup de choses ont changé, et pourtant tout semble familier.", de:"Vieles hat sich verändert, und trotzdem wirkt alles vertraut."},
-    {fr:"Ce petit café existe encore, à notre grande surprise.", de:"Dieses kleine Café existiert, zu unserer großen Überraschung, immer noch."},
-    {fr:"Le serveur d'autrefois nous a même reconnus instantanément.", de:"Der damalige Kellner hat uns sogar sofort wiedererkannt."},
-    {fr:"Cette ville a su garder son âme malgré toutes ces années.", de:"Diese Stadt hat trotz all dieser Jahre ihre Seele bewahren können."},
-    {fr:"Nous retrouvons les mêmes émotions qu'à notre première visite.", de:"Wir empfinden dieselben Gefühle wie bei unserem ersten Besuch."},
-    {fr:"Ce retour nous rappelle à quel point le temps passe vite.", de:"Diese Rückkehr erinnert uns daran, wie schnell die Zeit vergeht."},
-    {fr:"On mesure vraiment notre propre évolution depuis cette époque.", de:"Man misst wirklich die eigene Entwicklung seit dieser Zeit."},
-    {fr:"Ce voyage circulaire ferme une boucle très symbolique.", de:"Diese kreisförmige Reise schließt einen sehr symbolischen Kreis."},
-    {fr:"On repart avec le sentiment d'avoir vraiment bouclé quelque chose.", de:"Wir reisen mit dem Gefühl ab, wirklich etwas abgeschlossen zu haben."}
-  ]},
-  { title:"Fin du module : un bilan de voyage", phrases:[
-    {fr:"Ce module nous a emmenés vers des expériences profondément marquantes.", de:"Dieses Modul hat uns zu tief prägenden Erfahrungen geführt."},
-    {fr:"Histoire, nature, traditions : nous avons tout exploré en profondeur.", de:"Geschichte, Natur, Traditionen: wir haben alles gründlich erkundet."},
-    {fr:"Le passif et le Konjunktiv II nous semblent presque naturels désormais.", de:"Das Passiv und der Konjunktiv II erscheinen uns inzwischen fast selbstverständlich."},
-    {fr:"Le dernier module nous attend pour des conversations encore plus profondes.", de:"Das letzte Modul wartet auf uns mit noch tiefer gehenden Gesprächen."},
-    {fr:"Chaque étape de ce parcours nous a rendus plus confiants.", de:"Jede Etappe dieses Weges hat uns selbstsicherer gemacht."},
-    {fr:"On se sent vraiment capables de voyager en toute autonomie désormais.", de:"Wir fühlen uns jetzt wirklich fähig, völlig selbstständig zu reisen."},
-    {fr:"Cette aisance nouvelle change complètement notre rapport à la langue.", de:"Diese neue Gewandtheit verändert unser Verhältnis zur Sprache komplett."},
-    {fr:"Félicitations pour ce long et beau chemin parcouru.", de:"Glückwunsch zu diesem langen und schönen zurückgelegten Weg."},
-    {fr:"Accordons-nous un dernier instant de repos avant la fin.", de:"Gönnen wir uns vor dem Ende noch einen letzten Moment der Ruhe."},
-    {fr:"À très bientôt pour le dernier module de ce niveau.", de:"Bis ganz bald für das letzte Modul dieses Niveaus."}
-  ]}
+ {
+  "title": "Remonter le rio Negro en bateau",
+  "phrases": [
+   {
+    "fr": "Nous quittons Manaus à l'aube pour remonter le rio Negro.",
+    "pt": "Saímos de Manaus de madrugada para subir o rio Negro."
+   },
+   {
+    "fr": "Plus on s'éloigne de la ville, plus la forêt devient dense.",
+    "pt": "Quanto mais a gente se afasta da cidade, mais a floresta fica densa."
+   },
+   {
+    "fr": "L'eau est si sombre qu'on dirait du thé très fort.",
+    "pt": "A água é tão escura que parece um chá bem forte."
+   },
+   {
+    "fr": "Notre guide a grandi dans une communauté au bord du fleuve.",
+    "pt": "O nosso guia cresceu numa comunidade na beira do rio."
+   },
+   {
+    "fr": "Il connaît chaque bras du fleuve comme sa poche.",
+    "pt": "Ele conhece cada braço do rio como a palma da mão."
+   },
+   {
+    "fr": "Pendant la saison des pluies, la forêt est en partie inondée.",
+    "pt": "Na época das chuvas, a floresta fica parcialmente alagada."
+   },
+   {
+    "fr": "On navigue parfois entre la cime des arbres.",
+    "pt": "Às vezes a gente navega entre as copas das árvores."
+   },
+   {
+    "fr": "Il n'y a presque pas de moustiques sur ce fleuve, c'est surprenant.",
+    "pt": "Quase não tem mosquito neste rio, é surpreendente."
+   },
+   {
+    "fr": "Le réseau téléphonique a disparu depuis plusieurs heures.",
+    "pt": "O sinal do celular sumiu faz várias horas."
+   },
+   {
+    "fr": "Ce silence absolu est exactement ce que nous étions venus chercher.",
+    "pt": "Esse silêncio absoluto é exatamente o que a gente veio buscar."
+   }
+  ]
+ },
+ {
+  "title": "Le Teatro Amazonas de Manaus",
+  "phrases": [
+   {
+    "fr": "Ce théâtre a été construit au cœur de la forêt à l'époque du caoutchouc.",
+    "pt": "Esse teatro foi construído no coração da floresta na época da borracha."
+   },
+   {
+    "fr": "Je n'avais jamais imaginé un opéra aussi luxueux en pleine Amazonie.",
+    "pt": "Eu nunca tinha imaginado uma ópera tão luxuosa no meio da Amazônia."
+   },
+   {
+    "fr": "Une grande partie des matériaux avait été importée par bateau.",
+    "pt": "Grande parte dos materiais tinha sido importada de navio."
+   },
+   {
+    "fr": "Quand nous sommes arrivés, la visite guidée avait déjà commencé.",
+    "pt": "Quando a gente chegou, a visita guiada já tinha começado."
+   },
+   {
+    "fr": "Le guide nous a montré la coupole aux couleurs du drapeau brésilien.",
+    "pt": "O guia mostrou para a gente a cúpula com as cores da bandeira do Brasil."
+   },
+   {
+    "fr": "Le sol de la place devant le théâtre imite les vagues du fleuve.",
+    "pt": "O calçadão da praça em frente ao teatro imita as ondas do rio."
+   },
+   {
+    "fr": "La ville était devenue très riche en quelques décennies seulement.",
+    "pt": "A cidade tinha ficado muito rica em poucas décadas."
+   },
+   {
+    "fr": "Puis tout s'est effondré quand le prix du caoutchouc a chuté.",
+    "pt": "Depois tudo desabou quando o preço da borracha despencou."
+   },
+   {
+    "fr": "Ce soir, il y a un concert gratuit de l'orchestre local.",
+    "pt": "Hoje à noite tem um concerto gratuito da orquestra local."
+   },
+   {
+    "fr": "Cette visite donne une tout autre image de l'Amazonie.",
+    "pt": "Essa visita dá uma imagem totalmente diferente da Amazônia."
+   }
+  ],
+  "tip": {
+   "title": "Le plus-que-parfait : « tinha + particípio »",
+   "example": "Je n'avais jamais imaginé un opéra aussi luxueux en pleine Amazonie. — Eu nunca <b>tinha imaginado</b> uma ópera tão luxuosa no meio da Amazônia.",
+   "body": "Pour exprimer une action antérieure à une autre action passée, le portugais du Brésil utilise surtout « ter » à l'imparfait + participe passé, exactement comme notre « avais + participe ». On dit : eu tinha visto (j'avais vu), ela tinha chegado (elle était arrivée), a gente tinha saído (nous étions sortis). Attention : là où le français utilise « être », le portugais garde toujours « ter »."
+  }
+ },
+ {
+  "title": "Bénévolat dans une communauté riveraine",
+  "phrases": [
+   {
+    "fr": "Nous passons une semaine dans une communauté riveraine du fleuve.",
+    "pt": "A gente vai passar uma semana numa comunidade ribeirinha."
+   },
+   {
+    "fr": "Le matin, nous aidons à rénover l'école du village.",
+    "pt": "De manhã, a gente ajuda a reformar a escola da comunidade."
+   },
+   {
+    "fr": "Les enfants viennent en classe en canoë.",
+    "pt": "As crianças vêm para a aula de canoa."
+   },
+   {
+    "fr": "Tout le village vit au rythme de la crue et de la décrue.",
+    "pt": "A comunidade inteira vive no ritmo da cheia e da vazante."
+   },
+   {
+    "fr": "Les maisons sont construites sur pilotis pour résister aux inondations.",
+    "pt": "As casas são construídas sobre palafitas para aguentar as enchentes."
+   },
+   {
+    "fr": "Une habitante m'a appris à préparer la farine de manioc.",
+    "pt": "Uma moradora me ensinou a fazer farinha de mandioca."
+   },
+   {
+    "fr": "On mange du poisson grillé presque à chaque repas.",
+    "pt": "A gente come peixe assado em quase todas as refeições."
+   },
+   {
+    "fr": "J'ai l'impression de recevoir bien plus que ce que je donne.",
+    "pt": "Tenho a impressão de receber muito mais do que eu dou."
+   },
+   {
+    "fr": "Ici, personne ne regarde l'heure, et pourtant tout se fait.",
+    "pt": "Aqui ninguém olha o relógio, e mesmo assim tudo acontece."
+   },
+   {
+    "fr": "Cette expérience a changé ma façon de voir le voyage.",
+    "pt": "Essa experiência mudou o meu jeito de ver as viagens."
+   }
+  ]
+ },
+ {
+  "title": "La rencontre des eaux",
+  "phrases": [
+   {
+    "fr": "Le guide nous a dit qu'on allait voir deux fleuves qui ne se mélangent pas.",
+    "pt": "O guia disse para a gente que a gente ia ver dois rios que não se misturam."
+   },
+   {
+    "fr": "Il a expliqué que l'eau du rio Negro était plus chaude et plus lente.",
+    "pt": "Ele explicou que a água do rio Negro era mais quente e mais lenta."
+   },
+   {
+    "fr": "L'eau du Solimões, elle, est couleur café au lait.",
+    "pt": "A água do Solimões, por sua vez, tem cor de café com leite."
+   },
+   {
+    "fr": "Les deux eaux coulent côte à côte sur plusieurs kilomètres.",
+    "pt": "As duas águas correm lado a lado por vários quilômetros."
+   },
+   {
+    "fr": "Le capitaine a demandé si quelqu'un voulait toucher l'eau.",
+    "pt": "O comandante perguntou se alguém queria tocar na água."
+   },
+   {
+    "fr": "Ma fille m'a dit qu'elle n'oublierait jamais cette ligne parfaite.",
+    "pt": "A minha filha me disse que nunca ia esquecer aquela linha perfeita."
+   },
+   {
+    "fr": "On nous avait prévenus que des dauphins roses vivaient par ici.",
+    "pt": "Tinham avisado a gente que botos-cor-de-rosa viviam por aqui."
+   },
+   {
+    "fr": "Le guide a promis qu'il nous montrerait un endroit pour les observer.",
+    "pt": "O guia prometeu que ia mostrar para a gente um lugar para observá-los."
+   },
+   {
+    "fr": "Il a ajouté qu'il ne fallait surtout pas les nourrir.",
+    "pt": "Ele acrescentou que não era para alimentá-los de jeito nenhum."
+   },
+   {
+    "fr": "C'est un spectacle naturel qu'aucune photo ne peut vraiment rendre.",
+    "pt": "É um espetáculo natural que nenhuma foto consegue mostrar de verdade."
+   }
+  ],
+  "tip": {
+   "title": "Le discours indirect : « ele disse que ia… »",
+   "example": "Le guide nous a dit qu'on allait voir deux fleuves qui ne se mélangent pas. — O guia <b>disse</b> para a gente <b>que</b> a gente <b>ia ver</b> dois rios que não se misturam.",
+   "body": "Pour rapporter des paroles au passé, on utilise « disse que » + un temps décalé, comme en français. Le futur devient souvent « ia + infinitif » à l'oral brésilien : « Vou voltar » devient « Ele disse que ia voltar » (il a dit qu'il allait revenir). Le présent devient imparfait : « Está frio » devient « Ela disse que estava frio »."
+  }
+ },
+ {
+  "title": "Une nuit en hamac sur un bateau régional",
+  "phrases": [
+   {
+    "fr": "Pour descendre le fleuve, nous prenons un bateau régional.",
+    "pt": "Para descer o rio, a gente pega um barco regional."
+   },
+   {
+    "fr": "Il faut acheter son hamac avant d'embarquer.",
+    "pt": "Tem que comprar a rede antes de embarcar."
+   },
+   {
+    "fr": "Les passagers accrochent leurs hamacs les uns à côté des autres.",
+    "pt": "Os passageiros penduram as redes uma do lado da outra."
+   },
+   {
+    "fr": "Le voyage jusqu'à Santarém dure presque deux jours.",
+    "pt": "A viagem até Santarém dura quase dois dias."
+   },
+   {
+    "fr": "Au début, je n'arrivais pas à dormir avec le bruit du moteur.",
+    "pt": "No começo, eu não conseguia dormir com o barulho do motor."
+   },
+   {
+    "fr": "Mon voisin de hamac m'a raconté toute sa vie.",
+    "pt": "O meu vizinho de rede me contou a vida inteira dele."
+   },
+   {
+    "fr": "À chaque escale, des vendeurs montent avec des fruits et des gâteaux.",
+    "pt": "Em cada parada, sobem vendedores com frutas e bolos."
+   },
+   {
+    "fr": "Le coucher de soleil sur le fleuve est à couper le souffle.",
+    "pt": "O pôr do sol no rio é de tirar o fôlego."
+   },
+   {
+    "fr": "On apprend vite à vivre sans aucune intimité.",
+    "pt": "A gente aprende rápido a viver sem nenhuma privacidade."
+   },
+   {
+    "fr": "C'est la façon la plus authentique de traverser l'Amazonie.",
+    "pt": "É o jeito mais autêntico de atravessar a Amazônia."
+   }
+  ]
+ },
+ {
+  "title": "Observer les animaux au Pantanal",
+  "phrases": [
+   {
+    "fr": "Le Pantanal est la plus grande plaine inondable du monde.",
+    "pt": "O Pantanal é a maior planície alagável do mundo."
+   },
+   {
+    "fr": "Ici, les animaux sont beaucoup plus faciles à voir qu'en forêt.",
+    "pt": "Aqui os bichos são muito mais fáceis de ver do que na floresta."
+   },
+   {
+    "fr": "Regarde ces dizaines de caïmans qui se chauffent au soleil.",
+    "pt": "Olha aquelas dezenas de jacarés tomando sol."
+   },
+   {
+    "fr": "Le tuiuiú est l'oiseau symbole de la région.",
+    "pt": "O tuiuiú é a ave símbolo da região."
+   },
+   {
+    "fr": "Nous dormons dans une fazenda transformée en auberge.",
+    "pt": "A gente está dormindo numa fazenda transformada em pousada."
+   },
+   {
+    "fr": "Les cow-boys locaux s'appellent les « peões pantaneiros ».",
+    "pt": "Os vaqueiros da região se chamam peões pantaneiros."
+   },
+   {
+    "fr": "Ce matin, nous avons accompagné un troupeau à cheval.",
+    "pt": "Hoje de manhã, a gente acompanhou uma boiada a cavalo."
+   },
+   {
+    "fr": "Le soir, on part en safari de nuit avec une lampe torche.",
+    "pt": "À noite, a gente sai para uma focagem com lanterna."
+   },
+   {
+    "fr": "Les capybaras traversent la piste sans même nous regarder.",
+    "pt": "As capivaras atravessam a estrada sem nem olhar para a gente."
+   },
+   {
+    "fr": "Je n'ai jamais vu autant d'animaux en une seule journée.",
+    "pt": "Eu nunca vi tantos bichos num dia só."
+   }
+  ]
+ },
+ {
+  "title": "À la recherche du jaguar",
+  "phrases": [
+   {
+    "fr": "Bien que le jaguar soit très discret, on en voit souvent par ici.",
+    "pt": "Embora a onça seja muito discreta, a gente vê várias por aqui."
+   },
+   {
+    "fr": "Nous partons à l'aube en petit bateau sur le fleuve.",
+    "pt": "A gente sai de madrugada num barquinho pelo rio."
+   },
+   {
+    "fr": "Le guide reste optimiste, même si personne n'en a vu hier.",
+    "pt": "O guia continua otimista, mesmo que ninguém tenha visto nenhuma ontem."
+   },
+   {
+    "fr": "Après trois heures d'attente, quelqu'un murmure : « Là, sur la berge ! »",
+    "pt": "Depois de três horas de espera, alguém sussurra: « Ali, na margem! »"
+   },
+   {
+    "fr": "Un jaguar énorme se repose tranquillement à l'ombre.",
+    "pt": "Uma onça enorme está descansando tranquila na sombra."
+   },
+   {
+    "fr": "Même si nous étions très près, il ne semblait pas du tout dérangé.",
+    "pt": "Embora a gente estivesse bem perto, ela não parecia nem um pouco incomodada."
+   },
+   {
+    "fr": "Personne n'ose parler, de peur de le faire fuir.",
+    "pt": "Ninguém tem coragem de falar, com medo de espantar a onça."
+   },
+   {
+    "fr": "Bien qu'il fasse une chaleur écrasante, personne ne veut partir.",
+    "pt": "Embora esteja um calor de rachar, ninguém quer ir embora."
+   },
+   {
+    "fr": "Le guide nous rappelle de garder nos distances.",
+    "pt": "O guia lembra a gente de manter distância."
+   },
+   {
+    "fr": "Je tremblais encore d'émotion en rentrant à l'auberge.",
+    "pt": "Eu ainda estava tremendo de emoção quando voltei para a pousada."
+   }
+  ],
+  "tip": {
+   "title": "« Embora » + subjonctif : bien que",
+   "example": "Bien que le jaguar soit très discret, on en voit souvent par ici. — <b>Embora</b> a onça <b>seja</b> muito discreta, a gente vê várias por aqui.",
+   "body": "« Embora » (bien que, quoique) est toujours suivi du subjonctif, comme en français : embora seja tarde (bien qu'il soit tard). Au passé, on passe au subjonctif imparfait : embora estivesse cansado (bien qu'il fût fatigué). À l'oral, les Brésiliens disent aussi « mesmo que » avec le même sens et la même règle."
+  }
+ },
+ {
+  "title": "Ouro Preto, l'ancienne ville de l'or",
+  "phrases": [
+   {
+    "fr": "Ouro Preto a été la ville la plus riche du pays au dix-huitième siècle.",
+    "pt": "Ouro Preto foi a cidade mais rica do país no século dezoito."
+   },
+   {
+    "fr": "Les rues pavées sont tellement raides qu'on avance lentement.",
+    "pt": "As ruas de pedra são tão íngremes que a gente anda devagar."
+   },
+   {
+    "fr": "Chaque colline possède son église baroque.",
+    "pt": "Cada morro tem a sua igreja barroca."
+   },
+   {
+    "fr": "L'intérieur de cette église est entièrement couvert d'or.",
+    "pt": "O interior dessa igreja é todo coberto de ouro."
+   },
+   {
+    "fr": "Les sculptures ont été réalisées par un artiste local très célèbre.",
+    "pt": "As esculturas foram feitas por um artista local muito famoso."
+   },
+   {
+    "fr": "Nous avons visité une ancienne mine creusée à la main.",
+    "pt": "A gente visitou uma mina antiga cavada à mão."
+   },
+   {
+    "fr": "Le guide nous a parlé des conditions terribles des esclaves.",
+    "pt": "O guia falou com a gente sobre as condições terríveis dos escravizados."
+   },
+   {
+    "fr": "C'est une histoire magnifique et douloureuse à la fois.",
+    "pt": "É uma história linda e dolorosa ao mesmo tempo."
+   },
+   {
+    "fr": "Le soir, la brume descend sur les toits de la ville.",
+    "pt": "À noite, a neblina desce sobre os telhados da cidade."
+   },
+   {
+    "fr": "On comprend pourquoi la ville est classée au patrimoine mondial.",
+    "pt": "Dá para entender por que a cidade é patrimônio mundial."
+   }
+  ]
+ },
+ {
+  "title": "La cuisine mineira à Tiradentes",
+  "phrases": [
+   {
+    "fr": "À Tiradentes, on vient surtout pour bien manger.",
+    "pt": "Em Tiradentes, a gente vem principalmente para comer bem."
+   },
+   {
+    "fr": "La cuisine du Minas Gerais se cuisine au feu de bois.",
+    "pt": "A comida mineira é feita no fogão a lenha."
+   },
+   {
+    "fr": "Je vous conseille le poulet au gombo avec de la polenta.",
+    "pt": "Eu recomendo o frango com quiabo com angu."
+   },
+   {
+    "fr": "Les plats arrivent dans de lourdes marmites en pierre.",
+    "pt": "Os pratos chegam em panelas pesadas de pedra-sabão."
+   },
+   {
+    "fr": "Le fromage du Minas se mange avec de la confiture de goyave.",
+    "pt": "O queijo minas se come com goiabada."
+   },
+   {
+    "fr": "Ce mélange s'appelle « Roméo et Juliette » ici.",
+    "pt": "Essa combinação se chama Romeu e Julieta aqui."
+   },
+   {
+    "fr": "Le serveur insiste pour qu'on goûte la cachaça artisanale.",
+    "pt": "O garçom insiste para a gente provar a cachaça artesanal."
+   },
+   {
+    "fr": "Je ne pourrai plus rien avaler jusqu'à demain.",
+    "pt": "Eu não vou conseguir comer mais nada até amanhã."
+   },
+   {
+    "fr": "Les gens d'ici disent que le secret, c'est la patience.",
+    "pt": "O pessoal daqui diz que o segredo é a paciência."
+   },
+   {
+    "fr": "C'est sans doute le meilleur repas de tout notre voyage.",
+    "pt": "É sem dúvida a melhor refeição da nossa viagem inteira."
+   }
+  ]
+ },
+ {
+  "title": "Une route coupée par la pluie",
+  "phrases": [
+   {
+    "fr": "Une pluie torrentielle est tombée toute la nuit.",
+    "pt": "Caiu uma chuva torrencial a noite inteira."
+   },
+   {
+    "fr": "La route en terre est devenue une véritable rivière de boue.",
+    "pt": "A estrada de terra virou um verdadeiro rio de lama."
+   },
+   {
+    "fr": "Notre voiture est restée embourbée au milieu du chemin.",
+    "pt": "O nosso carro atolou no meio do caminho."
+   },
+   {
+    "fr": "Un fermier est venu nous sortir de là avec son tracteur.",
+    "pt": "Um fazendeiro veio tirar a gente de lá com o trator dele."
+   },
+   {
+    "fr": "Il a refusé d'être payé et nous a offert un café.",
+    "pt": "Ele não quis receber nada e ainda ofereceu um cafezinho."
+   },
+   {
+    "fr": "Le pont plus loin est fermé jusqu'à nouvel ordre.",
+    "pt": "A ponte mais à frente está fechada até segunda ordem."
+   },
+   {
+    "fr": "Nous allons devoir passer la nuit dans le village voisin.",
+    "pt": "A gente vai ter que passar a noite no povoado vizinho."
+   },
+   {
+    "fr": "Il n'y a qu'une petite auberge, mais elle est très accueillante.",
+    "pt": "Só tem uma pousadinha, mas ela é muito acolhedora."
+   },
+   {
+    "fr": "Finalement, ce contretemps nous a fait découvrir un endroit magnifique.",
+    "pt": "No fim, esse imprevisto fez a gente descobrir um lugar maravilhoso."
+   },
+   {
+    "fr": "Voyager ici demande de la souplesse et beaucoup de patience.",
+    "pt": "Viajar por aqui exige jogo de cintura e muita paciência."
+   }
+  ]
+ },
+ {
+  "title": "Les rivières transparentes de Bonito",
+  "phrases": [
+   {
+    "fr": "Les rivières de Bonito sont parmi les plus transparentes du monde.",
+    "pt": "Os rios de Bonito estão entre os mais transparentes do mundo."
+   },
+   {
+    "fr": "Toutes les excursions doivent être réservées à l'avance.",
+    "pt": "Todos os passeios precisam ser reservados com antecedência."
+   },
+   {
+    "fr": "Le nombre de visiteurs par jour est strictement limité.",
+    "pt": "O número de visitantes por dia é rigorosamente limitado."
+   },
+   {
+    "fr": "Il est interdit de mettre de la crème solaire avant d'entrer dans l'eau.",
+    "pt": "É proibido passar protetor solar antes de entrar na água."
+   },
+   {
+    "fr": "On se laisse porter par le courant en flottant à la surface.",
+    "pt": "A gente se deixa levar pela correnteza boiando na superfície."
+   },
+   {
+    "fr": "Des centaines de poissons nagent juste sous nos yeux.",
+    "pt": "Centenas de peixes nadam bem debaixo dos nossos olhos."
+   },
+   {
+    "fr": "Il ne faut surtout pas toucher le fond pour ne pas troubler l'eau.",
+    "pt": "Não pode encostar no fundo de jeito nenhum, para não turvar a água."
+   },
+   {
+    "fr": "Le guide nous a montré une grotte au lac d'un bleu incroyable.",
+    "pt": "O guia mostrou para a gente uma gruta com um lago de um azul incrível."
+   },
+   {
+    "fr": "Cette région prouve que le tourisme peut protéger la nature.",
+    "pt": "Essa região mostra que o turismo pode proteger a natureza."
+   },
+   {
+    "fr": "On aurait voulu rester dans l'eau toute la journée.",
+    "pt": "A gente queria ter ficado na água o dia inteiro."
+   }
+  ]
+ },
+ {
+  "title": "Négocier avec un guide au Jalapão",
+  "phrases": [
+   {
+    "fr": "Pour explorer le Jalapão, il faut absolument un véhicule tout-terrain.",
+    "pt": "Para explorar o Jalapão, precisa de um carro com tração nas quatro rodas."
+   },
+   {
+    "fr": "Le premier guide nous a proposé un prix beaucoup trop élevé.",
+    "pt": "O primeiro guia ofereceu um preço alto demais."
+   },
+   {
+    "fr": "Est-ce qu'il y aurait moyen de faire un petit effort sur le prix ?",
+    "pt": "Será que dá para fazer um precinho melhor?"
+   },
+   {
+    "fr": "Si nous sommes six, ça vous arrangerait de baisser le tarif ?",
+    "pt": "Se a gente for em seis, dá para baixar o valor?"
+   },
+   {
+    "fr": "Le guide a réfléchi un moment, puis il a accepté.",
+    "pt": "O guia pensou um pouco e depois topou."
+   },
+   {
+    "fr": "Finalement, tout s'est bien passé et tout le monde était content.",
+    "pt": "No fim, deu tudo certo e todo mundo ficou satisfeito."
+   },
+   {
+    "fr": "Le premier jour, nous sommes allés faire un tour vers les dunes orange.",
+    "pt": "No primeiro dia, a gente foi dar uma volta pelas dunas alaranjadas."
+   },
+   {
+    "fr": "Dans les sources, l'eau remonte si fort qu'il est impossible de couler.",
+    "pt": "Nos fervedouros, a água sobe com tanta força que não dá para afundar."
+   },
+   {
+    "fr": "Le guide a tout fait pour que le voyage se passe bien.",
+    "pt": "O guia fez de tudo para a viagem dar certo."
+   },
+   {
+    "fr": "Il ne faut pas avoir peur de négocier, mais toujours avec respect.",
+    "pt": "Não precisa ter medo de negociar, mas sempre com respeito."
+   }
+  ],
+  "tip": {
+   "title": "Les expressions avec « dar »",
+   "example": "Finalement, tout s'est bien passé et tout le monde était content. — No fim, <b>deu tudo certo</b> e todo mundo ficou satisfeito.",
+   "body": "Le verbe « dar » (donner) sert à former des dizaines d'expressions très courantes au Brésil. « Dar certo » signifie réussir, bien se passer ; « dar errado », mal tourner. « Dar uma volta », c'est faire un tour, et « dá para » + infinitif veut dire « c'est possible de » : dá para ir a pé ? (on peut y aller à pied ?)."
+  }
+ },
+ {
+  "title": "La Route des Émotions en tout-terrain",
+  "phrases": [
+   {
+    "fr": "La Rota das Emoções relie trois États du nord-est.",
+    "pt": "A Rota das Emoções liga três estados do Nordeste."
+   },
+   {
+    "fr": "Une grande partie du trajet se fait directement sur la plage.",
+    "pt": "Boa parte do trajeto é feita direto na praia."
+   },
+   {
+    "fr": "Le chauffeur doit connaître les horaires des marées par cœur.",
+    "pt": "O motorista precisa saber de cor os horários da maré."
+   },
+   {
+    "fr": "À marée haute, certains passages deviennent impossibles.",
+    "pt": "Na maré cheia, alguns trechos ficam impossíveis."
+   },
+   {
+    "fr": "Nous avons traversé une rivière sur un radeau en bois.",
+    "pt": "A gente atravessou um rio numa balsa de madeira."
+   },
+   {
+    "fr": "Le delta du Parnaíba est un labyrinthe d'îles et de mangroves.",
+    "pt": "O delta do Parnaíba é um labirinto de ilhas e manguezais."
+   },
+   {
+    "fr": "À Jericoacoara, tout le monde se retrouve sur la dune au coucher du soleil.",
+    "pt": "Em Jericoacoara, todo mundo se encontra na duna na hora do pôr do sol."
+   },
+   {
+    "fr": "Les gens applaudissent quand le soleil disparaît dans la mer.",
+    "pt": "As pessoas batem palmas quando o sol some no mar."
+   },
+   {
+    "fr": "Le vent souffle si fort que le sable nous fouette les jambes.",
+    "pt": "O vento é tão forte que a areia chicoteia as nossas pernas."
+   },
+   {
+    "fr": "Ce voyage porte vraiment bien son nom.",
+    "pt": "Essa viagem faz jus ao nome mesmo."
+   }
+  ]
+ },
+ {
+  "title": "Le festival de Parintins",
+  "phrases": [
+   {
+    "fr": "Chaque année, l'île de Parintins accueille un immense festival folklorique.",
+    "pt": "Todo ano, a ilha de Parintins recebe um festival folclórico enorme."
+   },
+   {
+    "fr": "Deux groupes rivaux s'affrontent pendant trois nuits.",
+    "pt": "Dois grupos rivais se enfrentam durante três noites."
+   },
+   {
+    "fr": "Les supporters de l'un sont en rouge, ceux de l'autre en bleu.",
+    "pt": "A torcida de um é vermelha, a do outro é azul."
+   },
+   {
+    "fr": "Même la banque locale peint sa façade aux deux couleurs.",
+    "pt": "Até o banco da cidade pinta a fachada com as duas cores."
+   },
+   {
+    "fr": "Les chars allégoriques sont gigantesques et bougent dans tous les sens.",
+    "pt": "Os carros alegóricos são gigantes e se mexem para todos os lados."
+   },
+   {
+    "fr": "Le spectacle raconte des légendes de la forêt amazonienne.",
+    "pt": "O espetáculo conta lendas da floresta amazônica."
+   },
+   {
+    "fr": "Il est très difficile de trouver un logement pendant le festival.",
+    "pt": "É muito difícil achar hospedagem durante o festival."
+   },
+   {
+    "fr": "Beaucoup de visiteurs dorment directement dans les bateaux.",
+    "pt": "Muitos visitantes dormem nos próprios barcos."
+   },
+   {
+    "fr": "L'énergie dans l'arène est absolument incroyable.",
+    "pt": "A energia no bumbódromo é absolutamente incrível."
+   },
+   {
+    "fr": "Je n'ai jamais vu une fête populaire d'une telle ampleur.",
+    "pt": "Eu nunca vi uma festa popular desse tamanho."
+   }
+  ]
+ },
+ {
+  "title": "Voyager de manière responsable",
+  "phrases": [
+   {
+    "fr": "Nous essayons de choisir des agences qui emploient des guides locaux.",
+    "pt": "A gente tenta escolher agências que contratam guias locais."
+   },
+   {
+    "fr": "Une partie du prix est reversée directement aux communautés.",
+    "pt": "Uma parte do valor vai direto para as comunidades."
+   },
+   {
+    "fr": "Il vaut mieux acheter l'artisanat directement aux artisans.",
+    "pt": "É melhor comprar o artesanato direto dos artesãos."
+   },
+   {
+    "fr": "Nous emportons toujours une gourde pour éviter les bouteilles en plastique.",
+    "pt": "A gente sempre leva uma garrafinha para evitar garrafas de plástico."
+   },
+   {
+    "fr": "Il ne faut jamais rapporter de plantes ou de plumes comme souvenir.",
+    "pt": "Nunca se deve levar plantas ou penas como lembrança."
+   },
+   {
+    "fr": "Avant de photographier quelqu'un, on lui demande toujours la permission.",
+    "pt": "Antes de fotografar alguém, a gente sempre pede licença."
+   },
+   {
+    "fr": "Le tourisme de masse menace certains endroits fragiles.",
+    "pt": "O turismo de massa ameaça alguns lugares frágeis."
+   },
+   {
+    "fr": "Rester plus longtemps au même endroit réduit aussi notre impact.",
+    "pt": "Ficar mais tempo no mesmo lugar também diminui o nosso impacto."
+   },
+   {
+    "fr": "Les habitants apprécient qu'on fasse l'effort de parler portugais.",
+    "pt": "Os moradores gostam quando a gente se esforça para falar português."
+   },
+   {
+    "fr": "Voyager autrement, c'est aussi voyager plus lentement.",
+    "pt": "Viajar de outro jeito também é viajar mais devagar."
+   }
+  ]
+ },
+ {
+  "title": "Un bus de nuit vers la Chapada dos Veadeiros",
+  "phrases": [
+   {
+    "fr": "Nous prenons le bus de nuit depuis la gare routière de Brasília.",
+    "pt": "A gente pega o ônibus noturno na rodoviária de Brasília."
+   },
+   {
+    "fr": "Les sièges sont presque complètement inclinables.",
+    "pt": "As poltronas reclinam quase totalmente."
+   },
+   {
+    "fr": "La climatisation est si forte qu'il faut une couverture.",
+    "pt": "O ar-condicionado é tão forte que precisa de cobertor."
+   },
+   {
+    "fr": "Le bus s'arrête au milieu de la nuit dans une station-service.",
+    "pt": "O ônibus para no meio da noite num posto de gasolina."
+   },
+   {
+    "fr": "Au réveil, le paysage du cerrado s'étend à perte de vue.",
+    "pt": "Quando a gente acorda, a paisagem do cerrado se estende a perder de vista."
+   },
+   {
+    "fr": "Le village d'Alto Paraíso est réputé pour son ambiance mystique.",
+    "pt": "O vilarejo de Alto Paraíso é famoso pelo clima místico."
+   },
+   {
+    "fr": "Les cascades du parc sont parmi les plus belles du pays.",
+    "pt": "As cachoeiras do parque estão entre as mais bonitas do país."
+   },
+   {
+    "fr": "Certains sentiers ne peuvent se faire qu'avec un guide agréé.",
+    "pt": "Algumas trilhas só podem ser feitas com guia credenciado."
+   },
+   {
+    "fr": "Les cristaux de quartz brillent un peu partout sur le chemin.",
+    "pt": "Os cristais de quartzo brilham por todo lado no caminho."
+   },
+   {
+    "fr": "Après cette nuit de bus, un bain dans la cascade fait un bien fou.",
+    "pt": "Depois dessa noite de ônibus, um banho de cachoeira faz um bem danado."
+   }
+  ]
+ },
+ {
+  "title": "En canoë sur un igarapé",
+  "phrases": [
+   {
+    "fr": "Un igarapé est un petit bras de rivière au milieu de la forêt.",
+    "pt": "Um igarapé é um pequeno braço de rio no meio da floresta."
+   },
+   {
+    "fr": "Nous pagayons lentement pour ne pas faire de bruit.",
+    "pt": "A gente rema devagar para não fazer barulho."
+   },
+   {
+    "fr": "Le guide imite le cri des singes pour les faire répondre.",
+    "pt": "O guia imita o grito dos macacos para eles responderem."
+   },
+   {
+    "fr": "Une famille de singes hurleurs passe juste au-dessus de nous.",
+    "pt": "Uma família de bugios passa bem em cima da gente."
+   },
+   {
+    "fr": "Les racines des arbres plongent directement dans l'eau.",
+    "pt": "As raízes das árvores mergulham direto na água."
+   },
+   {
+    "fr": "Le guide nous montre une plante qui soigne les piqûres.",
+    "pt": "O guia mostra uma planta que serve para picada de inseto."
+   },
+   {
+    "fr": "Les Indigènes l'utilisent depuis des générations.",
+    "pt": "Os povos indígenas usam essa planta há gerações."
+   },
+   {
+    "fr": "La lumière filtre à peine à travers les feuilles.",
+    "pt": "A luz mal passa por entre as folhas."
+   },
+   {
+    "fr": "On se sent tout petit face à cette nature immense.",
+    "pt": "A gente se sente pequenininho diante dessa natureza imensa."
+   },
+   {
+    "fr": "Ce moment de calme restera l'un de mes plus beaux souvenirs.",
+    "pt": "Esse momento de calma vai ser uma das minhas lembranças mais bonitas."
+   }
+  ]
+ },
+ {
+  "title": "Un orage surprend notre randonnée",
+  "phrases": [
+   {
+    "fr": "Le ciel s'est assombri à peine une heure après le départ.",
+    "pt": "O céu escureceu mal uma hora depois da saída."
+   },
+   {
+    "fr": "Au cas où l'orage éclaterait, le guide nous a montré un abri.",
+    "pt": "Caso a tempestade caísse, o guia mostrou para a gente um abrigo."
+   },
+   {
+    "fr": "Nous continuerons, à moins que la rivière ne monte trop vite.",
+    "pt": "A gente vai continuar, a não ser que o rio suba rápido demais."
+   },
+   {
+    "fr": "Le tonnerre résonnait dans tout le canyon.",
+    "pt": "O trovão ecoava pelo cânion inteiro."
+   },
+   {
+    "fr": "Au cas où quelqu'un se perdrait, nous avons fixé un point de rendez-vous.",
+    "pt": "Caso alguém se perdesse, a gente combinou um ponto de encontro."
+   },
+   {
+    "fr": "Le guide a décidé de rebrousser chemin par prudence.",
+    "pt": "O guia decidiu voltar por precaução."
+   },
+   {
+    "fr": "En quelques minutes, le petit ruisseau était devenu un torrent.",
+    "pt": "Em poucos minutos, o riozinho tinha virado uma correnteza."
+   },
+   {
+    "fr": "Nous nous sommes tenus par la main pour traverser.",
+    "pt": "A gente se deu as mãos para atravessar."
+   },
+   {
+    "fr": "Personne ne repartira demain, à moins que le temps ne s'améliore.",
+    "pt": "Ninguém vai sair amanhã, a não ser que o tempo melhore."
+   },
+   {
+    "fr": "On repense souvent au sang-froid de notre guide ce jour-là.",
+    "pt": "A gente sempre lembra do sangue-frio do nosso guia naquele dia."
+   }
+  ],
+  "tip": {
+   "title": "« Caso » et « a não ser que » + subjonctif",
+   "example": "Nous continuerons, à moins que la rivière ne monte trop vite. — A gente vai continuar, <b>a não ser que</b> o rio <b>suba</b> rápido demais.",
+   "body": "« Caso » (au cas où) et « a não ser que » (à moins que) sont toujours suivis du subjonctif. Au présent : caso chova (au cas où il pleuvrait), a não ser que você prefira (à moins que tu préfères). Pour une hypothèse dans le passé, on utilise le subjonctif imparfait : caso ele chegasse tarde (au cas où il arriverait tard). Attention, « caso » ne s'emploie jamais avec « se »."
+  }
+ },
+ {
+  "title": "Retour à Manaus, dix ans après",
+  "phrases": [
+   {
+    "fr": "Nous revenons à Manaus exactement dix ans après notre premier voyage.",
+    "pt": "A gente volta a Manaus exatamente dez anos depois da primeira viagem."
+   },
+   {
+    "fr": "Le port est toujours aussi animé qu'à l'époque.",
+    "pt": "O porto continua tão movimentado quanto naquela época."
+   },
+   {
+    "fr": "Le marché municipal a été entièrement rénové.",
+    "pt": "O mercado municipal foi todo reformado."
+   },
+   {
+    "fr": "Nous avons retrouvé le guide qui nous avait emmenés la première fois.",
+    "pt": "A gente reencontrou o guia que tinha levado a gente da primeira vez."
+   },
+   {
+    "fr": "Il s'est souvenu de nous immédiatement, c'était très émouvant.",
+    "pt": "Ele lembrou da gente na hora, foi muito emocionante."
+   },
+   {
+    "fr": "Il a maintenant sa propre petite agence de voyage.",
+    "pt": "Agora ele tem a própria agenciazinha de turismo."
+   },
+   {
+    "fr": "Certaines choses ont changé, mais le fleuve, lui, est toujours là.",
+    "pt": "Algumas coisas mudaram, mas o rio continua lá."
+   },
+   {
+    "fr": "Cette fois, je comprends presque tout ce que les gens me disent.",
+    "pt": "Desta vez, eu entendo quase tudo o que as pessoas me falam."
+   },
+   {
+    "fr": "Il y a dix ans, je ne savais même pas commander un café.",
+    "pt": "Dez anos atrás, eu nem sabia pedir um café."
+   },
+   {
+    "fr": "On repart avec le sentiment d'avoir bouclé une belle histoire.",
+    "pt": "A gente vai embora com a sensação de ter fechado uma bela história."
+   }
+  ]
+ },
+ {
+  "title": "Fin du module : un bilan de voyage",
+  "phrases": [
+   {
+    "fr": "Ce module nous a emmenés au cœur du Brésil le plus sauvage.",
+    "pt": "Este módulo levou a gente ao coração do Brasil mais selvagem."
+   },
+   {
+    "fr": "Tu peux maintenant raconter un voyage avec beaucoup de nuances.",
+    "pt": "Agora você consegue contar uma viagem com muitas nuances."
+   },
+   {
+    "fr": "Tu sais rapporter ce que quelqu'un t'a dit.",
+    "pt": "Você sabe contar o que alguém te disse."
+   },
+   {
+    "fr": "Tu sais exprimer une hypothèse et une concession.",
+    "pt": "Você sabe expressar uma hipótese e uma concessão."
+   },
+   {
+    "fr": "Tu peux négocier un prix avec politesse et assurance.",
+    "pt": "Você consegue negociar um preço com educação e segurança."
+   },
+   {
+    "fr": "Tu es capable de faire face à un imprévu en portugais.",
+    "pt": "Você é capaz de enfrentar um imprevisto em português."
+   },
+   {
+    "fr": "Le portugais devient pour toi un véritable outil de découverte.",
+    "pt": "O português está virando para você uma verdadeira ferramenta de descoberta."
+   },
+   {
+    "fr": "Chaque voyage sera désormais une occasion de pratiquer.",
+    "pt": "A partir de agora, cada viagem vai ser uma chance de praticar."
+   },
+   {
+    "fr": "Sois fier du chemin parcouru depuis le début.",
+    "pt": "Tenha orgulho do caminho que você percorreu desde o começo."
+   },
+   {
+    "fr": "À très bientôt pour le dernier module de ce niveau.",
+    "pt": "Até muito em breve no último módulo deste nível."
+   }
+  ]
+ }
 ];
 
 const level3Module3Lessons = [
-  { title:"Réfléchir à son identité culturelle", phrases:[
-    {fr:"Je me demande parfois à quel pays j'appartiens vraiment.", de:"Ich frage mich manchmal, zu welchem Land ich wirklich gehöre."},
-    {fr:"Je souhaiterais parfois avoir une identité plus simple à expliquer.", de:"Ich wünschte, ich hätte manchmal eine einfacher zu erklärende Identität."},
-    {fr:"Vivre entre deux cultures enrichit autant qu'il complique les choses.", de:"Zwischen zwei Kulturen zu leben bereichert genauso, wie es die Dinge erschwert."},
-    {fr:"Je souhaiterais que les gens arrêtent de me demander d'où je viens vraiment.", de:"Ich wünschte, die Leute würden aufhören zu fragen, woher ich wirklich komme."},
-    {fr:"Mes deux cultures cohabitent plutôt bien à l'intérieur de moi.", de:"Meine beiden Kulturen koexistieren eigentlich recht gut in mir."},
-    {fr:"Parfois, j'aimerais trancher définitivement entre les deux mondes.", de:"Manchmal wünschte ich mir, mich endgültig zwischen den beiden Welten zu entscheiden."},
-    {fr:"Cette double appartenance finit par devenir une vraie richesse.", de:"Diese doppelte Zugehörigkeit wird letztendlich zu einem echten Reichtum."},
-    {fr:"Je souhaiterais transmettre cette ouverture d'esprit à mes enfants.", de:"Ich wünschte, ich könnte diese Offenheit an meine Kinder weitergeben."},
-    {fr:"Chacun construit son identité à sa propre manière, finalement.", de:"Letztendlich baut jeder seine Identität auf seine eigene Weise auf."},
-    {fr:"Cette réflexion continuera sûrement encore longtemps en moi.", de:"Diese Überlegung wird sicher noch lange in mir weitergehen."}
-  ], tip:{
-    title:"Le Konjunktiv II pour exprimer un souhait : « Ich wünschte, ... »",
-    example:"Je souhaiterais parfois avoir une identité plus simple à expliquer. — Ich <b>wünschte</b>, ich hätte manchmal eine einfacher zu erklärende Identität.",
-    body:"« Ich wünschte » (littéralement « je souhaitais », mais au sens d'un souhait actuel irréalisable ou difficile) s'emploie toujours avec le Konjunktiv II dans la proposition qui suit : Ich wünschte, ich hätte mehr Zeit (j'aimerais avoir plus de temps). C'est une structure typique pour exprimer un regret ou un vœu sur une situation présente."
-  }},
-  { title:"Débattre des réseaux sociaux", phrases:[
-    {fr:"Les réseaux sociaux ont complètement transformé notre façon de communiquer.", de:"Soziale Netzwerke haben unsere Art zu kommunizieren völlig verändert."},
-    {fr:"Certains y voient surtout une source de comparaison néfaste.", de:"Manche sehen darin vor allem eine Quelle schädlichen Vergleichs."},
-    {fr:"D'autres soulignent au contraire leur pouvoir de connexion.", de:"Andere betonen dagegen ihre verbindende Kraft."},
-    {fr:"Je limite volontairement mon temps d'écran chaque jour.", de:"Ich begrenze bewusst meine Bildschirmzeit jeden Tag."},
-    {fr:"Cette habitude m'a vraiment rendu plus présent dans ma vie réelle.", de:"Diese Gewohnheit hat mich wirklich präsenter in meinem echten Leben gemacht."},
-    {fr:"Les jeunes générations grandissent avec des repères complètement différents.", de:"Die jüngeren Generationen wachsen mit völlig anderen Bezugspunkten auf."},
-    {fr:"Il est difficile de porter un jugement définitif sur ce sujet.", de:"Es ist schwer, über dieses Thema ein endgültiges Urteil zu fällen."},
-    {fr:"Ces plateformes ont aussi permis de belles mobilisations collectives.", de:"Diese Plattformen haben auch schöne kollektive Mobilisierungen ermöglicht."},
-    {fr:"Tout dépend finalement de l'usage que chacun en fait.", de:"Letztendlich hängt alles davon ab, wie jeder sie nutzt."},
-    {fr:"Un usage mesuré semble être la meilleure approche possible.", de:"Ein maßvoller Gebrauch scheint der beste mögliche Ansatz zu sein."}
-  ]},
-  { title:"Parler de santé mentale ouvertement", phrases:[
-    {fr:"Mon ami m'a confié qu'il traversait une période vraiment difficile.", de:"Mein Freund hat mir anvertraut, er durchlebe eine wirklich schwierige Zeit."},
-    {fr:"Il a expliqué qu'il avait finalement consulté un psychologue.", de:"Er hat erklärt, er habe schließlich einen Psychologen aufgesucht."},
-    {fr:"Il a dit que cette démarche l'avait beaucoup aidé.", de:"Er sagte, dieser Schritt habe ihm sehr geholfen."},
-    {fr:"Elle a ajouté que parler ouvertement soulageait énormément.", de:"Sie hat hinzugefügt, offen darüber zu sprechen erleichtere enorm."},
-    {fr:"Longtemps, on m'a dit que ce sujet restait presque taboo.", de:"Lange Zeit wurde mir gesagt, dieses Thema bleibe fast ein Tabu."},
-    {fr:"Heureusement, les mentalités évoluent vraiment à ce sujet aujourd'hui.", de:"Zum Glück verändern sich die Einstellungen heute wirklich in dieser Frage."},
-    {fr:"Il m'a assuré qu'il se sentait désormais beaucoup mieux.", de:"Er hat mir versichert, es gehe ihm inzwischen viel besser."},
-    {fr:"Prendre soin de son esprit mérite autant d'attention que son corps.", de:"Für seinen Geist zu sorgen verdient genauso viel Aufmerksamkeit wie für den Körper."},
-    {fr:"Ce genre d'honnêteté renforce vraiment nos liens d'amitié.", de:"Solche Ehrlichkeit stärkt wirklich unsere freundschaftlichen Bindungen."},
-    {fr:"Je suis reconnaissant qu'il ait pu m'en parler aussi librement.", de:"Ich bin dankbar, dass er so frei darüber sprechen konnte."}
-  ], tip:{
-    title:"Le discours indirect avec Konjunktiv I, en profondeur",
-    example:"Mon ami m'a confié qu'il traversait une période vraiment difficile. — Mein Freund hat mir anvertraut, er <b>durchlebe</b> eine wirklich schwierige Zeit.",
-    body:"Au Konjunktiv I, le verbe prend la terminaison -e à toutes les personnes du singulier (er komme, er habe, er sei), ce qui le distingue clairement de l'indicatif. Cette forme marque une distance ou une nuance : on rapporte les propos de quelqu'un sans forcément les valider soi-même, un usage très courant dans la presse et les récits plus soutenus."
-  }},
-  { title:"Un dilemme moral entre amis", phrases:[
-    {fr:"Mon amie m'a demandé conseil sur une décision vraiment délicate.", de:"Meine Freundin hat mich um Rat zu einer wirklich heiklen Entscheidung gefragt."},
-    {fr:"Elle hésite entre protéger un secret et dire la vérité.", de:"Sie zögert zwischen einem Geheimnis zu schützen und die Wahrheit zu sagen."},
-    {fr:"Chaque option entraîne des conséquences assez lourdes.", de:"Jede Option bringt recht schwerwiegende Konsequenzen mit sich."},
-    {fr:"Je lui ai simplement conseillé d'écouter son intuition.", de:"Ich habe ihr einfach geraten, auf ihre Intuition zu hören."},
-    {fr:"Ces dilemmes n'ont souvent aucune réponse parfaitement juste.", de:"Solche Dilemmas haben oft keine perfekt richtige Antwort."},
-    {fr:"On apprend énormément de soi-même face à ce genre de choix.", de:"Man lernt bei solchen Entscheidungen enorm viel über sich selbst."},
-    {fr:"Elle a finalement choisi l'honnêteté, malgré la difficulté.", de:"Sie hat sich letztendlich trotz der Schwierigkeit für Ehrlichkeit entschieden."},
-    {fr:"Ce choix lui a demandé énormément de courage.", de:"Diese Entscheidung hat ihr enorm viel Mut gekostet."},
-    {fr:"Je respecte profondément sa décision, quelle qu'en soit l'issue.", de:"Ich respektiere ihre Entscheidung tief, egal wie es ausgeht."},
-    {fr:"Ces conversations renforcent vraiment la confiance entre amis.", de:"Solche Gespräche stärken wirklich das Vertrauen zwischen Freunden."}
-  ]},
-  { title:"L'éco-anxiété face à l'avenir", phrases:[
-    {fr:"Je pense souvent que le monde change plus vite qu'on ne l'imagine.", de:"Ich denke oft, dass sich die Welt schneller verändert, als man sich vorstellt."},
-    {fr:"On sait que les générations futures devront affronter ce que nous avons créé.", de:"Man weiß, dass zukünftige Generationen bewältigen müssen, was wir geschaffen haben."},
-    {fr:"Je crois qu'il est important d'agir même quand on se sent impuissant.", de:"Ich glaube, dass es wichtig ist zu handeln, selbst wenn man sich machtlos fühlt."},
-    {fr:"Certains disent qu'il est déjà trop tard pour inverser la tendance.", de:"Manche sagen, dass es bereits zu spät sei, den Trend umzukehren."},
-    {fr:"Je préfère penser que chaque petit effort compte, même s'il semble minime.", de:"Ich denke lieber, dass jede kleine Anstrengung zählt, auch wenn sie minimal erscheint."},
-    {fr:"On espère que les technologies nouvelles apporteront des solutions concrètes.", de:"Man hofft, dass neue Technologien konkrete Lösungen bringen werden."},
-    {fr:"Je trouve rassurant de voir que les jeunes se mobilisent autant.", de:"Ich finde es beruhigend zu sehen, dass sich junge Menschen so stark engagieren."},
-    {fr:"On sait que changer ses habitudes demande du temps et de la patience.", de:"Man weiß, dass es Zeit und Geduld braucht, seine Gewohnheiten zu ändern."},
-    {fr:"Je pense qu'on devrait rester optimistes sans pour autant être naïfs.", de:"Ich denke, dass wir optimistisch bleiben sollten, ohne dabei naiv zu sein."},
-    {fr:"Cette inquiétude partagée nous rapproche d'une certaine manière.", de:"Diese gemeinsame Sorge bringt uns auf eine gewisse Weise näher zusammen."}
-  ], tip:{
-    title:"Les subordonnées enchâssées : une subordonnée dans une subordonnée",
-    example:"On sait que les générations futures devront affronter ce que nous avons créé. — Man weiß, <b>dass</b> zukünftige Generationen bewältigen müssen, <b>was</b> wir geschaffen haben.",
-    body:"Il est fréquent d'imbriquer deux subordonnées : une première introduite par « dass », qui contient elle-même une relative introduite par « was » ou « der/die/das ». Chaque subordonnée garde sa propre règle de verbe en position finale, ce qui peut donner des phrases avec plusieurs verbes regroupés en fin de proposition."
-  }},
-  { title:"Les différences entre générations", phrases:[
-    {fr:"Mes grands-parents ont vécu une enfance radicalement différente de la mienne.", de:"Meine Großeltern hatten eine radikal andere Kindheit als ich."},
-    {fr:"Ils n'avaient ni téléphone portable ni accès immédiat à l'information.", de:"Sie hatten weder ein Handy noch sofortigen Zugang zu Informationen."},
-    {fr:"Pourtant, ils semblent parfois plus sereins que nous aujourd'hui.", de:"Trotzdem wirken sie manchmal gelassener als wir heute."},
-    {fr:"Chaque génération affronte ses propres défis, différents mais réels.", de:"Jede Generation hat ihre eigenen, andersartigen, aber realen Herausforderungen."},
-    {fr:"Je trouve précieux d'écouter leurs souvenirs et leurs conseils.", de:"Ich finde es wertvoll, ihren Erinnerungen und Ratschlägen zuzuhören."},
-    {fr:"Certaines valeurs traversent pourtant intactes toutes les générations.", de:"Manche Werte überdauern dennoch unverändert alle Generationen."},
-    {fr:"Le dialogue intergénérationnel reste malheureusement trop rare aujourd'hui.", de:"Der Dialog zwischen den Generationen bleibt heute leider zu selten."},
-    {fr:"Nos différences devraient plutôt nous enrichir que nous diviser.", de:"Unsere Unterschiede sollten uns eher bereichern als trennen."},
-    {fr:"J'essaie toujours d'apprendre quelque chose des plus âgés autour de moi.", de:"Ich versuche immer, etwas von den Älteren um mich herum zu lernen."},
-    {fr:"Cette transmission intergénérationnelle me semble vraiment essentielle.", de:"Diese generationsübergreifende Weitergabe scheint mir wirklich wesentlich."}
-  ]},
-  { title:"Discuter d'art et de créativité", phrases:[
-    {fr:"L'art permet d'exprimer ce que les mots ne suffisent pas à dire.", de:"Kunst ermöglicht es, auszudrücken, was Worte nicht ausreichend sagen können."},
-    {fr:"Cette exposition contemporaine m'a laissé une impression durable.", de:"Diese zeitgenössische Ausstellung hat bei mir einen bleibenden Eindruck hinterlassen."},
-    {fr:"Je ne comprends pas toujours l'art abstrait, mais je le ressens.", de:"Ich verstehe abstrakte Kunst nicht immer, aber ich empfinde sie."},
-    {fr:"Chaque spectateur y projette sa propre interprétation personnelle.", de:"Jeder Betrachter projiziert dort seine eigene persönliche Deutung."},
-    {fr:"La créativité ne se limite évidemment pas aux musées.", de:"Kreativität beschränkt sich offensichtlich nicht nur auf Museen."},
-    {fr:"On la retrouve dans la cuisine, le jardinage ou même l'écriture.", de:"Man findet sie beim Kochen, Gärtnern oder sogar beim Schreiben."},
-    {fr:"Cultiver un espace créatif personnel apaise vraiment l'esprit.", de:"Einen persönlichen kreativen Raum zu pflegen beruhigt wirklich den Geist."},
-    {fr:"Je regrette parfois de ne pas avoir plus développé ce talent plus jeune.", de:"Ich bedauere manchmal, dieses Talent nicht schon in jüngeren Jahren mehr entwickelt zu haben."},
-    {fr:"Il n'est heureusement jamais trop tard pour commencer quelque chose.", de:"Es ist zum Glück nie zu spät, mit etwas anzufangen."},
-    {fr:"L'art reste, pour moi, une forme précieuse de liberté intérieure.", de:"Kunst bleibt für mich eine wertvolle Form innerer Freiheit."}
-  ]},
-  { title:"Une amitié qui dure depuis vingt ans", phrases:[
-    {fr:"D'une part, nos vies ont pris des directions très différentes.", de:"Einerseits haben unsere Leben sehr unterschiedliche Richtungen genommen."},
-    {fr:"D'autre part, notre complicité reste absolument intacte.", de:"Andererseits bleibt unsere Verbundenheit absolut intakt."},
-    {fr:"D'une part, on se voit rarement, à peine deux fois par an.", de:"Einerseits sehen wir uns selten, kaum zweimal im Jahr."},
-    {fr:"D'autre part, chaque retrouvaille semble effacer toute la distance.", de:"Andererseits scheint jedes Wiedersehen die ganze Distanz zu löschen."},
-    {fr:"D'une part, nous avons beaucoup changé depuis nos vingt ans.", de:"Einerseits haben wir uns seit unseren Zwanzigern sehr verändert."},
-    {fr:"D'autre part, l'essentiel entre nous n'a jamais vraiment bougé.", de:"Andererseits hat sich das Wesentliche zwischen uns nie wirklich verändert."},
-    {fr:"Cette amitié a traversé des mariages, des déménagements, des deuils.", de:"Diese Freundschaft hat Hochzeiten, Umzüge und Trauerfälle überstanden."},
-    {fr:"On a toujours su être présents aux moments vraiment importants.", de:"Wir wussten immer, in wirklich wichtigen Momenten da zu sein."},
-    {fr:"Je mesure la chance immense d'avoir un tel ami fidèle.", de:"Ich schätze das immense Glück, einen so treuen Freund zu haben."},
-    {fr:"Certaines amitiés résistent vraiment à tout, avec le temps.", de:"Manche Freundschaften überstehen mit der Zeit wirklich alles."}
-  ], tip:{
-    title:"Nuancer son opinion : « einerseits... andererseits »",
-    example:"D'une part, nos vies ont pris des directions très différentes. D'autre part, notre complicité reste intacte. — <b>Einerseits</b> haben unsere Leben sehr unterschiedliche Richtungen genommen, <b>andererseits</b> bleibt unsere Verbundenheit intakt.",
-    body:"« Einerseits... andererseits... » (d'une part... d'autre part...) permet de présenter deux aspects complémentaires ou contradictoires d'une même idée, une construction très utile pour nuancer une opinion à l'oral comme à l'écrit. Chaque partie fonctionne comme une phrase principale indépendante, avec le verbe en deuxième position."
-  }},
-  { title:"Parler d'un échec personnel marquant", phrases:[
-    {fr:"J'ai vécu un échec professionnel vraiment difficile il y a quelques années.", de:"Ich habe vor einigen Jahren ein wirklich schwieriges berufliches Scheitern erlebt."},
-    {fr:"Sur le moment, j'ai eu l'impression que tout s'effondrait.", de:"In dem Moment hatte ich das Gefühl, alles würde zusammenbrechen."},
-    {fr:"Avec le temps, j'ai compris que cet échec m'a énormément appris.", de:"Mit der Zeit habe ich verstanden, dass mich dieses Scheitern enorm viel gelehrt hat."},
-    {fr:"Il m'a notamment appris à mieux accepter l'incertitude.", de:"Es hat mich insbesondere gelehrt, Ungewissheit besser zu akzeptieren."},
-    {fr:"Mes proches m'ont beaucoup soutenu pendant cette période difficile.", de:"Meine Nahestehenden haben mich während dieser schwierigen Zeit sehr unterstützt."},
-    {fr:"Aujourd'hui, je considère cet épisode comme un vrai tournant.", de:"Heute betrachte ich diese Episode als echten Wendepunkt."},
-    {fr:"Sans cet échec, je n'aurais probablement jamais changé de voie.", de:"Ohne dieses Scheitern hätte ich wahrscheinlich nie den Weg gewechselt."},
-    {fr:"Parler ouvertement de ses échecs reste encore difficile socialement.", de:"Offen über eigene Fehlschläge zu sprechen bleibt gesellschaftlich noch schwierig."},
-    {fr:"Pourtant, c'est souvent dans ces moments que l'on grandit vraiment.", de:"Dennoch wächst man oft gerade in solchen Momenten wirklich."},
-    {fr:"Je ne regrette absolument plus d'avoir traversé cette épreuve.", de:"Ich bereue es überhaupt nicht mehr, diese Prüfung durchlebt zu haben."}
-  ]},
-  { title:"Discuter de l'amour et des relations", phrases:[
-    {fr:"Construire une relation durable demande bien plus que de l'attirance.", de:"Eine dauerhafte Beziehung aufzubauen braucht weit mehr als Anziehung."},
-    {fr:"La communication honnête reste, selon moi, le fondement essentiel.", de:"Ehrliche Kommunikation bleibt meiner Meinung nach die wesentliche Grundlage."},
-    {fr:"Chaque couple traverse inévitablement des périodes plus compliquées.", de:"Jedes Paar durchlebt unausweichlich schwierigere Phasen."},
-    {fr:"L'important, c'est de continuer à se choisir chaque jour.", de:"Wichtig ist, sich jeden Tag weiterhin bewusst zu wählen."},
-    {fr:"Je crois profondément à l'importance de rester soi-même en couple.", de:"Ich glaube fest daran, in einer Beziehung sich selbst zu bleiben."},
-    {fr:"L'amour véritable laisse de la place à l'indépendance de chacun.", de:"Wahre Liebe lässt Raum für die Unabhängigkeit jedes Einzelnen."},
-    {fr:"Les désaccords, bien gérés, renforcent souvent la relation.", de:"Gut bewältigte Meinungsverschiedenheiten stärken die Beziehung oft."},
-    {fr:"Apprendre à pardonner reste une compétence essentielle en couple.", de:"Verzeihen zu lernen bleibt eine wesentliche Kompetenz in einer Beziehung."},
-    {fr:"Chaque relation nous enseigne quelque chose sur nous-mêmes.", de:"Jede Beziehung lehrt uns etwas über uns selbst."},
-    {fr:"Je souhaite à tout le monde de connaître ce genre d'amour sincère.", de:"Ich wünsche jedem, diese Art von ehrlicher Liebe zu erfahren."}
-  ]},
-  { title:"Chercher du sens dans son travail", phrases:[
-    {fr:"Je me demande souvent si mon travail a vraiment un impact positif.", de:"Ich frage mich oft, ob meine Arbeit wirklich eine positive Wirkung hat."},
-    {fr:"Le salaire seul ne suffit plus à me motiver pleinement.", de:"Allein das Gehalt reicht nicht mehr, um mich voll zu motivieren."},
-    {fr:"J'ai besoin de sentir que mes efforts servent quelque chose d'utile.", de:"Ich muss fühlen, dass meine Anstrengungen etwas Nützlichem dienen."},
-    {fr:"Beaucoup de gens repensent leur carrière après un certain âge.", de:"Viele Menschen überdenken ihre Karriere nach einem gewissen Alter."},
-    {fr:"Changer de métier demande du courage, mais peut tout transformer.", de:"Den Beruf zu wechseln erfordert Mut, kann aber alles verändern."},
-    {fr:"Je préfère gagner un peu moins, mais me sentir réellement utile.", de:"Ich ziehe es vor, etwas weniger zu verdienen, mich dafür aber wirklich nützlich zu fühlen."},
-    {fr:"Trouver du sens au travail reste pourtant un vrai privilège.", de:"Sinn in der Arbeit zu finden bleibt trotzdem ein echtes Privileg."},
-    {fr:"Tout le monde n'a pas la possibilité de choisir ainsi librement.", de:"Nicht jeder hat die Möglichkeit, so frei zu wählen."},
-    {fr:"Je reste reconnaissant d'avoir pu faire ce choix personnel.", de:"Ich bleibe dankbar, diese persönliche Wahl getroffen haben zu können."},
-    {fr:"Chercher du sens reste, selon moi, une quête permanente.", de:"Sinn zu suchen bleibt meiner Meinung nach eine ständige Suche."}
-  ]},
-  { title:"Dépasser les stéréotypes culturels", phrases:[
-    {fr:"Les Allemands ne sont tout de même pas tous aussi sérieux qu'on le dit.", de:"Die Deutschen sind doch nicht alle so ernst, wie man sagt."},
-    {fr:"Regarde donc un peu comme cette fête est joyeuse et détendue.", de:"Schau dir doch mal an, wie fröhlich und entspannt dieses Fest ist."},
-    {fr:"Essaie une fois de changer d'avis sur ce cliché ridicule.", de:"Versuch doch mal, deine Meinung über dieses lächerliche Klischee zu ändern."},
-    {fr:"Chaque culture possède évidemment ses propres nuances cachées.", de:"Jede Kultur hat eben ihre eigenen verborgenen Nuancen."},
-    {fr:"On généralise trop facilement à partir de quelques exemples isolés.", de:"Man verallgemeinert viel zu leicht anhand einiger isolierter Beispiele."},
-    {fr:"Viens donc discuter avec de vrais Allemands avant de juger.", de:"Komm doch mal mit echten Deutschen reden, bevor du urteilst."},
-    {fr:"Les clichés disparaissent généralement une fois la rencontre réelle vécue.", de:"Klischees verschwinden meist, sobald man die echte Begegnung erlebt hat."},
-    {fr:"C'est justement en voyageant qu'on dépasse ces préjugés simplistes.", de:"Gerade durchs Reisen überwindet man diese vereinfachenden Vorurteile."},
-    {fr:"Il faut bien admettre que chacun porte quelques stéréotypes en soi.", de:"Man muss eben zugeben, dass jeder ein paar Stereotype in sich trägt."},
-    {fr:"Rester curieux reste la meilleure arme contre ces généralisations.", de:"Neugierig zu bleiben bleibt die beste Waffe gegen solche Verallgemeinerungen."}
-  ], tip:{
-    title:"Les particules modales : doch, mal, eben",
-    example:"Les Allemands ne sont tout de même pas tous aussi sérieux qu'on le dit. — Die Deutschen sind <b>doch</b> nicht alle so ernst, wie man sagt.",
-    body:"Les particules modales (doch, mal, eben, ja, halt) n'ont pas de traduction fixe : elles nuancent le ton d'une phrase plutôt que son sens. « Doch » insiste ou contredit doucement, « mal » adoucit une demande ou une suggestion (Komm mal her), « eben » marque une évidence résignée. Elles sont essentielles pour sonner naturel à l'oral, même si elles sont difficiles à traduire littéralement."
-  }},
-  { title:"Une question philosophique entre amis", phrases:[
-    {fr:"Qu'est-ce qui donne vraiment un sens à une vie, selon toi ?", de:"Was gibt deiner Meinung nach einem Leben wirklich einen Sinn?"},
-    {fr:"Je pense que ce sont surtout les liens qu'on tisse avec les autres.", de:"Ich denke, es sind vor allem die Verbindungen, die man zu anderen aufbaut."},
-    {fr:"D'autres diraient plutôt que c'est l'accomplissement personnel qui compte.", de:"Andere würden eher sagen, dass persönliche Erfüllung zählt."},
-    {fr:"Peut-être que le sens change simplement selon les périodes de la vie.", de:"Vielleicht ändert sich der Sinn einfach je nach Lebensphase."},
-    {fr:"Cette question me semble plus importante avec l'âge, étrangement.", de:"Diese Frage scheint mir mit dem Alter seltsamerweise wichtiger zu werden."},
-    {fr:"On ne trouve peut-être jamais de réponse définitive à cela.", de:"Vielleicht findet man darauf nie eine endgültige Antwort."},
-    {fr:"Je trouve pourtant rassurant de continuer à se poser la question.", de:"Ich finde es trotzdem beruhigend, sich diese Frage weiter zu stellen."},
-    {fr:"Ces discussions nocturnes entre amis restent précieuses, finalement.", de:"Diese nächtlichen Gespräche unter Freunden bleiben letztendlich wertvoll."},
-    {fr:"Elles nous rappellent qu'on n'est jamais seul face à ces doutes.", de:"Sie erinnern uns daran, dass man mit diesen Zweifeln nie allein ist."},
-    {fr:"Continuons à nous poser ces grandes questions ensemble.", de:"Lass uns diese großen Fragen weiterhin gemeinsam stellen."}
-  ]},
-  { title:"Penser à l'héritage qu'on laisse", phrases:[
-    {fr:"Je me demande parfois ce que les gens retiendront de moi.", de:"Ich frage mich manchmal, was die Leute von mir in Erinnerung behalten werden."},
-    {fr:"Ce ne sont probablement pas les objets matériels qui comptent vraiment.", de:"Es sind wahrscheinlich nicht die materiellen Dinge, die wirklich zählen."},
-    {fr:"Ce sont plutôt les valeurs qu'on transmet à ceux qu'on aime.", de:"Es sind vielmehr die Werte, die man den Menschen weitergibt, die man liebt."},
-    {fr:"Mes grands-parents m'ont laissé une leçon de persévérance précieuse.", de:"Meine Großeltern haben mir eine wertvolle Lektion in Beharrlichkeit hinterlassen."},
-    {fr:"J'espère transmettre à mon tour un peu de cette force tranquille.", de:"Ich hoffe, meinerseits etwas von dieser ruhigen Stärke weiterzugeben."},
-    {fr:"Un héritage ne se mesure pas forcément en argent ou en biens.", de:"Ein Erbe misst sich nicht unbedingt in Geld oder Besitz."},
-    {fr:"Les souvenirs partagés valent souvent bien plus que n'importe quel objet.", de:"Gemeinsame Erinnerungen sind oft viel mehr wert als jeder Gegenstand."},
-    {fr:"Je souhaite surtout qu'on se souvienne de ma bienveillance envers les autres.", de:"Ich wünsche mir vor allem, dass man sich an meine Freundlichkeit anderen gegenüber erinnert."},
-    {fr:"Cette réflexion me pousse à vivre plus consciemment chaque jour.", de:"Diese Überlegung bringt mich dazu, jeden Tag bewusster zu leben."},
-    {fr:"Au fond, c'est peut-être la meilleure définition d'une vie réussie.", de:"Im Grunde ist das vielleicht die beste Definition eines gelungenen Lebens."}
-  ]},
-  { title:"Parler de pardon", phrases:[
-    {fr:"Pardonner à quelqu'un ne signifie pas oublier ce qui s'est passé.", de:"Jemandem zu verzeihen bedeutet nicht, zu vergessen, was passiert ist."},
-    {fr:"J'ai mis des années à pardonner une vieille blessure familiale.", de:"Ich habe Jahre gebraucht, um eine alte familiäre Verletzung zu verzeihen."},
-    {fr:"Ce processus demande énormément de temps et d'honnêteté envers soi-même.", de:"Dieser Prozess erfordert enorm viel Zeit und Ehrlichkeit sich selbst gegenüber."},
-    {fr:"Garder de la rancœur finit surtout par nous faire mal à nous-mêmes.", de:"Groll zu behalten schadet letztendlich vor allem uns selbst."},
-    {fr:"Pardonner ne veut pas forcément dire renouer la relation d'avant.", de:"Verzeihen bedeutet nicht unbedingt, die frühere Beziehung wiederherzustellen."},
-    {fr:"Parfois, le pardon se fait simplement pour notre propre paix intérieure.", de:"Manchmal geschieht Verzeihen einfach für unseren eigenen inneren Frieden."},
-    {fr:"J'ai appris à accepter que certaines excuses n'arriveront jamais.", de:"Ich habe gelernt zu akzeptieren, dass manche Entschuldigungen nie kommen werden."},
-    {fr:"Cette acceptation m'a libéré d'un poids que je portais depuis longtemps.", de:"Diese Akzeptanz hat mich von einer Last befreit, die ich lange getragen habe."},
-    {fr:"Le pardon reste, je crois, l'un des actes les plus courageux.", de:"Verzeihen bleibt, glaube ich, eine der mutigsten Handlungen."},
-    {fr:"J'essaie désormais de pardonner plus facilement, y compris à moi-même.", de:"Ich versuche inzwischen, leichter zu verzeihen, auch mir selbst."}
-  ]},
-  { title:"Un au revoir difficile", phrases:[
-    {fr:"Dire au revoir à des amis chers reste toujours un moment douloureux.", de:"Sich von lieben Freunden zu verabschieden bleibt immer ein schmerzhafter Moment."},
-    {fr:"Nous avons passé notre dernière soirée ensemble à nous souvenir du passé.", de:"Wir haben unseren letzten Abend zusammen damit verbracht, uns an die Vergangenheit zu erinnern."},
-    {fr:"Personne n'osait vraiment prononcer les derniers mots d'adieu.", de:"Niemand wagte wirklich, die letzten Abschiedsworte auszusprechen."},
-    {fr:"On s'est promis de garder contact, malgré la distance à venir.", de:"Wir haben uns versprochen, trotz der kommenden Entfernung in Kontakt zu bleiben."},
-    {fr:"Ce genre de promesse n'est pas toujours facile à tenir, honnêtement.", de:"Solche Versprechen sind ehrlich gesagt nicht immer leicht zu halten."},
-    {fr:"Pourtant, certaines amitiés résistent vraiment à l'épreuve de la distance.", de:"Manche Freundschaften überstehen jedoch wirklich die Prüfung der Entfernung."},
-    {fr:"Les larmes de ce soir-là en disaient plus que n'importe quel discours.", de:"Die Tränen jenes Abends sagten mehr als jede Rede."},
-    {fr:"Ce chapitre se fermait, mais un autre s'ouvrait déjà ailleurs.", de:"Dieses Kapitel schloss sich, aber ein anderes öffnete sich bereits anderswo."},
-    {fr:"Les adieux les plus difficiles concernent toujours les gens qu'on aime vraiment.", de:"Die schwierigsten Abschiede betreffen immer die Menschen, die man wirklich liebt."},
-    {fr:"On en garde, malgré la tristesse, un souvenir profondément beau.", de:"Trotz der Traurigkeit bewahrt man davon eine zutiefst schöne Erinnerung."}
-  ]},
-  { title:"Garder espoir face à l'avenir", phrases:[
-    {fr:"Malgré les difficultés actuelles, je garde une forme d'espoir tenace.", de:"Trotz der aktuellen Schwierigkeiten bewahre ich eine Art beharrlicher Hoffnung."},
-    {fr:"L'avenir me semble incertain, mais pas forcément sombre.", de:"Die Zukunft erscheint mir ungewiss, aber nicht unbedingt düster."},
-    {fr:"Chaque génération a traversé des crises qui paraissaient insurmontables.", de:"Jede Generation hat Krisen durchlebt, die unüberwindbar schienen."},
-    {fr:"L'histoire nous rappelle que l'humanité trouve souvent des solutions.", de:"Die Geschichte erinnert uns daran, dass die Menschheit oft Lösungen findet."},
-    {fr:"Je choisis consciemment de cultiver l'optimisme au quotidien.", de:"Ich entscheide mich bewusst dafür, im Alltag Optimismus zu pflegen."},
-    {fr:"Cela ne signifie pas ignorer les vrais problèmes du monde.", de:"Das bedeutet nicht, die echten Probleme der Welt zu ignorieren."},
-    {fr:"Mais plutôt croire qu'une action positive reste toujours possible.", de:"Sondern eher zu glauben, dass positives Handeln immer möglich bleibt."},
-    {fr:"Les jeunes générations me donnent énormément confiance pour l'avenir.", de:"Die jungen Generationen geben mir enorm viel Vertrauen in die Zukunft."},
-    {fr:"Leur énergie et leur engagement sont vraiment inspirants à observer.", de:"Ihre Energie und ihr Engagement sind wirklich inspirierend zu beobachten."},
-    {fr:"Garder espoir reste, je crois, un véritable acte de résistance.", de:"Hoffnung zu bewahren bleibt, glaube ich, ein echter Akt des Widerstands."}
-  ]},
-  { title:"Le silence et l'introspection", phrases:[
-    {fr:"J'apprécie de plus en plus les moments de silence complet.", de:"Ich schätze zunehmend Momente völliger Stille."},
-    {fr:"Notre époque semble avoir peur du vide et du calme.", de:"Unsere Zeit scheint Angst vor Leere und Ruhe zu haben."},
-    {fr:"Pourtant, c'est souvent dans ce silence qu'on s'entend vraiment penser.", de:"Dabei kann man gerade in dieser Stille wirklich sich selbst denken hören."},
-    {fr:"Je m'accorde chaque matin dix minutes de silence volontaire.", de:"Ich gönne mir jeden Morgen zehn Minuten bewusste Stille."},
-    {fr:"Ce rituel simple a changé ma façon d'aborder la journée.", de:"Dieses einfache Ritual hat meine Art, den Tag anzugehen, verändert."},
-    {fr:"L'introspection demande du courage, car elle révèle parfois des vérités inconfortables.", de:"Introspektion erfordert Mut, denn sie offenbart manchmal unbequeme Wahrheiten."},
-    {fr:"Apprendre à être seul avec soi-même reste une compétence essentielle.", de:"Zu lernen, mit sich selbst allein zu sein, bleibt eine wesentliche Fähigkeit."},
-    {fr:"Le bruit permanent de nos vies nous empêche souvent de vraiment réfléchir.", de:"Der ständige Lärm unseres Lebens hindert uns oft daran, wirklich nachzudenken."},
-    {fr:"Je recommande vivement ces moments de retrait, même brefs.", de:"Ich empfehle solche Momente des Rückzugs, auch kurze, sehr."},
-    {fr:"Le silence n'est finalement jamais vide, il est juste différent.", de:"Stille ist letztendlich nie leer, sie ist einfach anders."}
-  ]},
-  { title:"Regarder en arrière sur ce parcours linguistique", phrases:[
-    {fr:"Quand j'ai commencé l'allemand, chaque phrase me semblait insurmontable.", de:"Als ich mit Deutsch anfing, schien mir jeder Satz unüberwindbar."},
-    {fr:"Aujourd'hui, je pense et je rêve parfois directement en allemand.", de:"Heute denke und träume ich manchmal direkt auf Deutsch."},
-    {fr:"Cette transformation s'est faite progressivement, presque sans que je m'en rende compte.", de:"Diese Veränderung geschah allmählich, fast ohne dass ich es bemerkte."},
-    {fr:"Chaque niveau franchi m'a ouvert de nouvelles portes insoupçonnées.", de:"Jedes erreichte Niveau hat mir ungeahnte neue Türen geöffnet."},
-    {fr:"La grammaire qui me semblait impossible paraît désormais presque naturelle.", de:"Die Grammatik, die mir unmöglich schien, wirkt inzwischen fast selbstverständlich."},
-    {fr:"Ce voyage linguistique a profondément changé ma vision de ce pays.", de:"Diese sprachliche Reise hat meine Sicht auf dieses Land tief verändert."},
-    {fr:"Apprendre une langue, c'est finalement apprendre à voir le monde autrement.", de:"Eine Sprache zu lernen bedeutet letztendlich, die Welt anders zu sehen."},
-    {fr:"Je suis sincèrement fier du chemin parcouru jusqu'ici.", de:"Ich bin aufrichtig stolz auf den bisher zurückgelegten Weg."},
-    {fr:"Cette aventure linguistique n'est d'ailleurs probablement jamais vraiment terminée.", de:"Dieses sprachliche Abenteuer ist übrigens wahrscheinlich nie wirklich zu Ende."},
-    {fr:"Il reste toujours quelque chose de nouveau à apprendre ou affiner.", de:"Es gibt immer noch etwas Neues zu lernen oder zu verfeinern."}
-  ]},
-  { title:"Fin du niveau : un dernier bilan", phrases:[
-    {fr:"Ce dernier module a abordé les sujets les plus profonds de notre parcours.", de:"Dieses letzte Modul hat die tiefsten Themen unseres Weges behandelt."},
-    {fr:"Identité, amitié, espoir : nous avons vraiment tout exploré en allemand.", de:"Identität, Freundschaft, Hoffnung: wir haben wirklich alles auf Deutsch erkundet."},
-    {fr:"Le Konjunktiv, le passif et les subordonnées complexes nous semblent désormais familiers.", de:"Der Konjunktiv, das Passiv und komplexe Nebensätze erscheinen uns inzwischen vertraut."},
-    {fr:"Ce troisième niveau marque vraiment la fin de ce long voyage linguistique.", de:"Dieses dritte Niveau markiert wirklich das Ende dieser langen sprachlichen Reise."},
-    {fr:"On a parcouru un chemin immense depuis les premières phrases simples.", de:"Wir haben seit den ersten einfachen Sätzen einen enormen Weg zurückgelegt."},
-    {fr:"Chaque leçon a ajouté une pierre à cet édifice patiemment construit.", de:"Jede Lektion hat diesem geduldig aufgebauten Gebäude einen Stein hinzugefügt."},
-    {fr:"L'allemand fait désormais vraiment partie de notre vie quotidienne.", de:"Deutsch ist jetzt wirklich ein Teil unseres Alltagslebens geworden."},
-    {fr:"Félicitations infinies pour cette formidable aventure menée jusqu'au bout.", de:"Unendliche Glückwünsche zu diesem großartigen, bis zum Ende durchgeführten Abenteuer."},
-    {fr:"Accordons-nous enfin un repos pleinement mérité après ce long parcours.", de:"Gönnen wir uns nach diesem langen Weg endlich eine voll verdiente Ruhepause."},
-    {fr:"À très bientôt pour de nouvelles aventures, en allemand ou ailleurs.", de:"Bis ganz bald für neue Abenteuer, auf Deutsch oder anderswo."}
-  ]}
+ {
+  "title": "Une soirée pleine d'expressions brésiliennes",
+  "phrases": [
+   {
+    "fr": "Hier soir, j'ai complètement raté mon discours devant tout le monde.",
+    "pt": "Ontem à noite, eu paguei o maior mico na frente de todo mundo."
+   },
+   {
+    "fr": "Ne t'inquiète pas, tout le monde se ridiculise un jour ou l'autre.",
+    "pt": "Relaxa, todo mundo paga mico um dia ou outro."
+   },
+   {
+    "fr": "On fait une cagnotte pour offrir un cadeau à Mariana ?",
+    "pt": "Vamos fazer uma vaquinha para dar um presente para a Mariana?"
+   },
+   {
+    "fr": "Il a parlé pendant une heure sans rien dire d'intéressant.",
+    "pt": "Ele ficou uma hora enchendo linguiça sem dizer nada de interessante."
+   },
+   {
+    "fr": "Arrête de tourner autour du pot et dis-moi la vérité.",
+    "pt": "Para de enrolar e me fala a verdade."
+   },
+   {
+    "fr": "Ce projet est tombé à l'eau au dernier moment.",
+    "pt": "Esse projeto foi por água abaixo no último minuto."
+   },
+   {
+    "fr": "Avec lui, c'est toujours la même chanson.",
+    "pt": "Com ele é sempre a mesma ladainha."
+   },
+   {
+    "fr": "Elle a trouvé une solution en un clin d'œil.",
+    "pt": "Ela achou uma solução num piscar de olhos."
+   },
+   {
+    "fr": "Franchement, ce n'est pas la mer à boire.",
+    "pt": "Sinceramente, não é nenhum bicho de sete cabeças."
+   },
+   {
+    "fr": "Ces expressions rendent la conversation tellement plus vivante.",
+    "pt": "Essas expressões deixam a conversa muito mais viva."
+   }
+  ],
+  "tip": {
+   "title": "Les expressions idiomatiques : « pagar mico », « fazer uma vaquinha », « encher linguiça »",
+   "example": "Hier soir, j'ai complètement raté mon discours devant tout le monde. — Ontem à noite, eu <b>paguei o maior mico</b> na frente de todo mundo.",
+   "body": "Le portugais du Brésil est riche en expressions imagées qu'on ne peut pas traduire mot à mot. « Pagar mico » (littéralement « payer le singe ») signifie se ridiculiser, « fazer uma vaquinha » (« faire une petite vache ») veut dire organiser une cagnotte, et « encher linguiça » (« remplir la saucisse ») désigne le fait de parler pour ne rien dire. Les utiliser au bon moment fait tout de suite sonner votre portugais beaucoup plus naturel."
+  }
+ },
+ {
+  "title": "Débattre des réseaux sociaux",
+  "phrases": [
+   {
+    "fr": "Les réseaux sociaux ont bouleversé la manière dont on se parle.",
+    "pt": "As redes sociais mudaram completamente o jeito como a gente se comunica."
+   },
+   {
+    "fr": "Certains pensent qu'ils nous poussent à nous comparer sans cesse.",
+    "pt": "Tem gente que acha que elas fazem a gente se comparar o tempo todo."
+   },
+   {
+    "fr": "Pour d'autres, ils permettent de garder le contact avec la famille éloignée.",
+    "pt": "Para outros, elas permitem manter contato com a família que mora longe."
+   },
+   {
+    "fr": "Au Brésil, presque tout le monde s'organise par des groupes de messages.",
+    "pt": "No Brasil, quase todo mundo se organiza por grupos de mensagem."
+   },
+   {
+    "fr": "Le groupe de la famille ne s'arrête jamais, même à trois heures du matin.",
+    "pt": "O grupo da família não para nunca, nem às três da manhã."
+   },
+   {
+    "fr": "Il est devenu difficile de distinguer une vraie information d'une rumeur.",
+    "pt": "Ficou difícil distinguir uma informação verdadeira de um boato."
+   },
+   {
+    "fr": "Je vérifie toujours la source avant de partager une nouvelle.",
+    "pt": "Eu sempre confiro a fonte antes de compartilhar uma notícia."
+   },
+   {
+    "fr": "J'ai décidé de passer moins de temps sur mon téléphone le soir.",
+    "pt": "Eu decidi passar menos tempo no celular à noite."
+   },
+   {
+    "fr": "Le problème n'est peut-être pas l'outil, mais l'usage qu'on en fait.",
+    "pt": "Talvez o problema não seja a ferramenta, mas o uso que a gente faz dela."
+   },
+   {
+    "fr": "Sur ce sujet, je crois qu'il n'existe pas de réponse simple.",
+    "pt": "Sobre esse assunto, acho que não existe uma resposta simples."
+   }
+  ]
+ },
+ {
+  "title": "Parler de santé mentale ouvertement",
+  "phrases": [
+   {
+    "fr": "Mon cousin m'a avoué qu'il traversait une phase très compliquée.",
+    "pt": "Meu primo me contou que estava passando por uma fase muito complicada."
+   },
+   {
+    "fr": "Il s'est senti épuisé pendant des mois, d'ailleurs il a dû s'arrêter de travailler.",
+    "pt": "Ele se sentiu esgotado durante meses, aliás, teve que parar de trabalhar."
+   },
+   {
+    "fr": "Eh oui, ça arrive à beaucoup plus de gens qu'on ne le croit.",
+    "pt": "Pois é, isso acontece com muito mais gente do que a gente imagina."
+   },
+   {
+    "fr": "Il a fini par consulter une psychologue près de chez lui.",
+    "pt": "Ele acabou procurando uma psicóloga perto da casa dele."
+   },
+   {
+    "fr": "Au début, il avait genre honte d'en parler.",
+    "pt": "No começo, ele tinha tipo vergonha de falar sobre isso."
+   },
+   {
+    "fr": "Bref, aujourd'hui il va beaucoup mieux.",
+    "pt": "Enfim, hoje ele está bem melhor."
+   },
+   {
+    "fr": "Je trouve courageux de demander de l'aide quand on en a besoin.",
+    "pt": "Eu acho corajoso pedir ajuda quando a gente precisa."
+   },
+   {
+    "fr": "Parler de ses émotions ne devrait plus être un tabou.",
+    "pt": "Falar das próprias emoções não deveria mais ser um tabu."
+   },
+   {
+    "fr": "Parfois, il suffit d'écouter sans donner de conseils.",
+    "pt": "Às vezes, basta escutar sem dar conselho."
+   },
+   {
+    "fr": "Prendre soin de son esprit est aussi important que prendre soin de son corps.",
+    "pt": "Cuidar da mente é tão importante quanto cuidar do corpo."
+   }
+  ],
+  "tip": {
+   "title": "Les marqueurs de discours : « aliás, pois é, enfim, tipo »",
+   "example": "Bref, aujourd'hui il va beaucoup mieux. — <b>Enfim</b>, hoje ele está bem melhor.",
+   "body": "Ces petits mots rythment la conversation brésilienne. « Aliás » signifie « d'ailleurs » ou « au fait », « pois é » exprime l'accord (« eh oui », « c'est bien ça »), « enfim » sert à conclure (« bref », « enfin bref »). « Tipo », très fréquent chez les jeunes, équivaut à « genre » ou « du style » : « Ele tinha tipo vergonha ». À doser avec modération, mais indispensables pour parler comme un Brésilien."
+  }
+ },
+ {
+  "title": "Un dilemme moral entre amis",
+  "phrases": [
+   {
+    "fr": "Ma meilleure amie m'a demandé conseil sur un choix vraiment délicat.",
+    "pt": "Minha melhor amiga me pediu conselho sobre uma escolha bem delicada."
+   },
+   {
+    "fr": "Elle a découvert que son collègue mentait à toute l'équipe.",
+    "pt": "Ela descobriu que o colega dela estava mentindo para a equipe inteira."
+   },
+   {
+    "fr": "Si elle le dénonce, il risque de perdre son emploi.",
+    "pt": "Se ela denunciar, ele corre o risco de perder o emprego."
+   },
+   {
+    "fr": "Si elle se tait, elle a l'impression d'être complice.",
+    "pt": "Se ela ficar calada, vai sentir que é cúmplice."
+   },
+   {
+    "fr": "Je lui ai conseillé de lui parler en tête-à-tête d'abord.",
+    "pt": "Eu aconselhei que ela conversasse com ele a sós primeiro."
+   },
+   {
+    "fr": "Il mérite peut-être une chance de s'expliquer.",
+    "pt": "Talvez ele mereça uma chance de se explicar."
+   },
+   {
+    "fr": "Il n'y a pas toujours de bonne réponse dans ce genre de situation.",
+    "pt": "Nem sempre existe uma resposta certa nesse tipo de situação."
+   },
+   {
+    "fr": "Ce qui compte, c'est de pouvoir se regarder dans le miroir.",
+    "pt": "O que importa é conseguir se olhar no espelho."
+   },
+   {
+    "fr": "Elle m'a remercié de l'avoir écoutée sans la juger.",
+    "pt": "Ela me agradeceu por eu ter escutado sem julgar."
+   },
+   {
+    "fr": "Les vrais amis sont là aussi pour les décisions difficiles.",
+    "pt": "Os amigos de verdade estão aí também para as decisões difíceis."
+   }
+  ]
+ },
+ {
+  "title": "Préserver l'Amazonie",
+  "phrases": [
+   {
+    "fr": "La déforestation de l'Amazonie m'inquiète de plus en plus.",
+    "pt": "O desmatamento da Amazônia me preocupa cada vez mais."
+   },
+   {
+    "fr": "On ne peut pas laisser la forêt disparaître sous nos yeux.",
+    "pt": "A gente não pode deixar a floresta desaparecer diante dos nossos olhos."
+   },
+   {
+    "fr": "Les peuples autochtones protègent ce territoire depuis des siècles.",
+    "pt": "Os povos indígenas protegem esse território há séculos."
+   },
+   {
+    "fr": "Il faudrait les laisser décider de l'avenir de leurs terres.",
+    "pt": "Seria preciso deixar que eles decidissem o futuro das suas terras."
+   },
+   {
+    "fr": "Mon frère a arrêté de manger de la viande pour cette raison.",
+    "pt": "Meu irmão deixou de comer carne por esse motivo."
+   },
+   {
+    "fr": "Je crois qu'il faut agir même quand on se sent impuissant.",
+    "pt": "Eu acho que é preciso agir mesmo quando a gente se sente impotente."
+   },
+   {
+    "fr": "Chaque geste compte, mais les grandes décisions restent politiques.",
+    "pt": "Cada atitude conta, mas as grandes decisões continuam sendo políticas."
+   },
+   {
+    "fr": "Les fleuves de l'Amazonie influencent les pluies de tout le pays.",
+    "pt": "Os rios da Amazônia influenciam as chuvas do país inteiro."
+   },
+   {
+    "fr": "Laisse-moi te montrer un documentaire sur ce sujet.",
+    "pt": "Deixa eu te mostrar um documentário sobre esse assunto."
+   },
+   {
+    "fr": "Les générations futures nous demanderont ce que nous avons fait.",
+    "pt": "As próximas gerações vão perguntar o que a gente fez."
+   }
+  ],
+  "tip": {
+   "title": "Les différents sens de « deixar »",
+   "example": "Mon frère a arrêté de manger de la viande pour cette raison. — Meu irmão <b>deixou de</b> comer carne por esse motivo.",
+   "body": "« Deixar » est un verbe aux multiples visages. Il signifie « laisser » (« Deixei a chave em casa »), « permettre » (« Deixa eu te mostrar », laisse-moi te montrer) et, suivi de « de » + infinitif, « arrêter de » (« Deixei de fumar », j'ai arrêté de fumer). Il sert aussi à exprimer un changement d'état : « Isso me deixa feliz » (ça me rend heureux)."
+  }
+ },
+ {
+  "title": "Les différences entre générations",
+  "phrases": [
+   {
+    "fr": "Ma grand-mère a grandi dans une petite ville du Minas Gerais.",
+    "pt": "Minha avó cresceu numa cidadezinha de Minas Gerais."
+   },
+   {
+    "fr": "Elle allait à l'école à pied, à plusieurs kilomètres de chez elle.",
+    "pt": "Ela ia para a escola a pé, a vários quilômetros de casa."
+   },
+   {
+    "fr": "À son époque, on écoutait les feuilletons à la radio en famille.",
+    "pt": "Na época dela, a família ouvia novela no rádio junta."
+   },
+   {
+    "fr": "Les jeunes d'aujourd'hui ont le monde entier dans leur poche.",
+    "pt": "Os jovens de hoje têm o mundo inteiro no bolso."
+   },
+   {
+    "fr": "Pourtant, beaucoup se sentent plus seuls que leurs grands-parents.",
+    "pt": "Mesmo assim, muitos se sentem mais sozinhos do que os avós."
+   },
+   {
+    "fr": "Chaque génération critique un peu celle qui la suit.",
+    "pt": "Cada geração critica um pouco a geração seguinte."
+   },
+   {
+    "fr": "J'apprends énormément en écoutant les histoires de ma grand-mère.",
+    "pt": "Eu aprendo muito ouvindo as histórias da minha avó."
+   },
+   {
+    "fr": "Elle, de son côté, me demande de lui apprendre à envoyer des photos.",
+    "pt": "Ela, por sua vez, me pede para ensinar a mandar fotos."
+   },
+   {
+    "fr": "Ces échanges nous rapprochent plus qu'on ne l'aurait cru.",
+    "pt": "Essas trocas aproximam a gente mais do que imaginávamos."
+   },
+   {
+    "fr": "Au fond, nous cherchons tous la même chose : être compris.",
+    "pt": "No fundo, todos nós buscamos a mesma coisa: ser compreendidos."
+   }
+  ]
+ },
+ {
+  "title": "Discuter d'art et de créativité",
+  "phrases": [
+   {
+    "fr": "Les fresques de rue de São Paulo m'ont vraiment marqué.",
+    "pt": "Os grafites de rua de São Paulo me marcaram muito."
+   },
+   {
+    "fr": "Dans certains quartiers, chaque mur raconte une histoire.",
+    "pt": "Em alguns bairros, cada muro conta uma história."
+   },
+   {
+    "fr": "L'art permet de dire ce que les mots n'arrivent pas à exprimer.",
+    "pt": "A arte permite dizer o que as palavras não conseguem expressar."
+   },
+   {
+    "fr": "J'ai visité un musée d'art contemporain en pleine nature, dans le Minas Gerais.",
+    "pt": "Eu visitei um museu de arte contemporânea no meio da natureza, em Minas Gerais."
+   },
+   {
+    "fr": "Certaines œuvres m'ont dérouté, d'autres m'ont ému aux larmes.",
+    "pt": "Algumas obras me deixaram confuso, outras me emocionaram até as lágrimas."
+   },
+   {
+    "fr": "Je ne comprends pas toujours l'art abstrait, mais je le ressens.",
+    "pt": "Nem sempre eu entendo a arte abstrata, mas eu sinto."
+   },
+   {
+    "fr": "La bossa nova est née d'un mélange de samba et de jazz.",
+    "pt": "A bossa nova nasceu de uma mistura de samba e jazz."
+   },
+   {
+    "fr": "Pour moi, la créativité naît souvent des contraintes.",
+    "pt": "Para mim, a criatividade muitas vezes nasce das limitações."
+   },
+   {
+    "fr": "J'aimerais reprendre la guitare, que j'ai abandonnée adolescent.",
+    "pt": "Eu queria voltar a tocar violão, que eu larguei na adolescência."
+   },
+   {
+    "fr": "Il n'est jamais trop tard pour créer quelque chose de beau.",
+    "pt": "Nunca é tarde demais para criar algo bonito."
+   }
+  ]
+ },
+ {
+  "title": "Une amitié qui dure depuis vingt ans",
+  "phrases": [
+   {
+    "fr": "Nous nous sommes rencontrés à la fac, à Recife.",
+    "pt": "A gente se conheceu na faculdade, em Recife."
+   },
+   {
+    "fr": "Nos vies ont pris des chemins très différents depuis.",
+    "pt": "Nossas vidas tomaram caminhos muito diferentes desde então."
+   },
+   {
+    "fr": "Il vit à Porto Alegre, moi je suis resté dans le Nordeste.",
+    "pt": "Ele mora em Porto Alegre, e eu fiquei no Nordeste."
+   },
+   {
+    "fr": "Nous nous voyons à peine deux fois par an.",
+    "pt": "A gente se vê mal e mal duas vezes por ano."
+   },
+   {
+    "fr": "Pourtant, à chaque retrouvaille, c'est comme si on s'était quittés la veille.",
+    "pt": "Mesmo assim, cada vez que a gente se reencontra, parece que se despediu ontem."
+   },
+   {
+    "fr": "Il a beau être très occupé, il m'appelle toujours pour mon anniversaire.",
+    "pt": "Por mais que ele esteja muito ocupado, ele sempre me liga no meu aniversário."
+   },
+   {
+    "fr": "Même si on se dispute parfois, notre complicité reste intacte.",
+    "pt": "Por mais que a gente brigue às vezes, nossa cumplicidade continua intacta."
+   },
+   {
+    "fr": "Il connaît mes défauts mieux que personne.",
+    "pt": "Ele conhece meus defeitos melhor do que ninguém."
+   },
+   {
+    "fr": "Une amitié comme celle-là, ça se cultive avec patience.",
+    "pt": "Uma amizade assim se cultiva com paciência."
+   },
+   {
+    "fr": "Je lui dois une bonne partie de ce que je suis devenu.",
+    "pt": "Eu devo a ele boa parte do que eu me tornei."
+   }
+  ],
+  "tip": {
+   "title": "« Por mais que » + subjonctif",
+   "example": "Il a beau être très occupé, il m'appelle toujours pour mon anniversaire. — <b>Por mais que</b> ele <b>esteja</b> muito ocupado, ele sempre me liga no meu aniversário.",
+   "body": "« Por mais que » correspond à « avoir beau » ou « même si… autant que », et il est toujours suivi du subjonctif : « Por mais que eu tente, não consigo » (j'ai beau essayer, je n'y arrive pas). Au passé, on utilise le subjonctif imparfait : « Por mais que ele tentasse… ». C'est une tournure élégante pour exprimer une concession."
+  }
+ },
+ {
+  "title": "Parler d'un échec personnel marquant",
+  "phrases": [
+   {
+    "fr": "Il y a quelques années, j'ai ouvert un petit restaurant à Belo Horizonte.",
+    "pt": "Alguns anos atrás, eu abri um restaurantezinho em Belo Horizonte."
+   },
+   {
+    "fr": "Malgré tous mes efforts, j'ai dû le fermer au bout de deux ans.",
+    "pt": "Apesar de todo o meu esforço, tive que fechar depois de dois anos."
+   },
+   {
+    "fr": "Sur le moment, j'ai eu l'impression que tout s'écroulait.",
+    "pt": "Na hora, eu tive a impressão de que tudo estava desmoronando."
+   },
+   {
+    "fr": "J'avais honte de croiser les gens du quartier.",
+    "pt": "Eu tinha vergonha de encontrar o pessoal do bairro."
+   },
+   {
+    "fr": "Ma famille m'a soutenu sans jamais me faire de reproches.",
+    "pt": "Minha família me apoiou sem nunca me criticar."
+   },
+   {
+    "fr": "Avec le recul, cet échec m'a appris énormément de choses.",
+    "pt": "Olhando para trás, esse fracasso me ensinou muita coisa."
+   },
+   {
+    "fr": "J'ai compris l'importance de bien m'entourer.",
+    "pt": "Eu entendi a importância de me cercar de boas pessoas."
+   },
+   {
+    "fr": "Aujourd'hui, je n'ai plus peur de me tromper.",
+    "pt": "Hoje eu não tenho mais medo de errar."
+   },
+   {
+    "fr": "Échouer ne fait pas de nous des perdants.",
+    "pt": "Fracassar não faz da gente um perdedor."
+   },
+   {
+    "fr": "Ce qui compte, c'est la façon dont on se relève.",
+    "pt": "O que importa é o jeito como a gente se levanta."
+   }
+  ]
+ },
+ {
+  "title": "Discuter de l'amour et des relations",
+  "phrases": [
+   {
+    "fr": "Construire une relation solide demande bien plus que de l'attirance.",
+    "pt": "Construir um relacionamento sólido exige muito mais do que atração."
+   },
+   {
+    "fr": "Selon moi, le dialogue sincère est la base de tout.",
+    "pt": "Na minha opinião, o diálogo sincero é a base de tudo."
+   },
+   {
+    "fr": "Mes parents sont mariés depuis plus de quarante ans.",
+    "pt": "Meus pais são casados há mais de quarenta anos."
+   },
+   {
+    "fr": "Ils disent que le secret, c'est de rire ensemble tous les jours.",
+    "pt": "Eles dizem que o segredo é rir juntos todos os dias."
+   },
+   {
+    "fr": "Chaque couple traverse forcément des moments plus difficiles.",
+    "pt": "Todo casal passa, com certeza, por momentos mais difíceis."
+   },
+   {
+    "fr": "Il faut accepter que l'autre ne pense pas toujours comme nous.",
+    "pt": "É preciso aceitar que o outro nem sempre pensa como a gente."
+   },
+   {
+    "fr": "La jalousie peut détruire même les plus belles histoires.",
+    "pt": "O ciúme pode destruir até as histórias mais bonitas."
+   },
+   {
+    "fr": "Être seul n'est pas un échec, c'est parfois un choix.",
+    "pt": "Estar sozinho não é um fracasso, às vezes é uma escolha."
+   },
+   {
+    "fr": "Je crois qu'on doit d'abord apprendre à s'aimer soi-même.",
+    "pt": "Eu acho que a gente precisa primeiro aprender a se amar."
+   },
+   {
+    "fr": "L'amour, au fond, c'est choisir l'autre chaque jour.",
+    "pt": "O amor, no fundo, é escolher o outro todos os dias."
+   }
+  ]
+ },
+ {
+  "title": "Chercher du sens dans son travail",
+  "phrases": [
+   {
+    "fr": "Je me demande souvent si mon travail sert vraiment à quelque chose.",
+    "pt": "Eu me pergunto muitas vezes se o meu trabalho serve mesmo para alguma coisa."
+   },
+   {
+    "fr": "Le salaire ne suffit plus à me motiver.",
+    "pt": "O salário já não é suficiente para me motivar."
+   },
+   {
+    "fr": "J'ai besoin de sentir que mes efforts aident quelqu'un.",
+    "pt": "Eu preciso sentir que o meu esforço ajuda alguém."
+   },
+   {
+    "fr": "Une amie a quitté une grande entreprise pour enseigner dans une école publique.",
+    "pt": "Uma amiga largou uma grande empresa para dar aula numa escola pública."
+   },
+   {
+    "fr": "Elle gagne moins, mais elle se sent beaucoup plus utile.",
+    "pt": "Ela ganha menos, mas se sente muito mais útil."
+   },
+   {
+    "fr": "Tout le monde ne peut pas se permettre ce genre de changement.",
+    "pt": "Nem todo mundo pode se dar ao luxo de fazer esse tipo de mudança."
+   },
+   {
+    "fr": "Parfois, le sens se trouve aussi en dehors du travail.",
+    "pt": "Às vezes, o sentido também está fora do trabalho."
+   },
+   {
+    "fr": "Je fais du bénévolat dans une association de mon quartier le samedi.",
+    "pt": "Eu faço trabalho voluntário numa ONG do meu bairro aos sábados."
+   },
+   {
+    "fr": "Ces quelques heures me remplissent d'énergie pour toute la semaine.",
+    "pt": "Essas poucas horas me enchem de energia para a semana inteira."
+   },
+   {
+    "fr": "Trouver l'équilibre est sans doute le vrai défi.",
+    "pt": "Encontrar o equilíbrio é, sem dúvida, o verdadeiro desafio."
+   }
+  ]
+ },
+ {
+  "title": "Dépasser les clichés sur le Brésil",
+  "phrases": [
+   {
+    "fr": "Beaucoup d'étrangers imaginent que le Brésil, c'est seulement la plage et le carnaval.",
+    "pt": "Muitos estrangeiros imaginam que o Brasil é só praia e carnaval."
+   },
+   {
+    "fr": "En réalité, le pays est d'une diversité incroyable.",
+    "pt": "Na verdade, o país tem uma diversidade incrível."
+   },
+   {
+    "fr": "Il fait même froid l'hiver dans le Sud.",
+    "pt": "No Sul, faz até frio no inverno."
+   },
+   {
+    "fr": "Pourvu que les gens viennent découvrir le pays avec curiosité.",
+    "pt": "Tomara que as pessoas venham conhecer o país com curiosidade."
+   },
+   {
+    "fr": "Si seulement on parlait davantage de notre littérature à l'étranger !",
+    "pt": "Quem dera falassem mais da nossa literatura lá fora!"
+   },
+   {
+    "fr": "Tous les Brésiliens ne savent pas danser la samba, loin de là.",
+    "pt": "Nem todo brasileiro sabe sambar, longe disso."
+   },
+   {
+    "fr": "Moi, par exemple, je danse comme un pied.",
+    "pt": "Eu, por exemplo, danço muito mal."
+   },
+   {
+    "fr": "Les clichés contiennent parfois un peu de vérité, mais jamais toute la vérité.",
+    "pt": "Os clichês às vezes têm um fundo de verdade, mas nunca a verdade inteira."
+   },
+   {
+    "fr": "J'espère que tu reviendras voir le pays sous un autre angle.",
+    "pt": "Tomara que você volte para ver o país de outro ângulo."
+   },
+   {
+    "fr": "Si seulement tout le monde voyageait avec un esprit aussi ouvert !",
+    "pt": "Quem dera todo mundo viajasse com a mente tão aberta!"
+   }
+  ],
+  "tip": {
+   "title": "« Tomara que » et « quem dera » : exprimer un souhait",
+   "example": "Pourvu que les gens viennent découvrir le pays avec curiosité. — <b>Tomara que</b> as pessoas <b>venham</b> conhecer o país com curiosidade.",
+   "body": "« Tomara que » (pourvu que, j'espère que) exprime un souhait réalisable et se construit avec le subjonctif présent : « Tomara que chova » (pourvu qu'il pleuve). « Quem dera » (si seulement) exprime plutôt un rêve ou un regret, souvent avec le subjonctif imparfait : « Quem dera eu tivesse mais tempo ! » (si seulement j'avais plus de temps !). Deux tournures très courantes à l'oral au Brésil."
+  }
+ },
+ {
+  "title": "La saudade, ce mot intraduisible",
+  "phrases": [
+   {
+    "fr": "On dit que la saudade n'existe dans aucune autre langue.",
+    "pt": "Dizem que a palavra saudade não existe em nenhuma outra língua."
+   },
+   {
+    "fr": "C'est un mélange de nostalgie, de manque et de tendresse.",
+    "pt": "É uma mistura de nostalgia, falta e carinho."
+   },
+   {
+    "fr": "Tu me manques énormément depuis que tu es parti.",
+    "pt": "Estou morrendo de saudade desde que você foi embora."
+   },
+   {
+    "fr": "Elle ressent souvent le manque de sa ville natale, dans le Ceará.",
+    "pt": "Ela sente muita saudade da cidade natal dela, no Ceará."
+   },
+   {
+    "fr": "Même les bons souvenirs peuvent laisser un peu de mélancolie.",
+    "pt": "Até as boas lembranças podem deixar um pouco de melancolia."
+   },
+   {
+    "fr": "Beaucoup de chansons brésiliennes parlent de ce sentiment.",
+    "pt": "Muitas músicas brasileiras falam desse sentimento."
+   },
+   {
+    "fr": "La saudade prouve qu'on a vécu quelque chose de précieux.",
+    "pt": "A saudade prova que a gente viveu algo precioso."
+   },
+   {
+    "fr": "Je crois que j'aurai la nostalgie de ces années au Brésil.",
+    "pt": "Acho que eu vou sentir saudade desses anos no Brasil."
+   },
+   {
+    "fr": "Quand on se reverra, on va fêter ça comme il se doit.",
+    "pt": "Quando a gente se reencontrar, vamos comemorar como se deve."
+   },
+   {
+    "fr": "Certains mots en disent plus long qu'un poème entier.",
+    "pt": "Certas palavras dizem mais do que um poema inteiro."
+   }
+  ]
+ },
+ {
+  "title": "Grande ville ou vie à la campagne ?",
+  "phrases": [
+   {
+    "fr": "Après dix ans à São Paulo, j'ai envie de calme.",
+    "pt": "Depois de dez anos em São Paulo, estou com vontade de sossego."
+   },
+   {
+    "fr": "Je passe presque trois heures par jour dans les embouteillages.",
+    "pt": "Eu passo quase três horas por dia no trânsito."
+   },
+   {
+    "fr": "Ma sœur s'est installée dans une petite ville de l'intérieur du pays.",
+    "pt": "Minha irmã se mudou para uma cidadezinha do interior."
+   },
+   {
+    "fr": "Là-bas, tout le monde se connaît et se dit bonjour.",
+    "pt": "Lá, todo mundo se conhece e se cumprimenta."
+   },
+   {
+    "fr": "En contrepartie, il y a moins d'options culturelles.",
+    "pt": "Em compensação, tem menos opções culturais."
+   },
+   {
+    "fr": "La grande ville offre des opportunités qu'on ne trouve nulle part ailleurs.",
+    "pt": "A cidade grande oferece oportunidades que não se encontram em nenhum outro lugar."
+   },
+   {
+    "fr": "Avec le télétravail, beaucoup de gens repensent leur mode de vie.",
+    "pt": "Com o trabalho remoto, muita gente está repensando o estilo de vida."
+   },
+   {
+    "fr": "Je rêve d'une maison avec un jardin et quelques arbres fruitiers.",
+    "pt": "Eu sonho com uma casa com quintal e algumas árvores frutíferas."
+   },
+   {
+    "fr": "Mais je sais que l'animation de la ville me manquerait.",
+    "pt": "Mas eu sei que eu sentiria falta do agito da cidade."
+   },
+   {
+    "fr": "Peut-être que l'idéal, c'est un peu des deux.",
+    "pt": "Talvez o ideal seja um pouco dos dois."
+   }
+  ]
+ },
+ {
+  "title": "Inégalités et solidarité",
+  "phrases": [
+   {
+    "fr": "Les inégalités sociales sautent aux yeux dans les grandes villes.",
+    "pt": "As desigualdades sociais saltam aos olhos nas cidades grandes."
+   },
+   {
+    "fr": "Un quartier luxueux peut se trouver juste à côté d'une favela.",
+    "pt": "Um bairro de luxo pode ficar logo ao lado de uma favela."
+   },
+   {
+    "fr": "Pourtant, la solidarité entre voisins y est souvent très forte.",
+    "pt": "Mesmo assim, a solidariedade entre vizinhos costuma ser muito forte."
+   },
+   {
+    "fr": "Pendant les inondations, tout le quartier s'est mobilisé.",
+    "pt": "Durante as enchentes, o bairro inteiro se mobilizou."
+   },
+   {
+    "fr": "Les gens ont apporté des vêtements, de la nourriture et de l'eau.",
+    "pt": "As pessoas levaram roupa, comida e água."
+   },
+   {
+    "fr": "Je crois que l'éducation est la clé pour réduire ces écarts.",
+    "pt": "Eu acredito que a educação é a chave para diminuir essas diferenças."
+   },
+   {
+    "fr": "Un projet de musique transforme la vie des enfants de la communauté.",
+    "pt": "Um projeto de música está transformando a vida das crianças da comunidade."
+   },
+   {
+    "fr": "Il ne suffit pas de critiquer, il faut aussi s'engager.",
+    "pt": "Não basta criticar, também é preciso se envolver."
+   },
+   {
+    "fr": "Chacun peut contribuer à sa manière, même modestement.",
+    "pt": "Cada um pode contribuir do seu jeito, mesmo que seja pouco."
+   },
+   {
+    "fr": "Une société se juge à la façon dont elle traite les plus fragiles.",
+    "pt": "Uma sociedade se mede pela forma como trata os mais vulneráveis."
+   }
+  ]
+ },
+ {
+  "title": "Identité et métissage culturel",
+  "phrases": [
+   {
+    "fr": "Le Brésil est né de la rencontre de nombreux peuples.",
+    "pt": "O Brasil nasceu do encontro de muitos povos."
+   },
+   {
+    "fr": "Les influences indigènes, africaines et européennes se mélangent partout.",
+    "pt": "As influências indígenas, africanas e europeias se misturam em todo lugar."
+   },
+   {
+    "fr": "On le sent dans la musique, la cuisine et même dans la langue.",
+    "pt": "Dá para sentir isso na música, na comida e até na língua."
+   },
+   {
+    "fr": "Beaucoup de mots du portugais brésilien viennent du tupi.",
+    "pt": "Muitas palavras do português brasileiro vêm do tupi."
+   },
+   {
+    "fr": "À Salvador, la culture afro-brésilienne est présente à chaque coin de rue.",
+    "pt": "Em Salvador, a cultura afro-brasileira está presente em cada esquina."
+   },
+   {
+    "fr": "Mes arrière-grands-parents sont arrivés du Japon dans les années trente.",
+    "pt": "Meus bisavós chegaram do Japão nos anos trinta."
+   },
+   {
+    "fr": "Je me sens à la fois très brésilien et attaché à ces racines.",
+    "pt": "Eu me sinto ao mesmo tempo muito brasileiro e ligado a essas raízes."
+   },
+   {
+    "fr": "Vivre entre plusieurs cultures enrichit autant que ça complique.",
+    "pt": "Viver entre várias culturas enriquece tanto quanto complica."
+   },
+   {
+    "fr": "Je me demande parfois à quel endroit je me sens vraiment chez moi.",
+    "pt": "Às vezes eu me pergunto em que lugar eu me sinto realmente em casa."
+   },
+   {
+    "fr": "Peut-être que l'identité, ce n'est pas un lieu, mais un chemin.",
+    "pt": "Talvez a identidade não seja um lugar, mas um caminho."
+   }
+  ]
+ },
+ {
+  "title": "Souvenirs d'enfance",
+  "phrases": [
+   {
+    "fr": "Quand j'étais petit, je passais mes vacances chez mes grands-parents.",
+    "pt": "Quando eu era pequeno, passava as férias na casa dos meus avós."
+   },
+   {
+    "fr": "Ils avaient une petite ferme près de Goiânia.",
+    "pt": "Eles tinham um sitiozinho perto de Goiânia."
+   },
+   {
+    "fr": "On grimpait aux arbres pour cueillir des mangues.",
+    "pt": "A gente subia nas árvores para pegar manga."
+   },
+   {
+    "fr": "Ma grand-mère préparait des pamonhas tous les après-midi.",
+    "pt": "Minha avó fazia pamonha todas as tardes."
+   },
+   {
+    "fr": "En fin d'après-midi, on jouait au ballon dans la rue jusqu'à la nuit tombée.",
+    "pt": "No fim da tarde, a gente jogava bola na rua até escurecer."
+   },
+   {
+    "fr": "Il n'y avait pas d'écrans, mais on ne s'ennuyait jamais.",
+    "pt": "Não tinha tela nenhuma, mas a gente nunca ficava entediado."
+   },
+   {
+    "fr": "L'odeur du café frais me ramène toujours à cette époque.",
+    "pt": "O cheiro de café fresquinho sempre me leva de volta para essa época."
+   },
+   {
+    "fr": "Je n'avais pas conscience de la chance que j'avais.",
+    "pt": "Eu não tinha noção da sorte que eu tinha."
+   },
+   {
+    "fr": "Aujourd'hui, la ferme a été vendue, mais les souvenirs restent.",
+    "pt": "Hoje o sítio foi vendido, mas as lembranças ficaram."
+   },
+   {
+    "fr": "J'aimerais offrir des moments comme ceux-là à mes propres enfants.",
+    "pt": "Eu queria proporcionar momentos assim para os meus filhos."
+   }
+  ]
+ },
+ {
+  "title": "Un au revoir difficile",
+  "phrases": [
+   {
+    "fr": "Mon meilleur ami part s'installer à l'étranger la semaine prochaine.",
+    "pt": "Meu melhor amigo vai se mudar para o exterior semana que vem."
+   },
+   {
+    "fr": "Nous avons organisé une dernière soirée sur la plage de Florianópolis.",
+    "pt": "A gente organizou uma última noite na praia, em Florianópolis."
+   },
+   {
+    "fr": "On a passé des heures à se rappeler nos bêtises de jeunesse.",
+    "pt": "A gente passou horas lembrando das nossas besteiras de juventude."
+   },
+   {
+    "fr": "Personne n'osait vraiment prononcer le mot adieu.",
+    "pt": "Ninguém tinha coragem de dizer a palavra adeus."
+   },
+   {
+    "fr": "Je suis heureux pour lui, mais j'ai le cœur serré.",
+    "pt": "Eu estou feliz por ele, mas estou com o coração apertado."
+   },
+   {
+    "fr": "Il m'a promis de revenir pour le carnaval.",
+    "pt": "Ele me prometeu voltar para o carnaval."
+   },
+   {
+    "fr": "Aujourd'hui, la distance n'empêche plus de rester proches.",
+    "pt": "Hoje em dia, a distância não impede mais a gente de continuar perto."
+   },
+   {
+    "fr": "Les vraies amitiés résistent au temps et aux kilomètres.",
+    "pt": "As amizades de verdade resistem ao tempo e à distância."
+   },
+   {
+    "fr": "Malgré tout, je garde l'espoir qu'on se reverra bientôt.",
+    "pt": "Apesar de tudo, eu tenho esperança de que a gente se veja logo."
+   },
+   {
+    "fr": "Ce n'est pas un adieu, c'est juste un à bientôt.",
+    "pt": "Não é um adeus, é só um até logo."
+   }
+  ]
+ },
+ {
+  "title": "Regarder en arrière sur ce parcours en portugais",
+  "phrases": [
+   {
+    "fr": "Quand j'ai commencé le portugais, je ne savais même pas dire bonjour.",
+    "pt": "Quando eu comecei a estudar português, eu não sabia nem dizer bom dia."
+   },
+   {
+    "fr": "Les sons nasals me semblaient impossibles à prononcer.",
+    "pt": "Os sons nasais me pareciam impossíveis de pronunciar."
+   },
+   {
+    "fr": "Aujourd'hui, il m'arrive de rêver directement en portugais.",
+    "pt": "Hoje, às vezes eu sonho direto em português."
+   },
+   {
+    "fr": "Ce changement s'est fait petit à petit, presque sans que je m'en rende compte.",
+    "pt": "Essa mudança aconteceu aos poucos, quase sem eu perceber."
+   },
+   {
+    "fr": "Chaque trajet est devenu une occasion d'apprendre.",
+    "pt": "Cada trajeto virou uma oportunidade de aprender."
+   },
+   {
+    "fr": "J'ai fait beaucoup d'erreurs, et c'était tant mieux.",
+    "pt": "Eu cometi muitos erros, e ainda bem."
+   },
+   {
+    "fr": "Ce sont ces erreurs qui m'ont fait progresser.",
+    "pt": "Foram esses erros que me fizeram progredir."
+   },
+   {
+    "fr": "Le subjonctif ne me fait plus peur du tout.",
+    "pt": "O subjuntivo não me assusta mais de jeito nenhum."
+   },
+   {
+    "fr": "Je suis fier du chemin parcouru depuis la première leçon.",
+    "pt": "Eu tenho orgulho do caminho que percorri desde a primeira lição."
+   },
+   {
+    "fr": "Apprendre une langue, c'est s'ouvrir une nouvelle porte sur le monde.",
+    "pt": "Aprender uma língua é abrir uma nova porta para o mundo."
+   }
+  ]
+ },
+ {
+  "title": "Fin du parcours : un dernier bilan",
+  "phrases": [
+   {
+    "fr": "Ce dernier module a abordé les sujets les plus profonds de tout le parcours.",
+    "pt": "Este último módulo tratou dos assuntos mais profundos de todo o percurso."
+   },
+   {
+    "fr": "Identité, amitié, saudade : nous avons tout exploré en portugais.",
+    "pt": "Identidade, amizade, saudade: a gente explorou tudo em português."
+   },
+   {
+    "fr": "Le subjonctif et les expressions idiomatiques nous sont maintenant familiers.",
+    "pt": "O subjuntivo e as expressões idiomáticas agora são familiares para a gente."
+   },
+   {
+    "fr": "Tu peux désormais exprimer une opinion nuancée avec aisance.",
+    "pt": "Agora você consegue expressar uma opinião cheia de nuances com facilidade."
+   },
+   {
+    "fr": "Tu sais aussi parler de tes émotions et de tes souvenirs.",
+    "pt": "Você também sabe falar das suas emoções e das suas lembranças."
+   },
+   {
+    "fr": "Le portugais fait désormais vraiment partie de toi.",
+    "pt": "O português agora faz parte de você de verdade."
+   },
+   {
+    "fr": "Continue à écouter de la musique et à regarder des films brésiliens.",
+    "pt": "Continue ouvindo música e assistindo a filmes brasileiros."
+   },
+   {
+    "fr": "Et surtout, n'aie pas peur de parler avec des Brésiliens.",
+    "pt": "E, acima de tudo, não tenha medo de conversar com brasileiros."
+   },
+   {
+    "fr": "Merci de nous avoir accompagnés sur chacun de tes trajets.",
+    "pt": "Obrigado por nos acompanhar em cada um dos seus trajetos."
+   },
+   {
+    "fr": "Bravo, et à bientôt sur les routes du Brésil !",
+    "pt": "Parabéns, e até breve nas estradas do Brasil!"
+   }
+  ]
+ }
 ];
 
 const LEVEL1_MODULES = [
   {
     id:1, name:"Le quotidien",
-    desc:"La vie de tous les jours en Allemagne, en route et à la maison.",
+    desc:"La vie de tous les jours au Brésil, en route et à la maison.",
     totalPhrases:200, lessonsCount:20,
     lessons: level1Module1Lessons
   },
   {
     id:2, name:"En voyage",
-    desc:"Se déplacer, découvrir et gérer les imprévus en Allemagne.",
+    desc:"Se déplacer, découvrir et gérer les imprévus au Brésil.",
     totalPhrases:200, lessonsCount:20,
     lessons: level1Module2Lessons
   },
@@ -2449,7 +8411,7 @@ const LEVEL2_FREE_LESSONS = { 1: 3, 2: 0, 3: 0 }; // à partir du niveau 2, seul
 const LEVEL3_MODULES = [
   {
     id:1, name:"Le quotidien",
-    desc:"Une vie quotidienne installée en Allemagne, avec ses subtilités.",
+    desc:"Une vie quotidienne installée au Brésil, avec ses subtilités.",
     totalPhrases:200, lessonsCount:20,
     lessons: level3Module1Lessons
   },
