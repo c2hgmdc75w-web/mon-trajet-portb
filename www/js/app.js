@@ -585,25 +585,44 @@ function getTTSPlugin(){
    Premium > Améliorée > standard (jamais les voix "fantaisie"). La liste est
    relue quand l'app revient au premier plan, pour qu'une voix téléchargée
    entre-temps soit prise en compte sans relancer l'app. */
+const VOICE_LANGS = {
+  fr:  { exact:'fr-fr', prefix:'fr', label:'Français', sample:"Bonjour, c'est moi qui te lirai les phrases en français." },
+  tgt: { exact:'pt-br', prefix:'pt', label:'Portugais (Brésil)', sample:"Olá! Sou eu que vou ler as frases em português para você." }
+};
 let nativeVoiceIdx = {};
+let nativeVoiceList = [];
 let nativeVoicesLoaded = false;
-function nativeVoiceScore(v){
+function voiceQuality(v){
   const id = ((v.voiceURI||'') + ' ' + (v.name||'')).toLowerCase();
   if(id.includes('eloquence') || id.includes('speech.synthesis.voice') || id.includes('novelty')) return -100;
-  let s = 0;
-  if(id.includes('premium')) s += 30;
-  else if(id.includes('enhanced') || id.includes('amélior') || id.includes('network') || id.includes('réseau')) s += 20;
-  if(id.includes('compact')) s -= 5;
-  return s;
+  if(id.includes('premium')) return 30;
+  if(id.includes('enhanced') || id.includes('amélior') || id.includes('network') || id.includes('réseau')) return 20;
+  if(id.includes('compact')) return -5;
+  return 0;
 }
-function bestNativeVoice(list, exact, prefix){
-  const norm = v=>(v.lang||'').toLowerCase().replace('_','-');
-  const all = list.map((v,i)=>({v,i}));
-  let c = all.filter(o=>norm(o.v) === exact);
-  if(!c.length) c = all.filter(o=>norm(o.v).startsWith(prefix));
-  if(!c.length) return -1;
-  c.sort((a,b)=>nativeVoiceScore(b.v) - nativeVoiceScore(a.v));
-  return nativeVoiceScore(c[0].v) < -50 ? -1 : c[0].i;
+function voiceQualityLabel(v){
+  const q = voiceQuality(v);
+  return q >= 30 ? 'Premium' : q >= 20 ? 'Améliorée' : 'Standard';
+}
+const normLang = v=>(v.lang||'').toLowerCase().replace('_','-');
+function voicesFor(key){
+  const L = VOICE_LANGS[key];
+  const all = nativeVoiceList.map((v,i)=>({v,i})).filter(o=>voiceQuality(o.v) > -50);
+  let c = all.filter(o=>normLang(o.v) === L.exact);
+  const others = all.filter(o=>normLang(o.v) !== L.exact && normLang(o.v).startsWith(L.prefix));
+  c = c.sort((a,b)=>voiceQuality(b.v)-voiceQuality(a.v) || (a.v.name||'').localeCompare(b.v.name||''));
+  return c.concat(others.sort((a,b)=>voiceQuality(b.v)-voiceQuality(a.v)));
+}
+function loadVoicePrefs(){ try{ return JSON.parse(localStorage.getItem('montrajet_voices')||'{}'); }catch(e){ return {}; } }
+function saveVoicePrefs(p){ try{ localStorage.setItem('montrajet_voices', JSON.stringify(p)); }catch(e){} }
+function resolveVoiceIdx(){
+  const prefs = loadVoicePrefs();
+  nativeVoiceIdx = {};
+  for(const key of Object.keys(VOICE_LANGS)){
+    const cands = voicesFor(key);
+    const chosen = prefs[key] && cands.find(o=>o.v.voiceURI === prefs[key]);
+    nativeVoiceIdx[key] = chosen ? chosen.i : (cands.length ? cands[0].i : -1);
+  }
 }
 async function loadNativeVoices(){
   if(nativeVoicesLoaded) return;
@@ -612,11 +631,56 @@ async function loadNativeVoices(){
   if(!tts || !tts.getSupportedVoices) return;
   try{
     const r = await tts.getSupportedVoices();
-    const list = (r && r.voices) || [];
-    nativeVoiceIdx = { fr: bestNativeVoice(list, 'fr-fr', 'fr'), pt: bestNativeVoice(list, 'pt-br', 'pt') };
-  }catch(e){ nativeVoiceIdx = {}; }
+    nativeVoiceList = (r && r.voices) || [];
+  }catch(e){ nativeVoiceList = []; }
+  resolveVoiceIdx();
 }
 document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) nativeVoicesLoaded = false; });
+
+/* ---------- écran "Choisir les voix" ----------
+   Liste les voix réellement installées sur le téléphone pour le français et
+   la langue apprise, avec leur qualité. Un appui choisit la voix (mémorisée)
+   et la fait entendre. Par défaut, la meilleure voix est choisie. */
+async function openVoicePicker(){
+  $('voicePicker').classList.add('show');
+  $('voiceLists').innerHTML = '<div class="voice-empty">Chargement des voix…</div>';
+  if(!isNativeApp()){
+    $('voiceLists').innerHTML = '<div class="voice-empty">Le choix des voix est disponible dans l\'app sur iPhone.</div>';
+    return;
+  }
+  nativeVoicesLoaded = false;
+  await loadNativeVoices();
+  renderVoicePicker();
+}
+function closeVoicePicker(){ $('voicePicker').classList.remove('show'); cancelSpeech(); }
+function renderVoicePicker(){
+  let html = '';
+  for(const key of Object.keys(VOICE_LANGS)){
+    const L = VOICE_LANGS[key];
+    const cands = voicesFor(key);
+    html += `<div class="voice-section"><div class="voice-section-title">${L.label}</div>`;
+    if(!cands.length) html += '<div class="voice-empty">Aucune voix installée pour cette langue.</div>';
+    for(const o of cands){
+      const sel = nativeVoiceIdx[key] === o.i;
+      html += `<div class="voice-item${sel?' selected':''}" data-key="${key}" data-i="${o.i}">
+        <div><div class="voice-name">${o.v.name || 'Voix'}</div><div class="voice-meta">${voiceQualityLabel(o.v)} · ${o.v.lang||''}</div></div>
+        <div class="voice-check">${sel?'✓':''}</div></div>`;
+    }
+    html += '</div>';
+  }
+  $('voiceLists').innerHTML = html;
+  document.querySelectorAll('.voice-item').forEach(el=>{
+    el.onclick = async ()=>{
+      const key = el.dataset.key, i = parseInt(el.dataset.i, 10);
+      const v = nativeVoiceList[i];
+      const prefs = loadVoicePrefs(); prefs[key] = v.voiceURI; saveVoicePrefs(prefs);
+      nativeVoiceIdx[key] = i;
+      renderVoicePicker();
+      const tts = getTTSPlugin();
+      if(tts){ try{ await tts.stop(); await tts.speak({ text: VOICE_LANGS[key].sample, lang: v.lang, voice: i, rate: 1, category: 'ambient' }); }catch(e){} }
+    };
+  });
+}
 async function cancelSpeech(){
   if(isNativeApp()){
     const tts = getTTSPlugin();
@@ -651,7 +715,7 @@ function speakSeg(seg, token){
       if(!tts){ resolve(); return; }
       await loadNativeVoices();
       const opts = { text: seg.text, lang, rate: seg.rate || 1, category: 'ambient' };
-      const vi = nativeVoiceIdx[seg.lang === 'fr' ? 'fr' : 'pt'];
+      const vi = nativeVoiceIdx[seg.lang === 'fr' ? 'fr' : 'tgt'];
       if(typeof vi === 'number' && vi >= 0) opts.voice = vi;
       try{
         await tts.speak(opts);
@@ -1080,6 +1144,8 @@ $('scrubber').addEventListener('change', ()=>{
 $('buyBtn').onclick = buyPremium;
 $('restoreBtn').onclick = restorePremium;
 $('closePaywallBtn').onclick = closePaywall;
+$('voiceBtn').onclick = openVoicePicker;
+$('closeVoiceBtn').onclick = closeVoicePicker;
 
 if('speechSynthesis' in window){
   speechSynthesis.onvoiceschanged = ()=>{ voices = speechSynthesis.getVoices(); };
