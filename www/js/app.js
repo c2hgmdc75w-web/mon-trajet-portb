@@ -325,14 +325,14 @@ function buildIntroSegments(){
   segs.push(S("Nous allons commencer à travailler ensemble. Mais ma voix dépend de toi.", 'fr', 1, 'Bien commencer ensemble', CTX, 'headphones', false, '', ''));
   segs.push(W(400, 'Bien commencer ensemble', CTX, 'headphones', false, '', ''));
 
-  segs.push(S("Si tu trouves ma voix trop robotique, sache que tu peux l'améliorer directement dans les réglages de ton téléphone.", 'fr', 1, 'Bien commencer ensemble', CTX, 'headphones', false, '', ''));
+  segs.push(S("Si tu trouves ma voix trop robotique, tu peux en changer à tout moment. Sur l'écran d'accueil, appuie sur le bouton Choisir les voix, juste sous le titre. Tu y verras toutes les voix installées sur ton téléphone, en français et en portugais. Appuie sur une voix pour l'écouter : elle sera choisie automatiquement pour les leçons.", 'fr', 1, 'Bien commencer ensemble', CTX, 'headphones', false, '', ''));
   segs.push(W(500, 'Bien commencer ensemble', CTX, 'headphones', false, '', ''));
 
   let pathText;
   if(platform === 'ios'){
-    pathText = "Tu es sur iPhone. Voici le chemin : ouvre l'application Réglages. Va dans Accessibilité. Puis Contenu énoncé. Puis Voix. Puis Français. Et télécharge une voix marquée Améliorée, ou Premium, si elle est proposée. Fais la même chose dans Portugais, Brésil, pour la voix portugaise. Une fois téléchargées, ces voix seront automatiquement utilisées ici, sans rien à faire de plus.";
+    pathText = "Pour avoir des voix plus naturelles, tu peux en télécharger de nouvelles sur ton iPhone. Voici le chemin : ouvre l'application Réglages. Va dans Accessibilité. Puis Lire et énoncer, ou Contenu énoncé selon ta version. Puis Voix. Puis Français. Et télécharge une voix marquée Premium, ou Améliorée. Fais la même chose dans Portugais, Brésil. Ensuite, reviens dans l'application et choisis la nouvelle voix avec le bouton Choisir les voix. Attention, les voix Siri ne sont pas disponibles pour les applications.";
   } else if(platform === 'android'){
-    pathText = "Tu es sur Android. Voici le chemin, qui peut varier légèrement selon la marque de ton téléphone : ouvre les Paramètres. Va dans Système, ou Paramètres généraux. Puis Langues et saisie. Puis Synthèse vocale, ou Text-to-speech. Choisis le moteur Google. Installe les données vocales en français. Et choisis, si elle est proposée, une voix Réseau plutôt qu'une voix Compacte, pour un rendu plus naturel.";
+    pathText = "Tu es sur Android. Voici le chemin, qui peut varier légèrement selon la marque de ton téléphone : ouvre les Paramètres. Va dans Système, ou Paramètres généraux. Puis Langues et saisie. Puis Synthèse vocale, ou Text-to-speech. Choisis le moteur Google. Installe les données vocales en français. Et choisis, si elle est proposée, une voix Réseau plutôt qu'une voix Compacte, pour un rendu plus naturel. Ensuite, reviens dans l'application et choisis la nouvelle voix avec le bouton Choisir les voix.";
   } else {
     pathText = "La qualité de la voix dépend des voix installées sur ton appareil ou ton navigateur. Regarde du côté des réglages d'accessibilité ou de synthèse vocale pour en installer une meilleure, si une est disponible.";
   }
